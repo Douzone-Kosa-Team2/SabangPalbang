@@ -51,7 +51,7 @@
     padding: 20px;
 }
 
-/* index  인포페이지 */
+/* info  인포페이지 */
 .info_content {
     display: flex;
     flex-direction: row;
@@ -62,10 +62,10 @@
     flex-direction: row;
 }
 
-.movePage {
-    position: absolute;
-    left: "47%";
-    top: "50%";
+.info_content_movePage {
+     position: absolute; 
+     left: "47%";
+     top: "80%"; 
 }
 
 #info_img2,
