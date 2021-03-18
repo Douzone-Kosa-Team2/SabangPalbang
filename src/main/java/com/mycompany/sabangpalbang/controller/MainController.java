@@ -40,4 +40,11 @@ public class MainController {
 		logger.info("advertisePage 메시지");
 		return "advertisePage";
 	}
+	
+	//인포페이지
+	@RequestMapping(value = "/info")
+	public String info() {
+		logger.info("info 메시지");
+		return "info";
+	}
 }
