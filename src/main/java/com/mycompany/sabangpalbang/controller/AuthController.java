@@ -23,7 +23,6 @@ import com.mycompany.sabangpalbang.dto.Board;
  */
 @Controller
 public class AuthController {
-	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
 	//로그인페이지
