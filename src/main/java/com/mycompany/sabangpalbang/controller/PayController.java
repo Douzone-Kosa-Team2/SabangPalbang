@@ -42,20 +42,5 @@ public class PayController {
 			logger.info("pay_success 메시지");
 			return "pay/pay_success";
 		}
-		//마이페이지
-		@RequestMapping(value = "/mypage_memberInfo")
-		public String mypage_memberInfo() {
-			logger.info("mypage_memberInfo 메시지");
-			return "mypage/mypage_memberInfo";
-		}
-		@RequestMapping(value = "/mypage_inquiry")
-		public String mypage_inquiry() {
-			logger.info("mypage_inquiry 메시지");
-			return "mypage/mypage_inquiry";
-		}
-		@RequestMapping(value = "/mypage_orderlist")
-		public String mypage_orderlist() {
-			logger.info("mypage_orderlist 메시지");
-			return "mypage/mypage_orderlist";
-		}
+
 }
