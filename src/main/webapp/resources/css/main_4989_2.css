@@ -1502,6 +1502,9 @@ margin-bottom: 1%;
 text-decoration: none;
 color: #00B0F0 !important;
 }
+a:hover.mypage_header_inquiryInfo{
+	color:#00B0F0 !important;
+}
 
 .mypage_inquiry {
 margin-top: 2.2em;
@@ -1530,6 +1533,9 @@ color: black;
 text-decoration: none;
 color: #00B0F0 !important;
 margin-left: 14%;
+}
+a:hover.mypage_header_member_info {
+color: #00B0F0 !important;
 }
 
 /* 마이페이지 헤더 회원정보  */
@@ -1563,6 +1569,9 @@ flex-direction: row;
 /* 마이페이지 "주문 내역" 속성*/
     .order_info{
         text-decoration: none;
+        color: #00B0F0 !important;
+    }
+    a:hover.order_info{
         color: #00B0F0 !important;
     }
 
