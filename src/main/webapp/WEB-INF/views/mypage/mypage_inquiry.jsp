@@ -3,6 +3,12 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
+    <!-- 마이페이지 메뉴 헤더 -->
+    <div class="mypage_header">
+        <a class="mypage_header_memberInfo" href="mypage_memberInfo">회원 정보</a>
+        <a class="mypage_header_orderInfo" href="mypage_orderlist">주문 내역</a>
+        <a class="mypage_header_inquiryInfo" href="mypage_inquiry">내가 쓴 문의글</a>
+    </div>
 
 <!-- 마이페이지 > 내가 쓴 문의글 -->
 
