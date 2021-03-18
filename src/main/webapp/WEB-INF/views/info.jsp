@@ -63,7 +63,7 @@
 			</div>
 		</div>
 		<div class="info_content_1" id="info_img2">
-			<a href="sabangpalbang/sabang_main">
+			<a href="sabang_main">
 				<img src="resources/images/info_2.png" />
 			</a>
 			<div class="info_content_movePage">
@@ -73,7 +73,7 @@
 			</div>
 		</div>
 		<div class="info_content_1" id="info_img3">
-			<a href="sabangpalbang/palbang_main">
+			<a href="palbang_main">
 				<img src="resources/images/info_3.png" />
 			</a>
 
