@@ -1,0 +1,1641 @@
+/* findEmail_success 이메일 찾기 css */
+
+.findEmail_success{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin-top: 3%;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 3%;
+    border: 1px solid #00B0F0;
+}
+.findEmail_success_1{
+    margin-top: 5%;
+    text-align: center;
+    font-size: 3em;
+    
+}
+.findEmail_success_2{
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-bottom: 0.5px solid gray;
+}
+.findEmail_success_3{
+    margin-top: 2%;
+    text-align: center;
+    font-size: 2.3em;
+}
+
+.findEmail_success_4{
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 1%;
+}
+
+.findEmail_success_5{
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 2%;
+}
+
+.findEmail_success_6{
+    text-align: center;
+    font-size: 1.3em;
+    margin-bottom: 1%;
+}
+.findEmail_success_6 > button{
+    margin : 10px;
+    padding: 20px;
+}
+
+/* index  인포페이지 */
+.info_content {
+    display: flex;
+    flex-direction: row;
+}
+
+.info_content_1 {
+    display: flex;
+    flex-direction: row;
+}
+
+.movePage {
+    position: absolute;
+    left: "47%";
+    top: "50%";
+}
+
+#info_img2,
+#info_img3 {
+    display: none;
+}
+
+/* main 메인페이지 */
+#main_advertise_img1 {
+    display: inline;
+}
+
+#main_advertise_img2,
+#main_advertise_img3 {
+    display: none;
+}
+
+.main_main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.main_advertise {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.main_advertise_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+}
+
+.main_advertise_movePage {
+    position: absolute;
+    left: "47%";
+    top: "50%";
+}
+
+
+.main_sabang_title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.main_sabang_title_name {
+    flex-grow: 11;
+}
+
+.main_sabang_title_more {
+    flex-grow: 1;
+    color: cornflowerblue
+}
+
+.main_palbang_title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.main_palbang_title_name {
+    flex-grow: 11;
+}
+
+.main_palbang_title_more {
+    flex-grow: 1;
+    color: cornflowerblue
+}
+
+.main_sabang_content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0 10px 0;
+    margin: 10px 0 10px 0;
+    text-align: center;
+}
+
+.main_palbang_content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0 10px 0;
+    margin: 10px 0 10px 0;
+    text-align: center;
+}
+
+.main_sabang_content_1 {
+    padding: 10px 10px 10px 0;
+    margin: 10px 10px 10px 0;
+}
+
+.main_sabang_content_2 {
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
+}
+
+.main_sabang_content_3 {
+    padding: 10px 0px 10px 10px;
+    margin: 10px 0px 10px 10px;
+}
+
+.main_palbang_content_1 {
+    padding: 10px 10px 10px 0;
+    margin: 10px 10px 10px 0;
+}
+
+.main_palbang_content_2 {
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
+}
+
+.main_palbang_content_3 {
+    padding: 10px 0px 10px 10px;
+    margin: 10px 0px 10px 10px;
+}
+
+/* mypage_inquiry 마이 페이지 문의게시판 */
+
+/* 마이페이지 헤더 */
+.mypage_header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 1.4em;
+    border-bottom: 0.5px solid grey;
+    margin-bottom: 1%;
+}
+
+/* 마이페이지 헤더 메뉴 간격  */
+.mypage_header_memberInfo{
+    margin-left: 14%;
+    text-decoration: none;
+    color: black;
+}
+
+/* 마이페이지 헤더 메뉴 속성 간 간격 */
+.mypage_header > a {
+    padding: 10px;
+    margin-right: 12%;
+    
+}
+/* 마이페이지 "내가 쓴 문의글" 속성*/
+.mypage_header_orderInfo{
+    text-decoration: none;
+    color: black;
+}
+
+ .mypage_header_inquiryInfo{
+    text-decoration: none;
+    color: #00B0F0 !important;
+ }
+
+/* 내가 쓴 문의글  */
+.mypage_inquiry {
+ margin-top: 2.2em;
+ display: flex;
+ align-items: flex-end;
+ justify-content: center;
+ text-align: center;
+ 
+}
+
+.mypage_inquiry>.mypage_inquiry_main {
+ width: 70%;
+ height: 500px;
+}
+
+/* mypage_memInfo 마이페이지 회원정보 */
+ /* 마이페이지 헤더 */
+ .mypage_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 1.4em;
+
+    border-bottom: 0.5px solid grey;
+}
+
+/* 마이페이지 헤더 메뉴 속성 간 간격 */
+.mypage_header>a {
+    padding: 10px;
+    margin-right: 12%;
+
+}
+
+/* 마이페이지 헤더 "회원정보" 속성 */
+.mypage_header_member_info {
+
+    text-decoration: none;
+    color: #00B0F0 !important;
+    margin-left: 14%;
+}
+
+/* 마이페이지 헤더 회원정보  */
+
+.mypage_memInfo_main {
+    background-color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding-top: 100px;
+    padding-bottom: 300px;
+    background-size: contain;
+}
+
+.mypage_memInfo_signinInput_bind {
+    display: flex;
+    flex-direction: row;
+}
+
+/* palbang_create 팔방 작성페이지 */
+
+.palbang_create_main{
+    flex-direction: column;
+    display: flex;
+    text-align: center;
+}
+
+/* 제목을 입력하세요 */
+.palbang_create_title{
+    width: 100%;
+}
+
+.palbang_create_txt{
+    border: 0px;
+    border-bottom: 1px solid black;
+    text-align: center;
+    margin: 20px;
+    font-size: 1.5em;
+}
+
+/* 대표이미지 - 파일 업로드 */
+.palbang_create_mainImage{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+}
+.palbang_create_mainImage_img{
+    margin-left: 7em;
+    margin-right: 2em;
+    width: 8em;
+    display: flex;
+    align-items: center;
+}
+
+
+/* 마이너스 아이콘 & 이미지 업로드 & 리뷰 쓰기창 */
+.palbang_create_reviewSet{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0px;
+    
+}
+.palbang_create_reviewSet_minusBtn{
+    display: flex;
+    align-items: center;
+    margin: 30px;
+}
+/* 이미지 업로드 박스*/
+.palbang_create_reviewSet .palbang_create_reviewSet_left{
+    display: flex;
+    padding: 80px;
+    height: 20em;
+    width: 40%;
+}
+.palbang_create_reviewSet_left_1, 
+.palbang_create_reviewSet_left_2 {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+/* 리뷰 쓰기창 */
+.palbang_create_reviewSet_right{
+    display: flex;
+    margin-right: 3em;
+    height: 20em;
+    width: 40%;
+}
+
+/* 추가 아이콘 & 추가하기 버튼 */
+.palbang_create_reviewSet_addSet{
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+
+.palbang_create_reviewSet_addSet_addImg{
+    height: 40px;
+    margin-right: 10px;
+}
+.palbang_create_reviewSet_addSet_addTxt{
+    height: 40px;
+}
+
+.palbang_create_reviewSet_btn{
+    background-color: white;
+    border: none;
+}
+
+/* 취소 & 등록 버튼 */
+.palbang_create_reviewSet_submit{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 220px;
+    margin-top: 30px;
+}
+
+.palbang_create_reviewSet_submit .btn{
+    margin: 3px;
+}
+
+/* palbang_detail 팔방 상세페이지 */
+#heart_img{
+    object-fit: contain;
+}
+.palbang_detail_main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.palbang_detail_edit {
+    display: flex;
+    flex-direction: row;
+    width: 800px;
+    justify-content: flex-end;
+    margin: 4px;
+}
+
+.palbang_detail_edit_update {
+    margin: 4px;
+    font-size: 1.2em;
+    color: black;
+}
+
+.palbang_detail_edit_delete {
+    margin: 4px;
+    font-size: 1.2em;
+    color: crimson;
+}
+
+.palbang_detail_header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 800px;
+
+}
+
+.palbang_detail_header_1 {
+    flex-grow: 8;
+    text-align: left;
+}
+
+.palbang_detail_header_2 {
+    flex-grow: 4;
+    text-align: end;
+}
+
+.palbang_detail_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.palbang_detail_content_mainImg {
+    margin: 10px;
+    width: 800px;
+}
+
+.palbang_detail_content_space {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    width: 800px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.palbang_detail_content_spaceImg {
+    text-align: center;
+    width: 400px;
+}
+
+.palbang_detail_content_space_txt {
+    margin: 10px;
+}
+
+.palbang_detail_content_space_txt>p {
+    width: 400px;
+}
+/* palbang_main 팔방 메인페이지 */
+.palbang_main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.palbang_div1_img{
+    width: 100%;
+}
+
+.palbang_div2_sort_type{
+    display: flex;
+    flex-direction: row;
+}
+.palbang_div2_sort_type > .menu{
+    margin-left: 5em;
+    margin-right: 1.2em;
+    margin-top: 2em;
+    
+}
+
+/* 게시물  */
+.palbang_div3_parent{
+    display: flex;
+    justify-content: center;
+}
+.palbang_div3{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+}
+
+/* 방 자랑하기 버튼  */
+.palbang_div3_btn{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 2em;
+}
+
+.palbang_div3_line{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.palbang_div3_line_item{
+    margin: 4em;
+}
+/* palbang_update 팔방 수정페이지 */
+.palbang_update {
+    flex-direction: column;
+    display: flex;
+    text-align: center;
+}
+
+/* 제목을 입력하세요 */
+.palbang_update_title {
+    width: 100%;
+}
+
+.palbang_update_main_image_2_text {
+    border: 0px;
+    border-bottom: 1px solid black;
+    text-align: center;
+    margin: 20px;
+    font-size: 1.5em;
+}
+
+/* 대표이미지 - 파일 업로드 */
+.palbang_update_main_image {
+    /* width: 70%; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    /* align-items: center; */
+}
+
+.palbang_update_Htag {
+    /* margin-left: 7em;
+    margin-right: 2em; */
+    /* width: 8em; */
+    display: flex;
+    flex: 2;
+    margin-top: 0.69%;
+    margin-left: 7%;
+    
+}
+.palbang_update_main_image_2{
+    display: flex;
+    flex-direction: row;
+    flex: 10;
+}
+
+/* 마이너스 아이콘 & 이미지 업로드 & 리뷰 쓰기창 */
+.palbang_update_main_review_set {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0px;
+
+}
+
+.palbang_update_main_review_set .palbang_update_main_minus_btn {
+    display: flex;
+    align-items: center;
+    margin: 30px;
+}
+
+/* 이미지 업로드 박스*/
+.palbang_update_main_review_set .left {
+    display: flex;
+    height: 20em;
+    width: 40%;
+}
+
+.palbang_update_main_left_1,
+.palbang_update_main_left_2 {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+/* 리뷰 쓰기창 */
+.palbang_update_main_review_set .palbang_update_main_right {
+    display: flex;
+    margin-right: 3em;
+    height: 20em;
+    width: 40%;
+}
+
+/* 추가 아이콘 & 추가하기 버튼 */
+.palbang_update .palbang_update_main_add_set {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+
+.palbang_update_main_add_set .palbang_update_main_add_img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.palbang_update_main_add_set .palbang_update_main_add_txt {
+    height: 40px;
+}
+
+.palbang_update_main_b_a {
+    background-color: white;
+    border: none;
+}
+
+/* 취소 & 등록 버튼 */
+.submit_btn {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 220px;
+    margin-top: 30px;
+}
+
+.submit_btn .btn {
+    margin: 3px;
+}
+/* pay_success 결제완료페이지 */
+
+.pay_success{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin-top: 3%;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 3%;
+    border: 1px solid #00B0F0;
+}
+.pay_success_1{
+    margin-top: 5%;
+    text-align: center;
+    font-size: 3em;
+    
+}
+
+.pay_success_1_1{
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-bottom: 0.5px solid gray;
+}
+
+
+.pay_success_2{
+    margin-top: 2%;
+    text-align: center;
+    font-size: 2.3em;
+}
+
+.pay_success_3{
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 1%;
+}
+
+.pay_success_3_1{
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 2%;
+}
+
+.pay_success_4{
+    text-align: center;
+    font-size: 1.3em;
+    margin-bottom: 1%;
+}
+
+.pay_success_5{
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.pay_success_6{
+    margin-top: 5%;
+    font-size: 1.3em;
+    margin-bottom: 5%;
+}
+.pay_success_6 > button{
+    margin : 10px;
+    padding: 20px;
+}
+
+/* pay 결제 페이지 */
+.pay_content{
+    display: flex;
+    flex-direction: row;
+}
+
+.pay_content_left{
+    flex-basis: 68%;
+    border-right: 1px solid grey;
+}
+.pay_content_right{
+    flex-basis: 32%;
+    
+}
+.pay_header{
+    font-size: 2em;
+    margin-top: 2.2%;
+    border-bottom: 1px solid grey;
+}
+.pay_header > div{
+    margin-left: 6%; 
+    margin-bottom: 2%;
+}
+
+
+.pay_content_left_delivery_header{
+    font-size: 1.4em;
+    margin-top: 1.5%;
+    margin-left: 9%;
+}
+
+.pay_content_left_delivery_content_select{
+    display: flex;
+    flex-direction: row;
+    font-size: 1.4em;
+    margin-top: 2%;
+    margin-left: 12%;
+   
+}
+
+.pay_content_left_delivery_content_select_1{
+    
+    margin-right: 8%;
+    padding: 3px;
+   
+}
+
+.pay_content_left_delivery_content_select_2{
+   
+   padding: 3px;
+   
+}
+
+.pay_content_left_delivery_content_select_1 > input{
+    
+    margin-bottom: 3%;
+   
+}
+
+
+.pay_content_left_delivery_content_select_1 > label{
+    display: inline-block;
+    margin-left: 25px;
+    
+    
+    
+}
+
+.pay_content_left_delivery_content_select_2 > input{
+    
+    margin-bottom: 3%;
+   
+}
+
+.pay_content_left_delivery_content_select_2 > label{
+    display: inline-block;
+    margin-left: 25px;
+    margin-bottom: 5%;
+    
+   
+   
+}
+
+.pay_content_left_delivery_content_address{
+    font-size: 1.2em;
+    margin-left: 9%;
+}
+
+.pay_content_left_way_header{
+    margin-top: 5%;
+    margin-left: 9%;
+    font-size: 1.2em;
+    margin-bottom: 2%;
+}
+
+
+.pay_content_left_way_content_select{
+    width: 1000px;
+    margin-left: 8%;
+    margin-bottom: 1%;
+}
+
+
+
+
+.pay_content_left_way_content_bank_1{
+    padding-left: 1%;
+    margin-left: 8%;
+    margin-right: 5%;
+    
+}
+#bank_default_image{
+    border: 2.7px solid #00B0F0;
+}
+.pay_content_left_way_content_bank_2{
+    margin-left: 4.5%;
+    
+    border-top: 0.1px solid grey;
+    border-left: 0.1px solid grey;
+}
+
+
+
+.pay_content_right_content{
+    margin-left: 9%;
+}
+
+
+.pay_content_right_content_1{
+    font-size: 1.6em;
+    margin-top: 5%;
+    margin-bottom: 12%;
+}
+
+.pay_content_right_content_2{
+    display: flex;
+    flex-direction: row;
+    
+}
+.pay_content_right_content_2 > div {
+    margin-left: 10%;
+    margin-top: 9%;
+    font-size: 1.4em;
+}
+
+.pay_content_right_content_3{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.pay_content_right_content_3_1{
+    margin-right: 15%;
+    margin-top: 3%;
+}
+
+.pay_content_right_content_3_1 > div{
+    padding: 5px;
+}
+
+.pay_content_right_content_3_2{
+    margin-top: 3%;
+    margin-right: 15%;
+}
+
+.pay_content_right_content_3_2 > div{
+    padding: 5px;
+}
+
+.pay_content_right_content_3_3{
+    margin-top: 2.8%;
+}
+.pay_content_right_content_3_3 > div{
+    padding: 4px;
+}
+
+.pay_content_right_content_4{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: 1.4em;
+    padding: 5px;
+    margin-top: 8%;
+    margin-left: 2%;
+    margin-bottom: 7%;
+}
+
+.content_4_1{
+    margin-left: 22%;
+}
+.content_4_2{
+    margin-right: 7%;
+}
+
+/* pop_ask 팝업 문의사항페이지 */
+.pop_ask_main {
+    display: flex;
+    flex-direction: column;
+    margin: 100px;
+    width: 600px;
+    height: 350px;
+}
+
+.pop_ask_table {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.pop_ask_table>* {
+    display: flex;
+    flex-direction: row;
+}
+
+.pop_ask_btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.pop_ask_menu {
+    width: 100px;
+}
+
+.pop_ask_box {
+    width: 100%;
+}
+
+/* resetPw 비밀번호 재설정 완료 페이지 */
+.resetPw_success{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin-top: 3%;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 3%;
+    border: 1px solid #00B0F0;
+}
+.resetPw_success_1{
+    margin-top: 5%;
+    text-align: center;
+    font-size: 3em;
+    
+}
+
+.resetPw_success_1_1{
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-bottom: 0.5px solid gray;
+}
+
+
+.resetPw_success_2{
+    margin-top: 2%;
+    text-align: center;
+    font-size: 2.3em;
+}
+
+.resetPw_success_3{
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 1%;
+}
+
+.resetPw_success_3_1{
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 2%;
+}
+
+.resetPw_success_4{
+    text-align: center;
+    font-size: 1.3em;
+    margin-bottom: 1%;
+}
+
+.resetPw_success_5{
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.resetPw_success_6{
+    margin-top: 5%;
+    font-size: 1.3em;
+    margin-bottom: 5%;
+}
+.resetPw_success_6 > button{
+    margin : 10px;
+    padding: 20px;
+}
+
+/* sabang_detail 사방 상세페이지 */
+.sabang_detail_1 {
+	display: flex;
+	justify-content: space-around;
+	margin-top: 0.5%;
+}
+
+.sabang_detail_1_main_image {
+	margin-left: 20%;
+	flex: 2.5;
+}
+
+.sabang_detail_1_price_list {
+	display: flex;
+	flex: 2.5;
+	flex-direction: column;
+	margin-right: 6%;
+	margin-top: 2%;
+	
+}
+
+.sabang_detail_1_list_title {
+	font-size: 20px;
+}
+
+.sabang_detail_1_list_name {
+	display: flex;
+	flex-direction: row;
+	margin-top: 6%;
+}
+
+.list_detail {
+	margin-top: 1%;
+	padding: 3px;
+}
+
+.sabang_detail_1_list_name_name {
+	display: flex;
+	flex-direction: column;
+	margin-right: 12%;
+}
+
+.sabang_detail_1_list_name_name>div {
+	margin-top: 7%;
+}
+
+.sabang_detail_1_list_name_price {
+	display: flex;
+	flex-direction: column;
+	margin-right: 5%;
+}
+
+.sabang_detail_1_list_name_price>div {
+	margin-top: 7%;
+}
+
+.sabang_detail_1_list_name_check {
+	display: flex;
+	flex-direction: column;
+	margin-left: 7%;
+}
+
+.sabang_detail_1_list_name_check>div {
+	display: flex;
+	flex-direction: column;
+	margin-top: 5%;
+}
+
+.sabang_detail_1_total_price {
+	display: flex;
+	flex-direction: row;
+	margin-top: 8%;
+}
+
+.sabang_detail_1_total_font {
+	font-size: 30px;
+	margin-left: 29%;
+}
+
+.sabang_detail_1_total_price_font {
+	margin-top: 2%;
+	margin-left: 13%;
+}
+
+.sabang_detail_1_trolley_buyButton {
+	margin-top: 10%;
+	display: flex;
+	flex-direction: row;
+}
+
+.trolley_button {
+	margin-right: 14%;
+}
+
+.sabang_detail_1_buyButton {
+	margin-top: 0.6%;
+}
+
+.sabang_detail_1_good_Explanatin {
+	display: flex;
+	flex-direction: row;
+	margin-top: 1%;
+	margin-left: 20%;
+	margin-bottom: 3%;
+}
+
+.sabang_detail_1_goods_div {
+	display: flex;
+	flex-direction: row;
+}
+
+.sabang_detail_1_goods_div>div {
+	width: 0.5;
+}
+
+/* .sabang_detail_1_goods_div {
+	opacity: 1;
+} */
+
+.sabang_detail_1_Explanatin {
+	margin-left: 5%;
+	display: flex;
+	flex-direction: column;
+}
+
+.sabang_detail_1_Explanatin_down {
+	font-size: 10px;
+	margin-top: 8%;
+}
+
+.sabang_detail_2 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.sabang_detail_2_content {
+	display: flex;
+	flex-direction: row;
+	border-top: 0.5px solid #D9D9D9;
+	padding: 40px 40px;
+}
+
+.sabang_detail_2_content_img {
+	margin-top: 10px;
+	margin-right: 20px;
+}
+
+.sabang_detail_2_content_txt {
+	display: flex;
+	flex-direction: column;
+	padding: 15px;
+}
+
+.sabang_detail_2_content_txt_content {
+	display: flex;
+	flex-direction: row;
+	margin-top: 10px;
+}
+
+.sabang_detail_2_content_txt_content_1 {
+	margin-top: 30px;
+}
+
+.sabang_detail_2_content_txt_content_2 {
+	margin: 30px 0 0 30px;
+}
+
+.sabang_detail_3 {
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	text-align: center;
+}
+
+.sabang_detail_3>.sabang_detail_3_div_table {
+	width: 70%;
+}
+
+/* sabang_main 사방 메인 페이지 */
+.sabang_main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} 
+.sabang_div1_img{
+    width: 100%;
+}
+.sabang_div2_sort_type{
+    display: flex;
+    flex-direction: row;
+}
+.sabang_div2_sort_type > .menu{
+    margin-left: 5em;
+    margin-right: 1.2em;
+    margin-top: 2em;
+}
+
+/* 게시물  */
+.sabang_div3{
+    display: flex;
+    flex-direction: column;
+}
+
+.sabang_div3_line{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.sabang_div3_line_item{
+    margin: 4em;
+}
+/* sabang_search 예산조회 페이지 */
+.sabang_main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} 
+.sabang_search_div1_img{
+    width: 100%;
+}
+
+.sabang_search_sort_type{
+    display: flex;
+    flex-direction: row;
+}
+.sabang_search_sort_type > .menu{
+    margin-left: 5em;
+    margin-right: 1.2em;
+    margin-top: 2em;
+    
+}
+/* 게시물  */
+.sabang_search_div3{
+        display: flex;
+        flex-direction: column;
+}
+
+.sabang_search_div3_line{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.sabang_search_div3_line_item{
+    margin: 4em;
+}
+/* shopping_basket 장바구니 페이지 */
+.shopping_basket{
+    margin-top: 4%;
+    
+}
+.shopping_basket_table_header{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    border: 1px solid gray;
+    margin-top: 2%;
+    margin-left: 9%;
+    margin-right: 9%;
+}
+
+/* 장바구니 타이틀 */
+
+.shopping_basket_title{
+    font-size: 30px;
+    margin-left: 10%;
+}
+
+/* 장바구니 테이블 헤더 */
+
+.table_header1{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    
+}
+
+.table_header2{
+    margin-top: 1.4%;
+    margin-bottom: 1%;
+    margin-right: 15%;
+}
+
+.table_header3{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    
+}
+
+.table_header4{
+    margin-top: 1%;
+    margin-bottom: 1%;
+   
+}
+
+.table_header5{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    
+}
+
+.table_header6{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-right: 5%;
+}
+
+/* 장바구니 테이블 리스트1 */
+
+.shopping_basket_table_list1{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    box-sizing: border-box;
+    margin-left: 10.5%;
+    
+    font-size: 0.8em;
+}
+
+.table_list1{
+    margin-top: 2.5%;
+    margin-bottom: 1%;
+    box-sizing: border-box;
+}
+
+.table_list2{
+    margin-top: 2.8%;
+    margin-bottom: 1%;
+    box-sizing: border-box;
+    margin-left: 2.5%;
+}
+
+.table_list3{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    box-sizing: border-box;
+}
+
+.table_list4{
+    margin-top: 2.6%;
+    margin-bottom: 1%;
+    box-sizing: border-box;
+    margin-left: 2.5%;
+}
+
+.table_list5{
+    box-sizing: border-box;
+    margin-top: 2.1%;
+    margin-bottom: 1%;
+    margin-right: 0.3%;
+}
+
+.table_list6{
+    box-sizing: border-box;
+    margin-top: 2.5%;
+    margin-bottom: 1%;
+    margin-right: 0.5%;
+}
+
+.table_list7{
+    box-sizing: border-box;
+    margin-top: 2.4%;
+    margin-bottom: 1%;
+    margin-right: 0.2%;
+}
+
+.table_list8{
+    margin-top: 2.4%;
+    text-decoration: none;
+    color: black;
+    margin-right: 5%;
+    padding-left: 15px;
+}
+
+/* 선택삭제 및 총 가격 */
+
+.shopping_basket_select_cancle_totalPrice{
+    display: flex;
+    flex-direction: row;
+    margin-left: 22%;
+}
+
+.shopping_basket_totalPrice1 {
+    margin-top: 5%;
+    margin-left: 52%;
+    font-size: 1.5em;
+}
+.shopping_basket_totalPrice2 {
+    margin-top: 5%;
+    margin-left: 13%;
+    font-size: 1.5em;
+}
+
+/* 장바구니 결제버튼*/
+
+.shopping_basket_buy_button{
+    display: block;
+    margin-top: 7%;
+    margin-left: 40%;
+    margin-bottom: 3%;
+}
+/* sign_success 회원가입 완료 */
+.signin_success{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin-top: 3%;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 3%;
+    border: 1px solid #00B0F0;
+}
+.signin_success_1{
+    margin-top: 5%;
+    text-align: center;
+    font-size: 3em;
+    
+}
+
+.signin_success_1_1{
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-bottom: 0.5px solid gray;
+}
+
+
+.signin_success_2{
+    margin-top: 2%;
+    text-align: center;
+    font-size: 2.3em;
+}
+
+.signin_success_3{
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 1%;
+}
+
+.signin_success_3_1{
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 2%;
+}
+
+.signin_success_4{
+    text-align: center;
+    font-size: 1.3em;
+    margin-bottom: 1%;
+}
+
+.signin_success_5{
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.signin_success_6{
+    margin-top: 5%;
+    font-size: 1.3em;
+    margin-bottom: 5%;
+}
+.signin_success_6 > button{
+    margin : 10px;
+    padding: 20px;
+}
+/* signin 회원가입 페이지 */
+.signin_btn {
+    display: flex;
+    justify-content: center;
+}
+
+.signin_btn>button {
+    margin: 5%;
+    width: 80%;
+    color: white;
+}
+
+
+/* mypage_inquiry & mypage_memInfo & mypage_orderlist */
+/* 0. 마이페이지 공통 css */
+/* 마이페이지 헤더 메뉴 속성 간 간격 */
+.mypage_header>a {
+    padding: 10px;
+    margin-right: 12%;
+
+}
+/* 마이페이지 헤더 */
+.mypage_header{
+display: flex;
+flex-direction: row;
+justify-content: center;
+font-size: 1.4em;
+border-bottom: 0.5px solid grey;
+margin-bottom: 1%;
+}
+
+
+/* 1. mypage_inquiry */
+/* 내가 쓴 문의글  */
+.mypage_header_inquiryInfo{
+text-decoration: none;
+color: #00B0F0 !important;
+}
+
+.mypage_inquiry {
+margin-top: 2.2em;
+display: flex;
+align-items: flex-end;
+justify-content: center;
+text-align: center;
+
+}
+
+.mypage_inquiry>.mypage_inquiry_main {
+width: 70%;
+height: 500px;
+}
+
+/* 2. mypage_memberInfo */
+/* 마이페이지 헤더 메뉴 간격  */
+.mypage_header_memberInfo{
+margin-left: 14%;
+text-decoration: none;
+color: black;
+}
+
+/* 마이페이지 헤더 "회원정보" 속성 */
+.mypage_header_member_info {
+text-decoration: none;
+color: #00B0F0 !important;
+margin-left: 14%;
+}
+
+/* 마이페이지 헤더 회원정보  */
+.mypage_memInfo_main {
+background-color: white;
+background-position: center;
+background-repeat: no-repeat;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+box-sizing: border-box;
+padding-top: 100px;
+padding-bottom: 300px;
+background-size: contain;
+}
+.mypage_memInfo_signinInput_bind {
+display: flex;
+flex-direction: row;
+}
+
+
+/* 3. mypage_orderlist */
+ /* 마이페이지 헤더 메뉴 간격 - orderlist */
+ .member_info{
+    margin-left: 14%;
+    text-decoration: none;
+    color: black;
+}
+
+/* 마이페이지 "주문 내역" 속성*/
+    .order_info{
+        text-decoration: none;
+        color: #00B0F0 !important;
+    }
+
+         /* 마이페이지 헤더 메뉴 간격  */
+    .member_info{
+        margin-left: 14%;
+        text-decoration: none;
+        color: black;
+    }
+    /* 기간 버튼 */
+    .state_button {
+        margin-left: 12%;
+    }
+    /* 배송상태 버튼 */
+    .order-header{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-top: 1.5%;
+        font-size: 20px;
+    }
+
+    /* "송장번호 주문날짜"span 간격 */
+    .order-header1{
+        margin-left: 3%;
+    }
+    /* 송장번호  간격 */
+    .order-header1_2{
+       margin-left: 20px;
+    }
+    /* 주문날짜 간격 */
+    .order-header2{
+        margin-left: 4%;
+    }
+    
+    .order-list{
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 20%;
+       
+    }
+
+    .order-list_1{
+        margin-top: 6%;
+        margin-left: 13%;
+    }
+    .order-list_1 > span{
+        font-size: 14px;
+    }
+    .order-list_2{
+        margin-top: 4%;
+        margin-left: 7%;
+    }
+
+    .order-list_3{
+        display: flex;
+        flex-direction: column;
+        margin-top: 5%;
+        margin-left: 8%;
+    }
+   
+    .order-list_3_2{
+        
+        font-size: 11px;
+    }
+
+    .order-list_4{
+        margin-top: 5%;
+        margin-left: 11%;
+    }
+
+    .order-list_5{
+        margin-top: 5%;
+        margin-left: 17%;
+        margin-right: 8%;
+    }
