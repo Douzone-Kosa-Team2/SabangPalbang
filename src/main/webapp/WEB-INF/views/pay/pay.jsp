@@ -32,8 +32,8 @@
                         </div>
                         <hr/>
                         <div class="pay_content_left_delivery_content_address">
-                            조민상</br>
-                            경기도 의정부시 오목로 252, 휴스토리 202동 1004호</br>
+                            조민상<br/>
+                            경기도 의정부시 오목로 252, 휴스토리 202동 1004호<br/>
                             010-8550-7078
                            
                             
