@@ -36,7 +36,7 @@
                     </a>
                 </div>
                 <div class="palbang_div3_line_item"> 
-                    <a class="palbang_div3_move" href="palbang_detail.html"></a>
+                    <a class="palbang_div3_move" href="palbang_detail.html">
                         <img src="resources/images/palbang_post/pal_post2.png" height="200"><br/>
                         <div style="font-size: 1.3em;">커피 한 잔의 여유가 흘러넘치는 방</div>
                         <div style="font-size: 1em;">방구석오뎅</div>
