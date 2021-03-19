@@ -4,6 +4,7 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
 
+
 <!-- <script>
 		var infoIndex = 0;
 		console.log("무야호");
