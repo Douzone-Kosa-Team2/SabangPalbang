@@ -336,4 +336,9 @@
 		</div>
 		<br />
 	</div>
+<script>
+	function ask(){
+		window.open("pop_ask","사방팔방 문의하기","popup");
+	}
+</script>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>
