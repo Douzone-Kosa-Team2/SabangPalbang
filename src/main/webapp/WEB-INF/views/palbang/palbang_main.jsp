@@ -26,7 +26,7 @@
                 
             <div class="palbang_div3_line"> <!-- 게시물 첫번째 행 , 게시물 3개 포함 -->
                 <div class="palbang_div3_line_item"> <!-- 하나의 게시물 -->
-                    <a class="palbang_div3_move" href="palbang_detail.html">
+                    <a class="palbang_div3_move" href="palbang_detail">
                         <img src="resources/images/palbang_post/pal_post1.png" height="200"><br/>
                         <div style="font-size: 1.3em;">크리스마스 느낌나는 내 방</div>
                         <div style="font-size: 1em;">산타클로스</div>
@@ -36,7 +36,7 @@
                     </a>
                 </div>
                 <div class="palbang_div3_line_item"> 
-                    <a class="palbang_div3_move" href="palbang_detail.html">
+                    <a class="palbang_div3_move" href="palbang_detail">
                         <img src="resources/images/palbang_post/pal_post2.png" height="200"><br/>
                         <div style="font-size: 1.3em;">커피 한 잔의 여유가 흘러넘치는 방</div>
                         <div style="font-size: 1em;">방구석오뎅</div>
@@ -46,7 +46,7 @@
                     </a>
                 </div>
                 <div class="palbang_div3_line_item">
-                    <a class="palbang_div3_move" href="palbang_detail.html">
+                    <a class="palbang_div3_move" href="palbang_detail">
                         <img src="resources/images/palbang_post/pal_post3.png" height="200"><br/>
                         <div style="font-size: 1.3em;">2층침대의 로망은 로망일뿐이다.</div>
                         <div style="font-size: 1em;">이웃집동생</div>
@@ -58,7 +58,7 @@
             </div>
             <div class="palbang_div3_line"> <!-- 게시물 두 번째 행 , 게시물 3개 포함 -->
                 <div class="palbang_div3_line_item" >
-                    <a class="palbang_div3_move" href="palbang_detail.html">
+                    <a class="palbang_div3_move" href="palbang_detail">
                         <img src="resources/images/palbang_post/pal_post4.png" height="200"><br/>
                         <div style="font-size: 1.3em;">소품으로 내 방 꾸미기</div>
                         <div style="font-size: 1em;">빈털터리</div>
@@ -68,7 +68,7 @@
                     </a>
                 </div>
                 <div class="palbang_div3_line_item">
-                    <a class="palbang_div3_move" href="palbang_detail.html">
+                    <a class="palbang_div3_move" href="palbang_detail">
                         <img src="resources/images/palbang_post/pal_post5.png" height="200"><br/>
                         <div style="font-size: 1.3em;">아침엔 브런치가 땡기는 방</div>
                         <div style="font-size: 1em;">늦잠꾸러기</div>
@@ -78,7 +78,7 @@
                     </a>
                 </div>
                 <div class="palbang_div3_line_item">
-                    <a class="palbang_div3_move" href="palbang_detail.html">
+                    <a class="palbang_div3_move" href="palbang_detail">
                         <img src="resources/images/palbang_post/pal_post6.png" height="200"><br/>
                         <div style="font-size: 1.3em;">깔끔해서 청소하고 싶은 내 방</div>
                         <div style="font-size: 1em;">청개구리</div>
