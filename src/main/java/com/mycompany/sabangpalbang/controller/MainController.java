@@ -33,7 +33,6 @@ public class MainController {
 		return "main";
 	}
 	
-	
 	//광고페이지
 	@RequestMapping(value = "/advertisePage")
 	public String advertisePage() {
