@@ -44,7 +44,7 @@ public class PalbangController {
 	}
 	@RequestMapping(value = "/palbang_detail")
 	public String palbang_detail() {
-		logger.info("palbang_detail 메시지");
+		logger.info("palbang_detail 메시지 - 222222");
 		return "palbang/palbang_detail";
 	}
 	
