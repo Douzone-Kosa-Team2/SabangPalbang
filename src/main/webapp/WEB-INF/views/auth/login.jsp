@@ -24,9 +24,9 @@
 			</div>
 		</form>
 		<div class="login_otherMenu">
-			<a href="#" onclick="location.href='findEmail.html'">이메일찾기</a>
-			<a href="#" onclick="location.href='resetPw.html'">비밀번호 재설정</a>
-			<a href="#" onclick="location.href='signin.html'">회원가입</a>
+			<a href="findEmail">이메일찾기</a>
+			<a href="resetPw">비밀번호 재설정</a>
+			<a href="signin">회원가입</a>
 		</div>
 
 	</div>

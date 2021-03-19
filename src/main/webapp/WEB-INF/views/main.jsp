@@ -5,21 +5,16 @@
 	<script>
 
 		var adIndex = 0;
-		function init() {
-
+		window.onload = function init() {
 			var sec = 3000;
 			var ads = document.querySelectorAll(".main_advertise_content");
 			var adBtn = document.querySelectorAll(".main_advertise_movePage");
-			var size = ads.length;
-			adBtn[0].style.position = "absoulte";
-			adBtn[0].style.left = "47%";
-			adBtn[0].style.top = "50%";
-			adBtn[1].style.position = "absoulte";
-			adBtn[1].style.left = "47%";
-			adBtn[1].style.top = "50%";
-			adBtn[2].style.position = "absoulte";
-			adBtn[2].style.left = "47%";
-			adBtn[2].style.top = "50%";
+			var size = adBtn.length;
+			for(k=0;k<size;k++){
+				adBtn[k].style.position = "absoulte";
+				adBtn[k].style.left = "47%";
+				adBtn[k].style.top = "50%";
+			}
 			setInterval(function () {
 
 				ads[adIndex].style.display = "inline";
@@ -29,8 +24,8 @@
 					adIndex = 0;
 				}
 
-			}, 4000);
-		}
+			}, sec);
+		};
 
 		function showSlides(n) {
 

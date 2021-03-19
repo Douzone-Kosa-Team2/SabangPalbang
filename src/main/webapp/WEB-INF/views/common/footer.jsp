@@ -4,7 +4,7 @@
 <footer>
 	<div class="footer_top">
 		<div class="footer_name">
-			<a href="#" onclick="location.href='/sabangpalbang/index'" style="color: black;">
+			<a href="info" style="color: black;">
 				<h3>사방팔방 이야기</h3>
 			</a>
 
