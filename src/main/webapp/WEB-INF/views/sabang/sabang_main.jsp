@@ -18,7 +18,7 @@
         <div class="sabang_div3">
             <div class="sabang_div3_line">
                 <div class="sabang_div3_line_item" >
-                    <a class="sabang_div3_move" href="sabang_detail.html">
+                    <a class="sabang_div3_move" href="sabang_detail">
                         <img src="resources/images/sabang_post/sabang_post1.png" height="200"><br/>
                         시원한 그리스풍 방<br/>
                         <span class="price" style="color: gray; font-size: 0.9em; text-decoration-line: line-through;">&#8361; 2,500,000</span><br/>
@@ -27,7 +27,7 @@
                     </a>
                 </div>
                 <div class="sabang_div3_line_item" >
-                    <a class="sabang_div3_move" href="sabang_detail.html">
+                    <a class="sabang_div3_move" href="sabang_detail">
                         <img src="resources/images/sabang_post/sabang_post2.png" height="200"><br/>
                         화사한 북유럽풍 방<br/>
                         <span class="price" style="color: gray; font-size: 0.9em; text-decoration-line: line-through;">&#8361; 3,500,000</span><br/>
@@ -36,7 +36,7 @@
                     </a>
                 </div>
                 <div class="sabang_div3_line_item" >
-                    <a class="sabang_div3_move" href="sabang_detail.html">
+                    <a class="sabang_div3_move" href="sabang_detail">
                         <img src="resources/images/sabang_post/sabang_post3.png" height="200"><br/>
                         모던 그 자체 방<br/>
                         <span class="price" style="color: gray; font-size: 0.9em; text-decoration-line: line-through;">&#8361; 1,800,000</span><br/>
@@ -47,7 +47,7 @@
             </div>
             <div class="sabang_div3_line">
                 <div class="sabang_div3_line_item" >
-                    <a class="sabang_div3_move" href="sabang_detail.html">
+                    <a class="sabang_div3_move" href="sabang_detail">
                         <img src="resources/images/sabang_post/sabang_post4.png" height="200"><br/>
                         적은 돈 럭셔리 침실<br/>
                         <span></span><br/>
@@ -55,7 +55,7 @@
                     </a>
                 </div>
                 <div class="sabang_div3_line_item" >
-                    <a class="sabang_div3_move" href="sabang_detail.html">
+                    <a class="sabang_div3_move" href="sabang_detail">
                         <img src="resources/images/sabang_post/sabang_post5.png" height="200"><br/>
                        감각적이고 편리한 방<br/>
                         <span></span><br/>
@@ -63,7 +63,7 @@
                     </a>
                 </div>
                 <div class="sabang_div3_line_item" >
-                    <a class="sabang_div3_move" href="sabang_detail.html">
+                    <a class="sabang_div3_move" href="sabang_detail">
                         <img src="resources/images/sabang_post/sabang_post6.png" height="200"><br/>
                         다용도 작업 방<br/>
                         <span class="price" style="color: gray; font-size: 0.9em; text-decoration-line: line-through;">&#8361; 1,200,000</span><br/>
