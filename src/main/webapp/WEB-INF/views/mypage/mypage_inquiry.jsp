@@ -14,7 +14,7 @@
 
    <div class="mypage_inquiry">
     <div class="mypage_inquiry_main">
-       <table class="table">
+       <table class="table inquiry_table">
           <thead class="thead-light">
              <tr>
                 <th scope="col">번호</th>
