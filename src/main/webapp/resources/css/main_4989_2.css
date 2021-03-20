@@ -195,15 +195,6 @@
 
 /* mypage_inquiry 마이 페이지 문의게시판 */
 
-/* 마이페이지 헤더 */
-.mypage_header{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    font-size: 1.4em;
-    border-bottom: 0.5px solid grey;
-    margin-bottom: 1%;
-}
 
 /* 마이페이지 헤더 메뉴 간격  */
 .mypage_header_memberInfo{
@@ -262,16 +253,7 @@
 
 }
 
-/* 마이페이지 헤더 "회원정보" 속성 */
-.mypage_header_member_info {
-
-    text-decoration: none;
-    color: #00B0F0 !important;
-    margin-left: 14%;
-}
-
 /* 마이페이지 헤더 회원정보  */
-
 .mypage_memInfo_main {
     background-color: white;
     background-position: center;
@@ -1246,10 +1228,7 @@
     margin: 4em;
 }
 /* shopping_basket 장바구니 페이지 */
-.shopping_basket{
-    margin-top: 4%;
-    
-}
+
 .shopping_basket_table_header{
     display: flex;
     flex-direction: row;
@@ -1267,138 +1246,64 @@
     margin-left: 10%;
 }
 
-/* 장바구니 테이블 헤더 */
-
-.table_header1{
-    margin-top: 1%;
-    margin-bottom: 1%;
-    
-}
-
-.table_header2{
-    margin-top: 1.4%;
-    margin-bottom: 1%;
-    margin-right: 15%;
-}
-
-.table_header3{
-    margin-top: 1%;
-    margin-bottom: 1%;
-    
-}
-
-.table_header4{
-    margin-top: 1%;
-    margin-bottom: 1%;
-   
-}
-
-.table_header5{
-    margin-top: 1%;
-    margin-bottom: 1%;
-    
-}
-
-.table_header6{
-    margin-top: 1%;
-    margin-bottom: 1%;
-    margin-right: 5%;
-}
-
-/* 장바구니 테이블 리스트1 */
-
-.shopping_basket_table_list1{
-    display: flex;
-    flex-direction: row;
-    justify-content:space-around;
-    box-sizing: border-box;
-    margin-left: 10.5%;
-    
-    font-size: 0.8em;
-}
-
-.table_list1{
-    margin-top: 2.5%;
-    margin-bottom: 1%;
-    box-sizing: border-box;
-}
-
-.table_list2{
-    margin-top: 2.8%;
-    margin-bottom: 1%;
-    box-sizing: border-box;
-    margin-left: 2.5%;
-}
-
-.table_list3{
-    margin-top: 1%;
-    margin-bottom: 1%;
-    box-sizing: border-box;
-}
-
-.table_list4{
-    margin-top: 2.6%;
-    margin-bottom: 1%;
-    box-sizing: border-box;
-    margin-left: 2.5%;
-}
-
-.table_list5{
-    box-sizing: border-box;
-    margin-top: 2.1%;
-    margin-bottom: 1%;
-    margin-right: 0.3%;
-}
-
-.table_list6{
-    box-sizing: border-box;
-    margin-top: 2.5%;
-    margin-bottom: 1%;
-    margin-right: 0.5%;
-}
-
-.table_list7{
-    box-sizing: border-box;
-    margin-top: 2.4%;
-    margin-bottom: 1%;
-    margin-right: 0.2%;
-}
-
-.table_list8{
-    margin-top: 2.4%;
-    text-decoration: none;
-    color: black;
-    margin-right: 5%;
-    padding-left: 15px;
-}
 
 /* 선택삭제 및 총 가격 */
+	.shopping_basket_select_cancle_totalPrice {
+		display: flex;
+		flex-direction: row;
+		margin-right: 10%;
+	}
+	
+	.select_cancle_totalPrice_button {
+		margin-left: 17.5%;
+	}
+	
+	/* 장바구니 결제버튼*/
+	.shopping_basket_buy_button {
+		
+		margin: 4% 10% 2% 41%;
+	}
+	
+	/* 테이블 간격 */
+	.shopping_basket_title {
+		margin-bottom: 2%;
+	}
+	
+	.shopping_basket_header {
+		font-size: 1.4em;
+		margin-left: 13%;
+		margin-right: 9%;
+	}
+	
+	table {
+		margin-left: 10%;
+	}
+	
+	col {
+		text-align: center;
+	}
+	
+	td {
+		padding: 25px;
+	}
+	
+	.shopping_basket_list {
+		margin-left: 13.5%;
+		margin-right: 10%;
+	}
+	
+	
+	.shopping_basket_totalPrice1 {
+	    margin-top: 5%;
+	    margin-left: 52%;
+	    font-size: 1.5em;
+		}
+	.shopping_basket_totalPrice2 {
+	    margin-top: 5%;
+	    margin-left: 13%;
+	    font-size: 1.5em;
+		}
 
-.shopping_basket_select_cancle_totalPrice{
-    display: flex;
-    flex-direction: row;
-    margin-left: 22%;
-}
-
-.shopping_basket_totalPrice1 {
-    margin-top: 5%;
-    margin-left: 52%;
-    font-size: 1.5em;
-}
-.shopping_basket_totalPrice2 {
-    margin-top: 5%;
-    margin-left: 13%;
-    font-size: 1.5em;
-}
-
-/* 장바구니 결제버튼*/
-
-.shopping_basket_buy_button{
-    display: block;
-    margin-top: 7%;
-    margin-left: 40%;
-    margin-bottom: 3%;
-}
 /* sign_success 회원가입 완료 */
 .signin_success{
     display: flex;
@@ -1485,15 +1390,6 @@
     margin-right: 12%;
 
 }
-/* 마이페이지 헤더 */
-.mypage_header{
-display: flex;
-flex-direction: row;
-justify-content: center;
-font-size: 1.4em;
-border-bottom: 0.5px solid grey;
-margin-bottom: 1%;
-}
 
 
 /* 1. mypage_inquiry */
@@ -1560,11 +1456,21 @@ flex-direction: row;
 
 /* 3. mypage_orderlist */
  /* 마이페이지 헤더 메뉴 간격 - orderlist */
- .member_info{
-    margin-left: 14%;
-    text-decoration: none;
-    color: black;
-}
+ .mypage_header_123{
+  	display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 1.4em;
+     border-bottom: 0.5px solid grey;
+    margin-bottom: 1%; 
+     
+ }
+  /* 마이페이지 헤더 메뉴 속성 간 간격 */
+   .mypage_header_123 > a {
+        padding: 10px;
+        margin-right: 12%;
+            
+    }
 
 /* 마이페이지 "주문 내역" 속성*/
     .order_info{
@@ -1575,7 +1481,7 @@ flex-direction: row;
         color: #00B0F0 !important;
     }
 
-         /* 마이페이지 헤더 메뉴 간격  */
+     /* 마이페이지 헤더 메뉴 간격  */
     .member_info{
         margin-left: 14%;
         text-decoration: none;
@@ -1594,57 +1500,15 @@ flex-direction: row;
         font-size: 20px;
     }
 
-    /* "송장번호 주문날짜"span 간격 */
-    .order-header1{
-        margin-left: 3%;
-    }
-    /* 송장번호  간격 */
-    .order-header1_2{
-       margin-left: 20px;
-    }
-    /* 주문날짜 간격 */
-    .order-header2{
-        margin-left: 4%;
-    }
-    
-    .order-list{
-        display: flex;
-        flex-direction: row;
-        margin-bottom: 20%;
-       
-    }
-
-    .order-list_1{
-        margin-top: 6%;
-        margin-left: 13%;
-    }
-    .order-list_1 > span{
-        font-size: 14px;
-    }
-    .order-list_2{
-        margin-top: 4%;
-        margin-left: 7%;
-    }
-
-    .order-list_3{
-        display: flex;
-        flex-direction: column;
-        margin-top: 5%;
-        margin-left: 8%;
-    }
-   
-    .order-list_3_2{
-        
-        font-size: 11px;
-    }
-
-    .order-list_4{
-        margin-top: 5%;
-        margin-left: 11%;
-    }
-
-    .order-list_5{
-        margin-top: 5%;
-        margin-left: 17%;
-        margin-right: 8%;
-    }
+   .state_button {
+		margin-left: 17%;
+	}
+	
+	.orderlist_table {
+		margin-left: 16%;
+		margin-top: 4%;
+		text-align: center;
+		margin-bottom: 20%;
+		margin-right: 11%;
+	}
+  

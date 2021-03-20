@@ -28,15 +28,13 @@ a:hover{
 
 
 .header_search {
-   width: 700px;
+   width: 30%;
 }
 
-.header_search_input {
-          
-      
+.header_search_input { 
         background-image : url('../images/search.png'); 
         background-position: 18px 12px; 
-          background-size: 15px 15px;
+        background-size: 15px 15px;
         background-repeat:no-repeat;      
  }
 
@@ -53,8 +51,6 @@ a:hover{
    color: black;
 }
 
-
-
 .header_menu_item {
    text-decoration: none;
    font-size: 1.5em;
@@ -62,25 +58,17 @@ a:hover{
    color: black;
 }
 
-
 .header_logo{
-   
    margin-top: 30px;
    margin-left: 70px;
 }
 
 .header_menu{
-   
-   margin-top: 30px;
-   
+   margin-top: 30px; 
 }
 
-
 .header_cart{
-   
-   
    margin-top: 30px;
-   
 }
 
 .header_logIn {
