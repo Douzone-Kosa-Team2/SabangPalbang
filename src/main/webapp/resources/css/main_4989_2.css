@@ -1481,7 +1481,7 @@ flex-direction: row;
         color: #00B0F0 !important;
     }
 
-         /* 마이페이지 헤더 메뉴 간격  */
+     /* 마이페이지 헤더 메뉴 간격  */
     .member_info{
         margin-left: 14%;
         text-decoration: none;
@@ -1500,57 +1500,15 @@ flex-direction: row;
         font-size: 20px;
     }
 
-    /* "송장번호 주문날짜"span 간격 */
-    .order-header1{
-        margin-left: 3%;
-    }
-    /* 송장번호  간격 */
-    .order-header1_2{
-       margin-left: 20px;
-    }
-    /* 주문날짜 간격 */
-    .order-header2{
-        margin-left: 4%;
-    }
-    
-    .order-list{
-        display: flex;
-        flex-direction: row;
-        margin-bottom: 20%;
-       
-    }
-
-    .order-list_1{
-        margin-top: 6%;
-        margin-left: 13%;
-    }
-    .order-list_1 > span{
-        font-size: 14px;
-    }
-    .order-list_2{
-        margin-top: 4%;
-        margin-left: 7%;
-    }
-
-    .order-list_3{
-        display: flex;
-        flex-direction: column;
-        margin-top: 5%;
-        margin-left: 8%;
-    }
-   
-    .order-list_3_2{
-        
-        font-size: 11px;
-    }
-
-    .order-list_4{
-        margin-top: 5%;
-        margin-left: 11%;
-    }
-
-    .order-list_5{
-        margin-top: 5%;
-        margin-left: 17%;
-        margin-right: 8%;
-    }
+   .state_button {
+		margin-left: 17%;
+	}
+	
+	.orderlist_table {
+		margin-left: 16%;
+		margin-top: 4%;
+		text-align: center;
+		margin-bottom: 20%;
+		margin-right: 11%;
+	}
+  
