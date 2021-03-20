@@ -13,11 +13,7 @@
             .select_cancle_totalPrice_button{
                 margin-left:15%;
             }
-       
-          
-            
 
-           
             /* 테이블 간격 */
             .shopping_basket_title{
                 margin-bottom: 2%;
