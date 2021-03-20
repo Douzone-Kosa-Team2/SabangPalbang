@@ -53,7 +53,7 @@
 
 		<div class="info_content_1" id="info_img1">
 			<a href="/sabangpalbang/main">
-				<img src="resources/images/info_1.png" />
+				<img src="resources/images/info/info_1.png" />
 			</a>
 
 			<div class="info_content_movePage">
@@ -64,7 +64,7 @@
 		</div>
 		<div class="info_content_1" id="info_img2">
 			<a href="sabang_main">
-				<img src="resources/images/info_2.png" />
+				<img src="resources/images/info/info_2.png" />
 			</a>
 			<div class="info_content_movePage">
 				<a id="info_content_page1" class="btn btn-secondary" onclick="movePage(0)"></a>
@@ -74,7 +74,7 @@
 		</div>
 		<div class="info_content_1" id="info_img3">
 			<a href="palbang_main">
-				<img src="resources/images/info_3.png" />
+				<img src="resources/images/info/info_3.png" />
 			</a>
 
 			<div class="info_content_movePage">

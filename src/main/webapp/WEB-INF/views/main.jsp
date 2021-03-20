@@ -50,7 +50,7 @@
 		<div class="main_advertise">
 			<div class="main_advertise_content" id="main_advertise_img1">
 				<a href="/sabangpalbang/advertisePage">
-					<img src="resources/images/main_ad_2.png" />
+					<img src="resources/images/main/main_ad_2.png" />
 				</a>
 
 				<div class="main_advertise_movePage">
@@ -61,7 +61,7 @@
 			</div>
 			<div class="main_advertise_content" id="main_advertise_img2">
 				<a href="/sabangpalbang/advertisePage">
-					<img src="resources/images/main_ad_3.png" />
+					<img src="resources/images/main/main_ad_3.png" />
 				</a>
 				<div class="main_advertise_movePage">
 					<a id="main_advertise_page1" class="btn btn-secondary" onclick="movePage(0)"></a>
@@ -71,7 +71,7 @@
 			</div>
 			<div class="main_advertise_content" id="main_advertise_img3">
 				<a href="/sabangpalbang/advertisePage">
-					<img src="resources/images/main_ad_4.png" />
+					<img src="resources/images/main/main_ad_4.png" />
 				</a>
 				<div class="main_advertise_movePage">
 					<a id="main_advertise_page1" class="btn btn-secondary" onclick="movePage(0)"></a>
@@ -97,7 +97,7 @@
 				<div class="main_sabang_content_1">
 					<a href="/sabangpalbang/sabang_detail">
 						<div class="main_sabang_content_1_img">
-							<img src="resources/images/main_sb_1.png">
+							<img src="resources/images/main/main_sb_1.png">
 						</div>
 						<div class="main_sabang_content_1_detail">
 							<p>세련된 스튜디오 같은 방</p>
@@ -107,7 +107,7 @@
 				<div class="main_sabang_content_2">
 					<a href="/sabangpalbang/sabang_detail">
 						<div class="main_sabang_content_2_img">
-							<img src="resources/images/main_sb_2.png">
+							<img src="resources/images/main/main_sb_2.png">
 						</div>
 						<div class="main_sabang_content_2_detail">
 							<p>책 읽고 싶게 만드는 방</p>
@@ -118,7 +118,7 @@
 				<div class="main_sabang_content_3">
 					<a href="/sabangpalbang/sabang_detail">
 						<div class="main_sabang_content_3_img">
-							<img src="resources/images/main_sb_3.png">
+							<img src="resources/images/main/main_sb_3.png">
 						</div>
 						<div class="main_sabang_content_3_detail">
 							<p>우드톤 가구를 활용한 방</p>
@@ -142,17 +142,17 @@
 			<div class="main_palbang_content">
 				<a href="/sabangpalbang/palbang_detail">
 					<div class="main_sabang_content_1">
-						<img src="resources/images/main_pb_1.png">
+						<img src="resources/images/main/main_pb_1.png">
 					</div>
 				</a>
 				<a href="/sabangpalbang/palbang_detail">
 					<div class="main_sabang_content_2">
-						<img src="resources/images/main_pb_2.png">
+						<img src="resources/images/main/main_pb_2.png">
 					</div>
 				</a>
 				<a href="/sabangpalbang/palbang_detail">
 					<div class="main_sabang_content_3">
-						<img src="resources/images/main_pb_3.png">
+						<img src="resources/images/main/main_pb_3.png">
 					</div>
 				</a>
 			</div>

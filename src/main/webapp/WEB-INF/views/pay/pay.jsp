@@ -60,18 +60,18 @@
                         </div>
                         
                             <div class="pay_content_left_way_content_bank_1">
-                                <img id="bank_default_image" src="resources/images/bank_kb.png"/>
-                                <img src="resources/images/bank_samsung.png"/>
-                                <img src="resources/images/bank_hyundai.png"/>
-                                <img src="resources/images/bank_shinhan.png"/>
-                                <img src="resources/images/bank_lotte.png"/>
-                                <img src="resources/images/bank_nh.png"/>
-                                <img src="resources/images/bank_bc.png"/>
-                                <img src="resources/images/bank_citi.png"/>
-                                <img src="resources/images/bank_kakao.png"/>
-                                <img src="resources/images/bank_sc.png"/>
-                                <img src="resources/images/bank_hana.png"/>
-                                <img src="resources/images/bank_uri.png"/>
+                                <img id="bank_default_image" src="resources/images/pay_bank/bank_kb.png"/>
+                                <img src="resources/images/pay_bank/bank_samsung.png"/>
+                                <img src="resources/images/pay_bank/bank_hyundai.png"/>
+                                <img src="resources/images/pay_bank/bank_shinhan.png"/>
+                                <img src="resources/images/pay_bank/bank_lotte.png"/>
+                                <img src="resources/images/pay_bank/bank_nh.png"/>
+                                <img src="resources/images/pay_bank/bank_bc.png"/>
+                                <img src="resources/images/pay_bank/bank_citi.png"/>
+                                <img src="resources/images/pay_bank/bank_kakao.png"/>
+                                <img src="resources/images/pay_bank/bank_sc.png"/>
+                                <img src="resources/images/pay_bank/bank_hana.png"/>
+                                <img src="resources/images/pay_bank/bank_uri.png"/>
                             </div>
                           
                         
@@ -106,13 +106,13 @@
                                   <img src="resources/images/sb1_5.png">
                                </div>
                                <div>
-                                  <img src="resources/images/sb1_5.png">
+                                  <img src="resources/images/common/plus_minus_bt.png">
                                </div>
                                <div>
-                                  <img src="resources/images/sb1_5.png">
+                                  <img src="resources/images/common/plus_minus_bt.png">
                                </div>
                                <div>
-                                  <img src="resources/images/sb1_5.png">
+                                  <img src="resources/images/common/plus_minus_bt.png">
                                </div>
                             </div>             
 

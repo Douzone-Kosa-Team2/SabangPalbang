@@ -48,7 +48,7 @@
 		<tr>
 			<td>4433514</td>
 			<td>2021.03.11</td>
-			<td><img src="resources/images/sb1_0.png" width="100"></td>
+			<td><img src="resources/images/sabang_detail/sb1_0.png" width="100"></td>
 			<td>아늑하고 따뜻한 방<br />(스카르스타, 크란스크라게, 글라돔, 테르티알)
 			</td>
 			<td>W 350,000</td>
