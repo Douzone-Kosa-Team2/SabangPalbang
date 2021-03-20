@@ -1228,10 +1228,7 @@
     margin: 4em;
 }
 /* shopping_basket 장바구니 페이지 */
-.shopping_basket{
-    margin-top: 4%;
-    
-}
+
 .shopping_basket_table_header{
     display: flex;
     flex-direction: row;
@@ -1249,138 +1246,64 @@
     margin-left: 10%;
 }
 
-/* 장바구니 테이블 헤더 */
-
-.table_header1{
-    margin-top: 1%;
-    margin-bottom: 1%;
-    
-}
-
-.table_header2{
-    margin-top: 1.4%;
-    margin-bottom: 1%;
-    margin-right: 15%;
-}
-
-.table_header3{
-    margin-top: 1%;
-    margin-bottom: 1%;
-    
-}
-
-.table_header4{
-    margin-top: 1%;
-    margin-bottom: 1%;
-   
-}
-
-.table_header5{
-    margin-top: 1%;
-    margin-bottom: 1%;
-    
-}
-
-.table_header6{
-    margin-top: 1%;
-    margin-bottom: 1%;
-    margin-right: 5%;
-}
-
-/* 장바구니 테이블 리스트1 */
-
-.shopping_basket_table_list1{
-    display: flex;
-    flex-direction: row;
-    justify-content:space-around;
-    box-sizing: border-box;
-    margin-left: 10.5%;
-    
-    font-size: 0.8em;
-}
-
-.table_list1{
-    margin-top: 2.5%;
-    margin-bottom: 1%;
-    box-sizing: border-box;
-}
-
-.table_list2{
-    margin-top: 2.8%;
-    margin-bottom: 1%;
-    box-sizing: border-box;
-    margin-left: 2.5%;
-}
-
-.table_list3{
-    margin-top: 1%;
-    margin-bottom: 1%;
-    box-sizing: border-box;
-}
-
-.table_list4{
-    margin-top: 2.6%;
-    margin-bottom: 1%;
-    box-sizing: border-box;
-    margin-left: 2.5%;
-}
-
-.table_list5{
-    box-sizing: border-box;
-    margin-top: 2.1%;
-    margin-bottom: 1%;
-    margin-right: 0.3%;
-}
-
-.table_list6{
-    box-sizing: border-box;
-    margin-top: 2.5%;
-    margin-bottom: 1%;
-    margin-right: 0.5%;
-}
-
-.table_list7{
-    box-sizing: border-box;
-    margin-top: 2.4%;
-    margin-bottom: 1%;
-    margin-right: 0.2%;
-}
-
-.table_list8{
-    margin-top: 2.4%;
-    text-decoration: none;
-    color: black;
-    margin-right: 5%;
-    padding-left: 15px;
-}
 
 /* 선택삭제 및 총 가격 */
+	.shopping_basket_select_cancle_totalPrice {
+		display: flex;
+		flex-direction: row;
+		margin-right: 10%;
+	}
+	
+	.select_cancle_totalPrice_button {
+		margin-left: 17.5%;
+	}
+	
+	/* 장바구니 결제버튼*/
+	.shopping_basket_buy_button {
+		
+		margin: 4% 10% 2% 41%;
+	}
+	
+	/* 테이블 간격 */
+	.shopping_basket_title {
+		margin-bottom: 2%;
+	}
+	
+	.shopping_basket_header {
+		font-size: 1.4em;
+		margin-left: 13%;
+		margin-right: 9%;
+	}
+	
+	table {
+		margin-left: 10%;
+	}
+	
+	col {
+		text-align: center;
+	}
+	
+	td {
+		padding: 25px;
+	}
+	
+	.shopping_basket_list {
+		margin-left: 13.5%;
+		margin-right: 10%;
+	}
+	
+	
+	.shopping_basket_totalPrice1 {
+	    margin-top: 5%;
+	    margin-left: 52%;
+	    font-size: 1.5em;
+		}
+	.shopping_basket_totalPrice2 {
+	    margin-top: 5%;
+	    margin-left: 13%;
+	    font-size: 1.5em;
+		}
 
-.shopping_basket_select_cancle_totalPrice{
-    display: flex;
-    flex-direction: row;
-    margin-left: 22%;
-}
-
-.shopping_basket_totalPrice1 {
-    margin-top: 5%;
-    margin-left: 52%;
-    font-size: 1.5em;
-}
-.shopping_basket_totalPrice2 {
-    margin-top: 5%;
-    margin-left: 13%;
-    font-size: 1.5em;
-}
-
-/* 장바구니 결제버튼*/
-
-.shopping_basket_buy_button{
-    display: block;
-    margin-top: 7%;
-    margin-left: 40%;
-    margin-bottom: 3%;
-}
 /* sign_success 회원가입 완료 */
 .signin_success{
     display: flex;
