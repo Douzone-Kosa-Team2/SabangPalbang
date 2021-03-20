@@ -223,18 +223,24 @@
 /* 내가 쓴 문의글  */
 .mypage_inquiry {
  margin-top: 2.2em;
- display: flex;
+/*  display: flex;
  align-items: flex-end;
- justify-content: center;
- text-align: center;
+ justify-content: center; */
+ /* text-align: center; */
  
 }
 
 .mypage_inquiry>.mypage_inquiry_main {
  width: 70%;
  height: 500px;
+ display: flex;
+ justify-content: center;
 }
 
+.inquiry_table{
+	margin-left: 0px;
+	margin-right: 0px;
+}
 /* mypage_memInfo 마이페이지 회원정보 */
  /* 마이페이지 헤더 */
  .mypage_header {
@@ -1409,11 +1415,6 @@ align-items: flex-end;
 justify-content: center;
 text-align: center;
 
-}
-
-.mypage_inquiry>.mypage_inquiry_main {
-width: 70%;
-height: 500px;
 }
 
 /* 2. mypage_memberInfo */
