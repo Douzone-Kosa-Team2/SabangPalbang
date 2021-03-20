@@ -3,19 +3,7 @@
 	
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	
-	<style>
-	.state_button {
-		margin-left: 17%;
-	}
 	
-	.orderlist_table {
-		margin-left: 16%;
-		margin-top: 4%;
-		text-align: center;
-		margin-bottom: 20%;
-		margin-right: 11%;
-	}
-	</style>
 	
 	<!-- 마이페이지 메뉴 헤더 -->
 	<div class="mypage_header_123">
