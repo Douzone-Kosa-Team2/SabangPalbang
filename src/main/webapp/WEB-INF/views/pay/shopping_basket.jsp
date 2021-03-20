@@ -47,23 +47,23 @@
 			<td><input class="table_header2" type="checkbox" name="xxx"
 				value="yyy" checked></td>
 			<td style="padding: 20px;"><img class="table_list5"
-				src="resources/images/sb1_0.png" height="80" width="70"></td>
+				src="resources/images/basket/basket_list1.png" height="80" width="70"></td>
 			<td style="text-align: center;">아늑하고 따뜻한 방</td>
-			<td><img class="table_list5" src="resources/images/sb1_5.png"
+			<td><img class="table_list5" src="resources/images/common/plus_minus_bt.png"
 				height="30" width="70"></td>
 			<td>W 500,000</td>
 			<td>배송비무료</td>
 			<td><a href='javascript:window.close();'>X</a></td>
 		</tr>
-		<br />
+		<br/>
 		<tr>
 			<td>2</td>
 			<td><input class="table_header2" type="checkbox" name="xxx"
 				value="yyy" checked></td>
 			<td style="padding: 20px;"><img class="table_list5"
-				src="resources/images/sb1_0.png" height="80" width="70"></td>
+				src="resources/images/basket/basket_list2.jpg" height="80" width="70"></td>
 			<td style="text-align: center;">온종일 편안하게 꿀잠 방</td>
-			<td><img class="table_list5" src="resources/images/sb1_5.png"
+			<td><img class="table_list5" src="resources/images/common/plus_minus_bt.png"
 				height="30" width="70"></td>
 			<td>W 500,000</td>
 			<td>배송비무료</td>
@@ -72,8 +72,6 @@
 	
 	
 	</table>
-	
-	
 	<div class="shopping_basket_select_cancle_totalPrice">
 		<div class="select_cancle_totalPrice_button">
 			<button type="button" class="btn btn-outline-info">선택 삭제</button>
@@ -84,6 +82,8 @@
 				style="font-family: 'Cafe24Dangdanghae';">&#8361;</text> 1,000,000</strong>
 	
 	</div>
+	
+	
 	
 	<div class="shopping_basket_buy_button">
 		<a href="#" onclick="location.href='pay.html'">
