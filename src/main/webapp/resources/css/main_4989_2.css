@@ -223,18 +223,24 @@
 /* 내가 쓴 문의글  */
 .mypage_inquiry {
  margin-top: 2.2em;
- display: flex;
+/*  display: flex;
  align-items: flex-end;
- justify-content: center;
- text-align: center;
+ justify-content: center; */
+ /* text-align: center; */
  
 }
 
 .mypage_inquiry>.mypage_inquiry_main {
  width: 70%;
  height: 500px;
+ display: flex;
+ justify-content: center;
 }
 
+.inquiry_table{
+	margin-left: 0px;
+	margin-right: 0px;
+}
 /* mypage_memInfo 마이페이지 회원정보 */
  /* 마이페이지 헤더 */
  .mypage_header {
@@ -1252,10 +1258,11 @@
 		display: flex;
 		flex-direction: row;
 		margin-right: 10%;
+		margin-left: 5%;
 	}
 	
 	.select_cancle_totalPrice_button {
-		margin-left: 17.5%;
+		margin-left: 14.5%;
 	}
 	
 	/* 장바구니 결제버튼*/
@@ -1411,11 +1418,6 @@ text-align: center;
 
 }
 
-.mypage_inquiry>.mypage_inquiry_main {
-width: 70%;
-height: 500px;
-}
-
 /* 2. mypage_memberInfo */
 /* 마이페이지 헤더 메뉴 간격  */
 .mypage_header_memberInfo{
@@ -1487,10 +1489,7 @@ flex-direction: row;
         text-decoration: none;
         color: black;
     }
-    /* 기간 버튼 */
-    .state_button {
-        margin-left: 12%;
-    }
+  
     /* 배송상태 버튼 */
     .order-header{
         display: flex;

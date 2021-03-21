@@ -2,11 +2,30 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
+<script>
+	function changeImg(num){
+		var bigImg = document.getElementById("changeImg_big");
+		var smallImg = document.querySelectorAll(".sabang_detail_1_goods_div_img");
+		var imgSize = smallImg.length;
+		
+		for(var i=0;i<imgSize;i++){
+			if(i==num){
+				
+				bigImg.src= "resources/images/sabang_detail/sb1_"+i+".png";
+				smallImg[i].style.opacity = "1";
+			}
+			else{
+				smallImg[i].style.opacity = "0.6";
+			}
+		}
+	}
+</script>
+
 <!-- 상세페이지 1 -->
 	<div class="sabang_detail_1">
 
 		<div class="sabang_detail_1_main_image">
-			<img src="resources/images/sb1_0.png" id="changeImg_big" height="500px" width="500px">
+			<img src="resources/images/sabang_detail/sb1_0.png" id="changeImg_big" height="500px" width="500px">
 
 		</div>
 
@@ -29,16 +48,16 @@
 				</div>
 				<div class="sabang_detail_1_list_name_check">
 					<div>
-						<img src="resources/images/sb1_5.png">
+						<img src="resources/images/common/plus_minus_bt.png">
 					</div>
 					<div>
-						<img src="resources/images/sb1_5.png">
+						<img src="resources/images/common/plus_minus_bt.png">
 					</div>
 					<div>
-						<img src="resources/images/sb1_5.png">
+						<img src="resources/images/common/plus_minus_bt.png">
 					</div>
 					<div>
-						<img src="resources/images/sb1_5.png">
+						<img src="resources/images/common/plus_minus_bt.png">
 					</div>
 				</div>
 
@@ -52,13 +71,13 @@
 			<div class="sabang_detail_1_trolley_buyButton">
 				<div class="trolley_button">
 					<a href="shopping_basket">
-						<img src="resources/images/trolley.png" width="65">
+						<img src="resources/images/common/trolley.png" width="65">
 					</a>
 					
 				</div>
 				<div class="sabang_detail_1_buyButton">
 					<a href="pay">
-						<img src="resources/images/sb1_6.png" width="230">
+						<img src="resources/images/sabang_detail/sb1_6.png" width="230">
 					</a>
 					
 				</div>
@@ -70,23 +89,23 @@
 	<div class="sabang_detail_1_good_Explanatin">
 		<div class="sabang_detail_1_goods_div">
 			<div>
-				<img class="sabang_detail_1_goods_div_img" src="resources/images/sb1_0.png"
+				<img class="sabang_detail_1_goods_div_img" src="resources/images/sabang_detail/sb1_0.png"
 					width="100" onmouseover="changeImg(0)">
 			</div>
 			<div>
-				<img class="sabang_detail_1_goods_div_img" src="resources/images/sb1_1.png"
+				<img class="sabang_detail_1_goods_div_img" src="resources/images/sabang_detail/sb1_1.png"
 					width="100" onmouseover="changeImg(1)">
 			</div>
 			<div>
-				<img class="sabang_detail_1_goods_div_img" src="resources/images/sb1_2.png"
+				<img class="sabang_detail_1_goods_div_img" src="resources/images/sabang_detail/sb1_2.png"
 					width="100" height="100" onmouseover="changeImg(2)">
 			</div>
 			<div>
-				<img class="sabang_detail_1_goods_div_img" src="resources/images/sb1_3.png"
+				<img class="sabang_detail_1_goods_div_img" src="resources/images/sabang_detail/sb1_3.png"
 					width="100" height="100" onmouseover="changeImg(3)">
 			</div>
 			<div>
-				<img class="sabang_detail_1_goods_div_img" src="resources/images/sb1_4.png"
+				<img class="sabang_detail_1_goods_div_img" src="resources/images/sabang_detail/sb1_4.png"
 					width="100" height="100" onmouseover="changeImg(4)">
 			</div>
 		</div>
@@ -109,7 +128,7 @@
 		<div class="sabang_detail_2_content">
 
 			<div class="sabang_detail_2_content_img">
-				<img src="resources/images/sb1_1.png" />
+				<img src="resources/images/sabang_detail/sb1_1.png" />
 			</div>
 
 			<div class="sabang_detail_2_content_txt">
@@ -136,7 +155,7 @@
 		<div class="sabang_detail_2_content">
 
 			<div class="sabang_detail_2_content_img">
-				<img src="resources/images/sb1_2.png" />
+				<img src="resources/images/sabang_detail/sb1_2.png" />
 			</div>
 
 			<div class="sabang_detail_2_content_txt">
@@ -166,7 +185,7 @@
 		<div class="sabang_detail_2_content">
 
 			<div class="sabang_detail_2_content_img">
-				<img src="resources/images/sb1_3.png" />
+				<img src="resources/images/sabang_detail/sb1_3.png" />
 			</div>
 
 			<div class="sabang_detail_2_content_txt">
@@ -182,7 +201,7 @@
 						<p>피로감을 덜어주며 집중력도 높여줍니다.</p>
 					</div>
 					<div class="sabang_detail_2_content_txt_content_2">
-						<img src="resources/images/sb1_3_1.png" />
+						<img src="resources/images/sabang_detail/sb1_3_1.png" />
 					</div>
 				</div>
 			</div>
@@ -194,7 +213,7 @@
 		<div class="sabang_detail_2_content">
 
 			<div class="sabang_detail_2_content_img">
-				<img src="resources/images/sb1_4.png" />
+				<img src="resources/images/sabang_detail/sb1_4.png" />
 			</div>
 
 			<div class="sabang_detail_2_content_txt">
@@ -208,7 +227,7 @@
 						<p>않습니다.</p>
 					</div>
 					<div class="sabang_detail_2_content_txt_content_2">
-						<img src="resources/images/sb1_4_1.png" />
+						<img src="resources/images/sabang_detail/sb1_4_1.png" />
 					</div>
 				</div>
 			</div>

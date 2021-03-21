@@ -11,10 +11,10 @@
 		</div>
 		<div class="footer_sns">
 			<a class="footer_icon" href="https://www.instagram.com/">
-				<img src="resources/images/instagram.png" width="30" height="30" />
+				<img src="resources/images/common/instagram.png" width="30" height="30" />
 			</a>
 			<a class="footer_icon" href="https://www.facebook.com/">
-				<img src="resources/images/facebook.png" width="30" height="30" />
+				<img src="resources/images/common/facebook.png" width="30" height="30" />
 			</a>
 		</div>
 	</div>

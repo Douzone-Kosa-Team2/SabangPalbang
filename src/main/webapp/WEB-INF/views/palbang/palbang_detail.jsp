@@ -27,13 +27,13 @@
 		<div class="palbang_detail_content">
 
 			<div class="palbang_detail_content_mainImg">
-				<img src="resources/images/palbang_detail_1.jpg">
+				<img src="resources/images/palbang_detail/palbang_detail_1.jpg">
 			</div>
 			<!-- 1번 상세 -->
 			<div class="palbang_detail_content_space">
 
 				<div class="palbang_detail_content_spaceImg">
-					<img src="resources/images/palbang_detail_1_1.jpg">
+					<img src="resources/images/palbang_detail/palbang_detail_1_1.jpg">
 				</div>
 
 				<div class="palbang_detail_content_space_txt">
@@ -55,7 +55,7 @@
 			<div class="palbang_detail_content_space">
 
 				<div class="palbang_detail_content_spaceImg">
-					<img src="resources/images/palbang_detail_1_2.jpg">
+					<img src="resources/images/palbang_detail/palbang_detail_1_2.jpg">
 				</div>
 
 				<div class="palbang_detail_content_space_txt">
@@ -75,7 +75,7 @@
 			<div class="palbang_detail_content_space">
 
 				<div class="palbang_detail_content_spaceImg">
-					<img src="resources/images/palbang_detail_1_3.jpg">
+					<img src="resources/images/palbang_detail/palbang_detail_1_3.jpg">
 				</div>
 
 				<div class="palbang_detail_content_space_txt">

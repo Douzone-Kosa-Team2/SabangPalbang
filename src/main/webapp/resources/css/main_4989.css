@@ -32,11 +32,16 @@ a:hover{
 }
 
 .header_search_input { 
-        background-image : url('../images/search.png'); 
+        background-image : url('../images/common/search.png'); 
         background-position: 18px 12px; 
         background-size: 15px 15px;
         background-repeat:no-repeat;      
  }
+
+.header_search {
+   width: 30%;
+}
+
 
 .header {
    display: flex;
@@ -81,14 +86,10 @@ a:hover{
    padding: 14px;
    color: black;
 }
-/* info css */
-.info_content {
-	display: flex;
-	justify-content: center;
-}
+
 /* login css */
 .login_content {
-	background-image: url('../images/login1.jpg');
+	background-image: url('../images/auth/login1.jpg');
 	background-position: center;
 	background-repeat: no-repeat;
 	display: flex;
@@ -124,9 +125,10 @@ a:hover{
 	margin: 10px;
 }
 
+
 /* sign in */
 .signin_main{
-	background-image: url('../images/signin.jpg');
+	background-image: url('../images/auth/signin.jpg');
 	background-position: center;
 	background-repeat: no-repeat;
 	display: flex;
@@ -157,7 +159,7 @@ a:hover{
 }
 /* find Email */
 .findEmail_main {
-	background-image: url('../images/findEmail.jpg');
+	background-image: url('../images/auth/findEmail.jpg');
 	background-position: center;
 	background-repeat: no-repeat;
 	display: flex;
@@ -195,7 +197,7 @@ a:hover{
 
 /* resetPw */
 .resetPw_main{
-	background-image: url('../images/resetPw.jpg');
+	background-image: url('../images/auth/resetPw.jpg');
 	background-position: center;
 	background-repeat: no-repeat;
 	display: flex;
