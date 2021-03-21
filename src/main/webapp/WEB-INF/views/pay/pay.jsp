@@ -84,7 +84,7 @@
                 <div class="pay_content_right_content">
                     <div class="pay_content_right_content_1">주문상품 정보</div> 
                     <div class="pay_content_right_content_2">
-                        <img src="resources/images/sb1_0.png" width="150"/>
+                        <img src="resources/images/sabang_detail/sb1_0.png" width="150"/>
                         <div>아늑하고 따뜻한 방</div>
                     </div>
                     <div class="pay_content_right_content_3">
@@ -103,7 +103,7 @@
                             </div>
                             <div class="pay_content_right_content_3_3">
                                <div>
-                                  <img src="resources/images/sb1_5.png">
+                                  <img src="resources/images/common/plus_minus_bt.png">
                                </div>
                                <div>
                                   <img src="resources/images/common/plus_minus_bt.png">
