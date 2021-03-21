@@ -27,8 +27,8 @@
 				<a class="sabang_search_move" href="sabang_detail"> <img
 					src="resources/images/sabang_search/search_post1.png" height="200"><br />
 					조화로운 방<br /> <span class="price"
-					style="color: gray; font-size: 0.9em; text-decoration-line: line-through;">&#8361;
-						1,500,000</span><br /> <span class="price">&#8361; 1,000,000</span> <span
+					style="color: gray; font-size: 0.9em; text-decoration-line: line-through; font-family:'Cafe24Dangdanghae'">&#8361;
+						1,500,000</span><br /> <span class="price"><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text> 1,000,000</span> <span
 					style="color: red;">33%</span>
 				</a>
 			</div>
@@ -36,8 +36,8 @@
 				<a class="sabang_search_move" href="sabang_detail"> <img
 					src="resources/images/sabang_search/search_post2.png" height="200"><br />
 					온종일 편안하게 꿀잠 방<br /> <span class="price"
-					style="color: gray; font-size: 0.9em; text-decoration-line: line-through;">&#8361;
-						1,200,000</span><br /> <span class="price">&#8361; 980,000</span> <span
+					style="color: gray; font-size: 0.9em; text-decoration-line: line-through; font-family:'Cafe24Dangdanghae'">&#8361;
+						1,200,000</span><br /> <span class="price"><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text> 980,000</span> <span
 					style="color: red;">18%</span>
 				</a>
 			</div>
@@ -45,8 +45,8 @@
 				<a class="sabang_search_move" href="sabang_detail"> <img
 					src="resources/images/sabang_search/search_post3.png" height="200"><br />
 					친환경 내 방<br /> <span class="price"
-					style="color: gray; font-size: 0.9em; text-decoration-line: line-through;">&#8361;
-						1,500,000</span><br /> <span class="price">&#8361; 960,000</span> <span
+					style="color: gray; font-size: 0.9em; text-decoration-line: line-through; font-family:'Cafe24Dangdanghae'">&#8361;
+						1,500,000</span><br /> <span class="price"><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text> 960,000</span> <span
 					style="color: red;">36%</span>
 				</a>
 			</div>
@@ -55,7 +55,7 @@
 			<div class="sabang_search_div3_line_item">
 				<a class="sabang_search_move" href="sabang_detail"> <img
 					src="resources/images/sabang_search/search_post4.png" height="200"><br />
-					조화로운 방<br /> <span></span><br /> <span class="price">&#8361;
+					조화로운 방<br /> <span></span><br /> <span class="price"><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text>
 						900,000</span>
 				</a>
 			</div>
@@ -63,15 +63,15 @@
 				<a class="sabang_search_move" href="sabang_detail"> <img
 					src="resources/images/sabang_search/search_post5.png" height="200"><br />
 					온종일 편안하게 꿀잠 방<br /> <span class="price"
-					style="color: gray; font-size: 0.9em; text-decoration-line: line-through;">&#8361;
-						1,200,000</span><br /> <span class="price">&#8361; 900,000</span> <span
+					style="color: gray; font-size: 0.9em; text-decoration-line: line-through; font-family: 'Cafe24Dangdanghae'">&#8361;
+						1,200,000</span><br /> <span class="price"><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text> 900,000</span> <span
 					style="color: red;">25%</span>
 				</a>
 			</div>
 			<div class="sabang_search_div3_line_item">
 				<a class="sabang_search_move" href="sabang_detail"> <img
 					src="resources/images/sabang_search/search_post6.png" height="200"><br />
-					친환경 내 방<br /> <span></span><br /> <span class="price">&#8361;
+					친환경 내 방<br /> <span></span><br /> <span class="price"><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text>
 						1,500,000</span>
 				</a>
 			</div>
