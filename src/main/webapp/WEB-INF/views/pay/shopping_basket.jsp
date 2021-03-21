@@ -51,7 +51,7 @@
 			<td style="text-align: center;">아늑하고 따뜻한 방</td>
 			<td><img class="table_list5" src="resources/images/common/plus_minus_bt.png"
 				height="30" width="70"></td>
-			<td>W 500,000</td>
+			<td><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text> 500,000</td>
 			<td>배송비무료</td>
 			<td><a href='javascript:window.close();'>X</a></td>
 		</tr>
@@ -65,7 +65,7 @@
 			<td style="text-align: center;">온종일 편안하게 꿀잠 방</td>
 			<td><img class="table_list5" src="resources/images/common/plus_minus_bt.png"
 				height="30" width="70"></td>
-			<td>W 500,000</td>
+			<td><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text> 500,000</td>
 			<td>배송비무료</td>
 			<td><a href='javascript:window.close();'>X</a></td>
 		</tr>
