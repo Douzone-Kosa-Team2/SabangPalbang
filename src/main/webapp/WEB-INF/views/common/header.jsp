@@ -13,6 +13,13 @@
 <script src="resources/js/jquery-3.5.1.min.js"></script>
 <script src="resources/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js"></script>
 <script src="resources/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+function enterkey(){
+	if(window.event.keyCode == 13){
+		location.href="/sabangpalbang/sabang_search";
+	}
+}   
+</script>
 <body>
 <!-- 헤더 반응형 구현 -->
 <div class="container">
@@ -26,9 +33,11 @@
 					<a class="header_menu_item" href="/sabangpalbang/palbang_main">팔방</a>
 		  </div>
 	    
-	      <div href="/sabangpalbang/sabang_search" class="header_search">
-					<input type="text" class="header_search_input input-group mb-3 mt-5 form-control rounded-pill"
-								style="background-color: #e9ecef;" placeholder="             내 예산에 맞는 방 찾기">
+	      <div class="header_search">
+	      
+	      		<input type="text" onkeyup="enterkey();" class="header_search_input input-group mb-3 mt-5 form-control rounded-pill"
+						style="background-color: #e9ecef;" placeholder="             내 예산에 맞는 방 찾기">
+					
 		 </div> 
 
 	      <div class="header_cart">

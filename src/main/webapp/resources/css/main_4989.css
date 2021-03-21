@@ -33,10 +33,14 @@ a:hover{
 
 .header_search_input { 
         background-image : url('../images/common/search.png'); 
-        background-position: 18px 12px; 
+        background-position: 18px 10px; 
         background-size: 15px 15px;
-        background-repeat:no-repeat;      
- }
+        background-repeat:no-repeat; 
+                 
+}
+.header_search_input:focus{
+	background-image: none;
+}
 
 .header_search {
    width: 30%;

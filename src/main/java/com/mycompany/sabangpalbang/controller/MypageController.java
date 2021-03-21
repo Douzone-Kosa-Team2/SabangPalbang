@@ -21,7 +21,7 @@ import com.mycompany.sabangpalbang.dto.Board;
 
 @Controller
 public class MypageController {
-	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MypageController.class);
 	
 	//마이페이지
 		@RequestMapping(value = "/mypage_memberInfo")
