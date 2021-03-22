@@ -84,7 +84,7 @@
 			<version>12.1.0.2</version>
 		</dependency>
 
-		<dependency>
+		 <dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
 			<version>3.5.6</version>
@@ -94,7 +94,7 @@
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>2.0.6</version>
-		</dependency>
+		</dependency> 
 
 		<!-- <dependency> <groupId>com.oracle</groupId> <artifactId>ojdbc7</artifactId> 
 			<version>12.1.0.2</version> <scope>system</scope> <systemPath>C:/Users/ant94/Documents/JavaProject/JavaHomework/springframework/src/main/webapp/WEB-INF/lib/ojdbc7.jar</systemPath> 
