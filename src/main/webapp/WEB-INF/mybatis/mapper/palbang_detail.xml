@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="euc-kr" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.webapp.dao.PalbangDetailDao">
+	<insert id="insert" parameterType="palbang_detail">
+		insert into palbang_detail
+		(palbang_detailno, palbang_id, palbang_dimgoname, palbang_dimgsname, palbang_dimgtype, palbang_explain)	
+		values
+		(#{palbang_detailno}, #{palbang_id}, #{palbang_dimgoname}, #{palbang_dimgsname}, #{palbang_dimgtype}, #{palbang_explain})	
+	</insert>
+	
+	<select id="selectAll" resultType="palbang_detail">
+		select palbang_detailno, palbang_id, palbang_dimgoname, palbang_dimgsname, palbang_dimgtype, palbang_explain
+		from palbang_detail
+		order by palbang_detailno desc
+	</select>
+	
+	<update id="update" parameterType="palbang_detail">
+		update palbang_detail set
+		
+		palbang_dimgoname=#{palbang_dimgoname}, 
+		palbang_dimgsname=#{palbang_dimgsname}, 
+		palbang_dimgtype=#{palbang_dimgtype}, 
+		palbang_explain=#{palbang_explain}
+		where palbang_detailno=#{palbang_detailno}
+	</update>
+	
+	<delete id="deleteByPalbangDetailno" parameterType="int">
+		delete from palbang_detail
+		where palbang_detailno=#{palbang_detailno}
+	</delete>
+</mapper>
