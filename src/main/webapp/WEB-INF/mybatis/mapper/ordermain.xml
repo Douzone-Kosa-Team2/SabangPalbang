@@ -15,7 +15,7 @@
 		order by order_id desc
 	</select>
 	
-	<select id="selectOrderByUid" resultType="ordermain">
+	<select id="selectOrderByUid" parameterType="String" resultType="ordermain">
 		select order_id, order_email, order_phone, order_zipcode, order_roadaddress, order_detailaddress, order_sabangid, order_price, order_date , order_state, order_payment, order_bankcode	
 		from ordermain
 		where order_email=#{order_email}

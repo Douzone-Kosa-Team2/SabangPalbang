@@ -7,5 +7,7 @@
 		<typeAlias type="com.mycompany.sabangpalbang.dto.Palbang" alias="palbang"/>
 		<typeAlias type="com.mycompany.sabangpalbang.dto.Palbang_detail" alias="palbang_detail"/>
 		<typeAlias type="com.mycompany.sabangpalbang.dto.Order_detail" alias="order_detail"/>
+		<typeAlias type="com.mycompany.sabangpalbang.dto.OrderMain" alias="ordermain"/>
+		<typeAlias type="com.mycompany.sabangpalbang.dto.Inquiry" alias="inquiry"/>
 	</typeAliases>
 </configuration>
