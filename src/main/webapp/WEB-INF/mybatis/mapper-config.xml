@@ -4,5 +4,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.mycompany.sabangpalbang.dto.Member" alias="member"/>
+		<typeAlias type="com.mycompany.sabangpalbang.dto.Sabang" alias="sabang"/>
+		<typeAlias type="com.mycompany.sabangpalbang.dto.Product" alias="product"/>
 	</typeAliases>
 </configuration>

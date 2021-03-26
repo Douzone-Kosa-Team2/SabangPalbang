@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="euc-kr" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.webapp.dao.UsersDao">
+	<insert id="insertBySabang" parameterType="sabang">
+		insert into sabang
+		(sabang_id, sabang_name, sabang_price, sabang_saleprice, sabang_buycount, sabang_viewcount, sabang_imgoname, sabang_imgsname, sabang_imgtype, sabang_state)
+		values
+		(#{sabang_id}, #{sabang_name}, #{sabang_price}, #{sabang_saleprice}, #{sabang_buycount}, #{sabang_viewcount}, #{sabang_imgoname}, #{sabang_imgsname}, #{sabang_imgtype}, #{sabang_state})
+	</insert>
+	
+	 <select id="selectBysabang" parameterType="int" resultType="sabang">
+		select sabang_id, sabang_name, sabang_price, sabang_saleprice, sabang_buycount, sabang_viewcount,
+			   sabang_imgoname, sabang_imgsname, sabang_imgtype, sabang_state
+		from sabang
+		where sabang_id=#{sabang_id}
+	</select>	
+	
+	<update id="updateBysabang" parameterType="sabang">
+		update sabang set
+			sabang_name=#{sabang_name},
+			sabang_price=#{sabang_price},
+			sabang_saleprice=#{sabang_saleprice},
+			sabang_imgoname=#{sabang_imgoname},
+			sabang_imgsname=#{sabang_imgsname},
+			sabang_imgtype=#{sabang_imgtype},
+			sabang_state=#{sabang_state}
+		where sabang_id=#{sabang_id}
+	</update>
+	
+	
+	
+	<delete id="deleteBysabang" parameterType="int">
+		delete from sabang
+		where sabang_id=#{sabang_id}
+	</delete>
+	
+	
+</mapper>

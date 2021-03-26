@@ -30,7 +30,7 @@
 				</svg>
 			</div>
 			<div class="palbang_update_main_left">
-				<img src="resources/images/palbang_detail_1_1.jpg" width="100%" height="100%">
+				<img src="resources/images/palbang_detail/palbang_detail_1_1.jpg" width="100%" height="100%">
 			</div>
 			<div class="palbang_update_main_right">
 				<textarea class="right_1 form-control" placeholder="리뷰를 입력하세요." name="reviewTxt"> 기본 옵션으로 있는 옷장은 고정되어 있어서 공간이 제한적이었어요. 
