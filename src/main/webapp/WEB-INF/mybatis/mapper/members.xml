@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="euc-kr" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<<<<<<< HEAD
 <mapper namespace="com.mycompany.sabangpalbang.dao.MemberDao">
 	<insert id="insertByMember" parameterType="member">
+=======
+<mapper namespace="com.mycompany.webapp.dao.MemberDao">
+	<insert id="insert" parameterType="member">
+>>>>>>> branch 'develop' of https://github.com/Douzone-Kosa-Team2/SabangPalbang.git
 		insert into member
 		(member_email, member_pw, member_name, member_phone, member_nickname, member_enable, member_authority, join_date, zipcode, roadaddress, detailaddress)
 		values

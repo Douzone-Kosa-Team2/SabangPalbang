@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="euc-kr" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycompany.webapp.dao.OrderMainDao">
+	<insert id="insert" parameterType="ordermain">
+		insert into ordermain
+		(order_id, order_email, order_phone, order_zipcode, order_roadaddress, order_detailaddress, order_sabangid, order_price, order_date , order_state, order_payment, order_bankcode)	
+		values
+		(#{order_id}, #{order_email}, #{order_phone}, #{order_zipcode}, #{order_roadaddress}, #{order_detailaddress}, #{order_sabangid}, #{order_price}, #{order_date}, #{order_state}, #{order_payment}, #{order_bankcode})	
+	</insert>
+	
+	<select id="selectAll" resultType="ordermain">
+		select order_id, order_email, order_phone, order_zipcode, order_roadaddress, order_detailaddress, order_sabangid, order_price, order_date , order_state, order_payment, order_bankcode	
+		from ordermain
+		order by order_id desc
+	</select>
+	
+	<select id="selectOrderByUid" parameterType="String" resultType="ordermain">
+		select order_id, order_email, order_phone, order_zipcode, order_roadaddress, order_detailaddress, order_sabangid, order_price, order_date , order_state, order_payment, order_bankcode	
+		from ordermain
+		where order_email=#{order_email}
+		order by order_id desc
+	</select> 
+
+	<delete id="deleteOrderByOrderId" parameterType="int">
+		delete from ordermain
+		where order_id=#{order_id}
+	</delete>
+</mapper> 
