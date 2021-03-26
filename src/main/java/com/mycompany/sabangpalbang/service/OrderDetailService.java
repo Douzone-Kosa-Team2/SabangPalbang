@@ -13,8 +13,8 @@ public class OrderDetailService {
 	@Autowired
 	private OrderDetailDao orderDetailDao;
 	
-	public void saveOrderDetail() {
-		orderDetailDao.insert();
+	public void saveOrderDetail(Order_detail order_detail) {
+		orderDetailDao.insert(order_detail);
 	}
 	public List<Order_detail> selectAll(){
 		List <Order_detail> list = orderDetailDao.selectAll();

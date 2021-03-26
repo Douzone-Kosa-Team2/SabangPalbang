@@ -9,7 +9,7 @@ import com.mycompany.sabangpalbang.dto.Order_detail;
 @Mapper
 public interface OrderDetailDao {
 	
-	public int insert();
+	public int insert(Order_detail order_detail);
 	public List<Order_detail> selectAll();
 	public int deleteByOrderDetailno(int order_detailno);
 }

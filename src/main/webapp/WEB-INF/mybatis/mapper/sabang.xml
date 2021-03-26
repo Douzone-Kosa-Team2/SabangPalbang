@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="euc-kr" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mycompany.webapp.dao.UsersDao">
+<mapper namespace="com.mycompany.sabangpalbang.dao.SabangDao">
 	<insert id="insertBySabang" parameterType="sabang">
 		<selectKey keyProperty="sabang_id" resultType="int" order="BEFORE">
 			select seq_sabang_id.nextval from dual

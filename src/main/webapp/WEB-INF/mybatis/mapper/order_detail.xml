@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="euc-kr" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mycompany.webapp.dao.OrderDetailDao">
+
+<mapper namespace="com.mycompany.sabangpalbang.dao.OrderDetailDao">
 	<insert id="insert" parameterType="order_detail">
-	<selectKey keyProperty="order_detailno" resultType="int" order="BEFORE">
-			select seq_order_detailno.nextval from dual
-	</selectKey>
+		<selectKey keyProperty="order_detailno" resultType="int" order="BEFORE">
+				select seq_order_detailno.nextval from dual
+		</selectKey>
 		insert into member
 		(order_detailno, order_id, order_productid)	
 		values
@@ -16,15 +17,7 @@
 		from order_detail
 		order by order_detailno desc
 	</select>
-	
-	<!-- 업데이트 안됨 -->
-<!-- 	<update id="update" parameterType="order_detail">
-		update order_detail set
-		order_id=#{order_id}, 
-		order_productid=#{order_productid}
-		where order_detailno=#{order_detailno}
-	</update> -->
-	
+
 	<delete id="deleteByOrderDetailno" parameterType="int">
 		delete from order_detail
 		where order_detailno=#{order_detailno}
