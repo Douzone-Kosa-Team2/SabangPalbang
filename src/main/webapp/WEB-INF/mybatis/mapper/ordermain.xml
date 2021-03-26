@@ -3,6 +3,9 @@
 
 <mapper namespace="com.mycompany.webapp.dao.OrderMainDao">
 	<insert id="insert" parameterType="ordermain">
+	<selectKey keyProperty="order_id" resultType="int" order="BEFORE">
+			select seq_order_id.nextval from dual
+	</selectKey>
 		insert into ordermain
 		(order_id, order_email, order_phone, order_zipcode, order_roadaddress, order_detailaddress, order_sabangid, order_price, order_date , order_state, order_payment, order_bankcode)	
 		values

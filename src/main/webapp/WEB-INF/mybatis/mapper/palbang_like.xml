@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="euc-kr" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.webapp.dao.PalbangLikeDao">
+	<insert id="insert" parameterType="palbang_like">
+	<selectKey keyProperty="palbang_likeid" resultType="int" order="BEFORE">
+			select seq_palbang_likeid.nextval from dual
+	</selectKey>
+		insert into palbang_like
+		(palbang_likeid, palbang_likepalbangid, palbang_likememberid)	
+		values
+		(#{palbang_likeid}, #{palbang_likepalbangid}, #{palbang_likememberid})	
+	</insert>
+	
+	<select id="selectAll" resultType="palbang_like">
+		select palbang_likeid, palbang_likepalbangid, palbang_likememberid
+		from palbang_like
+		order by palbang_likeid desc
+	</select>
+	
+	
+	<delete id="deleteByPalbangLikeId" parameterType="int">
+		delete from palbang_like
+		where palbang_likeid=#{palbang_likeid}
+	</delete>
+	
+</mapper>

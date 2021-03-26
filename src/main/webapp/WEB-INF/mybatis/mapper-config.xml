@@ -11,5 +11,6 @@
 		<typeAlias type="com.mycompany.sabangpalbang.dto.Order_detail" alias="order_detail"/>
 		<typeAlias type="com.mycompany.sabangpalbang.dto.OrderMain" alias="ordermain"/>
 		<typeAlias type="com.mycompany.sabangpalbang.dto.Inquiry" alias="inquiry"/>
+		<typeAlias type="com.mycompany.sabangpalbang.dto.Palbang_like" alias="palbang_like"/>
 	</typeAliases>
 </configuration>

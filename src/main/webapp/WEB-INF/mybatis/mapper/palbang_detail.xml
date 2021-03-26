@@ -2,6 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.webapp.dao.PalbangDetailDao">
 	<insert id="insert" parameterType="palbang_detail">
+		<selectKey keyProperty="palbang_detailno" resultType="int" order="BEFORE">
+			select seq_palbang_palbang_detail_detailno.nextval from dual
+		</selectKey>
 		insert into palbang_detail
 		(palbang_detailno, palbang_id, palbang_dimgoname, palbang_dimgsname, palbang_dimgtype, palbang_explain)	
 		values

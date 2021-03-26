@@ -3,6 +3,9 @@
 
 <mapper namespace="com.mycompany.webapp.dao.InquiryDao">
 	<insert id="insert" parameterType="inquiry">
+	<selectKey keyProperty="inquiry_id" resultType="int" order="BEFORE">
+			select seq_inquiry_id.nextval from dual
+	</selectKey>
 		insert into inquiry
 		(inquiry_id, inquiry_sabangid, inquiry_type, inquiry_ansstate, inquiry_title, inquiry_writer, inquiry_date, inquiry_explain, inquiry_anscontent)	
 		values
