@@ -31,4 +31,5 @@
 		delete from palbang_detail
 		where palbang_detailno=#{palbang_detailno}
 	</delete>
+	
 </mapper>

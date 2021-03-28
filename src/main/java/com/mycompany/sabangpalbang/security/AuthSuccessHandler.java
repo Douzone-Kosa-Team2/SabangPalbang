@@ -10,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
 //SimpleUrlAuthenticationSuccessHandler 사용자가 요청한 페이지를 기억을 못함
 //SavedRequestAwareAuthenticationSuccessHandler 사용자가 요청한 페이지를 기억해줌 

@@ -11,14 +11,14 @@
 		(#{sabang_id}, #{sabang_name}, #{sabang_price}, #{sabang_saleprice}, #{sabang_buycount}, #{sabang_viewcount}, #{sabang_imgoname}, #{sabang_imgsname}, #{sabang_imgtype}, #{sabang_state})
 	</insert>
 	
-	 <select id="selectBysabang" parameterType="int" resultType="sabang">
+	 <select id="selectBySabang" parameterType="int" resultType="sabang">
 		select sabang_id, sabang_name, sabang_price, sabang_saleprice, sabang_buycount, sabang_viewcount,
 			   sabang_imgoname, sabang_imgsname, sabang_imgtype, sabang_state
 		from sabang
 		where sabang_id=#{sabang_id}
 	</select>	
 	
-	<update id="updateBysabang" parameterType="sabang">
+	<update id="updateBySabang" parameterType="sabang">
 		update sabang set
 			sabang_name=#{sabang_name},
 			sabang_price=#{sabang_price},
@@ -32,7 +32,7 @@
 	
 	
 	
-	<delete id="deleteBysabang" parameterType="int">
+	<delete id="deleteBySabang" parameterType="int">
 		delete from sabang
 		where sabang_id=#{sabang_id}
 	</delete>
