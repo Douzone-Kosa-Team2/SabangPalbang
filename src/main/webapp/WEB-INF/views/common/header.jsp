@@ -45,8 +45,8 @@ function enterkey(){
 		 </div>
 	      
 	    <div class="header_logIn">
-				<a class="header_logIn_item" href="/sabangpalbang/login">로그인 </a> 
-				<a class="header_logIn_item" href="/sabangpalbang/signin">회원가입</a>
+				<a class="header_logIn_item" href="/sabangpalbang/loginForm">로그인 </a> 
+				<a class="header_logIn_item" href="/sabangpalbang/signinForm">회원가입</a>
 		</div>
     </nav>
   </div>

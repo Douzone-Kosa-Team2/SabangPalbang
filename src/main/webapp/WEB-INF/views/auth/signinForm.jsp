@@ -9,13 +9,16 @@
 			<h3>회원 가입</h3>
 			<hr>
 		</div>
-		<form>
+		<form method="post" action="signin">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+			
 			<div class="signin_input">
 				<div>이메일</div>
 
 				<div class="mb-3 signin_input_form">
-					<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="이메일">@ <select
-						name="emailaddr">
+					<input type="email" class="form-control" id="member_email" placeholder="이메일" name="member_email">
+					@ 
+					<select name="member_email2">
 						<option selected="" value="" disabled="">선택해주세요</option>
 						<option value="naver.com">naver.com</option>
 						<option value="hanmail.net">hanmail.net</option>
@@ -30,19 +33,19 @@
 				</div>
 
 				<div>비밀번호</div>
-				<div>영문+숫자+특수기호 8자리 이상으로 구성하여야 합니다.</div>
+				<div><small>영문+숫자+특수기호 8자리 이상으로 구성하여야 합니다.</small></div>
 				<div class="mb-3">
-					<input type="text" class="form-control" id="inputPassword" placeholder="비밀번호" name="password">
+					<input type="text" class="form-control" id="member_pw" placeholder="비밀번호" name="member_pw">
 				</div>
 
 				<div>비밀번호 확인</div>
 				<div class="mb-3">
-					<input type="password" class="form-control" id="inputPassword" placeholder="비밀번호 확인">
+					<input type="password" class="form-control" id="member_pwcheck" placeholder="비밀번호 확인" name="member_pwcheck">
 				</div>
 
 				<div>이름</div>
 				<div class="mb-3">
-					<input type="text" class="form-control" id="inputPassword" placeholder="이름" name="name">
+					<input type="text" class="form-control" id="member_name" placeholder="이름" name="member_name">
 				</div>
 
 				<div>연락처</div>
@@ -53,15 +56,15 @@
 						<option value="011">011</option>
 						<option value="017">017</option>
 						<option value="02">02</option>
-					</select> <input type="tel" class="form-control" id="exampleFormControlInput1"
+					</select> <input type="tel" class="form-control" id="tel_suf"
 						placeholder="휴대폰번호 입력" name="tel_suf">
 
 				</div>
 
 				<div>별명</div>
-				<div>다른 유저와 겹치지않는 별명을 입력해주세요, (2~15자)</div>
+				<div><small>다른 유저와 겹치지않는 별명을 입력해주세요, (2~15자)</small></div>
 				<div class="mb-3">
-					<input type="text" class="form-control" id="inputPassword" placeholder="별명(2~15자)" name="nickname">
+					<input type="text" class="form-control" id="member_nickname" placeholder="별명(2~15자)" name="member_nickname">
 				</div>
 
 				<div class="signin_agree">
@@ -69,7 +72,7 @@
 				</div>
 
 				<div class="signin_btn">
-					<button type="button" class="btn btn-info">회원가입 완료</button>
+					<button type="submit" class="btn btn-info">회원가입 완료</button>
 				</div>
 
 
@@ -79,7 +82,7 @@
 		<div class="signin_othermenu">
 
 			<p>
-				이미 아이디가 있으신가요? <a class="header_logIn_item" href="login">로그인</a>
+				이미 아이디가 있으신가요? <a class="header_logIn_item" href="loginForm">로그인</a>
 			</p>
 		</div>
 
