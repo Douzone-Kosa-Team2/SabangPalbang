@@ -3,21 +3,6 @@
 
 <mapper namespace="com.mycompany.sabangpalbang.dao.MemberDao">
 	<insert id="insertByMember" parameterType="member">
-		
-		insert into member
-		(member_id, member_email, member_pw, member_name,
-		member_phone, member_nickname, member_enable, member_authority,
-		join_date)
-		values
-		(1,
-		#{member_email}, #{member_pw}, #{member_name}, #{member_phone},
-		#{member_nickname}, 1, 'ROLE_MEMBER',
-		sysdate)
-	</insert>
-	
-	
-	
-	<!-- <insert id="insertByMember2" parameterType="member">
 		<selectKey keyProperty="member_id" resultType="int"
 			order="BEFORE">
 			select seq_member_id.nextval from dual
@@ -25,26 +10,40 @@
 		insert into member
 		(member_id, member_email, member_pw, member_name,
 		member_phone, member_nickname, member_enable, member_authority,
-		join_date, zipcode, roadaddress, detailaddress)
+		join_date)
 		values
 		(#{member_id},
-		#{member_email}, #{member_pw}, #{member_name}, #{member_phone},
-		#{member_nickname}, #{member_enable}, #{member_authority},
-		#{join_date}, #{zipcode}, #{roadaddress}, #{detailaddress})
-	</insert> -->
+		#{member_email}, #{member_pw},
+		#{member_name}, #{member_phone},
+		#{member_nickname}, 1, 'ROLE_MEMBER',
+		sysdate)
+	</insert>
+
+
+
+	<!-- <insert id="insertByMember2" parameterType="member"> <selectKey keyProperty="member_id" 
+		resultType="int" order="BEFORE"> select seq_member_id.nextval from dual </selectKey> 
+		insert into member (member_id, member_email, member_pw, member_name, member_phone, 
+		member_nickname, member_enable, member_authority, join_date, zipcode, roadaddress, 
+		detailaddress) values (#{member_id}, #{member_email}, #{member_pw}, #{member_name}, 
+		#{member_phone}, #{member_nickname}, #{member_enable}, #{member_authority}, 
+		#{join_date}, #{zipcode}, #{roadaddress}, #{detailaddress}) </insert> -->
 
 
 	<select id="selectByMember" parameterType="string"
 		resultType="member">
-		select member_id, member_email, member_pw, member_name, member_phone,
+		select member_id, member_email, member_pw, member_name,
+		member_phone,
 		member_nickname, zipcode, roadaddress, detailaddress
-		from member
+		from
+		member
 		where member_id=#{member_id}
 	</select>
 
 	<select id="selectByPayMember" parameterType="string"
 		resultType="member">
-		select member_name, zipcode, roadaddress, detailaddress, member_phone
+		select member_name, zipcode, roadaddress, detailaddress,
+		member_phone
 		from member
 		where member_id=#{member_id}
 	</select>

@@ -3,6 +3,7 @@ package com.mycompany.sabangpalbang.dto;
 import java.util.Date;
 
 public class Member {
+	private int member_id;
 	private String member_email;
 	private String member_email2;
 	private String member_pw;
@@ -21,6 +22,14 @@ public class Member {
 	private String detailaddress;
 	
 	
+	
+	
+	public int getMember_id() {
+		return member_id;
+	}
+	public void setMember_id(int member_id) {
+		this.member_id = member_id;
+	}
 	public String getMember_email() {
 		return member_email;
 	}

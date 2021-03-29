@@ -3,7 +3,7 @@
 <mapper namespace="com.mycompany.sabangpalbang.dao.PalbangDao">
 	<insert id="insert" parameterType="palbang">
 		<selectKey keyProperty="palbang_id" resultType="int" order="BEFORE">
-			select seq_palbang_palbang_id.nextval from dual
+			select seq_palbang_id.nextval from dual
 		</selectKey>
 		insert into palbang
 		(palbang_id, palbang_title, palbang_nickname, palbang_likecount, palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype)
