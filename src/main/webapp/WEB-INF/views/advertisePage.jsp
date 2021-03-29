@@ -4,6 +4,11 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <!-- 광고 내용 부분 -->
 	<div class="advertise_content">
-		<img src="resources/images/advertise/advertise1.png" height="100%"/>
+		<c:if test="${adnum == 1}">
+			<img src="resources/images/advertise/advertise1.png" height="100%"/>
+		</c:if>
+		<c:if test="${adnum == 2}">
+			<img src="resources/images/advertise/advertise2.png" height="100%"/>
+		</c:if>
 	</div>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

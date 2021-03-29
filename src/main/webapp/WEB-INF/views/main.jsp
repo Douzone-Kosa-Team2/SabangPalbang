@@ -49,7 +49,7 @@
 		<!-- 광고  -->
 		<div class="main_advertise">
 			<div class="main_advertise_content" id="main_advertise_img1">
-				<a href="/sabangpalbang/advertisePage">
+				<a href="/sabangpalbang/advertisePage?adnum=2">
 					<img src="resources/images/main/main_ad_2.png" />
 				</a>
 
@@ -60,7 +60,7 @@
 				</div>
 			</div>
 			<div class="main_advertise_content" id="main_advertise_img2">
-				<a href="/sabangpalbang/advertisePage">
+				<a href="/sabangpalbang/advertisePage?adnum=1">
 					<img src="resources/images/main/main_ad_3.png" />
 				</a>
 				<div class="main_advertise_movePage">
@@ -70,7 +70,7 @@
 				</div>
 			</div>
 			<div class="main_advertise_content" id="main_advertise_img3">
-				<a href="/sabangpalbang/advertisePage">
+				<a href="/sabangpalbang/advertisePage?adnum=1">
 					<img src="resources/images/main/main_ad_4.png" />
 				</a>
 				<div class="main_advertise_movePage">
