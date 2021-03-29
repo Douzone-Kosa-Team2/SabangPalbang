@@ -52,6 +52,13 @@ public class AuthController {
 			return "auth/resetPw_successForm";
 		}
 		
+		
+		// 동작
+		
+		
+		
+		
+		
 		// 권한 오류 페이지
 		@GetMapping("/error403")
 		public String error403() {

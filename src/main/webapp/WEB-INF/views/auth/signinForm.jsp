@@ -16,7 +16,7 @@
 				<div>이메일</div>
 
 				<div class="mb-3 signin_input_form">
-					<input type="email" class="form-control" id="member_email" placeholder="이메일" name="member_email">
+					<input type="text" class="form-control" id="member_email" placeholder="이메일" name="member_email">
 					@ 
 					<select name="member_email2">
 						<option selected="" value="" disabled="">선택해주세요</option>
