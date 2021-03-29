@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.mycompany.sabangpalbang.dto.Order_detail;
 import com.mycompany.sabangpalbang.dto.Palbang_like;
 
 @Mapper

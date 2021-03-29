@@ -99,6 +99,31 @@
 		<!-- <dependency> <groupId>com.oracle</groupId> <artifactId>ojdbc7</artifactId> 
 			<version>12.1.0.2</version> <scope>system</scope> <systemPath>C:/Users/ant94/Documents/JavaProject/JavaHomework/springframework/src/main/webapp/WEB-INF/lib/ojdbc7.jar</systemPath> 
 			</dependency> -->
+			
+		<!-- File Upload 관련 라이브러리 -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.4</version>
+		</dependency>
 
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>5.3.4.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>5.3.4.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>5.3.4.RELEASE</version>
+		</dependency>
 	</dependencies>
 </project>

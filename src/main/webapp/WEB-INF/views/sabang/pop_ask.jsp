@@ -15,7 +15,9 @@
 			<h4>문의작성</h4>
 		</div>
 		<hr>
-		<form>
+		<form method="post">
+		    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		
 			<div class="pop_ask_table">
 
 				<div class="pop_ask_type">

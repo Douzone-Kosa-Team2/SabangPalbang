@@ -1,20 +1,11 @@
 package com.mycompany.sabangpalbang.controller;
 
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 
 /**
@@ -24,44 +15,47 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class AuthController {
 	private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
 	
-	//로그인페이지
-		@RequestMapping(value = "/login")
-		public String login() {
-			logger.info("login 메시지");
-			return "auth/login";
+	//로그인페이지 form
+		@RequestMapping(value = "/loginForm")
+		public String loginForm() {
+			logger.info("loginForm 메시지");
+			return "auth/loginForm";
 		}
-		@RequestMapping(value = "/signin")
-		public String signin() {
-			logger.info("signin 메시지");
-			return "auth/signin";
+		@RequestMapping(value = "/signinForm")
+		public String signinForm() {
+			logger.info("signinForm 메시지");
+			return "auth/signinForm";
 		}
-		@RequestMapping(value = "/signin_success")
-		public String signin_success() {
-			logger.info("signin_success 메시지");
-			return "auth/signin_success";
+		@RequestMapping(value = "/signin_successForm")
+		public String signin_successForm() {
+			logger.info("signin_successForm 메시지");
+			return "auth/signin_successForm";
 		}
-		@RequestMapping(value = "/findEmail")
-		public String findEmail() {
-			logger.info("findEmail 메시지");
-			return "auth/findEmail";
+		@RequestMapping(value = "/findEmailForm")
+		public String findEmailForm() {
+			logger.info("findEmailForm 메시지");
+			return "auth/findEmailForm";
 		}
-		@RequestMapping(value = "/findEmail_success")
-		public String findEmail_success() {
-			logger.info("findEmail_success 메시지");
-			return "auth/findEmail_success";
+		@RequestMapping(value = "/findEmail_successForm")
+		public String findEmail_successForm() {
+			logger.info("findEmail_successForm 메시지");
+			return "auth/findEmail_successForm";
 		}
-		@RequestMapping(value = "/resetPw")
-		public String resetPw() {
-			logger.info("resetPw 메시지");
-			return "auth/resetPw";
+		@RequestMapping(value = "/resetPwForm")
+		public String resetPwForm() {
+			logger.info("resetPwForm 메시지");
+			return "auth/resetPwForm";
 		}
-		@RequestMapping(value = "/resetPw_success")
-		public String resetPw_success() {
-			logger.info("resetPw_success 메시지");
-			return "auth/resetPw_success";
+		@RequestMapping(value = "/resetPw_successForm")
+		public String resetPw_successForm() {
+			logger.info("resetPw_successForm 메시지");
+			return "auth/resetPw_successForm";
 		}
 		
-		/*
-		 * @PostMapping("/") public String
-		 */ 
+		// 권한 오류 페이지
+		@GetMapping("/error403")
+		public String error403() {
+			return "auth/error403";
+		}
+
 }

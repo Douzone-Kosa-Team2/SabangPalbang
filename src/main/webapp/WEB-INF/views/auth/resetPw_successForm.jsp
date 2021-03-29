@@ -15,7 +15,7 @@
         <a href="main">
             <button type="button" class="btn btn-outline-secondary btn-lg">메인으로 돌아가기</button>
         </a>
-        <a href="signin">
+        <a href="loginForm">
             <button type="button" class="btn btn-outline-primary btn-lg">로그인 하기</button>
         </a>
     </div>

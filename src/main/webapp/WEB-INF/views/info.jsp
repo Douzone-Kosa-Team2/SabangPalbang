@@ -50,7 +50,6 @@
 
 	<div class="info_content">
 
-
 		<div class="info_content_1" id="info_img1">
 			<a href="/sabangpalbang/main">
 				<img src="resources/images/info/info_1.png" />

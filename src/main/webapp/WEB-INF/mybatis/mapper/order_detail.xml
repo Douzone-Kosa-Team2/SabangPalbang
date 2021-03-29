@@ -6,7 +6,7 @@
 		<selectKey keyProperty="order_detailno" resultType="int" order="BEFORE">
 				select seq_order_detailno.nextval from dual
 		</selectKey>
-		insert into member
+		insert into order_detail
 		(order_detailno, order_id, order_productid)	
 		values
 		(#{order_detailno}, #{order_id}, #{order_productid})	

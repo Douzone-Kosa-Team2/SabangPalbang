@@ -5,13 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mycompany.sabangpalbang.service.PalbangDetailService;
-import com.mycompany.sabangpalbang.service.PalbangService;
 
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
 public class PalbangController {
 	
