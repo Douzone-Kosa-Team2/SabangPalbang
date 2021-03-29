@@ -17,4 +17,5 @@
 	</context:component-scan>
 	
 	<mybatis-spring:scan base-package="com.mycompany.sabangpalbang.dao"/>
+	
 </beans>
