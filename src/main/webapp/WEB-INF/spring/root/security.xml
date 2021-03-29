@@ -32,7 +32,7 @@
 		<security:form-login 
 			login-page="/loginForm"
 			login-processing-url="/login"
-			username-parameter="member_id"
+			username-parameter=" member_email"
 			password-parameter="member_pw"
 			authentication-success-handler-ref="authSuccessHandler"
 			authentication-failure-handler-ref="authFailureHandler"/>
@@ -75,8 +75,8 @@
 	
 	<security:jdbc-user-service id="jdbcUserService"
 								data-source-ref="dataSource"
-								users-by-username-query="select member_id member_pw member_enable from member where member_id=?"
-								authorities-by-username-query="select member_id member_authority from member where member_id=?"/>
+								users-by-username-query="select member_email, member_pw, member_enable from member where  member_email=?"
+								authorities-by-username-query="select member_email, member_authority from member where  member_email=?"/>
 								
 	<bean id="roleHierachyAuthoritiesMapper"
 		class="org.springframework.security.access.hierarchicalroles.RoleHierarchyAuthoritiesMapper">

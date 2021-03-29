@@ -27,6 +27,13 @@ public class AuthController {
 		@GetMapping("/loginForm")
 		public String loginForm() {
 			logger.info("loginForm 메시지");
+			
+			
+			
+			
+			
+			
+			
 			return "auth/loginForm";
 		}
 		@GetMapping("/signinForm")
@@ -85,7 +92,7 @@ public class AuthController {
 		    
 		    memberService.signin(member);
 		    
-			return "/main";
+			return "redirect:/loginForm";
 		}
 		
 		
