@@ -1,78 +1,73 @@
-<%@ page  contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <!-- sabang_main -->
-     <div class="sabang_main">
-	   <div class="sabang_div1">
-	        <img class="sabang_div1_img" src="resources/images/sabang_post/slogan_sa.png" height="45px">
-	    </div>
-	    <div class="sabang_div2">
-	        <ul class="sabang_div2_sort_type">
-	            <li class="menu"><a class="sabang_div3_move" href="" >판매율 순</a></li>
-	            <li class="menu"><a class="sabang_div3_move" href="" style="color:gray;">낮은 가격 순</a></li>
-	            <li class="menu"><a class="sabang_div3_move" href="" style="color:gray;">높은 가격 순</a></li>
-	            <li class="menu"><a class="sabang_div3_move" href="" style="color:gray;">조회수 순</a></li>
-	        </ul>     
-	    </div>
-        <div class="sabang_div3">
-            <div class="sabang_div3_line">
-                <div class="sabang_div3_line_item" >
-                    <a class="sabang_div3_move" href="sabang_detail">
-                        <img src="resources/images/sabang_post/sabang_post1.png" height="200"><br/>
-                        시원한 그리스풍 방<br/>
-                        <span class="price" style="color: gray; font-size: 0.9em; text-decoration-line: line-through; font-family: 'Cafe24Dangdanghae';">&#8361; 2,500,000</span><br/>
-                        <span class="price"><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text> 2,000,000</span>
-                        <span style="color: red;">20%</span>
-                    </a>
-                </div>
-                <div class="sabang_div3_line_item" >
-                    <a class="sabang_div3_move" href="sabang_detail">
-                        <img src="resources/images/sabang_post/sabang_post2.png" height="200"><br/>
-                        화사한 북유럽풍 방<br/>
-                        <span class="price" style="color: gray; font-size: 0.9em; text-decoration-line: line-through; font-family: 'Cafe24Dangdanghae';">&#8361; 3,500,000</span><br/>
-                        <span class="price"><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text> 3,000,000</span>
-                        <span style="color: red;">14%</span>
-                    </a>
-                </div>
-                <div class="sabang_div3_line_item" >
-                    <a class="sabang_div3_move" href="sabang_detail">
-                        <img src="resources/images/sabang_post/sabang_post3.png" height="200"><br/>
-                        모던 그 자체 방<br/>
-                        <span class="price" style="color: gray; font-size: 0.9em; text-decoration-line: line-through; font-family: 'Cafe24Dangdanghae';">&#8361; 1,800,000</span><br/>
-                        <span class="price"><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text> 1,500,000</span>
-                        <span style="color: red;">16%</span>
-                    </a>
-                </div>
-            </div>
-            <div class="sabang_div3_line">
-                <div class="sabang_div3_line_item" >
-                    <a class="sabang_div3_move" href="sabang_detail">
-                        <img src="resources/images/sabang_post/sabang_post4.png" height="200"><br/>
-                        적은 돈 럭셔리 침실<br/>
-                        <span></span><br/>
-                        <span class="price"><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text> 900,000</span>
-                    </a>
-                </div>
-                <div class="sabang_div3_line_item" >
-                    <a class="sabang_div3_move" href="sabang_detail">
-                        <img src="resources/images/sabang_post/sabang_post5.png" height="200"><br/>
-                       감각적이고 편리한 방<br/>
-                        <span></span><br/>
-                        <span class="price"><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text> 900,000</span>
-                    </a>
-                </div>
-                <div class="sabang_div3_line_item" >
-                    <a class="sabang_div3_move" href="sabang_detail">
-                        <img src="resources/images/sabang_post/sabang_post6.png" height="200"><br/>
-                        다용도 작업 방<br/>
-                        <span class="price" style="color: gray; font-size: 0.9em; text-decoration-line: line-through; font-family: 'Cafe24Dangdanghae';">&#8361; 1,200,000</span><br/>
-                        <span class="price"><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text> 800,000</span>
-                        <span style="color: red;">33%</span>
-                    </a>
-                </div>
-            </div>
-    </div>
-    </div>
+<div class="sabang_main">
+	<div class="sabang_div1">
+		<img class="sabang_div1_img"
+			src="resources/images/sabang_post/slogan_sa.png" height="45px">
+	</div>
+	<div class="sabang_div2">
+		<ul class="sabang_div2_sort_type">
+			<li class="menu"><a class="sabang_div3_move" href="">판매율 순</a></li>
+			<li class="menu"><a class="sabang_div3_move" href=""
+				style="color: gray;">낮은 가격 순</a></li>
+			<li class="menu"><a class="sabang_div3_move" href=""
+				style="color: gray;">높은 가격 순</a></li>
+			<li class="menu"><a class="sabang_div3_move" href=""
+				style="color: gray;">조회수 순</a></li>
+		</ul>
+	</div>
+	<div class="d-flex flex-row flex-wrap justify-content-center">
+		<c:forEach var="sabang" items="${list}">
+			<div class="sabang_div3_line ">
+				<div class="sabang_div3_line_item">
+					<a class="sabang_div3_move" href="sabang_detail"> <img
+						src="resources/images/sabang_post/${sabang.sabang_imgoname}"
+						height="200"><br /> ${sabang.sabang_name}<br /> <span
+						class="price"
+						style="color: gray; font-size: 0.9em; text-decoration-line: line-through; font-family: 'Cafe24Dangdanghae';">&#8361;
+							${sabang.sabang_price}</span><br /> <span class="price"><text
+								style="font-family: 'Cafe24Dangdanghae';">&#8361;</text>${sabang.sabang_saleprice}</span>
+						<span style="color: red;">20%</span>
+					</a>
+				</div>
+			</div>
+		</c:forEach>
+	</div>
 
-<%@ include file="/WEB-INF/views/common/footer.jsp"%>
+	<div class="d-flex justify-content-center">
+		<div>
+			<table style="width:100%;">
+				<tr>
+					<!-- 처음 이전 12345 다음 맨끝 -->
+					<td colspan="5" class="text-center"><a
+						class="btn btn-outline-primary btn-sm" href="sabang_main?pageNo=1">처음</a>
+	
+						<c:if test="${pager.groupNo>1}">
+							<a class="btn btn-outline-info btn-sm"
+								href="sabang_main?pageNo=${pager.startPageNo-1}">이전</a>
+						</c:if> <c:forEach var="i" begin="${pager.startPageNo}"
+							end="${pager.endPageNo}">
+	
+							<c:if test="${pager.pageNo!=i}">
+								<a class="btn btn-outline-success btn-sm"
+									href="sabang_main?pageNo=${i}">${i}</a>
+							</c:if>
+							<c:if test="${pager.pageNo==i}">
+								<a class="btn btn-outline-danger btn-sm"
+									href="sabang_main?pageNo=${i}">${i}</a>
+							</c:if>
+						</c:forEach> <c:if test="${pager.groupNo<pager.totalGroupNo}">
+							<a class="btn btn-outline-info btn-sm"
+								href="sabang_main?pageNo=${pager.endPageNo+1}">다음</a>
+						</c:if> <a class="btn btn-outline-primary btn-sm"
+						href="sabang_main?pageNo=${pager.totalPageNo}">맨끝</a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+
+	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
