@@ -3,6 +3,8 @@ package com.mycompany.sabangpalbang.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -24,9 +26,10 @@ public class MainController {
 	}
 	
 	//광고페이지
-	@RequestMapping(value = "/advertisePage")
-	public String advertisePage() {
+	@GetMapping("/advertisePage")
+	public String advertisePage(int adnum, Model model) {
 		logger.info("advertisePage 메시지");
+		model.addAttribute("adnum", adnum);
 		return "advertisePage";
 	}
 	
