@@ -56,7 +56,7 @@ function enterkey(){
 	    					<form method="post" class="d-inline-block"
 							 action="${pageContext.request.contextPath}/logout">
 							 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-							<button class="header_logIn_item" href="${pageContext.request.contextPath}/logout">로그아웃 </button> 
+							<button style="border: none; outline:none; background-color:white;" class="header_logIn_item" <%-- href="${pageContext.request.contextPath}/logout" --%>>로그아웃</button> 
 							</form>
 							<a class="header_logIn_item" href="${pageContext.request.contextPath}/mypage_memberInfo">마이페이지</a>
 							
