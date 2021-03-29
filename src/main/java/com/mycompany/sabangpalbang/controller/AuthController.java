@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.mycompany.sabangpalbang.dto.Member;
-import com.mycompany.sabangpalbang.service.MembersService;
+import com.mycompany.sabangpalbang.service.MemberService;
 
 
 /**
@@ -21,7 +21,7 @@ public class AuthController {
 	private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
 	
 	@Autowired
-	private MembersService membersService;
+	private MemberService memberService;
 	
 	//로그인페이지 form
 		@GetMapping("/loginForm")
@@ -83,7 +83,7 @@ public class AuthController {
 		    logger.info(member.getMember_phone());
 		    
 		    
-		    membersService.signin(member);
+		    memberService.signin(member);
 		    
 			return "/main";
 		}

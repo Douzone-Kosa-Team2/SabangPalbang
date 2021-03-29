@@ -4,7 +4,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.mycompany.sabangpalbang.dto.Member;
 
 @Mapper
-public interface MembersDao {
+public interface MemberDao {
 	public int insertByMember(Member member);
 	public Member selectByMember(String member_email);
 	public Member selectByPayMember(String member_email);

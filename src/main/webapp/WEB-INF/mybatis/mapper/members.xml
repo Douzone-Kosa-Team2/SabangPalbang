@@ -3,13 +3,16 @@
 
 <mapper namespace="com.mycompany.sabangpalbang.dao.MembersDao">
 	<insert id="insertByMember" parameterType="member">
-		
+		<selectKey keyProperty="member_id" resultType="int"
+			order="BEFORE">
+			select seq_member_id.nextval from dual
+		</selectKey>
 		insert into member
 		(member_id, member_email, member_pw, member_name,
 		member_phone, member_nickname, member_enable, member_authority,
 		join_date)
 		values
-		(1,
+		(#{member_id},
 		#{member_email}, #{member_pw}, #{member_name}, #{member_phone},
 		#{member_nickname}, 1, 'ROLE_MEMBER',
 		sysdate)
