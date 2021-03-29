@@ -13,6 +13,19 @@
 	<security:http>
 		<!--  <security:intercept-url pattern="/exam08/admin/**" access="hasRole('ROLE_ADMIN')"/>
 		<security:intercept-url pattern="/exam08/user/**" access="hasRole('ROLE_USER')"/>-->
+		
+		
+		<security:intercept-url pattern="/shopping_basket" access="hasRole('ROLE_MEMBER')"/>
+		<security:intercept-url pattern="/pay" access="hasRole('ROLE_MEMBER')"/>
+		<security:intercept-url pattern="/pay_success" access="hasRole('ROLE_MEMBER')"/>
+		
+		<security:intercept-url pattern="/mypage_memberInfo" access="hasRole('ROLE_MEMBER')"/>
+		<security:intercept-url pattern="/mypage_orderlist" access="hasRole('ROLE_MEMBER')"/>
+		<security:intercept-url pattern="/mypage_inquiry" access="hasRole('ROLE_MEMBER')"/>
+		
+		<security:intercept-url pattern="/palbang_create" access="hasRole('ROLE_MEMBER')"/>
+		<security:intercept-url pattern="/palbang_update" access="hasRole('ROLE_MEMBER')"/>
+		
 		<security:intercept-url pattern="/**" access="permitAll"/>
 		
 		<!-- 로그인/로그아웃 설정 -->
@@ -71,7 +84,7 @@
 			<bean class="org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl">
 				<property name="hierarchy">
 					<value>
-						ROLE_ADMIN > ROLE_USER
+						ROLE_ADMIN > ROLE_MEMBER
 					</value>
 				</property>			
 			</bean>
