@@ -1,3 +1,4 @@
+
 package com.mycompany.sabangpalbang.service;
 
 import java.util.List;
@@ -10,22 +11,19 @@ import com.mycompany.sabangpalbang.dto.Palbang;
 
 @Service
 public class PalbangService {
-	
-	@Autowired
-	private PalbangDao palbangDao;
-	
-	public void savePalbang(Palbang palbang) {
-		palbangDao.insert(palbang);
-	}
-	public List<Palbang> selectAll(){
-		List<Palbang> list = palbangDao.selectAll();
-		return list;
-	}
-	public void updatePalbang(Palbang palbang) {
-		palbangDao.update(palbang);
-	}
-	public void deletePalbang(int palbangid) {
-		palbangDao.deleteByPalbangId(palbangid);
-	}
+
+	/*
+	 * @Autowired private PalbangDao palbangDao;
+	 * 
+	 * public void savePalbang(Palbang palbang) { palbangDao.insert(palbang); }
+	 * 
+	 * public List<Palbang> selectAll() { List<Palbang> list =
+	 * palbangDao.selectAll(); return list; }
+	 * 
+	 * public void updatePalbang(Palbang palbang) { palbangDao.update(palbang); }
+	 * 
+	 * public void deletePalbang(int palbangid) {
+	 * palbangDao.deleteByPalbangId(palbangid); }
+	 */
 
 }
