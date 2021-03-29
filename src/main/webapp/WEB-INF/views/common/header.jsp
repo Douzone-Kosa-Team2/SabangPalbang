@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,8 +46,27 @@ function enterkey(){
 		 </div>
 	      
 	    <div class="header_logIn">
-				<a class="header_logIn_item" href="/sabangpalbang/loginForm">로그인 </a> 
-				<a class="header_logIn_item" href="/sabangpalbang/signinForm">회원가입</a>
+	    		<sec:authorize access="isAnonymous()">
+	    			<a class="header_logIn_item" href="${pageContext.request.contextPath}/loginForm">로그인 </a> 
+					<a class="header_logIn_item" href="${pageContext.request.contextPath}/signinForm">회원가입</a>
+	    		</sec:authorize>
+	    		
+	    		<sec:authorize access="isAuthenticated()">	<!-- 로그인 인증이 되엇으면 -->
+	    					<span class="mr-2">User : <sec:authentication property="name"/></span>
+	    					<form method="post" class="d-inline-block"
+							 action="${pageContext.request.contextPath}/logout">
+							 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+							<button class="header_logIn_item" href="${pageContext.request.contextPath}/logout">로그아웃 </button> 
+							</form>
+							<a class="header_logIn_item" href="${pageContext.request.contextPath}/mypage_memberInfo">마이페이지</a>
+							
+							
+							
+							
+							
+				</sec:authorize>
+				
+				
 		</div>
     </nav>
   </div>

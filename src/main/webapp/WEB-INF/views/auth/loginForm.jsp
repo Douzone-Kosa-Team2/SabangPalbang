@@ -10,7 +10,7 @@
 			<h3>사방팔방</h3>
 
 		</div>
-		<form method="post" action="login">
+		<form method="post" action="<%=application.getContextPath() %>/login">
 			<div class="login_input">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
