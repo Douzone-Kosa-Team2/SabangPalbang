@@ -2,6 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
+
+
+
 <!-- 회원가입 내용 부분 -->
 	<div class="signin_main">
 
@@ -35,7 +38,7 @@
 				<div>비밀번호</div>
 				<div><small>영문+숫자+특수기호 8자리 이상으로 구성하여야 합니다.</small></div>
 				<div class="mb-3">
-					<input type="text" class="form-control" id="member_pw" placeholder="비밀번호" name="member_pw">
+					<input type="password" class="form-control" id="member_pw" placeholder="비밀번호" name="member_pw">
 				</div>
 
 				<div>비밀번호 확인</div>

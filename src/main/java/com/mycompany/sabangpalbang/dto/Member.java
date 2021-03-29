@@ -4,9 +4,14 @@ import java.util.Date;
 
 public class Member {
 	private String member_email;
+	private String member_email2;
 	private String member_pw;
 	private String member_name;
+	
 	private String member_phone;
+	private String tel_pre;
+	private String tel_suf;
+
 	private String member_nickname;
 	private int member_enable;
 	private String member_authority;
@@ -82,4 +87,25 @@ public class Member {
 	public void setDetailaddress(String detailaddress) {
 		this.detailaddress = detailaddress;
 	}
+	
+	
+	public String getMember_email2() {
+		return member_email2;
+	}
+	public void setMember_email2(String member_email2) {
+		this.member_email2 = member_email2;
+	}
+	public String getTel_pre() {
+		return tel_pre;
+	}
+	public void setTel_pre(String tel_pre) {
+		this.tel_pre = tel_pre;
+	}
+	public String getTel_suf() {
+		return tel_suf;
+	}
+	public void setTel_suf(String tel_suf) {
+		this.tel_suf = tel_suf;
+	}
+	
 }
