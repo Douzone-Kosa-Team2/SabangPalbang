@@ -21,6 +21,9 @@ public class Member {
 	private String roadaddress;
 	private String detailaddress;
 	
+	
+	
+	
 	public int getMember_id() {
 		return member_id;
 	}
