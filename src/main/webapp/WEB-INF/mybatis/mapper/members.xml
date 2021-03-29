@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="euc-kr" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.mycompany.sabangpalbang.dao.MemberDao">
+<mapper namespace="com.mycompany.sabangpalbang.dao.MembersDao">
 	<insert id="insertByMember" parameterType="member">
 		
 		insert into member
