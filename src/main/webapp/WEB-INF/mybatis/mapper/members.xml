@@ -3,28 +3,37 @@
 
 <mapper namespace="com.mycompany.sabangpalbang.dao.MemberDao">
 	<insert id="insertByMember" parameterType="member">
-	<selectKey keyProperty="member_id" resultType="int" order="BEFORE">
+		<selectKey keyProperty="member_id" resultType="int"
+			order="BEFORE">
 			select seq_member_id.nextval from dual
-	</selectKey>
+		</selectKey>
 		insert into member
-		(member_id, member_email, member_pw, member_name, member_phone, member_nickname, member_enable, member_authority, join_date, zipcode, roadaddress, detailaddress)
+		(member_id, member_email, member_pw, member_name,
+		member_phone, member_nickname, member_enable, member_authority,
+		join_date, zipcode, roadaddress, detailaddress)
 		values
-		(#{member_id}, #{member_email}, #{member_pw}, #{member_name}, #{member_phone}, #{member_nickname}, #{member_enable}, #{member_authority}, #{join_date}, #{zipcode}, #{roadaddress}, #{detailaddress})
+		(#{member_id},
+		#{member_email}, #{member_pw}, #{member_name}, #{member_phone},
+		#{member_nickname}, #{member_enable}, #{member_authority},
+		#{join_date}, #{zipcode}, #{roadaddress}, #{detailaddress})
 	</insert>
-	
-	
-	<select id="selectByMember" parameterType="string" resultType="member">
-  		select member_id, member_email, member_pw, member_name, member_phone, member_nickname, zipcode, roadaddress, detailaddress
-  		from member
-  		where member_id=#{member_id}
-  	</select>
-  	
-  	<select id="selectByPayMember" parameterType="string" resultType="member">
-  		select member_name, zipcode, roadaddress, detailaddress, member_phone
-  		from member
-  		where member_id=#{member_id}
-  	</select>
-  	
+
+
+	<select id="selectByMember" parameterType="string"
+		resultType="member">
+		select member_id, member_email, member_pw, member_name, member_phone,
+		member_nickname, zipcode, roadaddress, detailaddress
+		from member
+		where member_id=#{member_id}
+	</select>
+
+	<select id="selectByPayMember" parameterType="string"
+		resultType="member">
+		select member_name, zipcode, roadaddress, detailaddress, member_phone
+		from member
+		where member_id=#{member_id}
+	</select>
+
 	<update id="updateByMember" parameterType="member">
 		update member set
 		member_pw=#{member_pw},
@@ -35,14 +44,12 @@
 		member_nickname=#{member_nickname}
 		where member_id=#{member_id}
 	</update>
-	
+
 	<delete id="deleteByMember" parameterType="string">
 		delete from member
 		where member_id=#{member_id}
 	</delete>
-	
-	
-	
-	<!-- 이메일 찾기, 비번 찾기는 낼 수업때 배우고 난 후 -->
+
+
 </mapper>
 
