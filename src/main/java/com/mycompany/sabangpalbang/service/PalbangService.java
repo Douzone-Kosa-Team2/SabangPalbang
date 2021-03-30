@@ -15,8 +15,11 @@ public class PalbangService {
 	private PalbangDao palbangDao;
 	
 	public List<Palbang> getPalbangList(Pager pager) {
+		
 		List<Palbang> list = palbangDao.selectByPage2(pager);
+		
 		return list;
+		
 	}
 	
 	public int getTotalRows() {
