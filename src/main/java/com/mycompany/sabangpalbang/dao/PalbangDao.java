@@ -20,5 +20,6 @@ public interface PalbangDao {
 	public List<Palbang> selectByView(Pager pager);
 	public List<Palbang> selectByNew(Pager pager);
 	public List<Palbang> selectByOld(Pager pager);
+	public Palbang selectById(int pid);
 	
 }

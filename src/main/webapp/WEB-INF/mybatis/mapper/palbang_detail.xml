@@ -11,15 +11,14 @@
 		(#{palbang_detailno}, #{palbang_id}, #{palbang_dimgoname}, #{palbang_dimgsname}, #{palbang_dimgtype}, #{palbang_explain})	
 	</insert>
 	
-	<select id="selectAll" resultType="palbang_detail">
+	<select id="selectAll" parameterType="int" resultType="palbang_detail">
 		select palbang_detailno, palbang_id, palbang_dimgoname, palbang_dimgsname, palbang_dimgtype, palbang_explain
 		from palbang_detail
-		order by palbang_detailno desc
+		where palbang_id=#{palbang_id}
 	</select>
 	
 	<update id="update" parameterType="palbang_detail">
 		update palbang_detail set
-		
 		palbang_dimgoname=#{palbang_dimgoname}, 
 		palbang_dimgsname=#{palbang_dimgsname}, 
 		palbang_dimgtype=#{palbang_dimgtype}, 

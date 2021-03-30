@@ -4,17 +4,23 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.sabangpalbang.dto.Pager;
 import com.mycompany.sabangpalbang.dto.Palbang;
+import com.mycompany.sabangpalbang.dto.Palbang_detail;
+import com.mycompany.sabangpalbang.service.MemberService;
 import com.mycompany.sabangpalbang.service.PalbangService;
 
 
@@ -23,6 +29,9 @@ import com.mycompany.sabangpalbang.service.PalbangService;
 public class PalbangController {
 	@Autowired
 	private PalbangService palbangService;
+	
+	@Autowired
+	private MemberService memberService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(PalbangController.class);
 	
@@ -76,10 +85,51 @@ public class PalbangController {
 		logger.info("palbang_update 메시지");
 		return "palbang/palbang_update";
 	}
-	@RequestMapping(value = "/palbang_detail")
-	public String palbang_detail() {
-		logger.info("palbang_detail 메시지 - 222222");
+	@GetMapping("/palbang_detail")
+	public String palbang_detail(int pid, Model model, Authentication auth) {
+		logger.info("palbang_detail 메시지");
+		
+		Palbang palbang = palbangService.getPalbang(pid);
+		List<Palbang_detail> palbanglist = palbangService.getPalbangDetail(pid);
+		String email = memberService.getEmailByNickname(palbang.getPalbang_nickname());
+		logger.info(""+ pid);
+		logger.info(""+ palbang.getPalbang_id());
+		logger.info(""+ palbanglist.get(0).getPalbang_detailno());
+		
+		if(auth != null && auth.getName().equals(email)) {
+			model.addAttribute("email", 1);	
+		}else {
+			model.addAttribute("email", 0);
+		}
+		model.addAttribute("palbang", palbang);
+		model.addAttribute("palbanglist", palbanglist);
 		return "palbang/palbang_detail";
 	}
+	   @PostMapping(value="/likeUp", produces="application/json;charset=UTF-8")
+	   @ResponseBody
+	   public String likeUp(int palbang_id, Authentication auth) {
+		
+		   String member_email = auth.getName();
+		   
+		   int member_id = memberService.getIdByEmail(member_email);
+		   palbangService.insertLike(palbang_id, member_id);
+		  logger.info("0");
+		  
+		   
+	      JSONObject jsonObject = new JSONObject();
+	      jsonObject.put("result","success");
+	      
+	      return jsonObject.toString();
+	   }
+	   
+	   @GetMapping(value="/likeDown", produces="application/json;charset=UTF-8")
+	   @ResponseBody
+	   public String likeDown() {
+	     
+	      JSONObject jsonObject = new JSONObject();
+	      jsonObject.put("result","success");
+	      
+	      return jsonObject.toString();
+	   }
 	
 }

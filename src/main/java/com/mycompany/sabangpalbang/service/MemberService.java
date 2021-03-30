@@ -72,6 +72,16 @@ public class MemberService {
 	        return sb.toString();
 	    }
 
+	public String getEmailByNickname(String palbang_nickname) {
+		String email = memberDao.selectEmailByNickname(palbang_nickname);
+		return email;
+	}
+
+	public int getIdByEmail(String member_email) {
+		int member_id = memberDao.selectIdByEmail(member_email);
+		return member_id;
+	}
+
 
 	
 	

@@ -112,7 +112,12 @@
 		)
 		where rnum &gt;= #{startRowNo}
 	</select>
-   
+   	
+   	<select id="selectById" parameterType="int" resultType="palbang">
+   		select palbang_id, palbang_title, palbang_nickname, palbang_likecount, palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
+		from palbang
+		where palbang_id=#{palbang_id}
+   	</select>
    
    <select id="count2" resultType="int">
       select count(*) from palbang

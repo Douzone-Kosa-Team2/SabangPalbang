@@ -26,7 +26,7 @@
 					<c:forEach var="palbang" items="${list}">
 						<div class="palbang_div3_line"> <!-- 게시물 첫번째 행 , 게시물 3개 포함 -->
 							<div class="palbang_div3_line_item">
-								<a class="palbang_div3_move" href="palbang_detail"> 
+								<a class="palbang_div3_move" href="palbang_detail?pid=${palbang.palbang_id}"> 
 									<img src="resources/images/palbang_post/${palbang.palbang_imgoname}" height="200"><br/> 
 									<div style="font-size: 1.3em;">${palbang.palbang_title}</div>
 								    <div style="font-size: 1em;">${palbang.palbang_nickname}</div>

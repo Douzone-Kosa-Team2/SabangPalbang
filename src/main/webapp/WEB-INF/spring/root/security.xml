@@ -26,7 +26,10 @@
 		<security:intercept-url pattern="/palbang_create" access="hasRole('ROLE_MEMBER')"/>
 		<security:intercept-url pattern="/palbang_update" access="hasRole('ROLE_MEMBER')"/>
 		
+		<security:intercept-url pattern="/likeUp" access="hasRole('ROLE_MEMBER')"/>
+		<security:intercept-url pattern="/likeDown" access="hasRole('ROLE_MEMBER')"/>
 		<security:intercept-url pattern="/**" access="permitAll"/>
+	
 		
 		<!-- 로그인/로그아웃 설정 -->
 		<security:form-login 

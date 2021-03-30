@@ -37,6 +37,21 @@
 		where member_id=#{member_id}
 	</select>
 
+	<select id="selectEmailByNickname" parameterType="string"
+		resultType="string">
+		select member_email
+		from member
+		where member_nickname=#{member_nickname}
+	</select>
+	
+	<select id="selectIdByEmail" parameterType="string"
+		resultType="int">
+		select member_id
+		from member
+		where member_email=#{member_email}
+	</select>
+	
+	
 	<update id="updateByMember" parameterType="member">
 		update member set
 		member_pw=#{member_pw},

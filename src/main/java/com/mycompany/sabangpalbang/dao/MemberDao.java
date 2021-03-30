@@ -18,5 +18,7 @@ public interface MemberDao {
 									@Param("member_name") String member_name, 
 									@Param("member_phone")String member_phone);
 	public int updateRandPwd(@Param("member_email") String member_email , @Param("member_pw") String member_pw);
+	public String selectEmailByNickname(String palbang_nickname);
+	public int selectIdByEmail(String member_email);
 	
 }
