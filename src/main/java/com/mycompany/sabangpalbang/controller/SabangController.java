@@ -85,9 +85,17 @@ public class SabangController {
 		return "sabang/pop_ask";
 	}
 
-	@RequestMapping(value = "/sabang_detail")
+	@GetMapping("/sabang_detail")
 	public String sabang_detail() {
 		logger.info("sabang_detail 메시지");
+		
+		
+		
+		
+		
+		
+		
+		
 		return "sabang/sabang_detail";
 	}
 

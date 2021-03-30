@@ -47,21 +47,13 @@ public class AuthController {
 			logger.info("findEmailForm 메시지");
 			return "auth/findEmailForm";
 		}
-		@PostMapping("/findEmail_successForm")
-		public String findEmail_successForm() {
-			logger.info("findEmail_successForm 메시지");
-			return "auth/findEmail_successForm";
-		}
+
 		@GetMapping("/resetPwForm")
 		public String resetPwForm() {
 			logger.info("resetPwForm 메시지");
 			return "auth/resetPwForm";
 		}
-		@PostMapping("/resetPw_successForm")
-		public String resetPw_successForm() {
-			logger.info("resetPw_successForm 메시지");
-			return "auth/resetPw_successForm";
-		}
+
 		
 		//동작 부분
 		
