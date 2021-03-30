@@ -2,6 +2,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
+
+<script>
+	const salepercent = (price, saleprice) => {
+		const percent = (price-saleprice)/price*100; 
+		$(".percent").html(Math.floor(percent)+"%");
+	};
+</script>
+
 <!-- sabang_main -->
 <div class="sabang_main">
 	<div class="sabang_div1">
@@ -25,12 +33,22 @@
 				<div class="sabang_div3_line_item">
 					<a class="sabang_div3_move" href="sabang_detail"> <img
 						src="resources/images/sabang_post/${sabang.sabang_imgoname}"
-						height="200"><br /> ${sabang.sabang_name}<br /> <span
-						class="price"
-						style="color: gray; font-size: 0.9em; text-decoration-line: line-through; font-family: 'Cafe24Dangdanghae';">&#8361;
-							${sabang.sabang_price}</span><br /> <span class="price"><text
-								style="font-family: 'Cafe24Dangdanghae';">&#8361;</text>${sabang.sabang_saleprice}</span>
-						<span style="color: red;">20%</span>
+						height="200"><br /> ${sabang.sabang_name}<br /> 
+						
+						<c:if test="${sabang.sabang_price != sabang.sabang_saleprice}">
+							<span
+							class="price"
+							style="color: gray; font-size: 0.9em; text-decoration-line: line-through; font-family: 'Cafe24Dangdanghae';">&#8361;
+								${sabang.sabang_price}</span><br /> <span class="price">
+								
+									<text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text>${sabang.sabang_saleprice}</span>
+									<span style="color: red;" class="percent">
+										<script>salepercent(${sabang.sabang_price}, ${sabang.sabang_saleprice});</script>
+									</span>
+						</c:if>
+						<c:if test="${sabang.sabang_price == sabang.sabang_saleprice}">
+								<text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text>${sabang.sabang_saleprice}</span>
+						</c:if>
 					</a>
 				</div>
 			</div>

@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="resources/css/main_4989.css">
 <link rel="stylesheet" href="resources/css/main_4989_2.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-<script src="resources/js/jquery-3.5.1.min.js"></script>
+<script src="resources/jquery/jquery-3.5.1.min.js"></script>
 <script src="resources/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js"></script>
 <script src="resources/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
 <script type="text/javascript">
