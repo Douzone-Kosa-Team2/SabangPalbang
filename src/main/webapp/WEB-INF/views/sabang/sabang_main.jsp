@@ -31,7 +31,7 @@
 		<c:forEach var="sabang" items="${list}">
 			<div class="sabang_div3_line ">
 				<div class="sabang_div3_line_item">
-					<a class="sabang_div3_move" href="sabang_detail"> <img
+					<a class="sabang_div3_move" href="sabang_detail?sid=${sabang.sabang_id}"> <img
 						src="resources/images/sabang_post/${sabang.sabang_imgoname}"
 						height="200"><br /> ${sabang.sabang_name}<br /> 
 						

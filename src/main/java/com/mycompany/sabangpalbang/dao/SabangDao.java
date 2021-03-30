@@ -19,5 +19,7 @@ public interface SabangDao {
 	public List<Sabang> selectByLow(Pager pager);
 	public List<Sabang> selectByHigh(Pager pager);
 	public List<Sabang> selectByView(Pager pager);
+	//사방 아이디에 따른 패키지 가져오기
+	public Sabang selectById(int sid);
 	
 }

@@ -5,14 +5,19 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mycompany.sabangpalbang.dao.ProductDao;
 import com.mycompany.sabangpalbang.dao.SabangDao;
 import com.mycompany.sabangpalbang.dto.Pager;
+import com.mycompany.sabangpalbang.dto.Product;
 import com.mycompany.sabangpalbang.dto.Sabang;
 
 @Service
 public class SabangService {
 	@Autowired
 	private SabangDao sabangDao;
+	
+	@Autowired
+	private ProductDao productDao;
 	
 	public List<Sabang> getSabangList_Buy(Pager pager) {
 		List<Sabang> list = sabangDao.selectByBuy(pager);
@@ -37,5 +42,16 @@ public class SabangService {
 	public int getTotalRows() {
 		int rows = sabangDao.count();
 		return rows;
+	}
+
+	public List<Product> getSabangDetail(int sid) {
+		List<Product> productlist = productDao.selectAll(sid);
+		return productlist;
+	}
+
+	public Sabang getSabang(int sid) {
+		Sabang sabang = sabangDao.selectById(sid);
+		return sabang;
+		
 	}
 }

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.sabangpalbang.dto.Pager;
-import com.mycompany.sabangpalbang.dto.Palbang;
+import com.mycompany.sabangpalbang.dto.Product;
 import com.mycompany.sabangpalbang.dto.Sabang;
 import com.mycompany.sabangpalbang.service.SabangService;
 
@@ -86,16 +86,18 @@ public class SabangController {
 	}
 
 	@GetMapping("/sabang_detail")
-	public String sabang_detail() {
+	public String sabang_detail(int sid, Model model) {
 		logger.info("sabang_detail 메시지");
 		
+		//사방 아이디에 대한 사방 정보 가져오기
+		Sabang sabang = sabangService.getSabang(sid);
 		
+		//사방 아이디에 대한 품목 리스트를 가져오기
+		List<Product> productList = sabangService.getSabangDetail(sid);
 		
-		
-		
-		
-		
-		
+		model.addAttribute("sabang", sabang);
+		model.addAttribute("productList",productList);
+	
 		return "sabang/sabang_detail";
 	}
 
