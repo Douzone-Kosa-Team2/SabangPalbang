@@ -25,41 +25,30 @@
 	<div class="sabang_detail_1">
 
 		<div class="sabang_detail_1_main_image">
-			<img src="resources/images/sabang_detail/sb1_0.png" id="changeImg_big" height="500px" width="500px">
+			<img src="resources/images/sabang_post/${sabang.sabang_imgoname}" id="changeImg_big" height="500px" width="500px">
 
 		</div>
 
 		<div class="sabang_detail_1_price_list">
 			<div class="sabang_detail_1_list_title">
-				<strong>아늑하고 따뜻한 방</strong>
+				<strong>${sabang.sabang_name}</strong>
 			</div>
-			<div class="sabang_detail_1_list_name">
+			<div class="sabang_detail_1_list_name d-flex flex-row">
+			
 				<div class="sabang_detail_1_list_name_name">
-					<div>스카르스타</div>
-					<div>크란스크라게</div>
-					<div>글라돔</div>
-					<div>테르티알</div>
+					<c:forEach var="product" items="${productList}">
+						<div>${product.product_name}</div>
+					</c:forEach>
 				</div>
 				<div class="sabang_detail_1_list_name_price">
-					<div><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text> 150,000</div>
-					<div><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text> 50,000</div>
-					<div><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text> 100,000</div>
-					<div><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text> 50,000</div>
+					<c:forEach var="product" items="${productList}">
+					
+						<div><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text>${product.product_price}</div>
+						<div><input class="form-check-input" type="checkbox" value="${product.product_id}" checked></div>
+						
+					</c:forEach>
 				</div>
-				<div class="sabang_detail_1_list_name_check">
-					<div>
-						<img src="resources/images/common/plus_minus_bt.png">
-					</div>
-					<div>
-						<img src="resources/images/common/plus_minus_bt.png">
-					</div>
-					<div>
-						<img src="resources/images/common/plus_minus_bt.png">
-					</div>
-					<div>
-						<img src="resources/images/common/plus_minus_bt.png">
-					</div>
-				</div>
+				
 
 			</div>
 			<div class="sabang_detail_1_total_price">
@@ -92,22 +81,12 @@
 				<img class="sabang_detail_1_goods_div_img" src="resources/images/sabang_detail/sb1_0.png"
 					width="100" onmouseover="changeImg(0)">
 			</div>
-			<div>
-				<img class="sabang_detail_1_goods_div_img" src="resources/images/sabang_detail/sb1_1.png"
-					width="100" onmouseover="changeImg(1)">
-			</div>
-			<div>
-				<img class="sabang_detail_1_goods_div_img" src="resources/images/sabang_detail/sb1_2.png"
-					width="100" height="100" onmouseover="changeImg(2)">
-			</div>
-			<div>
-				<img class="sabang_detail_1_goods_div_img" src="resources/images/sabang_detail/sb1_3.png"
-					width="100" height="100" onmouseover="changeImg(3)">
-			</div>
-			<div>
-				<img class="sabang_detail_1_goods_div_img" src="resources/images/sabang_detail/sb1_4.png"
-					width="100" height="100" onmouseover="changeImg(4)">
-			</div>
+			<c:forEach var="product" items="${productList}">
+				<div>
+					<img class="sabang_detail_1_goods_div_img" src="resources/images/sabang_detail/${product.product_imgsname}"
+						width="100" onmouseover="changeImg(1)">
+				</div>
+			</c:forEach>
 		</div>
 		<div class="sabang_detail_1_Explanatin">
 			<div class="sabang_detail_1_Explanatin_top">
@@ -124,115 +103,30 @@
 	<!-- 상품1 -->
 
 	<div class="sabang_detail_2">
-
-		<div class="sabang_detail_2_content">
-
-			<div class="sabang_detail_2_content_img">
-				<img src="resources/images/sabang_detail/sb1_1.png" />
-			</div>
-
-			<div class="sabang_detail_2_content_txt">
-
-				<div class="sabang_detail_2_content_txt_header"></div>
-				<h3>테트티알 &nbsp;&nbsp;<text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text>50,000</h3>
-				<div class="sabang_detail_2_content_txt_content">
-					<div class="sabang_detail_2_content_txt_content_1">
-						<p>조명의 각도를 자유롭게 조절하여 원하는 곳에 빛을 비출 수 있습니다.</p>
-						<p>탁상스탠드 또는 벽부착등으로 사용할 수 있습니다.</p>
-						<p>조명은 별도구매입니다. LED전구 E26사용을 권장합니다.</p>
-					</div>
-					<div class="sabang_detail_2_content_txt_content_2">
-						<p>최대: 13W</p>
-						<p>갓 지름: 17cm</p>
-						<p>코드 길이: 1.5m</p>
+		<c:forEach var="product" items="${productList}">
+			<div class="sabang_detail_2_content">
+	
+				<div class="sabang_detail_2_content_img">
+					<img src="resources/images/sabang_detail/${product.product_imgsname}"/>
+				</div>
+	
+				<div class="sabang_detail_2_content_txt">
+	
+					<div class="sabang_detail_2_content_txt_header"></div>
+					<h3>${product.product_name} &nbsp;&nbsp;<text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text>${product.product_price}</h3>
+					<div class="sabang_detail_2_content_txt_content">
+						<div class="sabang_detail_2_content_txt_content_1">
+							<p>${product.product_explain1}</p>
+							
+						</div>
+						<div class="sabang_detail_2_content_txt_content_2">
+							<p>${product.product_explain2}</p>
+							
+						</div>
 					</div>
 				</div>
 			</div>
-
-		</div>
-		<!-- 상품2 -->
-
-		<div class="sabang_detail_2_content">
-
-			<div class="sabang_detail_2_content_img">
-				<img src="resources/images/sabang_detail/sb1_2.png" />
-			</div>
-
-			<div class="sabang_detail_2_content_txt">
-
-				<div class="sabang_detail_2_content_txt_header"></div>
-				<h3>크란스크라게 &nbsp;&nbsp; <text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text>50,000</h3>
-				<div class="sabang_detail_2_content_txt_content">
-					<div class="sabang_detail_2_content_txt_content_1">
-						<p>125 TC(스레드카운트).</p>
-						<p>TC(스레드카운트)는 패브릭의 제곱인치당 실의 수를 나타냅니다.</p>
-						<p>TC(스레드카운트)가 높을수록 페브릭이 촘촘합니다.</p>
-						<p>다양한 사이즈 중에서 선택할 수 있습니다.</p>
-					</div>
-					<div class="sabang_detail_2_content_txt_content_2">
-						<p>면 100%</p>
-						<p>세탁기,최대 60'C, 표준 코스,</p>
-						<p>표백하지 마세요.</p>
-						<p>건조기, 표준 코스(최대80'C.)</p>
-						<p>드라이클리닝하지 마세요.</p>
-					</div>
-				</div>
-			</div>
-
-		</div>
-		<!-- 상품3 -->
-
-		<div class="sabang_detail_2_content">
-
-			<div class="sabang_detail_2_content_img">
-				<img src="resources/images/sabang_detail/sb1_3.png" />
-			</div>
-
-			<div class="sabang_detail_2_content_txt">
-
-				<div class="sabang_detail_2_content_txt_header"></div>
-				<h3>스카르스타 &nbsp;&nbsp;<text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text>150,000</h3>
-				<div class="sabang_detail_2_content_txt_content">
-					<div class="sabang_detail_2_content_txt_content_1">
-						<p>손잡이를 돌려 책상 높이를 70~120cm로 조절할 수 있습니다. 일하는.</p>
-						<p>자세에 맞게 가장 편안한 높이로 맞춰보세요.</p>
-						<p></p>
-						<p>앉아서 또는 서서 사용할 수 있습니다. 장시간 같은 자세에서 오는</p>
-						<p>피로감을 덜어주며 집중력도 높여줍니다.</p>
-					</div>
-					<div class="sabang_detail_2_content_txt_content_2">
-						<img src="resources/images/sabang_detail/sb1_3_1.png" />
-					</div>
-				</div>
-			</div>
-
-		</div>
-
-		<!-- 상품4 -->
-
-		<div class="sabang_detail_2_content">
-
-			<div class="sabang_detail_2_content_img">
-				<img src="resources/images/sabang_detail/sb1_4.png" />
-			</div>
-
-			<div class="sabang_detail_2_content_txt">
-
-				<div class="sabang_detail_2_content_txt_header"></div>
-				<h3>글라돔 &nbsp;&nbsp;<text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text>100,000</h3>
-				<div class="sabang_detail_2_content_txt_content">
-					<div class="sabang_detail_2_content_txt_content_1">
-						<p>트레이를 빼서 쟁반으로 사용할 수도 있습니다.</p>
-						<p>테두리가 있어서 옮기기 쉽고 유리잔이나 그릇이 밖으로 떨어지지</p>
-						<p>않습니다.</p>
-					</div>
-					<div class="sabang_detail_2_content_txt_content_2">
-						<img src="resources/images/sabang_detail/sb1_4_1.png" />
-					</div>
-				</div>
-			</div>
-
-		</div>
+		</c:forEach>	
 	</div>
 
 
