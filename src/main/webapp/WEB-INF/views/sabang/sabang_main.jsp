@@ -10,12 +10,12 @@
 	</div>
 	<div class="sabang_div2">
 		<ul class="sabang_div2_sort_type">
-			<li class="menu"><a class="sabang_div3_move" href="">판매율 순</a></li>
-			<li class="menu"><a class="sabang_div3_move" href=""
+			<li class="menu"><a class="sabang_div3_move" href="sabang_main?std=0">판매율 순</a></li>
+			<li class="menu"><a class="sabang_div3_move" href="sabang_main?std=1"
 				style="color: gray;">낮은 가격 순</a></li>
-			<li class="menu"><a class="sabang_div3_move" href=""
+			<li class="menu"><a class="sabang_div3_move" href="sabang_main?std=2"
 				style="color: gray;">높은 가격 순</a></li>
-			<li class="menu"><a class="sabang_div3_move" href=""
+			<li class="menu"><a class="sabang_div3_move" href="sabang_main?std=3"
 				style="color: gray;">조회수 순</a></li>
 		</ul>
 	</div>
@@ -43,27 +43,27 @@
 				<tr>
 					<!-- 처음 이전 12345 다음 맨끝 -->
 					<td colspan="5" class="text-center"><a
-						class="btn btn-outline-primary btn-sm" href="sabang_main?pageNo=1">처음</a>
+						class="btn btn-outline-primary btn-sm" href="sabang_main?std=${stdno}&pageNo=1">처음</a>
 	
 						<c:if test="${pager.groupNo>1}">
 							<a class="btn btn-outline-info btn-sm"
-								href="sabang_main?pageNo=${pager.startPageNo-1}">이전</a>
+								href="sabang_main?std=${stdno}&pageNo=${pager.startPageNo-1}">이전</a>
 						</c:if> <c:forEach var="i" begin="${pager.startPageNo}"
 							end="${pager.endPageNo}">
 	
 							<c:if test="${pager.pageNo!=i}">
 								<a class="btn btn-outline-success btn-sm"
-									href="sabang_main?pageNo=${i}">${i}</a>
+									href="sabang_main?std=${stdno}&pageNo=${i}">${i}</a>
 							</c:if>
 							<c:if test="${pager.pageNo==i}">
 								<a class="btn btn-outline-danger btn-sm"
-									href="sabang_main?pageNo=${i}">${i}</a>
+									href="sabang_main?std=${stdno}&pageNo=${i}">${i}</a>
 							</c:if>
 						</c:forEach> <c:if test="${pager.groupNo<pager.totalGroupNo}">
 							<a class="btn btn-outline-info btn-sm"
-								href="sabang_main?pageNo=${pager.endPageNo+1}">다음</a>
+								href="sabang_main?std=${stdno}&pageNo=${pager.endPageNo+1}">다음</a>
 						</c:if> <a class="btn btn-outline-primary btn-sm"
-						href="sabang_main?pageNo=${pager.totalPageNo}">맨끝</a></td>
+						href="sabang_main?std=${stdno}&pageNo=${pager.totalPageNo}">맨끝</a></td>
 				</tr>
 			</table>
 		</div>

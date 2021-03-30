@@ -14,12 +14,24 @@ public class SabangService {
 	@Autowired
 	private SabangDao sabangDao;
 	
-	public List<Sabang> getSabangList(Pager pager) {
-		
-		List<Sabang> list = sabangDao.selectByPage(pager);
-		
-		return list;
-		
+	public List<Sabang> getSabangList_Buy(Pager pager) {
+		List<Sabang> list = sabangDao.selectByBuy(pager);
+		return list;	
+	}
+	
+	public List<Sabang> getSabangList_Low(Pager pager) {
+		List<Sabang> list = sabangDao.selectByLow(pager);
+		return list;	
+	}
+	
+	public List<Sabang> getSabangList_High(Pager pager) {
+		List<Sabang> list = sabangDao.selectByHigh(pager);
+		return list;	
+	}
+	
+	public List<Sabang> getSabangList_View(Pager pager) {
+		List<Sabang> list = sabangDao.selectByView(pager);
+		return list;	
 	}
 	
 	public int getTotalRows() {
