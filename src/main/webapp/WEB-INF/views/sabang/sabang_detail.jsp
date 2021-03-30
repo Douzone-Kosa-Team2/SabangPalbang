@@ -121,7 +121,7 @@
 				<div class="sabang_detail_2_content_txt">
 	
 					<div class="sabang_detail_2_content_txt_header"></div>
-					<h3>${product.product_name} &nbsp;&nbsp;<text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text>${product.product_price}</h3>
+					<h3>${product.product_name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<text style="font-family:'Cafe24Dangdanghae';">&#8361;</text>&nbsp;&nbsp;${product.product_price}</h3>
 					<div class="sabang_detail_2_content_txt_content">
 						<div class="sabang_detail_2_content_txt_content_1">
 							<p>${product.product_explain1}</p>
