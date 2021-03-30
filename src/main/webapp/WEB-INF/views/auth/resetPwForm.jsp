@@ -10,7 +10,7 @@
 
 		</div>
 
-		<form method="post" action="resetPw">
+		<form method="post" action="findPwdDo">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			<div class="resetPw_input">
 				<div class="mb-3">
