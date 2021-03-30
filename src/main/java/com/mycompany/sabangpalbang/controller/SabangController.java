@@ -54,6 +54,10 @@ public class SabangController {
 
 		return "sabang/sabang_main";
 	}
+	
+	// 사방 정렬 (판매율순 / 낮은 가격순/ 높은 가격순 / 조회수순 )
+	
+	
 
 	@RequestMapping(value = "/sabang_search")
 	public String sabang_search() {
