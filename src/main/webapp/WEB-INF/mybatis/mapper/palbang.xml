@@ -36,8 +36,9 @@
 		delete from palbang
 		where palbang_id=#{palbang_id}
 	</delete>
-	
-	<select id="selectByPage2" parameterType="pager"
+
+   	<!-- 팔방 정렬_ 좋아요 순  -->
+   <select id="selectByLike" parameterType="pager"
 		resultType="palbang">
 		select rnum, palbang_id, palbang_title, palbang_nickname, palbang_likecount, 
 		palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
@@ -48,14 +49,73 @@
 				select palbang_id, palbang_title, palbang_nickname, palbang_likecount, 
 				palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
 				from palbang
-				order by palbang_id desc
+				order by palbang_likecount desc
 			)
 			where rownum &lt;= #{endRowNo}
 		)
 		where rnum &gt;= #{startRowNo}
 	</select>
-	
-	<select id="count2" resultType="int">
+   
+   	<!-- 팔방 정렬_ 조회수 순  -->
+   	<select id="selectByView" parameterType="pager"
+		resultType="palbang">
+		select rnum, palbang_id, palbang_title, palbang_nickname, palbang_likecount, 
+		palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
+		from (
+			select rownum as rnum, palbang_id, palbang_title, palbang_nickname, palbang_likecount,
+			 palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
+			from (
+				select palbang_id, palbang_title, palbang_nickname, palbang_likecount, 
+				palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
+				from palbang
+				order by palbang_viewcount desc
+			)
+			where rownum &lt;= #{endRowNo}
+		)
+		where rnum &gt;= #{startRowNo}
+	</select>
+   	
+   	<!-- 팔방 정렬_ 등록일 순  -->
+   		<select id="selectByNew" parameterType="pager"
+		resultType="palbang">
+		select rnum, palbang_id, palbang_title, palbang_nickname, palbang_likecount, 
+		palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
+		from (
+			select rownum as rnum, palbang_id, palbang_title, palbang_nickname, palbang_likecount,
+			 palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
+			from (
+				select palbang_id, palbang_title, palbang_nickname, palbang_likecount, 
+				palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
+				from palbang
+				order by palbang_date desc
+			)
+			where rownum &lt;= #{endRowNo}
+		)
+		where rnum &gt;= #{startRowNo}
+	</select>
+   		
+   	<!-- 팔방 정렬_ 오래된 순  -->
+   	<select id="selectByOld" parameterType="pager"
+		resultType="palbang">
+		select rnum, palbang_id, palbang_title, palbang_nickname, palbang_likecount, 
+		palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
+		from (
+			select rownum as rnum, palbang_id, palbang_title, palbang_nickname, palbang_likecount,
+			 palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
+			from (
+				select palbang_id, palbang_title, palbang_nickname, palbang_likecount, 
+				palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
+				from palbang
+				order by palbang_date
+			)
+			where rownum &lt;= #{endRowNo}
+		)
+		where rnum &gt;= #{startRowNo}
+	</select>
+   
+   
+   <select id="count2" resultType="int">
       select count(*) from palbang
    </select>
+   
 </mapper>
