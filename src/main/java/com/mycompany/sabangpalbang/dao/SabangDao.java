@@ -13,6 +13,11 @@ public interface SabangDao {
 	public int selectBySabang(int sabang_id);
 	public int updateBySabang(Sabang sabang);
 	public String deleteBySabang(int sabang_id);
-	public List<Sabang> selectByPage(Pager pager);
 	public int count();
+	// 정렬 4가지 
+	public List<Sabang> selectByBuy(Pager pager);
+	public List<Sabang> selectByLow(Pager pager);
+	public List<Sabang> selectByHigh(Pager pager);
+	public List<Sabang> selectByView(Pager pager);
+	
 }

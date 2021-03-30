@@ -58,10 +58,10 @@ public class PalbangController {
 		}else {
 			list = palbangService.getPalbangList_Old(pager);
 		}
-	
 
 		model.addAttribute("list", list);
 		model.addAttribute("pager", pager);
+		model.addAttribute("stdno", std);
 		
 		return "palbang/palbang_main";
 	}
