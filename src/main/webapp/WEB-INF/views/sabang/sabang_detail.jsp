@@ -9,16 +9,23 @@
 		var imgSize = smallImg.length;
 		
 		for(var i=0;i<imgSize;i++){
-			if(i==num){
-				
-				bigImg.src= "resources/images/sabang_detail/sb1_"+i+".png";
-				smallImg[i].style.opacity = "1";
+			if(i==num){				
+				if(i==0){
+					bigImg.src= "resources/images/sabang_post/${sabang.sabang_imgoname}";
+					smallImg[i].style.opacity = "1";
+				}
+				else{
+					bigImg.src= "resources/images/sabang_detail/sb1_"+i+".png";
+					smallImg[i].style.opacity = "1";
+				}
 			}
 			else{
 				smallImg[i].style.opacity = "0.6";
 			}
 		}
 	}
+	
+	
 </script>
 
 <!-- 상세페이지 1 -->
@@ -44,7 +51,8 @@
 					<c:forEach var="product" items="${productList}">
 					
 						<div><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text>${product.product_price}</div>
-						<div><input class="form-check-input" type="checkbox" value="${product.product_id}" checked></div>
+						<div><input class="form-check-input" type="checkbox" value="${product.product_id}" 
+									name="products" onclick="totalPrice(${product.product_price})" checked></div>
 						
 					</c:forEach>
 				</div>
@@ -53,8 +61,8 @@
 			</div>
 			<div class="sabang_detail_1_total_price">
 				<div class="sabang_detail_1_total_font">총합</div>
-				<div class="sabang_detail_1_total_price_font">
-					<strong><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text> 350,000</strong>
+				<div class="sabang_detail_1_total_price_font" id="sabang_detail_1_total_price">
+					<strong><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text></strong>
 				</div>
 			</div>
 			<div class="sabang_detail_1_trolley_buyButton">
@@ -78,13 +86,13 @@
 	<div class="sabang_detail_1_good_Explanatin">
 		<div class="sabang_detail_1_goods_div">
 			<div>
-				<img class="sabang_detail_1_goods_div_img" src="resources/images/sabang_detail/sb1_0.png"
+				<img class="sabang_detail_1_goods_div_img" src="resources/images/sabang_post/${sabang.sabang_imgoname}"
 					width="100" onmouseover="changeImg(0)">
 			</div>
-			<c:forEach var="product" items="${productList}">
+			<c:forEach var="product" items="${productList}" varStatus="status">
 				<div>
 					<img class="sabang_detail_1_goods_div_img" src="resources/images/sabang_detail/${product.product_imgsname}"
-						width="100" onmouseover="changeImg(1)">
+						width="100" onmouseover="changeImg(${status.count})">
 				</div>
 			</c:forEach>
 		</div>
