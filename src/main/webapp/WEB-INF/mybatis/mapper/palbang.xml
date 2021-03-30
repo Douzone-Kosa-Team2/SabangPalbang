@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="euc-kr" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.sabangpalbang.dao.PalbangDao">
-	<select id="selectByPage2" parameterType="pager"
-		resultType="palbang">
-		select rnum, palbang_id, palbang_title, palbang_nickname, palbang_likecount, 
-		palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
-		from (
-			select rownum as rnum, palbang_id, palbang_title, palbang_nickname, palbang_likecount,
-			 palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
-			from (
-				select palbang_id, palbang_title, palbang_nickname, palbang_likecount, 
-				palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
-				from palbang
-				order by palbang_id desc
-			)
-			where rownum &lt;= #{endRowNo}
-		)
-		where rnum &gt;= #{startRowNo}
-	</select>
-	
-	<select id="count2" resultType="int">
-      select count(*) from palbang
-   </select>
-	
 	<insert id="insert" parameterType="palbang">
 		<selectKey keyProperty="palbang_id" resultType="int" order="BEFORE">
 			select seq_palbang_id.nextval from dual
@@ -58,4 +36,26 @@
 		delete from palbang
 		where palbang_id=#{palbang_id}
 	</delete>
+	
+	<select id="selectByPage2" parameterType="pager"
+		resultType="palbang">
+		select rnum, palbang_id, palbang_title, palbang_nickname, palbang_likecount, 
+		palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
+		from (
+			select rownum as rnum, palbang_id, palbang_title, palbang_nickname, palbang_likecount,
+			 palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
+			from (
+				select palbang_id, palbang_title, palbang_nickname, palbang_likecount, 
+				palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
+				from palbang
+				order by palbang_id desc
+			)
+			where rownum &lt;= #{endRowNo}
+		)
+		where rnum &gt;= #{startRowNo}
+	</select>
+	
+	<select id="count2" resultType="int">
+      select count(*) from palbang
+   </select>
 </mapper>

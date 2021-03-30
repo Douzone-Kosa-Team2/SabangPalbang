@@ -16,62 +16,29 @@
             </ul>
         </div>
         <div class="palbang_div3_parent">
-        <div class="palbang_div3"> <!--방자랑하기 버튼과 아래 게시물-->
-            <div class="palbang_div3_btn">
-                <a href="palbang_create">
-                    <button type="button" class="palbang_div3_btn btn" style="background-color: #00B0F0; color: white;">방 자랑하기</button>
-                </a>
-            </div>
-            
-            <div class="d-flex flex-row flex-wrap justify-content-center">
-				<c:forEach var="palbang" items="${list}">
-					<div class="palbang_div3_line"> <!-- 게시물 첫번째 행 , 게시물 3개 포함 -->
-						<div class="palbang_div3_line_item">
-							<a class="palbang_div3_move" href="palbang_detail"> 
-								<img src="resources/images/palbang_post/${palbang.palbang_imgoname}" height="200"><br/> 
-								<div style="font-size: 1.3em;">${palbang.palbang_name}</div>
-							    <div style="font-size: 1em;">${palbang.palbang_writer}</div>
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16" style="color: red;">
-	                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-	                        	</svg> ${palbang_likecount}
-							</a>
+        	<div class="palbang_div3"> <!--방자랑하기 버튼과 아래 게시물-->
+	            <div class="palbang_div3_btn">
+	                <a href="palbang_create">
+	                    <button type="button" class="palbang_div3_btn btn" style="background-color: #00B0F0; color: white;">방 자랑하기</button>
+	                </a>
+	            </div>        
+	            <div class="d-flex flex-row flex-wrap justify-content-center">
+					<c:forEach var="palbang" items="${list}">
+						<div class="palbang_div3_line"> <!-- 게시물 첫번째 행 , 게시물 3개 포함 -->
+							<div class="palbang_div3_line_item">
+								<a class="palbang_div3_move" href="palbang_detail"> 
+									<img src="resources/images/palbang_post/${palbang.palbang_imgoname}" height="200"><br/> 
+									<div style="font-size: 1.3em;">${palbang.palbang_title}</div>
+								    <div style="font-size: 1em;">${palbang.palbang_nickname}</div>
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16" style="color: red;">
+		                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+		                        	</svg> ${palbang_likecount}
+								</a>
+							</div>
 						</div>
-					</div>
-				</c:forEach>
-			</div>    
-			<!-- 
-            <div class="palbang_div3_line"> 게시물 첫번째 행 , 게시물 3개 포함
-                <div class="palbang_div3_line_item"> 하나의 게시물
-                    <a class="palbang_div3_move" href="palbang_detail">
-                        <img src="resources/images/palbang_post/pal_post1.png" height="200"><br/>
-                        <div style="font-size: 1.3em;">크리스마스 느낌나는 내 방</div>
-                        <div style="font-size: 1em;">산타클로스</div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16" style="color: red;">
-                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                        </svg> 45
-                    </a>
-                </div>
-                <div class="palbang_div3_line_item"> 
-                    <a class="palbang_div3_move" href="palbang_detail">
-                        <img src="resources/images/palbang_post/pal_post2.png" height="200"><br/>
-                        <div style="font-size: 1.3em;">커피 한 잔의 여유가 흘러넘치는 방</div>
-                        <div style="font-size: 1em;">방구석오뎅</div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16" style="color: red;">
-                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                        </svg> 32
-                    </a>
-                </div>
-                <div class="palbang_div3_line_item">
-                    <a class="palbang_div3_move" href="palbang_detail">
-                        <img src="resources/images/palbang_post/pal_post3.png" height="200"><br/>
-                        <div style="font-size: 1.3em;">2층침대의 로망은 로망일뿐이다.</div>
-                        <div style="font-size: 1em;">이웃집동생</div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16" style="color: red;">
-                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                        </svg>30
-                    </a>
-                </div>   
-            </div> -->
+					</c:forEach>
+				</div>    
+        	</div>
         </div>
         <div class="d-flex justify-content-center">
 		<div>
@@ -104,6 +71,5 @@
 			</table>
 		</div>
 	</div>
-    </div>
     </div>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>
