@@ -9,7 +9,7 @@
 			<h3>사방팔방</h3>
 
 		</div>
-		<form method="post" action="findEmail">
+		<form method="post" action="findEmailDo">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			
 			<div class="findEmail_input">

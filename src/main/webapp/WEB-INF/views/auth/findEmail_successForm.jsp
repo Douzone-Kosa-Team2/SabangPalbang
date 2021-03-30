@@ -6,8 +6,8 @@
     <div class="findEmail_success_1"><span>회원님의 이메일을 찾았습니다!</span></div>
     <div class="findEmail_success_2"></div>
     <div class="findEmail_success_3"><span>회원 정보</span></div>
-    <div class="findEmail_success_4"><span>별명 님</span></div>
-    <div class="findEmail_success_5"><span>ant9407@gmail.com</span></div>
+    <div class="findEmail_success_4"><span>${member_nickname} 님</span></div>
+    <div class="findEmail_success_5"><span>${member_email}</span></div>
 
     <div class="findEmail_success_6">
         <a href="main">

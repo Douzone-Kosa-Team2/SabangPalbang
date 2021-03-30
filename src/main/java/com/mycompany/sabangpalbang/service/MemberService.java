@@ -15,4 +15,16 @@ public class MemberService {
 		memberDao.insertByMember(member);
 	}
 	
+	/* 아이디 찾기 */
+	public Member findEmail(String member_name, String member_phone) { 
+		Member member = memberDao.findMemberByEmail(member_name, member_phone);
+		return member;
+	}
+	
+	/* 비밀번호 찾기 */
+	public Member findPwd(String member_email, String member_name, String member_phone) {
+		Member member = memberDao.findMemberByPwd(member_email, member_name, member_phone);
+		return member;
+	}
+	
 }

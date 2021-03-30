@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -27,13 +28,6 @@ public class AuthController {
 		@GetMapping("/loginForm")
 		public String loginForm() {
 			logger.info("loginForm 메시지");
-			
-			
-			
-			
-			
-			
-			
 			return "auth/loginForm";
 		}
 		@GetMapping("/signinForm")
@@ -95,8 +89,27 @@ public class AuthController {
 			return "redirect:/loginForm";
 		}
 		
+		// 아이디 찾기 
+		@PostMapping("/findEmailDo")
+		public String findEmailDo(String member_name, String member_phone, Model model) {
+			Member member = memberService.findEmail(member_name, member_phone);  
+			
+			model.addAttribute("member_email", member.getMember_email());
+			model.addAttribute("member_nickname", member.getMember_nickname());
+			return "auth/findEmail_successForm"; // 찾으면 
+		}
 		
-		
+		// 비밀번호 재설정
+		@PostMapping("/findPwdDo")
+		public String findPwdDo(String member_email, String member_name, String member_phone, Model model) {
+			Member member = memberService.findPwd(member_email, member_name, member_phone);  
+					
+			model.addAttribute("member_email", member.getMember_email());
+			model.addAttribute("member_nickname", member.getMember_nickname());
+			return "auth/resetPw_successForm"; // 찾으면 
+		}
+				
+				
 		// 권한 오류 페이지
 		@GetMapping("/auth/error403")
 		public String error403() {

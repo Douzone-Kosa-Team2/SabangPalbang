@@ -19,17 +19,6 @@
 		sysdate)
 	</insert>
 
-
-
-	<!-- <insert id="insertByMember2" parameterType="member"> <selectKey keyProperty="member_id" 
-		resultType="int" order="BEFORE"> select seq_member_id.nextval from dual </selectKey> 
-		insert into member (member_id, member_email, member_pw, member_name, member_phone, 
-		member_nickname, member_enable, member_authority, join_date, zipcode, roadaddress, 
-		detailaddress) values (#{member_id}, #{member_email}, #{member_pw}, #{member_name}, 
-		#{member_phone}, #{member_nickname}, #{member_enable}, #{member_authority}, 
-		#{join_date}, #{zipcode}, #{roadaddress}, #{detailaddress}) </insert> -->
-
-
 	<select id="selectByMember" parameterType="string"
 		resultType="member">
 		select member_id, member_email, member_pw, member_name,
@@ -64,6 +53,19 @@
 		where member_id=#{member_id}
 	</delete>
 
+	<!-- 이메일 찾기  -->
+	<select id="findMemberByEmail" parameterType="String" resultType="member">
+		select member_email, member_nickname
+		from member
+		where member_name=#{member_name} and member_phone=#{member_phone}
+	</select>
+	
+	<!-- 비밀번호 찾기 -->
+	<select id="findMemberByPwd" parameterType="String" resultType="member">
+		select member_email, member_nickname
+		from member
+		where member_email=#{member_email} and member_name=#{member_name} and member_phone=#{member_phone}
+	</select>
 
 </mapper>
 
