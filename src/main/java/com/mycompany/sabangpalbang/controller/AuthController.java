@@ -1,5 +1,7 @@
 package com.mycompany.sabangpalbang.controller;
 
+import java.util.Random;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,10 +104,17 @@ public class AuthController {
 		// 비밀번호 재설정
 		@PostMapping("/findPwdDo")
 		public String findPwdDo(String member_email, String member_name, String member_phone, Model model) {
+			//비밀번호 찾기 이후 필요한 값 찾기
 			Member member = memberService.findPwd(member_email, member_name, member_phone);  
 					
 			model.addAttribute("member_email", member.getMember_email());
 			model.addAttribute("member_nickname", member.getMember_nickname());
+			
+			//비밀번호 재설정 후 디비에 저장
+			
+			String resetPw = memberService.resetPwd(member_email);
+			logger.info(resetPw);
+			
 			return "auth/resetPw_successForm"; // 찾으면 
 		}
 				

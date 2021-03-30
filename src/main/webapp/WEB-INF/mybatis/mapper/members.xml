@@ -66,6 +66,13 @@
 		from member
 		where member_email=#{member_email} and member_name=#{member_name} and member_phone=#{member_phone}
 	</select>
+	
+	<!-- 재설정한 비밀번호 갱신 -->
+	<update id="updateRandPwd" parameterType="String">
+		update member set
+		member_pw=#{member_pw}
+		where member_email=#{member_email}
+	</update>
 
 </mapper>
 
