@@ -9,13 +9,13 @@
         </div>
         <div class="palbang_div2"> <!-- 정렬 카테고리 -->
             <ul class="palbang_div2_sort_type">
-                <li class="menu"><a href="" >좋아요 순</a></li>
-                <li class="menu"><a href="" style="color:gray;">조회수 순</a></li>
-                <li class="menu"><a href="" style="color:gray;">등록일 순</a></li>
-                <li class="menu"><a href="" style="color:gray;">오래된 순</a></li>
+                <li class="menu"><a href="palbang_main?std=0">좋아요 순</a></li>
+                <li class="menu"><a href="palbang_main?std=1" style="color:gray;">조회수 순</a></li>
+                <li class="menu"><a href="palbang_main?std=2" style="color:gray;">등록일 순</a></li>
+                <li class="menu"><a href="palbang_main?std=3" style="color:gray;">오래된 순</a></li>
             </ul>
         </div>
-        <div class="palbang_div3_parent">
+       <div class="palbang_div3_parent"> 
         	<div class="palbang_div3"> <!--방자랑하기 버튼과 아래 게시물-->
 	            <div class="palbang_div3_btn">
 	                <a href="palbang_create">
@@ -39,7 +39,7 @@
 					</c:forEach>
 				</div>    
         	</div>
-        </div>
+   		</div>
         <div class="d-flex justify-content-center">
 		<div>
 			<table style="width:100%;">

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.sabangpalbang.dto.Pager;
 import com.mycompany.sabangpalbang.dto.Palbang;
@@ -25,9 +26,9 @@ public class PalbangController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(PalbangController.class);
 	
-	//팔방페이지
+	//팔방페이지 - 좋아요 순 (디폴트)
 	@GetMapping("/palbang_main")
-	public String palbang_main(String pageNo, Model model, HttpSession session) {
+	public String palbang_main(@RequestParam(defaultValue = "0")String std, String pageNo, Model model, HttpSession session) {
 		logger.info("palbang 메시지");
 
 		int intPageNo = 1;
@@ -45,14 +46,26 @@ public class PalbangController {
 		int totalRows = palbangService.getTotalRows();
 		Pager pager = new Pager(6, 2, totalRows, intPageNo);
 		session.setAttribute("pager", pager);
-		List<Palbang> list = palbangService.getPalbangList(pager);
-		//logger.info("사방: " + list.get(0).getPalbang_title());
-		logger.info("메인 테스트" + list.get(1).getPalbang_title());
+		
+		// 정렬 기준 
+		List<Palbang> list = palbangService.getPalbangList_Like(pager);
+		if(std.equals("0")) {
+			list = palbangService.getPalbangList_Like(pager);
+		}else if(std.equals("1")) {
+			list = palbangService.getPalbangList_View(pager);
+		}else if(std.equals("2")) {
+			list = palbangService.getPalbangList_New(pager);
+		}else {
+			list = palbangService.getPalbangList_Old(pager);
+		}
+	
+
 		model.addAttribute("list", list);
 		model.addAttribute("pager", pager);
 		
 		return "palbang/palbang_main";
 	}
+	
 	@RequestMapping(value = "/palbang_create")
 	public String palbang_create() {
 		logger.info("palbang_create 메시지");

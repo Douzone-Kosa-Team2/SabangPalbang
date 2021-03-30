@@ -15,6 +15,10 @@ public interface PalbangDao {
 	public List<Palbang> selectAll();
 	public int update(Palbang palbang);
 	public int deleteByPalbangId(int palbangid);
-	public List<Palbang> selectByPage2(Pager pager);
 	public int count2();
+	public List<Palbang> selectByLike(Pager pager);
+	public List<Palbang> selectByView(Pager pager);
+	public List<Palbang> selectByNew(Pager pager);
+	public List<Palbang> selectByOld(Pager pager);
+	
 }

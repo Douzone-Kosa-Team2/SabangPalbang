@@ -14,12 +14,24 @@ public class PalbangService {
 	@Autowired
 	private PalbangDao palbangDao;
 	
-	public List<Palbang> getPalbangList(Pager pager) {
-		
-		List<Palbang> list = palbangDao.selectByPage2(pager);
-		
+	public List<Palbang> getPalbangList_Like(Pager pager) { // default
+		List<Palbang> list = palbangDao.selectByLike(pager);
 		return list;
-		
+	}
+	
+	public List<Palbang> getPalbangList_View(Pager pager) { 
+		List<Palbang> list = palbangDao.selectByView(pager);
+		return list;
+	}
+	
+	public List<Palbang> getPalbangList_New(Pager pager) { 
+		List<Palbang> list = palbangDao.selectByNew(pager);
+		return list;
+	}
+	
+	public List<Palbang> getPalbangList_Old(Pager pager) { 
+		List<Palbang> list = palbangDao.selectByOld(pager);
+		return list;
 	}
 	
 	public int getTotalRows() {
