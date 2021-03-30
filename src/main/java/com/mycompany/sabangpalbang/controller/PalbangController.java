@@ -46,8 +46,8 @@ public class PalbangController {
 		Pager pager = new Pager(6, 2, totalRows, intPageNo);
 		session.setAttribute("pager", pager);
 		List<Palbang> list = palbangService.getPalbangList(pager);
-		logger.info("사방: " + list.get(0).getPalbang_title());
-
+		//logger.info("사방: " + list.get(0).getPalbang_title());
+		logger.info("메인 테스트" + list.get(1).getPalbang_title());
 		model.addAttribute("list", list);
 		model.addAttribute("pager", pager);
 		
