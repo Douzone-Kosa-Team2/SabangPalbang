@@ -24,6 +24,13 @@
 		where inquiry_writer=#{member_nickname}
 		order by inquiry_id desc
 	</select>
+	
+	<select id="selectInquiry" parameterType="int" resultType="inquiry">
+		select inquiry_id, inquiry_sabangid, inquiry_type, inquiry_ansstate, inquiry_title, inquiry_writer, inquiry_date, inquiry_explain, inquiry_anscontent
+		from inquiry
+		where inquiry_sabangid=#{inquiry_sabangid}
+		order by inquiry_id desc
+	</select>
 
 	<update id="updateInquiryByid" parameterType="int">
 		update inquiry set 
