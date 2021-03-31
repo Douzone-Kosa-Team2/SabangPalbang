@@ -19,9 +19,9 @@
 	
 	
 	
-	<delete id="deleteByPalbangLikeId" parameterType="int">
+	<delete id="deleteLike" parameterType="int">
 		delete from palbang_like
-		where palbang_likeid=#{palbang_likeid}
+		where palbang_likepalbangid=#{palbang_likepalbangid} and palbang_likememberid=#{palbang_likememberid}
 	</delete>
 	
 </mapper>

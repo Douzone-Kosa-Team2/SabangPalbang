@@ -12,7 +12,7 @@
 	</div>
 	<div class="sabang_search_sabang_div2"></div>
 	<div class="sabang_search_div3">
-		<div class="sabang_search_div3_line">
+		<div class="sabang_search_div3_line d-flex flex-row flex-wrap justify-content-center">
 			<c:forEach var="sabang" items="${rslist}">
 
 				<div class="sabang_div3_line_item">

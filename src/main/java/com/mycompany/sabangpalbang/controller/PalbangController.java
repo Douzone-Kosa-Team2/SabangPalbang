@@ -1,5 +1,7 @@
 package com.mycompany.sabangpalbang.controller;
 
+import java.io.File;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mycompany.sabangpalbang.dto.Pager;
 import com.mycompany.sabangpalbang.dto.Palbang;
@@ -128,14 +131,51 @@ public class PalbangController {
 	      return jsonObject.toString();
 	   }
 	   
-	   @GetMapping(value="/likeDown", produces="application/json;charset=UTF-8")
+	   @PostMapping(value="/likeDown", produces="application/json;charset=UTF-8")
 	   @ResponseBody
-	   public String likeDown() {
+	   public String likeDown(int palbang_id, Authentication auth) {
 	     
-	      JSONObject jsonObject = new JSONObject();
-	      jsonObject.put("result","success");
-	      
-	      return jsonObject.toString();
+		   String member_email = auth.getName();
+		   
+			  int member_id = memberService.getIdByEmail(member_email);
+			  palbangService.deleteLike(palbang_id, member_id);
+			  logger.info("0");
+			  
+			   
+		      JSONObject jsonObject = new JSONObject();
+		      jsonObject.put("result","success");
+		      
+		      return jsonObject.toString();
 	   }
-	
+	   
+	   @PostMapping(value="/addPalbang", produces="application/json;charset=UTF-8")
+	   @ResponseBody
+	   public String addPalbang(Palbang palbang, List<Palbang_detail> palbang_detail) {
+		   int pid=0;
+		   
+		   MultipartFile pattach = palbang.getPattach();
+			if (!pattach.isEmpty()) {
+				logger.info("첨부가 있음");
+				palbang.setPalbang_imgoname(pattach.getOriginalFilename());
+				palbang.setPalbang_imgtype(pattach.getContentType());
+				String saveName = new Date().getTime() + "-" + palbang.getPalbang_imgoname();
+				palbang.setPalbang_imgsname(saveName);
+				
+				File file = new File("C:/Users/ant94/Documents/JavaProject/JavaHomework/uploadfiles/" + palbang.getPalbang_imgsname());
+				try {
+					pattach.transferTo(file);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} else {
+				logger.info("첨부가 없음");
+			}
+			
+			
+			//palbangService.savePalbang(palbang);
+		   
+		  	   
+		   
+		   return "redirect:/palbang_detail?p_id="+pid;
+	   }
 }
