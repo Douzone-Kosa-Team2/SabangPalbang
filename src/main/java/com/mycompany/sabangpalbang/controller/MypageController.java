@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.mycompany.sabangpalbang.dto.Member;
 import com.mycompany.sabangpalbang.service.MemberService;
 
-
-
-
 @Controller
 public class MypageController {
 	private static final Logger logger = LoggerFactory.getLogger(MypageController.class);
