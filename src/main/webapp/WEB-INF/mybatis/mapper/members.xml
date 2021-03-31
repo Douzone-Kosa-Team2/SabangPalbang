@@ -51,16 +51,32 @@
 		where member_email=#{member_email}
 	</select>
 	
+	<!-- 마이페이지 회원정보 호출 -->
+	<select id="selectMemberByEmail" parameterType="string"
+		resultType="member">
+		select member_id, member_email, member_pw, member_name,
+		member_phone,
+		member_nickname, zipcode, roadaddress, detailaddress
+		from
+		member
+		where member_email=#{member_email}
+	</select>
+	
 	
 	<update id="updateByMember" parameterType="member">
-		update member set
-		member_pw=#{member_pw},
-		member_phone=#{member_phone},
-		zipcode=#{zipcode},
-		roadaddress=#{roadaddress},
-		detailaddress=#{detailaddress},
-		member_nickname=#{member_nickname}
-		where member_id=#{member_id}
+		<if test="zipcode==null">
+			update member set
+			member_phone=#{member_phone}
+			where member_id=#{member_id}
+		</if>	
+		<if test="zipcode!=null">
+			update member set
+			member_phone=#{member_phone},
+			zipcode=#{zipcode},
+			roadaddress=#{roadaddress},
+			detailaddress=#{detailaddress}
+			where member_id=#{member_id}
+		</if>	
 	</update>
 
 	<delete id="deleteByMember" parameterType="string">
