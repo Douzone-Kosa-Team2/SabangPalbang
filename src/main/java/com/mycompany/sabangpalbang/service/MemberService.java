@@ -82,6 +82,16 @@ public class MemberService {
 		return member_id;
 	}
 
+	public void updateMember(Member member) {
+		memberDao.updateByMember(member);
+		
+	}
+
+	public Member showMember(String member_email) {
+		Member member = memberDao.selectMemberByEmail(member_email);
+		return member;
+	}
+
 
 	
 	

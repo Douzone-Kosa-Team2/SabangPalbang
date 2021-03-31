@@ -15,14 +15,14 @@
 
     <div class="mypage_memInfo_main">
 
-        <form method="post" action="">
+        <form method="post" action="updateMember">
         	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <div class="mypage_memInfo_signinInput">
                 <div class="mypage_memInfo_signinInput_label">이메일</div>
 
                 <div class="mb-3 mypage_memInfo_signinInput_bind">
-                    <input type="email" class="form-control" id="member_email" value="af7078@naver.com"
-                        name="member_email">
+                    <input type="email" class="form-control" id="member_email" value="${member.member_email}"
+                        name="member_email" readonly>
                 </div>
                 <br />
                 <div class="mypage_memInfo_signinInput_label">비밀번호</div>
@@ -38,20 +38,14 @@
                 <br />
                 <div class="mypage_memInfo_signinInput_label">이름</div>
                 <div class="mb-3">
-                    <input type="text" class="form-control" id="member_name" placeholder="조민상" name="member_name">
+                    <input type="text" class="form-control" id="member_name" placeholder="조민상" name="member_name" value="${member.member_name}">
                 </div>
                 <br />
                 <div class="mypage_memInfo_signinInput_label">연락처</div>
                 <div class="mb-3 mypage_memInfo_signinInput_bind">
-                    <select name="tel_pre">
-                        <option value="" disabled="">선택해주세요.</option>
-                        <option selected="" value="010">010</option>
-                        <option value="011">011</option>
-                        <option value="017">017</option>
-                        <option value="02">02</option>
-                    </select>
-                    <input type="tel" class="form-control" id="tel_suf" value="85507078"
-                        name="tel_suf">
+                    
+                    <input type="tel" class="form-control" id="member_phone" value="${member.member_phone}"
+                        name="member_phone">
 
                 </div>
                 <br />
@@ -59,18 +53,18 @@
                 <div class="mypage_memInfo_signinInput_label">주소</div>
                
                 <div class="mb-3 mypage_memInfo_signinInput_bind">
-                    <input type="text" class="form-control" id="zipcode" value="24120"
+                    <input type="text" class="form-control" id="zipcode" value="${member.zipcode}"
                             name="zipcode">
                     <input type="button" class="form-control" id="findaddress" value="우편번호 찾기" name="findaddress">
 
                 </div>           
 
                 <div>
-                    <input type="text" class="form-control" id="roadaddress" value="의정부시 오목로 252"
+                    <input type="text" class="form-control" id="roadaddress" value="${member.roadaddress}"
                        		name="roadaddress">
                 </div>
                 <div>
-                   	<input type="text" class="form-control" id="detailaddress" value="202-1004"
+                   	<input type="text" class="form-control" id="detailaddress" value="${member.detailaddress}"
                         	name="detailaddress">
                	</div>
 
@@ -80,7 +74,7 @@
                 <div>별명</div>
                 <div><small>다른 유저와 겹치지않는 별명을 입력해주세요, (2~15자)</small></div>
                 <div class="mb-3 mypage_memInfo_signinInput_bind">
-                    <input type="text" class="form-control" id="member_nickname" placeholder="Jomsang" name="member_nickname">
+                    <input type="text" class="form-control" id="member_nickname" placeholder="${member.member_nickname}" name="member_nickname" readonly>
                 </div>
                 <div style="text-align: center;">
                     <button type="submit" class="btn btn-primary btn-lg">회원 정보 수정</button>

@@ -11,7 +11,7 @@ public interface MemberDao {
 	public Member selectByMember(String member_email);
 	public Member selectByPayMember(String member_email);
 	public String deleteByMember(String member_email);
-	public String updateByMember(Member member);
+	public int updateByMember(Member member);
 	public Member findMemberByEmail(@Param("member_name") String member_name,
 									@Param("member_phone")String member_phone);
 	public Member findMemberByPwd(@Param("member_email") String member_email, 
@@ -20,5 +20,6 @@ public interface MemberDao {
 	public int updateRandPwd(@Param("member_email") String member_email , @Param("member_pw") String member_pw);
 	public String selectEmailByNickname(String palbang_nickname);
 	public int selectIdByEmail(String member_email);
+	public Member selectMemberByEmail(String member_email);
 	
 }
