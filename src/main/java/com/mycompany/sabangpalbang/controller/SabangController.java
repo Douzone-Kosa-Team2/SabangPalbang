@@ -77,9 +77,15 @@ public class SabangController {
 	
 	
 
-	@RequestMapping(value = "/sabang_search")
-	public String sabang_search() {
+	@GetMapping("/sabang_search")
+	public String sabang_search(int price,Model model) {
 		logger.info("sabang_search 메시지");
+		
+		logger.info(""+price);
+		
+		List <Sabang> rslist = sabangService.getRecommendList(price);
+		model.addAttribute("rslist", rslist);
+		
 		return "sabang/sabang_search";
 	}
 
@@ -113,6 +119,7 @@ public class SabangController {
 		 */
 		
         //session.setAttribute("pager", pager);
+		model.addAttribute("sid", sid);
 		model.addAttribute("sabang", sabang);
 		model.addAttribute("productList",productList);
 		//model.addAttribute("inquiryList", inquiryList);
@@ -128,7 +135,7 @@ public class SabangController {
 	@GetMapping("/inquirylist")
 	public String inquirylist(int sid, Model model, String pageNo, HttpSession session) {
 		logger.info("inquirylist 메시지");
-		 int intPageNo=1;
+		 	int intPageNo=1;
 	        if(pageNo==null) {
 		        //세션에서 Pager를 찾고, 있으면 pageNo를 설정하고,
 		        Pager pager=(Pager)session.getAttribute("pager");
@@ -146,6 +153,7 @@ public class SabangController {
 			
 	        session.setAttribute("pager", pager);
 	        model.addAttribute("inquiryList", inquiryList);
+	        model.addAttribute("sid", sid);
 		
 		return "sabang/inquiry";
 	}

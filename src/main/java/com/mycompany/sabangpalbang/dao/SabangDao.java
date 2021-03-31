@@ -23,5 +23,6 @@ public interface SabangDao {
 	public Sabang selectById(int sid);
 	public int updateViewCount(int sabang_id);
 	public List<Sabang> selectTop3();
+	public List<Sabang> selectByPrice(int sabang_saleprice);
 	
 }
