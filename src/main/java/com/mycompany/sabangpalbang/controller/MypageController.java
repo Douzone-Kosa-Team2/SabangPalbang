@@ -51,7 +51,7 @@ public class MypageController {
 			memberService.updateMember(member);
 			
 			
-			return "mypage/mypage_memberInfo";
+			return "redirect:/mypage_memberInfo";
 		}
 		
 }
