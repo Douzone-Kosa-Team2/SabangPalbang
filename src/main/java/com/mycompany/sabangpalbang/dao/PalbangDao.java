@@ -21,5 +21,7 @@ public interface PalbangDao {
 	public List<Palbang> selectByNew(Pager pager);
 	public List<Palbang> selectByOld(Pager pager);
 	public Palbang selectById(int pid);
+	public int updateViewCount(int palbang_id);
+	public List<Palbang> selectTop3();
 	
 }

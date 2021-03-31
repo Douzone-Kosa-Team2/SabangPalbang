@@ -11,6 +11,7 @@ import com.mycompany.sabangpalbang.dao.PalbangLikeDao;
 import com.mycompany.sabangpalbang.dto.Pager;
 import com.mycompany.sabangpalbang.dto.Palbang;
 import com.mycompany.sabangpalbang.dto.Palbang_detail;
+import com.mycompany.sabangpalbang.dto.Sabang;
 
 @Service
 public class PalbangService {
@@ -61,6 +62,17 @@ public class PalbangService {
 
 	public void insertLike(int palbang_id,int member_id) {
 		palbangLikeDao.insertLike(palbang_id, member_id);
+	}
+
+	public void addViewCount(int palbang_id) {
+		palbangDao.updateViewCount(palbang_id);
+		
+	}
+
+	public List<Palbang> showPalbang() {
+			List<Palbang> plist = palbangDao.selectTop3();
+			return plist;
+		
 	}
 	
 }

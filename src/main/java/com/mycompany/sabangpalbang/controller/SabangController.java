@@ -97,7 +97,10 @@ public class SabangController {
 		
 		model.addAttribute("sabang", sabang);
 		model.addAttribute("productList",productList);
-	
+		
+		sabangService.addViewCount(sid);
+		
+		
 		return "sabang/sabang_detail";
 	}
 

@@ -17,6 +17,18 @@
 		order by palbang_id desc
 	</select>
 	
+	<!-- 메인 팔방 좋아요 수 top3 -->
+	<select id="selectTop3" resultType="palbang">
+		select rownum, palbang_id, palbang_title, palbang_nickname, palbang_likecount, palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype 
+		from (
+				select palbang_id, palbang_title, palbang_nickname, palbang_likecount, palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
+				from palbang
+				order by palbang_likecount desc
+			)
+		where rownum &lt;= 3
+		
+	</select>
+	
 	<update id="update" parameterType="palbang">
 		update palbang set
 		
@@ -29,6 +41,12 @@
 		palbang_imgsname=#{palbang_imgsname}, 
 		palbang_imgtype=#{palbang_imgtype}
 		
+		where palbang_id=#{palbang_id}
+	</update>
+	
+	<update id="updateViewCount" parameterType="int">
+		update palbang set
+		palbang_viewcount=palbang_viewcount+1 
 		where palbang_id=#{palbang_id}
 	</update>
 	

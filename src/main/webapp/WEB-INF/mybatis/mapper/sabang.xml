@@ -120,6 +120,28 @@
       select count(*) from sabang
     </select>
 	
+	<!-- 메인 사방 판매율 top3 -->
+	<select id="selectTop3" resultType="sabang">
+		select rownum, sabang_id, sabang_name, sabang_price,
+		sabang_saleprice, sabang_buycount, sabang_viewcount,
+		sabang_imgoname, sabang_imgsname, sabang_imgtype, sabang_state
+		from (
+				select sabang_id, sabang_name, sabang_price,
+				sabang_saleprice, sabang_buycount, sabang_viewcount,
+				sabang_imgoname, sabang_imgsname, sabang_imgtype, sabang_state
+				from sabang
+				order by sabang_buycount desc
+			)
+		where rownum &lt;= 3
+		
+	</select>
+	
+	<!-- 사방 조회수 업데이트 -->
+	<update id="updateViewCount" parameterType="int">
+		update sabang set
+		sabang_viewcount=sabang_viewcount+1 
+		where sabang_id=#{sabang_id}
+	</update>
 	
 	
 

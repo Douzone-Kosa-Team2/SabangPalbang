@@ -93,39 +93,20 @@
 					<a href="/sabangpalbang/sabang_main">더보기</a>
 				</div>
 			</div>
+			
 			<div class="main_sabang_content">
+				<c:forEach var="sabang" items="${slist}">
 				<div class="main_sabang_content_1">
-					<a href="/sabangpalbang/sabang_detail">
+					<a href="sabang_detail?sid=${sabang.sabang_id}">
 						<div class="main_sabang_content_1_img">
-							<img src="resources/images/main/main_sb_1.png">
+							<img src="resources/images/sabang_post/${sabang.sabang_imgoname}">
 						</div>
 						<div class="main_sabang_content_1_detail">
-							<p>세련된 스튜디오 같은 방</p>
+							<p>${sabang.sabang_name}</p>
 						</div>
 					</a>
 				</div>
-				<div class="main_sabang_content_2">
-					<a href="/sabangpalbang/sabang_detail">
-						<div class="main_sabang_content_2_img">
-							<img src="resources/images/main/main_sb_2.png">
-						</div>
-						<div class="main_sabang_content_2_detail">
-							<p>책 읽고 싶게 만드는 방</p>
-						</div>
-					</a>
-
-				</div>
-				<div class="main_sabang_content_3">
-					<a href="/sabangpalbang/sabang_detail">
-						<div class="main_sabang_content_3_img">
-							<img src="resources/images/main/main_sb_3.png">
-						</div>
-						<div class="main_sabang_content_3_detail">
-							<p>우드톤 가구를 활용한 방</p>
-						</div>
-					</a>
-				</div>
-
+				</c:forEach>
 			</div>
 		</div>
 		<!-- 팔방 -->
@@ -140,21 +121,18 @@
 				</div>
 			</div>
 			<div class="main_palbang_content">
-				<a href="/sabangpalbang/palbang_detail">
-					<div class="main_sabang_content_1">
-						<img src="resources/images/main/main_pb_1.png">
-					</div>
-				</a>
-				<a href="/sabangpalbang/palbang_detail">
-					<div class="main_sabang_content_2">
-						<img src="resources/images/main/main_pb_2.png">
-					</div>
-				</a>
-				<a href="/sabangpalbang/palbang_detail">
-					<div class="main_sabang_content_3">
-						<img src="resources/images/main/main_pb_3.png">
-					</div>
-				</a>
+				<c:forEach var="palbang" items="${plist}">
+				<div class="main_palbang_content_1">
+					<a href="palbang_detail?pid=${palbang.palbang_id}">
+						<div class="main_palbang_content_1_img">
+							<img src="resources/images/palbang_post/${palbang.palbang_imgoname}">
+						</div>
+						<div class="main_palbang_content_1_detail">
+							<p>${palbang.palbang_title}</p>
+						</div>
+					</a>
+				</div>
+				</c:forEach>
 			</div>
 
 		</div>

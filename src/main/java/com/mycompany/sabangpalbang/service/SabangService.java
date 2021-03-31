@@ -54,4 +54,14 @@ public class SabangService {
 		return sabang;
 		
 	}
+
+	public void addViewCount(int sabang_id) {
+		sabangDao.updateViewCount(sabang_id);
+		
+	}
+
+	public List<Sabang> showSabang() {
+		List<Sabang> slist = sabangDao.selectTop3();
+		return slist;
+	}
 }

@@ -103,6 +103,12 @@ public class PalbangController {
 		}
 		model.addAttribute("palbang", palbang);
 		model.addAttribute("palbanglist", palbanglist);
+		
+		palbangService.addViewCount(pid);
+		
+		
+		
+		
 		return "palbang/palbang_detail";
 	}
 	   @PostMapping(value="/likeUp", produces="application/json;charset=UTF-8")
