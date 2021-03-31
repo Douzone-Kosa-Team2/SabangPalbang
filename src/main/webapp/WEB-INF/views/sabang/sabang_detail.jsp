@@ -165,78 +165,16 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td scope="row">1</td>
-						<td>반품/취소/교환</td>
-						<td style="color: #adb5bd;">검토중</td>
-						<td>반품/취소 문의입니다.</td>
-						<td>이*정</td>
-						<td>2021.03.10</td>
-					</tr>
-					<tr>
-						<td scope="row">2</td>
-						<td>상품</td>
-						<td style="color: #00BFFF;">답변완료</td>
-						<td>상품 문의입니다.</td>
-						<td>조*상</td>
-						<td>2021.03.09</td>
-					</tr>
-					<tr>
-						<td scope="row">3</td>
-						<td>반품/취소/교환</td>
-						<td style="color: #00BFFF;">답변완료</td>
-						<td>배송 문의입니다.</td>
-						<td>이*현</td>
-						<td>2021.03.08</td>
-					</tr>
-					<tr>
-						<td scope="row">4</td>
-						<td>반품/취소/교환</td>
-						<td style="color: #adb5bd;">검토중</td>
-						<td>반품/취소 문의입니다.</td>
-						<td>이*정</td>
-						<td>2021.03.07</td>
-					</tr>
-					<tr>
-						<td scope="row">5</td>
-						<td>상품</td>
-						<td style="color: #00BFFF;">답변완료</td>
-						<td>상품 문의입니다.</td>
-						<td>조*상</td>
-						<td>2021.03.06</td>
-					</tr>
-					<tr>
-						<td scope="row">6</td>
-						<td>반품/취소/교환</td>
-						<td style="color: #00BFFF;">답변완료</td>
-						<td>배송 문의입니다.</td>
-						<td>이*현</td>
-						<td>2021.03.05</td>
-					</tr>
-					<tr>
-						<td scope="row">7</td>
-						<td>반품/취소/교환</td>
-						<td style="color: #adb5bd;">검토중</td>
-						<td>반품/취소 문의입니다.</td>
-						<td>이*정</td>
-						<td>2021.03.04</td>
-					</tr>
-					<tr>
-						<td scope="row">8</td>
-						<td>상품</td>
-						<td style="color: #00BFFF;">답변완료</td>
-						<td>상품 문의입니다.</td>
-						<td>조*상</td>
-						<td>2021.03.03</td>
-					</tr>
-					<tr>
-						<td scope="row">9</td>
-						<td>반품/취소/교환</td>
-						<td style="color: #00BFFF;">답변완료</td>
-						<td>배송 문의입니다.</td>
-						<td>이*현</td>
-						<td>2021.03.02</td>
-					</tr>
+					<c:forEach var="inquiry" items="${inquriyList}">
+						<tr>
+							<td scope="row">${inquiry.inquiry_id}</td>
+							<td>${inquiry.inquiry_type}</td>
+							<td style="color: #adb5bd;">${inquiry.inquiry_ansstate}</td>
+							<td>${inquiry.inquiry_title}</td>
+							<td>${inquiry.inquiry_writer}</td>
+							<td>${inquiry.inquiry_date}</td>
+						</tr>
+					</c:forEach>
 					<tr style="border-bottom: hidden;">
 						<td colspan="2"></td>
 						<td scope="row" colspan="3" style="text-align: center;"><a

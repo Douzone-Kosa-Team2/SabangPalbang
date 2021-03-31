@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mycompany.sabangpalbang.dto.Inquiry;
 import com.mycompany.sabangpalbang.dto.Pager;
 import com.mycompany.sabangpalbang.dto.Product;
 import com.mycompany.sabangpalbang.dto.Sabang;
+import com.mycompany.sabangpalbang.service.InquiryService;
 import com.mycompany.sabangpalbang.service.SabangService;
 
 /**
@@ -28,7 +30,9 @@ public class SabangController {
 
 	@Autowired
 	private SabangService sabangService;
-
+	@Autowired
+	private InquiryService inquiryService;
+	
 	// 사방페이지
 	@GetMapping("/sabang_main")
 	public String sabang_main(@RequestParam(defaultValue="0")String std, String pageNo, Model model, HttpSession session) {
@@ -88,6 +92,8 @@ public class SabangController {
 	@GetMapping("/sabang_detail")
 	public String sabang_detail(int sid, Model model) {
 		logger.info("sabang_detail 메시지");
+		// 조회수 1증가 
+		sabangService.addViewCount(sid);
 		
 		//사방 아이디에 대한 사방 정보 가져오기
 		Sabang sabang = sabangService.getSabang(sid);
@@ -95,25 +101,19 @@ public class SabangController {
 		//사방 아이디에 대한 품목 리스트를 가져오기
 		List<Product> productList = sabangService.getSabangDetail(sid);
 		
+		//사방 문의게시판 출력 
+		List<Inquiry> inquiryList = inquiryService.getInquiryList(sid);
+		
 		model.addAttribute("sabang", sabang);
 		model.addAttribute("productList",productList);
-		
-		sabangService.addViewCount(sid);
-		
-		
+		model.addAttribute("inquiryList", inquiryList);
 		return "sabang/sabang_detail";
 	}
 
 	@RequestMapping(value = "/sabang_detail_insert")
 	public String sabang_detail_insert() {
 		logger.info("sabang_detail_insert 메시지");
-		// 여기서 문의내용 insert 디비 작업을 해주면됨
-		/*
-		 * 위에 /sabang_detail과 /sabang_detail_insert가 리턴하는 뷰네임은 같지만 하는일은 다르다.
-		 * sabang_detail()는 그냥 뷰를 연결하는 것이고, sabang_detail_insert()는 파라미터를 전달받아서 insert
-		 * 디비작업을 하고 뷰로 연결해준다.
-		 * 
-		 */
+
 		return "sabang/sabang_detail";
 	}
 	
