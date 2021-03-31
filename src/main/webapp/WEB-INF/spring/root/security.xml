@@ -40,7 +40,7 @@
 			authentication-success-handler-ref="authSuccessHandler"
 			authentication-failure-handler-ref="authFailureHandler"/>
 			
-		<!-- <security:csrf disabled="true"/> -->		
+		<!-- <security:csrf disabled="true"/>	 -->	
 		
 		<!-- Post 방식으로 요청해야 함 -->
 		<security:logout logout-url="/logout"/>

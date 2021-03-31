@@ -111,8 +111,8 @@ public class PalbangController {
 		
 		   String member_email = auth.getName();
 		   
-		   int member_id = memberService.getIdByEmail(member_email);
-		   palbangService.insertLike(palbang_id, member_id);
+		  int member_id = memberService.getIdByEmail(member_email);
+		  palbangService.insertLike(palbang_id, member_id);
 		  logger.info("0");
 		  
 		   
