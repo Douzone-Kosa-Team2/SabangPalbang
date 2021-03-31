@@ -16,5 +16,6 @@ public interface InquiryDao {
 	public int updateInquiryByid(int inquiry_id);
 	public int updateInquiryAnswerById(int inquiry_id);
 	public int deleteInquiryByInquiryId(int inquiry_id);
+	public List<Inquiry> selectInquiry(int inquiry_sabangid);
 	
 }
