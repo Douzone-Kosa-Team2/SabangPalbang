@@ -3,24 +3,8 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <!-- 팔방 상세 페이지  -->
- <script>
-   
-   var likeState = 0;
-   function addLike(palbang_id) {
-      console.log(palbang_id);
-         $.ajax({
-               url: "likeUp",
-            data: {palbang_id, ${_csrf.parameterName}:"${_csrf.token}"}, 
-            method: "post",
-           
-            
-         })
-         .then((data) => {
-            $("#svg1").hide();
-            $("#svg2").show();
-         });
-   }
-</script>
+
+
 
    <div class="palbang_detail_main">
    
@@ -82,5 +66,27 @@
          </c:forEach>            
       </div>
    </div>
+   
+   <script>
+   
+   var likeState = 0;
+   function addLike(palbang_id) {
+      console.log(palbang_id);
+         $.ajax({
+               url: "likeUp",
+            data: {palbang_id, ${_csrf.parameterName}:"${_csrf.token}"}, 
+            method: "post",
+           
+            
+         })
+         .then((data) => {
+            $("#svg1").hide();
+            $("#svg2").show();
+         });
+   }
+</script>
+   
+   
+   
    
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>
