@@ -2,6 +2,8 @@ package com.mycompany.sabangpalbang.dto;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Palbang {
 	private int palbang_id;
 	private String palbang_title;
@@ -12,6 +14,7 @@ public class Palbang {
 	private String palbang_imgoname;
 	private String palbang_imgsname;
 	private String palbang_imgtype;
+	private MultipartFile pattach;
 	
 	
 	public int getPalbang_id() {
@@ -67,6 +70,12 @@ public class Palbang {
 	}
 	public void setPalbang_imgtype(String palbang_imgtype) {
 		this.palbang_imgtype = palbang_imgtype;
+	}
+	public MultipartFile getPattach() {
+		return pattach;
+	}
+	public void setPattach(MultipartFile pattach) {
+		this.pattach = pattach;
 	}
 	
 }

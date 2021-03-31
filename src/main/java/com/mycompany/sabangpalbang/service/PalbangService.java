@@ -74,5 +74,10 @@ public class PalbangService {
 			return plist;
 		
 	}
+
+	public void deleteLike(int palbang_likepalbangid, int palbang_likememberid) {
+		palbangLikeDao.deleteLike(palbang_likepalbangid, palbang_likememberid);
+		
+	}
 	
 }
