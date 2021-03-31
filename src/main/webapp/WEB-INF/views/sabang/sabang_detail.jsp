@@ -1,5 +1,6 @@
 <%@ page  contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <script>
@@ -165,20 +166,51 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="inquiry" items="${inquriyList}">
+					<c:forEach var="inquiry" items="${inquiryList}">
 						<tr>
 							<td scope="row">${inquiry.inquiry_id}</td>
 							<td>${inquiry.inquiry_type}</td>
 							<td style="color: #adb5bd;">${inquiry.inquiry_ansstate}</td>
 							<td>${inquiry.inquiry_title}</td>
 							<td>${inquiry.inquiry_writer}</td>
-							<td>${inquiry.inquiry_date}</td>
+							<td><fmt:formatDate value="${inquiry.inquiry_date}"
+                     					pattern="YYYY.MM.dd" /></td>
 						</tr>
 					</c:forEach>
 					<tr style="border-bottom: hidden;">
 						<td colspan="2"></td>
-						<td scope="row" colspan="3" style="text-align: center;"><a
-							href="">1</a> <a href="">2</a> <a href="">3</a></td>
+						<td scope="row" colspan="3" style="text-align: center;">
+							<!-- <a href="">1</a> <a href="">2</a> <a href="">3</a> -->
+						<div>
+					         <table style="width:100%;">
+					            <tr>
+					               <!-- 처음 이전 12345 다음 맨끝 -->
+					               <td colspan="5" class="text-center"><a
+					                  class="btn btn-outline-primary btn-sm" href="sabang_main?std=${stdno}&pageNo=1">처음</a>
+					   
+					                  <c:if test="${pager.groupNo>1}">
+					                     <a class="btn btn-outline-info btn-sm"
+					                        href="sabang_main?std=${stdno}&pageNo=${pager.startPageNo-1}">이전</a>
+					                  </c:if> <c:forEach var="i" begin="${pager.startPageNo}"
+					                     end="${pager.endPageNo}">
+					   
+					                     <c:if test="${pager.pageNo!=i}">
+					                        <a class="btn btn-outline-success btn-sm"
+					                           href="sabang_main?std=${stdno}&pageNo=${i}">${i}</a>
+					                     </c:if>
+					                     <c:if test="${pager.pageNo==i}">
+					                        <a class="btn btn-outline-danger btn-sm"
+					                           href="sabang_main?std=${stdno}&pageNo=${i}">${i}</a>
+					                     </c:if>
+					                  </c:forEach> <c:if test="${pager.groupNo<pager.totalGroupNo}">
+					                     <a class="btn btn-outline-info btn-sm"
+					                        href="sabang_main?std=${stdno}&pageNo=${pager.endPageNo+1}">다음</a>
+					                  </c:if> <a class="btn btn-outline-primary btn-sm"
+					                  href="sabang_main?std=${stdno}&pageNo=${pager.totalPageNo}">맨끝</a></td>
+					            </tr>
+					         </table>
+      					</div>
+						</td>
 						<td>
 							<button onclick="ask()" type="button" class="btn btn-dark">작성하기</button>
 						</td>

@@ -90,7 +90,7 @@ public class SabangController {
 	}
 
 	@GetMapping("/sabang_detail")
-	public String sabang_detail(int sid, Model model) {
+	public String sabang_detail(int sid, Model model, String pageNo, HttpSession session) {
 		logger.info("sabang_detail 메시지");
 		// 조회수 1증가 
 		sabangService.addViewCount(sid);
@@ -101,9 +101,23 @@ public class SabangController {
 		//사방 아이디에 대한 품목 리스트를 가져오기
 		List<Product> productList = sabangService.getSabangDetail(sid);
 		
-		//사방 문의게시판 출력 
-		List<Inquiry> inquiryList = inquiryService.getInquiryList(sid);
+        int intPageNo=1;
+        if(pageNo==null) {
+	        //세션에서 Pager를 찾고, 있으면 pageNo를 설정하고,
+	        Pager pager=(Pager)session.getAttribute("pager");
+	        if(pager !=null) {
+	              intPageNo=pager.getPageNo();
+	        }
+        }else {
+           intPageNo=Integer.parseInt(pageNo);
+        }
+        
+        int totalRows=inquiryService.getTotalRows();
+        Pager pager=new Pager(10,5,totalRows,intPageNo);
+    	//사방 문의게시판 가져오기 
+		List<Inquiry> inquiryList = inquiryService.getInquiryList(pager, sid);
 		
+        session.setAttribute("pager", pager);
 		model.addAttribute("sabang", sabang);
 		model.addAttribute("productList",productList);
 		model.addAttribute("inquiryList", inquiryList);
