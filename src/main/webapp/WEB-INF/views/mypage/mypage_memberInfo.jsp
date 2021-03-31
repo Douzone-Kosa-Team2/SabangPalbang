@@ -15,8 +15,9 @@
 
     <div class="mypage_memInfo_main">
 
-        <form method="post" action="updateMember">
+        <form method="post" action="updateMember"> 
         	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        	<input type="hidden" name="member_id" value="${member.member_id}"/>
             <div class="mypage_memInfo_signinInput">
                 <div class="mypage_memInfo_signinInput_label">이메일</div>
 

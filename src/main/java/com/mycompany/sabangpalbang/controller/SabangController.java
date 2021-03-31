@@ -116,5 +116,7 @@ public class SabangController {
 		 */
 		return "sabang/sabang_detail";
 	}
+	
+	
 
 }
