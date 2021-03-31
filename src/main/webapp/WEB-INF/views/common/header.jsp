@@ -17,7 +17,10 @@
 <script type="text/javascript">
 function enterkey(){
 	if(window.event.keyCode == 13){
-		location.href="/sabangpalbang/sabang_search";
+		const price = document.getElementById('price').value;
+		console.log(price);
+		location.href="/sabangpalbang/sabang_search?price="+price;
+		console.log(price);
 	}
 }   
 </script>
@@ -36,7 +39,7 @@ function enterkey(){
 	    
 	      <div class="header_search">
 	      
-	      		<input type="text" onkeyup="enterkey();" class="header_search_input input-group mb-3 mt-5 form-control rounded-pill"
+	      		<input type="text" onkeyup="enterkey();" class="header_search_input input-group mb-3 mt-5 form-control rounded-pill" name="price" id="price"
 						style="background-color: #e9ecef;" placeholder="             내 예산에 맞는 방 찾기">
 					
 		 </div> 

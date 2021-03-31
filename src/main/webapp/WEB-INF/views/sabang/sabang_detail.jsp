@@ -150,16 +150,17 @@
 	}
 	$(function() {
 		console.log("success");
-		getList(1);
+		getList(1,${sid});
 	});
 	
-	const getList = (pageNo) => {
+	const getList = (pageNo,sid) => {
 		console.log("success2");
-		const args = {url:"inquirylist",method:"get"};
-		if(pageNo){
-			args.data = {pageNo};
-		}
-		$.ajax(args)
+		
+		$.ajax({
+            url: "inquirylist",
+            data: {sid ,pageNo}, 
+            method: "get"
+         })
 		.then(data => {
 			console.log("success3");
 			$("#inquirypart").html(data);

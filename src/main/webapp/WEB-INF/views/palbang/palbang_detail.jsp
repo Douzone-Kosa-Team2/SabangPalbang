@@ -75,9 +75,7 @@
          $.ajax({
                url: "likeUp",
             data: {palbang_id, ${_csrf.parameterName}:"${_csrf.token}"}, 
-            method: "post",
-           
-            
+            method: "post"       
          })
          .then((data) => {
             $("#svg1").hide();

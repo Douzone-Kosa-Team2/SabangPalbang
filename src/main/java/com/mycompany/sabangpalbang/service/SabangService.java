@@ -64,4 +64,10 @@ public class SabangService {
 		List<Sabang> slist = sabangDao.selectTop3();
 		return slist;
 	}
+
+	public List<Sabang> getRecommendList(int sabang_saleprice) {
+		List<Sabang> rslist = sabangDao.selectByPrice(sabang_saleprice);
+		
+		return rslist;
+	}
 }
