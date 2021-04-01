@@ -89,12 +89,6 @@ public class SabangController {
 		return "sabang/sabang_search";
 	}
 
-	@RequestMapping(value = "/pop_ask")
-	public String pop_ask() {
-		logger.info("pop_ask 메시지");
-		return "sabang/pop_ask";
-	}
-
 	@GetMapping("/sabang_detail")
 	public String sabang_detail(int sid, Model model, String pageNo, HttpSession session) {
 		logger.info("sabang_detail 메시지");
@@ -127,12 +121,6 @@ public class SabangController {
 	}
 
 	
-	@RequestMapping(value = "/sabang_detail_insert")
-	public String sabang_detail_insert() {
-		logger.info("sabang_detail_insert 메시지");
-
-		return "sabang/sabang_detail";
-	}
 	@GetMapping("/inquirylist")
 	public String inquirylist(int sid, Model model, String pageNo, HttpSession session) {
 		logger.info("inquirylist 메시지");
@@ -160,5 +148,11 @@ public class SabangController {
 	}
 	
 	
+	@GetMapping("/pop_ask")
+	public String pop_ask(int sid) {
+		logger.info("pop_ask 메시지");
+		logger.info(""+sid);
+		return "sabang/pop_ask";
+	}
 
 }

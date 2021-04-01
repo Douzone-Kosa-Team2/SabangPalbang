@@ -19,6 +19,8 @@
 		<security:intercept-url pattern="/pay" access="hasRole('ROLE_MEMBER')"/>
 		<security:intercept-url pattern="/pay_success" access="hasRole('ROLE_MEMBER')"/>
 		
+		<security:intercept-url pattern="/pop_ask" access="hasRole('ROLE_MEMBER')"/>
+		
 		<security:intercept-url pattern="/mypage_memberInfo" access="hasRole('ROLE_MEMBER')"/>
 		<security:intercept-url pattern="/mypage_orderlist" access="hasRole('ROLE_MEMBER')"/>
 		<security:intercept-url pattern="/mypage_inquiry" access="hasRole('ROLE_MEMBER')"/>

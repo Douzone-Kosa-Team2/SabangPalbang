@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.mycompany.sabangpalbang.dto.OrderMain;
+
 
 
 
@@ -21,8 +23,9 @@ public class PayController {
 	
 	//pay페이지
 		@RequestMapping(value = "/shopping_basket")
-		public String shopping_basket() {
+		public String shopping_basket(String[] products) {
 			logger.info("shoppingbasket 메시지");
+			logger.info(products[0]);
 			return "pay/shopping_basket";
 		}
 		@RequestMapping(value = "/pay")

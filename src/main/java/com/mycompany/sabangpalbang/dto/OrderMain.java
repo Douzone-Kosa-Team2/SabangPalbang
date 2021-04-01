@@ -16,7 +16,14 @@ public class OrderMain {
 	private String order_payment;
 	private String order_bankcode;
 	
+	private String[] products;
 	
+	public String[] getProducts() {
+		return products;
+	}
+	public void setProducts(String[] products) {
+		this.products = products;
+	}
 	public int getOrder_id() {
 		return order_id;
 	}
