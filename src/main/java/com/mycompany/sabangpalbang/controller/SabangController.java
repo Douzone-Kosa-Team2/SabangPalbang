@@ -126,6 +126,7 @@ public class SabangController {
 		return "sabang/sabang_detail";
 	}
 
+	
 	@RequestMapping(value = "/sabang_detail_insert")
 	public String sabang_detail_insert() {
 		logger.info("sabang_detail_insert 메시지");
