@@ -95,22 +95,35 @@ public class PalbangController {
 		List<Palbang_detail> palbanglist = palbangService.getPalbangDetail(pid);
 		String email = memberService.getEmailByNickname(palbang.getPalbang_nickname()); // 팔방 작성자 
 		
-		int likeResult = 0;
-		if(auth != null) { 
-			int member_id = memberService.getIdByEmail(auth.getName());
-			likeResult = palbangService.isLikeByUser(pid, member_id); // 로그인유저가 좋아요 클릭 했는지 여부 
-			if(auth.getName().equals(email)) {
-				model.addAttribute("email", 1); // 로그인유저 == 팔방 작성자 
-			}
+		if(auth != null && auth.getName().equals(email)) {
+			model.addAttribute("email", 1); // 로그인유저 == 팔방 작성자 
 		}else {
 			model.addAttribute("email", 0); // 로그인유저 != 팔방 작성자 
 		}
 		model.addAttribute("palbang", palbang);
 		model.addAttribute("palbanglist", palbanglist);
-		model.addAttribute("likeResult", likeResult);
 
 		return "palbang/palbang_detail";
 	}
+	
+	@PostMapping(value = "/isLikeBtnClick", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String isLikeBtnClick(int palbang_id, Authentication auth) {
+		logger.info("likeUp 메시지");
+
+		int likeResult = 0;
+		if(auth != null) { 
+			int member_id = memberService.getIdByEmail(auth.getName());
+			likeResult = palbangService.isLikeByUser(palbang_id, member_id); // 로그인유저가 좋아요 클릭 했는지 여부 
+		}
+
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("result", likeResult);
+		logger.info("likeResult: " + likeResult);
+		
+		return jsonObject.toString();
+	}
+
 
 	@PostMapping(value = "/likeUp", produces = "application/json;charset=UTF-8")
 	@ResponseBody

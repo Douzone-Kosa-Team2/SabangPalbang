@@ -90,6 +90,6 @@ public class PalbangService {
 	}
 	
 	public void updateLikeCountDown(int palbang_id) {
-		palbangDao.updateLikeCountUp(palbang_id);
+		palbangDao.updateLikeCountDown(palbang_id);
 	}
 }
