@@ -26,7 +26,7 @@
 		}
 	}
 	function cart(){
-		$("form").attr("action", "shopping_basket");
+		$("form").attr("action", "shopping_basket_fromdetail");
 		$("form")[0].submit;
 		
 	};
