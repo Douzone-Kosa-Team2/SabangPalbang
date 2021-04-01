@@ -21,5 +21,5 @@ public interface MemberDao {
 	public String selectEmailByNickname(String palbang_nickname);
 	public int selectIdByEmail(String member_email);
 	public Member selectMemberByEmail(String member_email);
-	
+	public String selectByInquiryNickname(String member_email);
 }

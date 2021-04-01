@@ -91,9 +91,9 @@ public class MemberService {
 		Member member = memberDao.selectMemberByEmail(member_email);
 		return member;
 	}
-
-
-	
-	
+	public String getByInquiryNickname(String member_email) {
+		String nickname= memberDao.selectByInquiryNickname(member_email);
+		return nickname;
+	}
 	
 }

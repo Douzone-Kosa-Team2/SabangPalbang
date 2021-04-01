@@ -13,11 +13,13 @@ public interface InquiryDao {
 	
 	public int insert(Inquiry inquiry);
 	public List<Inquiry> selectAll();
-	public Inquiry selectInquiryByNickname(String member_nickname);
+	public Inquiry selectInquiryByNickname(String nickname);
 	public int updateInquiryByid(int inquiry_id);
 	public int updateInquiryAnswerById(int inquiry_id);
 	public int deleteInquiryByInquiryId(int inquiry_id);
 	public List<Inquiry> selectInquiry(HashMap<String, Object> map);
 	public int count();
+	public int mycount(String nickname);
+	public List<Inquiry> selectNicknameInquiry(HashMap<String, Object> map);
 	
 }

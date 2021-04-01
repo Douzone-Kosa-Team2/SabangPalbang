@@ -28,7 +28,16 @@
 		member
 		where member_id=#{member_id}
 	</select>
-
+	
+	<!-- Inquiry 작성자와 현재 로그인한 계정 비교하기 위해 얻어오는 별명 select -->
+	<select id="selectByInquiryNickname" parameterType="string"
+		resultType="String">
+		select member_nickname
+		from
+		member
+		where member_email=#{member_email}
+	</select>
+	
 	<select id="selectByPayMember" parameterType="string"
 		resultType="member">
 		select member_name, zipcode, roadaddress, detailaddress,
@@ -62,6 +71,12 @@
 		where member_email=#{member_email}
 	</select>
 	
+	<select id="selectIdByNickname" parameterType="string"
+		resultType="string">
+		select member_nickname
+		from member
+		where member_email=#{member_email}
+	</select>
 	
 	<update id="updateByMember" parameterType="member">
 		<if test="zipcode==null">

@@ -28,7 +28,7 @@
 		</thead>
 	
 		<tbody>
-			<c:forEach var="inquiry" items="${inquiryList}">
+			<c:forEach var="inquiry" items="${userInquiryList}">
 				
 					<tr>
 						<td scope="row">${inquiry.inquiry_id}</td>
@@ -53,11 +53,11 @@
 									<div class="d-flex">
 										<div class="flex-grow-1">
 											<button class="btn btn-outline-primary btn-sm"
-												onclick="getList(${sid},1)">처음</button>
+												onclick="getList(${userNickName},1)">처음</button>
 
 											<c:if test="${pager.groupNo>1}">
 												<button class="btn btn-outline-info btn-sm"
-													onclick="getList(${sid},${pager.startPageNo-1})">이전</button>
+													onclick="getList(${userNickName},${pager.startPageNo-1})">이전</button>
 											</c:if>
 
 											<c:forEach var="i" begin="${pager.startPageNo}"
@@ -65,21 +65,21 @@
 
 												<c:if test="${pager.pageNo!=i}">
 													<button class="btn btn-outline-success btn-sm"
-														onclick="getList(${sid},${i})">${i}</button>
+														onclick="getList(${userNickName},${i})">${i}</button>
 												</c:if>
 												<c:if test="${pager.pageNo==i}">
 													<button class="btn btn-outline-danger btn-sm"
-														onclick="getList(${sid},${i})">${i}</button>
+														onclick="getList(${userNickName},${i})">${i}</button>
 												</c:if>
 											</c:forEach>
 
 											<c:if test="${pager.groupNo<pager.totalGroupNo}">
 												<button class="btn btn-outline-info btn-sm"
-													onclick="getList(${sid},${pager.endPageNo+1})">다음</button>
+													onclick="getList(${userNickName},${pager.endPageNo+1})">다음</button>
 											</c:if>
 
 											<button class="btn btn-outline-primary btn-sm"
-												onclick="getList(${sid},${pager.totalPageNo})">맨끝</button>
+												onclick="getList(${userNickName},${pager.totalPageNo})">맨끝</button>
 										</div>
 										
 
@@ -89,9 +89,7 @@
 						</table>
 					</div>
 				</td>
-				<td>
-					<button onclick="ask(${sid})" type="button" class="btn btn-dark">작성하기</button>
-				</td>
+				
 			</tr>
 		</tbody>
 	
