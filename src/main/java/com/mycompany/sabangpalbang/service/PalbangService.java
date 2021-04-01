@@ -79,5 +79,17 @@ public class PalbangService {
 		palbangLikeDao.deleteLike(palbang_likepalbangid, palbang_likememberid);
 		
 	}
+
+	public int isLikeByUser(int pid, int member_id) {
+		int likeResult = palbangLikeDao.selectCountLike(pid, member_id);
+		return likeResult;
+	}
 	
+	public void updateLikeCountUp(int palbang_id) {
+		palbangDao.updateLikeCountUp(palbang_id);
+	}
+	
+	public void updateLikeCountDown(int palbang_id) {
+		palbangDao.updateLikeCountDown(palbang_id);
+	}
 }

@@ -21,26 +21,21 @@
 	<select id="selectTop3" resultType="palbang">
 		select rownum, palbang_id, palbang_title, palbang_nickname, palbang_likecount, palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype 
 		from (
-				select palbang_id, palbang_title, palbang_nickname, palbang_likecount, palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
-				from palbang
-				order by palbang_likecount desc
-			)
+			select palbang_id, palbang_title, palbang_nickname, palbang_likecount, palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
+			from palbang
+			order by palbang_likecount desc
+		)
 		where rownum &lt;= 3
-		
 	</select>
 	
 	<update id="update" parameterType="palbang">
 		update palbang set
-		
 		palbang_title=#{palbang_title}, 
-
 		palbang_likecount=#{palbang_likecount}, 
 		palbang_viewcount=#{palbang_viewcount}, 
-
 		palbang_imgoname=#{palbang_imgoname}, 
 		palbang_imgsname=#{palbang_imgsname}, 
 		palbang_imgtype=#{palbang_imgtype}
-		
 		where palbang_id=#{palbang_id}
 	</update>
 	
@@ -56,8 +51,7 @@
 	</delete>
 
    	<!-- 팔방 정렬_ 좋아요 순  -->
-   <select id="selectByLike" parameterType="pager"
-		resultType="palbang">
+   <select id="selectByLike" parameterType="pager" resultType="palbang">
 		select rnum, palbang_id, palbang_title, palbang_nickname, palbang_likecount, 
 		palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
 		from (
@@ -75,8 +69,7 @@
 	</select>
    
    	<!-- 팔방 정렬_ 조회수 순  -->
-   	<select id="selectByView" parameterType="pager"
-		resultType="palbang">
+   	<select id="selectByView" parameterType="pager" resultType="palbang">
 		select rnum, palbang_id, palbang_title, palbang_nickname, palbang_likecount, 
 		palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
 		from (
@@ -94,8 +87,7 @@
 	</select>
    	
    	<!-- 팔방 정렬_ 등록일 순  -->
-   		<select id="selectByNew" parameterType="pager"
-		resultType="palbang">
+   	<select id="selectByNew" parameterType="pager" resultType="palbang">
 		select rnum, palbang_id, palbang_title, palbang_nickname, palbang_likecount, 
 		palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
 		from (
@@ -113,8 +105,7 @@
 	</select>
    		
    	<!-- 팔방 정렬_ 오래된 순  -->
-   	<select id="selectByOld" parameterType="pager"
-		resultType="palbang">
+   	<select id="selectByOld" parameterType="pager" resultType="palbang">
 		select rnum, palbang_id, palbang_title, palbang_nickname, palbang_likecount, 
 		palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
 		from (
@@ -138,7 +129,18 @@
    	</select>
    
    <select id="count2" resultType="int">
-      select count(*) from palbang
+      	select count(*) from palbang
    </select>
    
+   <update id="updateLikeCountUp" parameterType="int">	
+   	  	update palbang set 
+		palbang_likecount = palbang_likecount+1
+		where palbang_id=#{palbang_id}
+   </update>
+   
+    <update id="updateLikeCountDown" parameterType="int">	
+   	  	update palbang set 
+		palbang_likecount = palbang_likecount-1
+		where palbang_id=#{palbang_id}
+   </update>
 </mapper>

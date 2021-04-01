@@ -36,6 +36,27 @@
 		$("form")[0].submit;
 	}
 	
+
+ 
+ const updateSum = function (price) {
+	 //console.log(event.target);
+	 console.log($("#sum_price").text());
+	 var sum = $("#sum_price").text();
+	 sum = parseInt(sum);
+	 console.log(price);
+	 console.log(event.target.checked);
+	 if(event.target.checked == true){
+		 
+		 document.getElementById("sum_price").innerHTML = sum + price;
+		 console.log($("#sum_price").text());
+	 }
+	 else{
+		 
+		 document.getElementById("sum_price").innerHTML = sum - price;
+		 console.log($("#sum_price").text());
+	 }
+ };
+	
 </script>
 
 <!-- 상세페이지 1 -->
@@ -52,6 +73,7 @@
 		<form name="form">
 			<input type="hidden" name="${_csrf.parameterName}"
 				value="${_csrf.token}" />
+			<c:set var="sum" value="0" />
 			<c:forEach var="product" items="${productList}">
 				<div class="sabang_detail_1_list_name d-flex justify-content-center"
 					style="margin: 10px 70px; border-bottom: 1px solid #ced4da">
@@ -60,14 +82,16 @@
 					</div>
 					<div class="sabang_detail_1_list_name_price">
 						<div>
-							<text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text>${product.product_price}
+							<span style="font-family: 'Cafe24Dangdanghae';">&#8361;</span>
+							<span id="${product.product_id}">${product.product_price}</span>
+							<c:set var="sum" value="${sum + product.product_price}" />
 						</div>
 					</div>
 					<div class="sabang_detail_1_list_name_price">
 						<div>
-							<input class="form-check-input" style="margin-left: 10px;"
-								type="checkbox" value="${product.product_id}" name="products"
-								checked>
+							<input class="form-check-input products"
+								style="margin-left: 10px;" type="checkbox"
+								value="${product.product_id}" name="products" onchange="updateSum(${product.product_price})" checked>
 						</div>
 					</div>
 				</div>
@@ -76,8 +100,9 @@
 			<div class="sabang_detail_1_total_price">
 				<div class="sabang_detail_1_total_font">총합</div>
 				<div class="sabang_detail_1_total_price_font ">
-					<strong><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text>
-						350,000</strong>
+					<strong><span style="font-family: 'Cafe24Dangdanghae';">&#8361;</span>
+						<span id="sum_price">
+						<c:out value="${sum}" /></span></strong>
 				</div>
 			</div>
 			<div class="sabang_detail_1_trolley_buyButton">
@@ -144,7 +169,7 @@
 
 				<div class="sabang_detail_2_content_txt_header"></div>
 				<h3>${product.product_name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<text style="font-family:'Cafe24Dangdanghae';">&#8361;</text>
+					<span style="font-family:'Cafe24Dangdanghae';">&#8361;</span>
 					&nbsp;&nbsp;${product.product_price}
 				</h3>
 				<div class="sabang_detail_2_content_txt_content">

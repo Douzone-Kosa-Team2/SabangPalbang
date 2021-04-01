@@ -23,5 +23,6 @@ public interface PalbangDao {
 	public Palbang selectById(int pid);
 	public int updateViewCount(int palbang_id);
 	public List<Palbang> selectTop3();
-	
+	public int updateLikeCountUp(int palbang_id);
+	public int updateLikeCountDown(int palbang_id);
 }
