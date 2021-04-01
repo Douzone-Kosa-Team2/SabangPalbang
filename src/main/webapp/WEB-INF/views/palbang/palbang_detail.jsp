@@ -77,9 +77,9 @@
    function addLike(palbang_id) {
       console.log(palbang_id);
          $.ajax({
-               url: "likeUp",
+             url: "likeUp",
             data: {palbang_id, ${_csrf.parameterName}:"${_csrf.token}"}, 
-            method: "post"       
+            method: "post"
          })
          .then((data) => {
             $("#svg1").hide();
@@ -89,7 +89,7 @@
    function deleteLike(palbang_id){
 	   console.log(palbang_id);
        $.ajax({
-             url: "likeDown",
+           url: "likeDown",
           data: {palbang_id, ${_csrf.parameterName}:"${_csrf.token}"}, 
           method: "post"       
        })
