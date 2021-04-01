@@ -51,7 +51,7 @@ public class SabangController {
 
 		// 없으면 Pager를 세션에 저장
 		int totalRows = sabangService.getTotalRows();
-		Pager pager = new Pager(6, 2, totalRows, intPageNo);
+		Pager pager = new Pager(6, 5, totalRows, intPageNo);
 		session.setAttribute("pager", pager);
 		
 		// 정렬 기준 

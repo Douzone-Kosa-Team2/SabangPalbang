@@ -41,21 +41,22 @@
 			<col width="20%">
 			<col>
 		</colgroup>
+		<c:forEach var="cart" items="${sessionCart}">
 		<tr>
 			<td>1</td>
 			<td><input class="table_header2" type="checkbox" name="xxx"
 				value="yyy" checked></td>
 			<td style="padding: 20px;"><img class="table_list5"
-				src="resources/images/basket/basket_list1.png" height="80" width="70"></td>
-			<td style="text-align: center;">아늑하고 따뜻한 방</td>
-			<td><img class="table_list5" src="resources/images/common/plus_minus_bt.png"
-				height="30" width="70"></td>
-			<td><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text> 500,000</td>
+				src="resources/images/sabang_post/${cart.sabang_imgoname}" height="80" width="70"></td>
+			<td style="text-align: center;">${cart.sabang_name}</td>
+			<td>${cart.products_totalcount}</td>
+			<td><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text> ${cart.product_totalprice}</td>
 			<td>배송비무료</td>
 			<td><a href='javascript:window.close();'>X</a></td>
-		</tr>
-		<br/>
-		<tr>
+		</tr> <br/>
+		</c:forEach>
+		
+		<!-- <tr>
 			<td>2</td>
 			<td><input class="table_header2" type="checkbox" name="xxx"
 				value="yyy" checked></td>
@@ -68,7 +69,7 @@
 			<td>배송비무료</td>
 			<td><a href='javascript:window.close();'>X</a></td>
 		</tr>
-	
+	 -->
 	
 	</table>
 	<div class="shopping_basket_select_cancle_totalPrice">
