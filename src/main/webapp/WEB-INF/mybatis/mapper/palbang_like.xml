@@ -17,7 +17,12 @@
 		order by palbang_likeid desc
 	</select>
 	
-	
+   	<!-- 로그인 유저가 팔방게시물의 좋아요를 눌렀는지 여부 판단  -->
+   	<select id="selectCountLike" parameterType="int" resultType="int">
+   		select count(palbang_likeid)
+		from palbang_like
+		where palbang_likepalbangid=#{palbang_likepalbangid} and palbang_likememberid=#{palbang_likememberid}
+   	</select>
 	
 	<delete id="deleteLike" parameterType="int">
 		delete from palbang_like
