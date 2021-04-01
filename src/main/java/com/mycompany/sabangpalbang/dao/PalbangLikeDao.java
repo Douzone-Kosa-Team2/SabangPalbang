@@ -14,6 +14,11 @@ public interface PalbangLikeDao {
 	public int insert();
 	public List<Palbang_like> selectAll();
 	public int deleteByPalbangLikeId(int palbang_likeid);
-	public int insertLike(@Param("palbang_likepalbangid") int palbang_likepalbangid, @Param("palbang_likememberid") int palbang_likememberid);
-	public int deleteLike(@Param("palbang_likepalbangid")int palbang_likepalbangid, @Param("palbang_likememberid")int palbang_likememberid);
+	public int insertLike(@Param("palbang_likepalbangid") int palbang_likepalbangid, 
+								@Param("palbang_likememberid") int palbang_likememberid);
+	public int deleteLike(@Param("palbang_likepalbangid")int palbang_likepalbangid, 
+								@Param("palbang_likememberid")int palbang_likememberid);
+	public int selectCountLike(@Param("palbang_likepalbangid")int palbang_likepalbangid, 
+								@Param("palbang_likememberid")int palbang_likememberid);
+	
 }
