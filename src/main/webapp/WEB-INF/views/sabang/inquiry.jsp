@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <div class="sabang_detail_3_div_table">
-	<table class="table">
+	<table class="table inquiry_table">
 		<thead class="thead-light">
 			<tr>
 				<th scope="col">번호</th>
