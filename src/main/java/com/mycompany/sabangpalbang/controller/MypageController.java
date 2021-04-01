@@ -47,15 +47,34 @@ public class MypageController {
 			return "mypage/mypage_orderlist";
 		}
 		
+		@GetMapping("/mypage_inquiry")
+		public String mypage_inquiry(Authentication auth, Model model, String pageNo, HttpSession session) {
+			logger.info("inquirylist 메시지");
+			String userNickName = auth.getName();
+			model.addAttribute("userNickName",userNickName);
+			logger.info(userNickName);
+			String anickname = memberService.getByInquiryNickname(auth.getName());
+			logger.info(anickname);
+			model.addAttribute("anickname",anickname);
+			
+			return "mypage/mypage_inquiry";
+		}
 		
 		
 		@GetMapping("/userInquiryList")
+<<<<<<< HEAD
 		@ResponseBody
 		public String mypage_inquiry(Authentication auth, Model model, String pageNo, HttpSession session) {
 			logger.info("mypage_inquiry 메시지");
+=======
+		public String userInquiryList(String anickname, Model model, String pageNo, HttpSession session) {
+			logger.info("userInquiryList 메시지");
+>>>>>>> branch 'develop' of https://github.com/Douzone-Kosa-Team2/SabangPalbang.git
 			
-			String userNickName = auth.getName();
-			String anickname = memberService.getByInquiryNickname(auth.getName());
+			/*
+			 * String userNickName = auth.getName(); String anickname =
+			 * memberService.getByInquiryNickname(auth.getName());
+			 */
 			logger.info(anickname);
 			
 			
@@ -71,27 +90,26 @@ public class MypageController {
 	           intPageNo=Integer.parseInt(pageNo);
 	        }
 	        
-	        int totalRows=inquiryService.getTotalMyRows(userNickName);
+	        int totalRows=inquiryService.getTotalMyRows(anickname);
 	        Pager pager=new Pager(10,5,totalRows,intPageNo);
 	    	//사방 문의게시판 가져오기 
 			List<Inquiry> inquiryList = inquiryService.getInquiryList(pager, anickname);
 			
 	        session.setAttribute("pager", pager);
 	        model.addAttribute("inquiryList", inquiryList);
+<<<<<<< HEAD
 	        model.addAttribute("userNickName", userNickName);
 	       
+=======
+	        model.addAttribute("anickname", anickname);
+	       // model.addAttribute("sid", sid);
+			
+>>>>>>> branch 'develop' of https://github.com/Douzone-Kosa-Team2/SabangPalbang.git
 			return "mypage/userInquiry";
 			
 		}
 		
-		@GetMapping("/mypage_inquiry")
-		public String inquirylist(Authentication auth, Model model, String pageNo, HttpSession session) {
-			logger.info("inquirylist 메시지");
-			String userNickName = auth.getName();
-			model.addAttribute("userNickName",userNickName);
-			
-			return "mypage/mypage_inquiry";
-		}
+		
 		
 		
 		

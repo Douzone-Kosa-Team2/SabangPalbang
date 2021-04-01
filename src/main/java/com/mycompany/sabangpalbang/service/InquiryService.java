@@ -26,10 +26,10 @@ public class InquiryService {
 	}
 	
 	//"내가 쓴 문의글 로그인한 계정의 별명으로 문의글 중에 같은 별명인 문의글을 받으려는 문"
-	public List<Inquiry> getInquiryList(Pager pager, String eqnickname) {
+	public List<Inquiry> getInquiryList(Pager pager, String inquiry_writer) {
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("pager", pager);
-		map.put("eqnickname", eqnickname);
+		map.put("inquiry_writer", inquiry_writer);
 
 		List<Inquiry> inquiryListNickname = inquiryDao.selectNicknameInquiry(map);
 		return inquiryListNickname;

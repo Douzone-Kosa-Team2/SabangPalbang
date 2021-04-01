@@ -4,31 +4,6 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
 
-
-<script>
-
-	$(function() {
-		console.log("success");
-		getList(${userNickName}, 1);
-	});
-	
-	const getList = (userNickName, pageNo) => {
-		console.log("success2");
-		const args = {url:"userInquiryList",method:"get"}
-		if(pageNo){
-			args.data = {userNickName, pageNo};
-		}
-		$.ajax(args)
-		.then(data => {
-			console.log("success3");
-			$("#userInquiry").html(data);
-		});
-		
-	};
-	
-	
-</script>
-
  <!-- 마이페이지 메뉴 헤더 -->
  <div class="mypage_header">
         <a class="mypage_header_memberInfo" href="mypage_memberInfo">회원 정보</a>
@@ -44,9 +19,31 @@
 
 	<br />
 </div>
-<%-- </c:if> --%>
 
 
+<script>
+console.log("success");
+	$(function() {
+		console.log("success2");
+		getList(`${anickname}`, 1);
+	});
+	
+	const getList = (anickname, pageNo) => {
+		console.log("success3");
+		const args = {url:"userInquiryList",method:"get"}
+		if(pageNo){
+			args.data = {anickname, pageNo};
+		}
+		$.ajax(args)
+		.then(data => {
+			console.log("success4");
+			$("#userInquiry").html(data);
+		});
+		
+	};
+	
+	
+</script>
 
    
 
