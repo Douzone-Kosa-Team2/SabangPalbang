@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.sabangpalbang.dto.Inquiry;
 import com.mycompany.sabangpalbang.dto.Member;
@@ -49,6 +50,7 @@ public class MypageController {
 		
 		
 		@GetMapping("/userInquiryList")
+		@ResponseBody
 		public String mypage_inquiry(Authentication auth, Model model, String pageNo, HttpSession session) {
 			logger.info("mypage_inquiry 메시지");
 			
@@ -56,7 +58,7 @@ public class MypageController {
 			String anickname = memberService.getByInquiryNickname(auth.getName());
 			logger.info(anickname);
 			
-			//logger.info(iwriter.getInquiry_writer());
+			
 			
 			int intPageNo=1;
 	        if(pageNo==null) {
@@ -77,8 +79,7 @@ public class MypageController {
 	        session.setAttribute("pager", pager);
 	        model.addAttribute("inquiryList", inquiryList);
 	        model.addAttribute("userNickName", userNickName);
-	       // model.addAttribute("sid", sid);
-			
+	       
 			return "mypage/userInquiry";
 			
 		}
