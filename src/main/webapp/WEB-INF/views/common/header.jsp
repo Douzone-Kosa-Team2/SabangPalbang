@@ -63,10 +63,6 @@ function enterkey(){
 							</form>
 							<a class="header_logIn_item" href="${pageContext.request.contextPath}/mypage_memberInfo">마이페이지</a>
 							
-							
-							
-							
-							
 				</sec:authorize>
 				
 				
