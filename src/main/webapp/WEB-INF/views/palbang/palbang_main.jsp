@@ -18,9 +18,9 @@
        <div class="palbang_div3_parent"> 
         	<div class="palbang_div3"> <!--방자랑하기 버튼과 아래 게시물-->
 	            <div class="palbang_div3_btn">
-	                <a href="palbang_create">
-	                    <button type="button" class="palbang_div3_btn btn" style="background-color: #00B0F0; color: white;">방 자랑하기</button>
-	                </a>
+	    			 <button type="button" onclick="location.href='palbang_create'"
+	                    	class="palbang_div3_btn btn" style="background-color: #00B0F0; color: white;">방 자랑하기</button>
+	             
 	            </div>        
 	            <div class="d-flex flex-row flex-wrap justify-content-center">
 					<c:forEach var="palbang" items="${list}">
