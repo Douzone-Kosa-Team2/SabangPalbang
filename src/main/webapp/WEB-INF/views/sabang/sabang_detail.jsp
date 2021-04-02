@@ -70,7 +70,7 @@
 		<div class="sabang_detail_1_list_title">
 			<strong>${sabang.sabang_name}</strong>
 		</div>
-		<form name="form">
+		<form name="form" method="post">
 			<input type="hidden" name="${_csrf.parameterName}"
 				value="${_csrf.token}" />
 			<c:set var="sum" value="0" />
