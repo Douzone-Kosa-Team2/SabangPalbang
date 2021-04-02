@@ -1,20 +1,12 @@
 package com.mycompany.sabangpalbang.dto;
 
 public class Cart {
-	
-	private String cart_id;
+
 	private String sabang_imgoname;
 	private String sabang_name;
 	private int products_totalcount;
 	private int product_totalprice;
 	
-	
-	public String getCart_id() {
-		return cart_id;
-	}
-	public void setCart_id(String cart_id) {
-		this.cart_id = cart_id;
-	}
 	public String getSabang_imgoname() {
 		return sabang_imgoname;
 	}

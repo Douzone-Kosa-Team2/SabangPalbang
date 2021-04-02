@@ -3,9 +3,12 @@ package com.mycompany.sabangpalbang.controller;
 
 
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -42,6 +45,7 @@ public class PayController {
 		}
 		@PostMapping("/shopping_basket_fromdetail")
 		public String shopping_basket_fromdetail(String[] products, HttpSession session) {
+			SimpleDateFormat format1 = new SimpleDateFormat("HHmmss");
 			logger.info("shopping_basket_fromdetail 메시지");
 			//logger.info(products[0]);
 			
@@ -68,33 +72,35 @@ public class PayController {
 					totalprice+=productlist.get(i).getProduct_price();
 				}
 				
-				mycart.setCart_id(new Date().getTime() + "-" + sid);
+				
 				mycart.setSabang_imgoname(sabangImg);
 				mycart.setSabang_name(sabangName);
 				mycart.setProducts_totalcount(products.length);
 				mycart.setProduct_totalprice(totalprice);
+				String cartId = format1.format(new Date().getTime());
 				
-				logger.info(mycart.getCart_id());
+				logger.info(cartId);
 				logger.info(mycart.getSabang_imgoname());
 				logger.info(mycart.getSabang_name());
 				logger.info(""+mycart.getProducts_totalcount());
 				logger.info(""+mycart.getProduct_totalprice());
 				
-				List<Cart> mycartlist = (List<Cart>)session.getAttribute("sessionCart");
+				Map<String, Cart> mycartlist = (Map<String, Cart>)session.getAttribute("sessionCart");
 				
 				if (mycartlist == null) {
-					mycartlist = new ArrayList<Cart>();	
+					mycartlist = new HashMap<String, Cart>();	
 				}
-				mycartlist.add(mycart);
+				mycartlist.put(cartId,mycart);
 				session.setAttribute("sessionCart", mycartlist);
 					
 				return "pay/shopping_basket";
 			}
 		}
-		@GetMapping("/pay")
-		public String pay() {
+		@PostMapping("/pay")
+		public String pay(String cid) {
 			logger.info("/pay 메시지");
-			return "pay/pay";
+			logger.info(cid);
+			return "pay/paypage";
 		}
 		@RequestMapping(value = "/pay_success")
 		public String pay_success() {
@@ -102,9 +108,16 @@ public class PayController {
 			return "pay/pay_success";
 		}
 		@PostMapping("/deleteCart")
-		public String deleteCart() {
-			
-			return "redirect:/shopping_basket";
+		public String deleteCart(String cid, HttpSession session) {
+			logger.info("deleteCart");
+			logger.info(cid);
+			Map<String, Cart> mycartlist = (Map<String, Cart>)session.getAttribute("sessionCart");
+			logger.info("1"+mycartlist.size());
+			mycartlist.remove(cid);
+			//mycartlist.clear();
+			session.setAttribute("sessionCart", mycartlist);
+			logger.info("2"+mycartlist.size());
+			return "redirect:/shopping_basket_fromdetail";
 		}
 
 }
