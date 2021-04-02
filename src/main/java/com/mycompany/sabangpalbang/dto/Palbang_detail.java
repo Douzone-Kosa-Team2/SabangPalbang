@@ -1,11 +1,13 @@
 package com.mycompany.sabangpalbang.dto;
 
+import java.util.Arrays;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class Palbang_detail {
 	private int palbang_detailno;
 	private int palbang_id;
-	private MultipartFile[] pdattach;
+	private MultipartFile pdattach;
 	private String palbang_dimgoname;
 	private String palbang_dimgsname;
 	private String palbang_dimgtype;
@@ -48,12 +50,19 @@ public class Palbang_detail {
 	public void setPalbang_explain(String palbang_explain) {
 		this.palbang_explain = palbang_explain;
 	}
-	public MultipartFile[] getPdattach() {
+	public MultipartFile getPdattach() {
 		return pdattach;
 	}
-	public void setPdattach(MultipartFile[] pdattach) {
+	public void setPdattach(MultipartFile pdattach) {
 		this.pdattach = pdattach;
 	}
+	@Override
+	public String toString() {
+		return "Palbang_detail [palbang_detailno=" + palbang_detailno + ", palbang_id=" + palbang_id + ", pdattach="
+				+ pdattach + ", palbang_dimgoname=" + palbang_dimgoname + ", palbang_dimgsname=" + palbang_dimgsname
+				+ ", palbang_dimgtype=" + palbang_dimgtype + ", palbang_explain=" + palbang_explain + "]";
+	}
+	
 
 
 }
