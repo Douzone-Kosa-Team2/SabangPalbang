@@ -5,11 +5,22 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <script>
 	function pay() {
-		$("form").attr("action", "pay");
-		$("form")[0].submit;
+		console.log($('input:radio[name=cartkey]:checked').val());
+		var cid = $('input:radio[name=cartkey]:checked').val();
+		$.ajax({
+			type: "post",
+			url: "pay",
+			data: {cid, ${_csrf.parameterName}:"${_csrf.token}"}
+		});
 	}
 	function deleteCart(cid) {
-		window.location.href="deleteCart";
+		console.log(cid);
+		//event.preventDefault();
+		$.ajax({
+			type: "post",
+			url: "deleteCart",
+			data: {cid, ${_csrf.parameterName}:"${_csrf.token}"}
+		});
 	}
 </script>
 <!-- 장바구니 -->
@@ -28,9 +39,9 @@
 		<col width="1%">
 	</colgroup>
 	<tr>
+		
+		<td></td>
 		<td>번호</td>
-		<td><input class="table_header2" type="checkbox" name="xxx"
-			value="yyy" checked></td>
 		<td></td>
 		<td>상품명</td>
 		<td>수량</td>
@@ -39,7 +50,7 @@
 		<td></td>
 	</tr>
 </table>
-<form name="form" method="get">
+<form name="form" method="post">
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	<table class="shopping_basket_list">
 		<colgroup>
@@ -53,39 +64,28 @@
 			<col>
 		</colgroup>
 
-		<c:forEach var="cart" items="${sessionCart}">
+		<c:forEach var="cart" items="${sessionCart}" varStatus="status">
 			<tr>
-				<td>1</td>
-				<td><input class="table_header2" type="checkbox" name="xxx"
-					value="yyy" checked></td>
+				<td><input class="table_header2" type="radio" name="cartkey" value="${cart.key}"></td>
+				<td><c:out value="${status.count}"/></td>
 				<td style="padding: 20px;"><img class="table_list5"
-					src="resources/images/sabang_post/${cart.sabang_imgoname}"
+					src="resources/images/sabang_post/${cart.value.sabang_imgoname}"
 					height="80" width="70"></td>
-				<td style="text-align: center;">${cart.sabang_name}</td>
-				<td>${cart.products_totalcount}</td>
+				<td style="text-align: center;">${cart.value.sabang_name}</td>
+				<td>${cart.value.products_totalcount}</td>
 				<td><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text>
-					${cart.product_totalprice}</td>
+					${cart.value.product_totalprice}</td>
 				<td>배송비무료</td>
-				<td><button onclick="deleteCart(${cart.cart_id})">X</button></td>
+				<td><button onclick="deleteCart(${cart.key})">X</button></td>
 			</tr>
 			<br />
 		</c:forEach>
 
 
 	</table>
-	<div class="shopping_basket_select_cancle_totalPrice">
-		<div class="select_cancle_totalPrice_button">
-			<button type="button" class="btn btn-outline-info">선택 삭제</button>
-		</div>
-
-		<strong class="shopping_basket_totalPrice1">총가격</strong> <strong
-			class="shopping_basket_totalPrice2"><text
-				style="font-family: 'Cafe24Dangdanghae';">&#8361;</text> 1,000,000</strong>
-
-	</div>
 	<div class="shopping_basket_buy_button">
 
-		<button type="submit" class="btn btn-lg btn-info" onclick="pay()"
+		<button class="btn btn-lg btn-info" onclick="pay()"
 			style="width: 40%; height: 40%; color: white">결제하기</button>
 	</div>
 </form>
