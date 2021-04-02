@@ -62,14 +62,10 @@ public class MypageController {
 		
 		
 		@GetMapping("/userInquiryList")
-<<<<<<< HEAD
-		@ResponseBody
-		public String mypage_inquiry(Authentication auth, Model model, String pageNo, HttpSession session) {
-			logger.info("mypage_inquiry 메시지");
-=======
+
 		public String userInquiryList(String anickname, Model model, String pageNo, HttpSession session) {
 			logger.info("userInquiryList 메시지");
->>>>>>> branch 'develop' of https://github.com/Douzone-Kosa-Team2/SabangPalbang.git
+
 			
 			/*
 			 * String userNickName = auth.getName(); String anickname =
@@ -97,14 +93,11 @@ public class MypageController {
 			
 	        session.setAttribute("pager", pager);
 	        model.addAttribute("inquiryList", inquiryList);
-<<<<<<< HEAD
-	        model.addAttribute("userNickName", userNickName);
-	       
-=======
+
 	        model.addAttribute("anickname", anickname);
 	       // model.addAttribute("sid", sid);
 			
->>>>>>> branch 'develop' of https://github.com/Douzone-Kosa-Team2/SabangPalbang.git
+
 			return "mypage/userInquiry";
 			
 		}
