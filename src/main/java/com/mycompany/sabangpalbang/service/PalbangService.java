@@ -92,4 +92,13 @@ public class PalbangService {
 	public void updateLikeCountDown(int palbang_id) {
 		palbangDao.updateLikeCountDown(palbang_id);
 	}
+
+	/* 팔방 create */
+	public void savePalbang(Palbang palbang) {
+		palbangDao.insertPalbang(palbang);
+		for(int i=0; i<palbang.getReviews().size(); i++) { 
+			palbang.getReviews().get(i).setPalbang_id(palbang.getPalbang_id());
+			palbangDao.insertPalbangDetail(palbang.getReviews().get(i));
+		}
+	}
 }

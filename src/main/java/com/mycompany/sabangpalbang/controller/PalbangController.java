@@ -160,31 +160,57 @@ public class PalbangController {
 	}
 
 	@PostMapping(value = "/addPalbang", produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public String addPalbang(Palbang palbang, List<Palbang_detail> palbang_detail) {
-		int pid = 0;
-
+	public String addPalbang(Palbang palbang, Authentication auth) {
+		
+		/*  팔방 대표 이미지 */
 		MultipartFile pattach = palbang.getPattach();
 		if (!pattach.isEmpty()) {
-			logger.info("첨부가 있음");
+			logger.info("팔방 대표 이미지 첨부가 있음");
 			palbang.setPalbang_imgoname(pattach.getOriginalFilename());
 			palbang.setPalbang_imgtype(pattach.getContentType());
 			String saveName = new Date().getTime() + "-" + palbang.getPalbang_imgoname();
 			palbang.setPalbang_imgsname(saveName);
+			
+			logger.info("팔방 대표이미지 : " + palbang.getPalbang_imgoname());
 
 			File file = new File(
-					"C:/Users/ant94/Documents/JavaProject/JavaHomework/uploadfiles/" + palbang.getPalbang_imgsname());
+					"/Users/homecj/dev/workspace/sts/Douzone/uploadfiles/" + palbang.getPalbang_imgsname());
 			try {
 				pattach.transferTo(file);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else {
-			logger.info("첨부가 없음");
+		} else {                                                                       
+			logger.info("팔방 대표 이미지 첨부가 없음");
 		}
-
-		// palbangService.savePalbang(palbang);
-
-		return "redirect:/palbang_detail?p_id=" + pid;
+		palbang.setPalbang_nickname(memberService.getByInquiryNickname(auth.getName()));
+		
+		/* 팔방 디테일 리뷰 이미지 - 최소 1개 ~ 3개 */
+		for(int i=0; i<palbang.getReviews().size(); i++) {
+			MultipartFile pdattach = palbang.getReviews().get(i).getPdattach();
+			if(!pdattach.isEmpty()) {
+				logger.info(i + "번째 리뷰 이미지 첨부 ");
+				palbang.getReviews().get(i).setPalbang_id(palbang.getPalbang_id()); // 이미 시퀀스키가 세팅되어있음 
+				palbang.getReviews().get(i).setPalbang_dimgoname(pdattach.getOriginalFilename());
+				palbang.getReviews().get(i).setPalbang_dimgtype(pdattach.getContentType());
+				String saveName = new Date().getTime() + "-" + palbang.getPalbang_imgoname();
+				palbang.getReviews().get(i).setPalbang_dimgsname(saveName);
+		
+				File file = new File(
+						"/Users/homecj/dev/workspace/sts/Douzone/uploadfiles/" + palbang.getReviews().get(i).getPalbang_dimgsname());
+				try {
+					pattach.transferTo(file);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else {                                                                       
+				logger.info("팔방 리뷰 이미지 첨부가 없음");
+			}
+		}
+		 // DB insert - 팔방디테일
+		palbangService.savePalbang(palbang);
+		
+		// 두 테이블에 insert가 제대로 되었다면 리다이렉트해서 작성한 디테일 페이지 보여주기 
+		return "redirect:/palbang_detail?pid="+palbang.getPalbang_id();
 	}
 }

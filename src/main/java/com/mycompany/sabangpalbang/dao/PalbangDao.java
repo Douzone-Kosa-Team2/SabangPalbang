@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.mycompany.sabangpalbang.dto.Pager;
 import com.mycompany.sabangpalbang.dto.Palbang;
+import com.mycompany.sabangpalbang.dto.Palbang_detail;
 
 
 @Mapper
@@ -25,4 +26,7 @@ public interface PalbangDao {
 	public List<Palbang> selectTop3();
 	public int updateLikeCountUp(int palbang_id);
 	public int updateLikeCountDown(int palbang_id);
+	/* palbang create - 두개의 테이블에 삽입 */
+	public int insertPalbang(Palbang palbang);
+	public int insertPalbangDetail(Palbang_detail palbang_detail);
 }
