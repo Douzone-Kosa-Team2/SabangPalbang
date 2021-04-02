@@ -97,7 +97,7 @@ public class PayController {
 			}
 		}
 		@PostMapping("/pay")
-		public String pay(String cid) {
+		public String pay(String cid) { // form이 넘어와야함 
 			logger.info("/pay 메시지");
 			logger.info(cid);
 			return "pay/paypage";
@@ -107,7 +107,7 @@ public class PayController {
 			logger.info("pay_success 메시지");
 			return "pay/pay_success";
 		}
-		@PostMapping("/deleteCart")
+		@GetMapping("/deleteCart")
 		public String deleteCart(String cid, HttpSession session) {
 			logger.info("deleteCart");
 			logger.info(cid);
@@ -117,7 +117,7 @@ public class PayController {
 			//mycartlist.clear();
 			session.setAttribute("sessionCart", mycartlist);
 			logger.info("2"+mycartlist.size());
-			return "redirect:/shopping_basket_fromdetail";
+			return "pay/shopping_basket";
 		}
 
 }
