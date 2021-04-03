@@ -42,7 +42,7 @@ public class PalbangController {
 		int intPageNo = 1;
 		if (pageNo == null) { // 클라이언트에서 pageNo가 넘어오지 않앗을때
 			// 세션에서 Pager를 찾고 PageNo를 설정
-			Pager pager = (Pager) session.getAttribute("pager");
+			Pager pager = (Pager) session.getAttribute("palbang_pager");
 			if (pager != null) {
 				intPageNo = pager.getPageNo();
 			}
@@ -52,8 +52,8 @@ public class PalbangController {
 
 		// 없으면 Pager를 세션에 저장
 		int totalRows = palbangService.getTotalRows();
-		Pager pager = new Pager(6, 2, totalRows, intPageNo);
-		session.setAttribute("pager", pager);
+		Pager pager = new Pager(6, 5, totalRows, intPageNo);
+		session.setAttribute("palbang_pager", pager);
 
 		// 정렬 기준
 		List<Palbang> list = palbangService.getPalbangList_Like(pager);
@@ -68,7 +68,6 @@ public class PalbangController {
 		}
 
 		model.addAttribute("list", list);
-		model.addAttribute("pager", pager);
 		model.addAttribute("stdno", std);
 
 		return "palbang/palbang_main";
@@ -123,7 +122,6 @@ public class PalbangController {
 		
 		return jsonObject.toString();
 	}
-
 
 	@PostMapping(value = "/likeUp", produces = "application/json;charset=UTF-8")
 	@ResponseBody
@@ -193,7 +191,7 @@ public class PalbangController {
 				palbang.getReviews().get(i).setPalbang_id(palbang.getPalbang_id()); // 이미 시퀀스키가 세팅되어있음 
 				palbang.getReviews().get(i).setPalbang_dimgoname(pdattach.getOriginalFilename());
 				palbang.getReviews().get(i).setPalbang_dimgtype(pdattach.getContentType());
-				String saveName = new Date().getTime() + "-" + palbang.getPalbang_imgoname();
+				String saveName = new Date().getTime() + "-" + palbang.getReviews().get(i).getPalbang_dimgoname();
 				palbang.getReviews().get(i).setPalbang_dimgsname(saveName);
 		
 				File file = new File(
