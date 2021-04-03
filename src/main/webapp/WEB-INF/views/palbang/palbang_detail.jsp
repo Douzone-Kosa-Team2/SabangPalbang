@@ -65,10 +65,8 @@
 </script>
 
 <div class="palbang_detail_main">
-
 	<div class="palbang_detail_edit">
 		<!-- <img id="heart_img" src="common/images/heart.png" alt="하트"/> -->
-
 			<svg id="svg1" onclick="addLike(${palbang.palbang_id})"
 				style="margin-top: 7px; color: red;"
 				xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -80,15 +78,15 @@
 				style="margin-top: 7px; color: red;"
 				xmlns="http://www.w3.org/2000/svg" width="20" height="20"
 				fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-		            <path fill-rule="evenodd"
-					d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+		        <path fill-rule="evenodd"
+							d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
 		    </svg>
-		<sec:authorize access="isAuthenticated()">
-			<c:if test="${email == 1}">
-				<a class="palbang_detail_edit_update" href="palbang_update">수정</a>
-				<a class="palbang_detail_edit_delete" href="palbang_main">삭제</a>
-			</c:if>
-		</sec:authorize>
+			<sec:authorize access="isAuthenticated()">
+				<c:if test="${email == 1}">
+					<a class="palbang_detail_edit_update" href="palbang_update">수정</a>
+					<a class="palbang_detail_edit_delete" href="palbang_main">삭제</a>
+				</c:if>
+			</sec:authorize>
 	</div>
 
 	<div class="palbang_detail_header">
@@ -98,26 +96,21 @@
 		<div class="palbang_detail_header_2">
 			<h6>${palbang.palbang_nickname}님의방</h6>
 		</div>
-
 	</div>
+	
 	<div class="palbang_detail_content">
-
 		<div class="palbang_detail_content_mainImg">
-			<img src="resources/images/palbang_post/${palbang.palbang_imgoname}">
+			<img src="resources/images/palbang_post/${palbang.palbang_imgsname}">
 		</div>
 		<!-- 1번 상세 -->
 		<c:forEach var="palbangdetail" items="${palbanglist}">
 			<div class="palbang_detail_content_space">
-
 				<div class="palbang_detail_content_spaceImg">
-					<img
-						src="resources/images/palbang_detail/${palbangdetail.palbang_dimgsname}">
+					<img src="resources/images/palbang_detail/${palbangdetail.palbang_dimgsname}">
 				</div>
-
 				<div class="palbang_detail_content_space_txt">
 					<p>${palbangdetail.palbang_explain}</p>
 				</div>
-
 			</div>
 		</c:forEach>
 	</div>

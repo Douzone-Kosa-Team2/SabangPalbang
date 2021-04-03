@@ -46,27 +46,26 @@
 				<tr>
 					<!-- 처음 이전 12345 다음 맨끝 -->
 					<td colspan="5" class="text-center"><a
-						class="btn btn-outline-primary btn-sm" href="sabang_main?std=${stdno}&pageNo=1">처음</a>
-	
-						<c:if test="${pager.groupNo>1}">
+						class="btn btn-outline-primary btn-sm" href="palbang_main?std=${stdno}&pageNo=1">처음</a>
+						<c:if test="${palbang_pager.groupNo>1}">
 							<a class="btn btn-outline-info btn-sm"
-								href="sabang_main?std=${stdno}&pageNo=${pager.startPageNo-1}">이전</a>
-						</c:if> <c:forEach var="i" begin="${pager.startPageNo}"
-							end="${pager.endPageNo}">
+								href="palbang_main?std=${stdno}&pageNo=${palbang_pager.startPageNo-1}">이전</a>
+						</c:if> <c:forEach var="i" begin="${palbang_pager.startPageNo}"
+							end="${palbang_pager.endPageNo}">
 	
-							<c:if test="${pager.pageNo!=i}">
+							<c:if test="${palbang_pager.pageNo!=i}">
 								<a class="btn btn-outline-success btn-sm"
-									href="sabang_main?std=${stdno}&pageNo=${i}">${i}</a>
+									href="palbang_main?std=${stdno}&pageNo=${i}">${i}</a>
 							</c:if>
-							<c:if test="${pager.pageNo==i}">
+							<c:if test="${palbang_pager.pageNo==i}">
 								<a class="btn btn-outline-danger btn-sm"
-									href="sabang_main?std=${stdno}&pageNo=${i}">${i}</a>
+									href="palbang_main?std=${stdno}&pageNo=${i}">${i}</a>
 							</c:if>
-						</c:forEach> <c:if test="${pager.groupNo<pager.totalGroupNo}">
+						</c:forEach> <c:if test="${palbang_pager.groupNo<palbang_pager.totalGroupNo}">
 							<a class="btn btn-outline-info btn-sm"
-								href="sabang_main?std=${stdno}&pageNo=${pager.endPageNo+1}">다음</a>
+								href="palbang_main?std=${stdno}&pageNo=${palbang_pager.endPageNo+1}">다음</a>
 						</c:if> <a class="btn btn-outline-primary btn-sm"
-						href="sabang_main?std=${stdno}&pageNo=${pager.totalPageNo}">맨끝</a></td>
+						href="palbang_main?std=${stdno}&pageNo=${palbang_pager.totalPageNo}">맨끝</a></td>
 				</tr>
 			</table>
 		</div>
