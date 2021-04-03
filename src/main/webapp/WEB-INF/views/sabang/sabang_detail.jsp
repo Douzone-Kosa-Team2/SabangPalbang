@@ -201,16 +201,6 @@
 	<br />
 </div>
 <script>
-	function ask(sid){
-		window.open("pop_ask","사방팔방 문의하기","popup");
-		
-		$.ajax({
-			url: "pop_ask",
-			data: sid,
-			method: "get"
-		});
-		
-	}
 	$(function() {
 		console.log("success");
 		getList(${sid},1);

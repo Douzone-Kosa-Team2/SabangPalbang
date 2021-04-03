@@ -97,3 +97,11 @@
 	
 	</table>
 </div>
+<script>
+console.log(${sid});
+function ask(sid){
+	window.open("pop_ask?sid=${sid}","사방팔방 문의하기","popup");
+	console.log("sabang Id: "+sid);
+	
+}
+</script>

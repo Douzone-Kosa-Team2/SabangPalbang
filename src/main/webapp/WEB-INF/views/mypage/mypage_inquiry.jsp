@@ -15,10 +15,14 @@
  
  <!-- 마이페이지 > 내가 쓴 문의글 -->
 <%-- <c:if test="${loginmember_email == member.member_email}"> --%>
- <div class="sabang_detail_3" id="userInquiry">
+<div class="d-flex justify-content-center p-2">
+	<br/>
+ 	<div class="mt-1 mr-2" id="userInquiry">
 
-	<br />
+		<br/>
+	</div>
 </div>
+
 
 
 <script>
