@@ -22,4 +22,6 @@ public interface MemberDao {
 	public int selectIdByEmail(String member_email);
 	public Member selectMemberByEmail(String member_email);
 	public String selectByInquiryNickname(String member_email);
+	public int selectNicknameCheck(String member_nickname);
+	public int selectEmailCheck(String member_email);
 }

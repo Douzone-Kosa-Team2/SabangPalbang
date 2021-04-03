@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.mycompany.sabangpalbang.dto.Member;
 import com.mycompany.sabangpalbang.service.MemberService;
 
@@ -99,6 +101,51 @@ public class AuthController {
 		memberService.signin(member);
 
 		return "redirect:/loginForm";
+	}
+	
+	//이메일 중복 체크
+	@PostMapping(value="/checkEmail", produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public String checkEmail(String email) {
+		
+		logger.info(email);
+		
+		Boolean result = memberService.isCheckedEmail(email);
+		
+		JSONObject jsonObject = new JSONObject();
+		
+		if(result == true) {
+			jsonObject.put("resultEmail","success");
+		
+			return jsonObject.toString();
+		} else {
+			jsonObject.put("resultEmail","fail");
+		
+			return jsonObject.toString();
+		}
+	}
+
+	//닉네임 중복 체크
+	@PostMapping(value="/checkNickname", produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public String checkNickname(String nickname) {
+		
+		logger.info(nickname);
+		
+		Boolean result = memberService.isCheckedNickname(nickname);
+		
+		JSONObject jsonObject = new JSONObject();
+		
+		if(result == true) {
+			jsonObject.put("resultNickname","success");
+		
+			return jsonObject.toString();
+		} else {
+			jsonObject.put("resultNickname","fail");
+		
+			return jsonObject.toString();
+		}
+		
 	}
 
 	// 아이디 찾기
