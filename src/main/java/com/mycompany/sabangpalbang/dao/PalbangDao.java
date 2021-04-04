@@ -26,7 +26,6 @@ public interface PalbangDao {
 	public List<Palbang> selectTop3();
 	public int updateLikeCountUp(int palbang_id);
 	public int updateLikeCountDown(int palbang_id);
-	/* palbang create - 두개의 테이블에 삽입 */
+	/* palbang create */
 	public int insertPalbang(Palbang palbang);
-	public int insertPalbangDetail(Palbang_detail palbang_detail);
 }

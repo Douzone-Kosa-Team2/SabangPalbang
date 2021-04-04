@@ -11,16 +11,6 @@
 		(#{palbang_id}, #{palbang_title}, #{palbang_nickname}, 0, 0, sysdate, #{palbang_imgoname}, #{palbang_imgsname}, #{palbang_imgtype})
 	</insert>
 	
-	<insert id="insertPalbangDetail" parameterType="palbang_detail">
-		<selectKey keyProperty="palbang_detailno" resultType="int" order="BEFORE">
-			select seq_palbang_detailno.nextval from dual
-		</selectKey>
-		insert into palbang_detail
-		(palbang_detailno, palbang_id, palbang_dimgoname, palbang_dimgsname, palbang_dimgtype, palbang_explain)
-		values
-		(#{palbang_detailno}, #{palbang_id}, #{palbang_dimgoname}, #{palbang_dimgsname}, #{palbang_dimgtype}, #{palbang_explain})
-	</insert>
-	
 	<select id="selectAll" resultType="palbang">
 		select palbang_id, palbang_title, palbang_nickname, palbang_likecount, palbang_viewcount, palbang_date, palbang_imgoname, palbang_imgsname, palbang_imgtype
 		from palbang

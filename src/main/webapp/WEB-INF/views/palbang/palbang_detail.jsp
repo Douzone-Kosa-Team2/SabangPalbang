@@ -83,8 +83,8 @@
 		    </svg>
 			<sec:authorize access="isAuthenticated()">
 				<c:if test="${email == 1}">
-					<a class="palbang_detail_edit_update" href="palbang_update">수정</a>
-					<a class="palbang_detail_edit_delete" href="palbang_main">삭제</a>
+					<a class="palbang_detail_edit_update" href="palbang_update?pid=${palbang.palbang_id}">수정</a>
+					<a class="palbang_detail_edit_delete" href="palbang_delete?pid=${palbang.palbang_id}">삭제</a>
 				</c:if>
 			</sec:authorize>
 	</div>

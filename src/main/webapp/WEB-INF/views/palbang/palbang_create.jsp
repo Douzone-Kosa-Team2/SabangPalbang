@@ -73,10 +73,11 @@
 
 	// 등록 버튼 눌렀을 때 사진 없으면 등록 못하게 validation 해줘야 함 
 	function beforeSend(){
-		console.log("컨트롤러로 넘어가기 전에 validation - 이미지 not null");
 		event.preventDefault();
+		console.log("컨트롤러로 넘어가기 전에 validation - 이미지 not null이어야 함 !!!");
+		$("form")[0].submit;
 		
-	}
+	} 
 </script>
 
 <!-- palbang_create -->
@@ -85,7 +86,7 @@
 <br />
 <br />
 <div class="palbang_create_main">
-	<form name="form" method="post" action="addPalbang?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data">
+	<form name="form" method="post" action="palbang_create_form?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data">
 		<div class="palbang_create_title">
 			<input class="palbang_create_txt" type="text" placeholder="제목을 입력하세요" name="palbang_title">
 		</div>
