@@ -1,10 +1,11 @@
 package com.mycompany.sabangpalbang.dto;
 
 import java.util.Date;
+import java.util.List;
 
 public class OrderMain {
 	private int order_id;
-	private String order_email;
+	private int order_memberid;
 	private String order_phone;
 	private String order_zipcode;
 	private String order_roadaddress;
@@ -16,25 +17,22 @@ public class OrderMain {
 	private String order_payment;
 	private String order_bankcode;
 	
-	private String[] products;
+	private List<Order_detail> orderLists;
+
 	
-	public String[] getProducts() {
-		return products;
-	}
-	public void setProducts(String[] products) {
-		this.products = products;
-	}
+	
 	public int getOrder_id() {
 		return order_id;
 	}
 	public void setOrder_id(int order_id) {
 		this.order_id = order_id;
 	}
-	public String getOrder_email() {
-		return order_email;
+
+	public int getOrder_memberid() {
+		return order_memberid;
 	}
-	public void setOrder_email(String order_email) {
-		this.order_email = order_email;
+	public void setOrder_memberid(int order_memberid) {
+		this.order_memberid = order_memberid;
 	}
 	public String getOrder_phone() {
 		return order_phone;
@@ -95,6 +93,12 @@ public class OrderMain {
 	}
 	public void setOrder_bankcode(String order_bankcode) {
 		this.order_bankcode = order_bankcode;
+	}
+	public List<Order_detail> getOrderLists() {
+		return orderLists;
+	}
+	public void setOrderLists(List<Order_detail> orderLists) {
+		this.orderLists = orderLists;
 	}
 	
 }

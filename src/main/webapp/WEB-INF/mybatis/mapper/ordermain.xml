@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.mycompany.sabangpalbang.dao.OrderMainDao">
-	<insert id="insert" parameterType="ordermain">
+	<insert id="insertOrder" parameterType="ordermain">
 	<selectKey keyProperty="order_id" resultType="int" order="BEFORE">
 			select seq_order_id.nextval from dual
 	</selectKey>
 		insert into ordermain
-		(order_id, order_email, order_phone, order_zipcode, order_roadaddress, order_detailaddress, order_sabangid, order_price, order_date , order_state, order_payment, order_bankcode)	
+		(order_id, order_memberid, order_phone, order_zipcode, order_roadaddress, order_detailaddress, order_sabangid, order_price, order_date , order_state, order_payment, order_bankcode)	
 		values
-		(#{order_id}, #{order_email}, #{order_phone}, #{order_zipcode}, #{order_roadaddress}, #{order_detailaddress}, #{order_sabangid}, #{order_price}, #{order_date}, #{order_state}, #{order_payment}, #{order_bankcode})	
+		(#{order_id}, #{order_memberid}, #{order_phone}, #{order_zipcode}, #{order_roadaddress}, #{order_detailaddress}, #{order_sabangid}, #{order_price}, sysdate, '배송준비중', #{order_payment}, #{order_bankcode})	
 	</insert>
 	
 	<select id="selectAll" resultType="ordermain">

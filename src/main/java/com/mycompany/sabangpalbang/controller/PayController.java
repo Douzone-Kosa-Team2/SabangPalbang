@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -18,13 +17,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.sabangpalbang.dto.Cart;
 import com.mycompany.sabangpalbang.dto.Member;
+import com.mycompany.sabangpalbang.dto.OrderMain;
+import com.mycompany.sabangpalbang.dto.Order_detail;
 import com.mycompany.sabangpalbang.dto.Product;
+import com.mycompany.sabangpalbang.dto.ProductCart;
 import com.mycompany.sabangpalbang.dto.Sabang;
 import com.mycompany.sabangpalbang.service.MemberService;
 import com.mycompany.sabangpalbang.service.PayService;
@@ -40,8 +40,9 @@ public class PayController {
 
 	@Autowired
 	private MemberService memberService;
-	
-	private static final Logger logger = LoggerFactory.getLogger(PayController.class);
+
+	private static final Logger logger = LoggerFactory
+			.getLogger(PayController.class);
 
 	// pay페이지
 	@GetMapping("/shopping_basket")
@@ -52,7 +53,8 @@ public class PayController {
 	}
 
 	@PostMapping("/shopping_basket_fromdetail")
-	public String shopping_basket_fromdetail(String[] products, HttpSession session) {
+	public String shopping_basket_fromdetail(String[] products,
+			HttpSession session) {
 		SimpleDateFormat format1 = new SimpleDateFormat("HHmmss");
 		logger.info("shopping_basket_fromdetail 메시지");
 		logger.info(products[0]);
@@ -63,7 +65,8 @@ public class PayController {
 			Cart mycart = new Cart();
 			List<Product> productlist = new ArrayList<Product>();
 			for (int i = 0; i < products.length; i++) {
-				productlist.add(payService.getProductById(Integer.parseInt(products[i])));
+				productlist.add(payService
+						.getProductById(Integer.parseInt(products[i])));
 			}
 
 			int sid = productlist.get(0).getSabang_id();
@@ -82,8 +85,15 @@ public class PayController {
 			mycart.setSabang_name(sabangName);
 			mycart.setProducts_totalcount(products.length);
 			mycart.setProduct_totalprice(totalprice);
-			
-			
+
+			List<ProductCart> productCartlist = new ArrayList<ProductCart>();
+			for (int i = 0; i < products.length; i++) {
+				productCartlist
+						.add(new ProductCart(productlist.get(i).getProduct_id(),
+								productlist.get(i).getProduct_name(),
+								productlist.get(i).getProduct_price()));
+			}
+			mycart.setProductCarts(productCartlist);
 			String cartId = format1.format(new Date().getTime());
 
 			logger.info(cartId);
@@ -91,8 +101,16 @@ public class PayController {
 			logger.info(mycart.getSabang_name());
 			logger.info("" + mycart.getProducts_totalcount());
 			logger.info("" + mycart.getProduct_totalprice());
-
-			Map<String, Cart> mycartlist = (Map<String, Cart>) session.getAttribute("sessionCart");
+			for (int i = 0; i < products.length; i++) {
+				logger.info(
+						"" + mycart.getProductCarts().get(i).getProduct_id());
+				logger.info(
+						"" + mycart.getProductCarts().get(i).getProduct_name());
+				logger.info(""
+						+ mycart.getProductCarts().get(i).getProduct_price());
+			}
+			Map<String, Cart> mycartlist = (Map<String, Cart>) session
+					.getAttribute("sessionCart");
 
 			if (mycartlist == null) {
 				mycartlist = new HashMap<String, Cart>();
@@ -105,48 +123,57 @@ public class PayController {
 	}
 
 	@PostMapping("/pay")
-	public String pay() { // form이 넘어와야함
+	public String pay(String cartKey, Authentication auth, Model model, HttpSession session) { // form이 넘어와야함
 		logger.info("/pay 메시지 ");
+		logger.info(cartKey);
+
+		
+
+		String user_email = auth.getName();
+		logger.info(user_email);
+		Member member = memberService.getPostInfo(user_email);
+
+		logger.info(member.getMember_name());
+		
+		Map<String, Cart> mycartlist = (Map<String, Cart>)session.getAttribute("sessionCart");
+		Cart selectedCart = mycartlist.get(cartKey);
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		return "pay/paypage";
+		model.addAttribute("selectedCart",selectedCart);
+		model.addAttribute("member", member);
+		return "pay/paypageCart";
+
 	}
 
 	@PostMapping("/payNow")
-	public String payNow(String[] products, Authentication auth,  Model model) {
-		
-		for(int i=0; i<products.length;i++) {
-            logger.info("들어오는 상품 id "+products[i]);
-         }
+	public String payNow(String[] products, Authentication auth, Model model) {
+
+		for (int i = 0; i < products.length; i++) {
+			logger.info("들어오는 상품 id " + products[i]);
+		}
 
 		if (products == null) {
 			return "pay/paypage";
 		} else {
 
-			
 			List<Product> productlist = new ArrayList<Product>();
 			for (int i = 0; i < products.length; i++) {
-				productlist.add(payService.getProductById(Integer.parseInt(products[i])));
+				productlist.add(payService
+						.getProductById(Integer.parseInt(products[i])));
 			}
 
 			int sid = productlist.get(0).getSabang_id();
-			
-			logger.info("상품의 id "+productlist.get(0).getProduct_id());
-			logger.info("상품의 가격 "+productlist.get(0).getProduct_price());
-			logger.info("상품의 이름 "+productlist.get(0).getProduct_name());
+
+			logger.info("상품의 id " + productlist.get(0).getProduct_id());
+			logger.info("상품의 가격 " + productlist.get(0).getProduct_price());
+			logger.info("상품의 이름 " + productlist.get(0).getProduct_name());
 			Sabang sabang = sabangService.getSabang(sid);
-			
+
 			String user_email = auth.getName();
 			logger.info(user_email);
 			Member member = memberService.getPostInfo(user_email);
-			
+
 			logger.info(member.getMember_name());
 			model.addAttribute("sabang", sabang);
 			model.addAttribute("productlist", productlist);
@@ -160,10 +187,42 @@ public class PayController {
 	 * 
 	 * }
 	 */
-		
-	@RequestMapping(value = "/pay_success")
-	public String pay_success() {
+
+	@PostMapping("/paySuccess")
+	public String pay_success(Model model, HttpSession session, OrderMain order,@RequestParam(name="sabangid")String sabangid, Authentication auth,@RequestParam(name="productlist") String[] productlist) {
 		logger.info("pay_success 메시지");
+		
+		logger.info(""+auth.getName());
+		logger.info(order.getOrder_phone());
+		logger.info(order.getOrder_zipcode());
+		logger.info(order.getOrder_roadaddress());
+		logger.info(order.getOrder_detailaddress());
+		logger.info(""+sabangid);
+		logger.info(""+order.getOrder_price());
+		logger.info(order.getOrder_payment());
+		logger.info(order.getOrder_bankcode());
+		
+		for(int i=0;i<productlist.length;i++) {
+			logger.info(productlist[i]);
+		}
+		int order_sabangid2 = Integer.parseInt(sabangid);
+		int memberId = memberService.getIdByEmail(auth.getName());
+		order.setOrder_memberid(memberId);
+		
+		List<Order_detail> orderList = null;
+		for(int i=0;i<productlist.length;i++) {
+			//(Integer.parseInt(null)[i]);
+			orderList.add(new Order_detail(Integer.parseInt(productlist[i])));
+		}
+		order.setOrderLists(orderList);
+		order.setOrder_sabangid(order_sabangid2);
+		//저장 부분
+		
+		String result;
+		result = payService.addOrder(order);
+		//넘겨주는 부분
+		
+		
 		return "pay/pay_success";
 	}
 
@@ -171,7 +230,8 @@ public class PayController {
 	public String deleteCart(String cid, HttpSession session) {
 		logger.info("deleteCart");
 		logger.info(cid);
-		Map<String, Cart> mycartlist = (Map<String, Cart>) session.getAttribute("sessionCart");
+		Map<String, Cart> mycartlist = (Map<String, Cart>) session
+				.getAttribute("sessionCart");
 		logger.info("1" + mycartlist.size());
 		mycartlist.remove(cid);
 		// mycartlist.clear();
@@ -179,6 +239,5 @@ public class PayController {
 		logger.info("2" + mycartlist.size());
 		return "pay/shopping_basket";
 	}
-
 
 }

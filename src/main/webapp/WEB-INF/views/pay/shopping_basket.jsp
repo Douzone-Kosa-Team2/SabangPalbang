@@ -45,7 +45,7 @@
 
 		<c:forEach var="cart" items="${sessionCart}" varStatus="status">
 			<tr>
-				<td><input class="table_header2" type="radio" name="cartkey"
+				<td><input class="table_header2" type="radio" name="cartKey"
 					value="${cart.key}"></td>
 				<td><c:out value="${status.count}" /></td>
 				<td style="padding: 20px;"><img class="table_list5"

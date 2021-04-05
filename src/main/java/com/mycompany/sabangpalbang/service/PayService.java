@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 import com.mycompany.sabangpalbang.dao.OrderDetailDao;
 import com.mycompany.sabangpalbang.dao.OrderMainDao;
 import com.mycompany.sabangpalbang.dao.ProductDao;
+import com.mycompany.sabangpalbang.dto.OrderMain;
 import com.mycompany.sabangpalbang.dto.Product;
-import com.mycompany.sabangpalbang.dto.Sabang;
 
 @Service
 public class PayService {
@@ -15,7 +15,6 @@ public class PayService {
 	private ProductDao productDao;
 	@Autowired
 	private OrderMainDao orderMainDao;
-	
 	@Autowired
 	private OrderDetailDao orderDetailDao;
 
@@ -24,5 +23,12 @@ public class PayService {
 		return product;
 	}
 
-	
+	public String addOrder(OrderMain order) {
+		orderMainDao.insertOrder(order);
+		for(int i=0; i<order.getOrderLists().size(); i++) { 
+			order.getOrderLists().get(i).setOrder_id(order.getOrder_id());
+			orderDetailDao.insertOrderDetail(order.getOrderLists().get(i));
+		}
+		return "success";
+	}
 }

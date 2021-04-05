@@ -1,7 +1,9 @@
 package com.mycompany.sabangpalbang.dao;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
+
 import com.mycompany.sabangpalbang.dto.OrderMain;
 
 
@@ -12,5 +14,6 @@ public interface OrderMainDao {
 	public List<OrderMain> selectAll();
 	public OrderMain selectOrderByUid(String order_email);
 	public int deleteOrderByOrderId(int order_id);
+	public int insertOrder(OrderMain order);
 	
 }

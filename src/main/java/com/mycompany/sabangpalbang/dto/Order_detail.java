@@ -6,6 +6,9 @@ public class Order_detail {
 	private int order_productid;
 	
 	
+	public Order_detail(int order_productid) {
+		this.order_productid = order_productid;
+	}
 	public int getOrder_detailno() {
 		return order_detailno;
 	}
