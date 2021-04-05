@@ -80,7 +80,7 @@ public class PayController {
 			for (int i = 0; i < products.length; i++) {
 				totalprice += productlist.get(i).getProduct_price();
 			}
-
+			mycart.setSabang_id(sid);
 			mycart.setSabang_imgoname(sabangImg);
 			mycart.setSabang_name(sabangName);
 			mycart.setProducts_totalcount(products.length);
@@ -189,7 +189,7 @@ public class PayController {
 	 */
 
 	@PostMapping("/paySuccess")
-	public String pay_success(Model model, HttpSession session, OrderMain order,@RequestParam(name="sabangid")String sabangid, Authentication auth,@RequestParam(name="productlist") String[] productlist) {
+	public String pay_success(Model model, HttpSession session, OrderMain order,@RequestParam(name="sabangid")int sabangid, Authentication auth,@RequestParam(name="productlist") String[] productlist) {
 		logger.info("pay_success 메시지");
 		
 		logger.info(""+auth.getName());
@@ -205,17 +205,17 @@ public class PayController {
 		for(int i=0;i<productlist.length;i++) {
 			logger.info(productlist[i]);
 		}
-		int order_sabangid2 = Integer.parseInt(sabangid);
+		//int order_sabangid2 = Integer.parseInt(sabangid);
 		int memberId = memberService.getIdByEmail(auth.getName());
 		order.setOrder_memberid(memberId);
 		
-		List<Order_detail> orderList = null;
+		List<Order_detail> orderList = new ArrayList<>();
 		for(int i=0;i<productlist.length;i++) {
 			//(Integer.parseInt(null)[i]);
 			orderList.add(new Order_detail(Integer.parseInt(productlist[i])));
 		}
 		order.setOrderLists(orderList);
-		order.setOrder_sabangid(order_sabangid2);
+		order.setOrder_sabangid(sabangid);
 		//저장 부분
 		
 		String result;

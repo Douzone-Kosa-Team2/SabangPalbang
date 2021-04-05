@@ -124,6 +124,8 @@
 							</div>
 
 							<div id="pop2" style="display: none; width: 60%">
+
+							
 							
 								<div class="form-group">
 									<label for="btitle">주문자</label> <input type="text"
@@ -262,7 +264,7 @@
 				<div class="pay_content_right_header"></div>
 				<div class="pay_content_right_content">
 					<div class="pay_content_right_content_1">주문상품 정보</div>
-					<input type="hidden" name="sabangid" value="${sabang.sabang_id}"/>
+					<input type="hidden" name="sabangid" value="${selectedCart.sabang_id}"/>
 					<div class="pay_content_right_content_2">
 						<img
 							src="resources/images/sabang_post/${selectedCart.sabang_imgoname}"

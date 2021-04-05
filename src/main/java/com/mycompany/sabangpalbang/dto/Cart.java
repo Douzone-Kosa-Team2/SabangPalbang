@@ -3,7 +3,7 @@ package com.mycompany.sabangpalbang.dto;
 import java.util.List;
 
 public class Cart {
-
+	private int sabang_id;
 	private String sabang_imgoname;
 	private String sabang_name;
 	private int products_totalcount;
@@ -41,5 +41,12 @@ public class Cart {
 	public void setProductCarts(List<ProductCart> productCarts) {
 		this.productCarts = productCarts;
 	}
+	public int getSabang_id() {
+		return sabang_id;
+	}
+	public void setSabang_id(int sabang_id) {
+		this.sabang_id = sabang_id;
+	}
+	
 	
 }
