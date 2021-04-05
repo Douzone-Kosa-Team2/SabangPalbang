@@ -12,7 +12,7 @@ public interface OrderMainDao {
 
 	public int insert();
 	public List<OrderMain> selectAll();
-	public OrderMain selectOrderByUid(String order_email);
+	public List<OrderMain> selectOrderByUid(int order_memberid);
 	public int deleteOrderByOrderId(int order_id);
 	public int insertOrder(OrderMain order);
 	
