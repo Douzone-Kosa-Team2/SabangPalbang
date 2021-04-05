@@ -1,9 +1,15 @@
 package com.mycompany.sabangpalbang.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,12 +17,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
 import com.mycompany.sabangpalbang.dto.Pager;
 import com.mycompany.sabangpalbang.dto.Palbang;
 import com.mycompany.sabangpalbang.dto.Palbang_detail;
@@ -42,7 +49,7 @@ public class PalbangController {
 		int intPageNo = 1;
 		if (pageNo == null) { // 클라이언트에서 pageNo가 넘어오지 않앗을때
 			// 세션에서 Pager를 찾고 PageNo를 설정
-			Pager pager = (Pager) session.getAttribute("pager");
+			Pager pager = (Pager) session.getAttribute("palbang_pager");
 			if (pager != null) {
 				intPageNo = pager.getPageNo();
 			}
@@ -52,8 +59,8 @@ public class PalbangController {
 
 		// 없으면 Pager를 세션에 저장
 		int totalRows = palbangService.getTotalRows();
-		Pager pager = new Pager(6, 2, totalRows, intPageNo);
-		session.setAttribute("pager", pager);
+		Pager pager = new Pager(6, 5, totalRows, intPageNo);
+		session.setAttribute("palbang_pager", pager);
 
 		// 정렬 기준
 		List<Palbang> list = palbangService.getPalbangList_Like(pager);
@@ -68,22 +75,37 @@ public class PalbangController {
 		}
 
 		model.addAttribute("list", list);
-		model.addAttribute("pager", pager);
 		model.addAttribute("stdno", std);
 
 		return "palbang/palbang_main";
 	}
 
-	@RequestMapping(value = "/palbang_create")
+	@GetMapping("/palbang_create")
 	public String palbang_create() {
 		logger.info("palbang_create 메시지");
 		return "palbang/palbang_create";
 	}
 
-	@RequestMapping(value = "/palbang_update")
-	public String palbang_update() {
-		logger.info("palbang_update 메시지");
+	@GetMapping("/palbang_update")
+	public String palbang_update(int pid, Model model) {
+		logger.info("palbang_update 메시지");	
+		Palbang palbang = palbangService.getPalbang(pid);
+		// review setter 
+		List<Palbang_detail> list = palbangService.getPalbangDetail(pid);
+		palbang.setReviews(list);
+		logger.info(""+list.size());
+		logger.info("before: " + palbang.toString());
+		/*  리스트 객체를 문자열이 아닌 리스트 형태로 컨트롤러에 전달하는 방법을 알아내야 한다. */
+		
+		model.addAttribute("palbang", palbang);
 		return "palbang/palbang_update";
+	}
+	
+	@GetMapping("/palbang_delete")
+	public String palbang_delete(int pid) {
+		logger.info("palbang_delete 메시지");
+		palbangService.removePalbangById(pid); // cascade 팔방 테이블만 삭제해도 된다. 
+		return "redirect:/palbang_main";
 	}
 
 	@GetMapping("/palbang_detail")
@@ -124,7 +146,6 @@ public class PalbangController {
 		return jsonObject.toString();
 	}
 
-
 	@PostMapping(value = "/likeUp", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String likeUp(int palbang_id, Authentication auth) {
@@ -159,32 +180,147 @@ public class PalbangController {
 		return jsonObject.toString();
 	}
 
-	@PostMapping(value = "/addPalbang", produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public String addPalbang(Palbang palbang, List<Palbang_detail> palbang_detail) {
-		int pid = 0;
-
+	@PostMapping("/palbang_create_form")
+	public String createPalbangForm(Palbang palbang, Authentication auth) {
+		
+		/*  팔방 대표 이미지 */
 		MultipartFile pattach = palbang.getPattach();
 		if (!pattach.isEmpty()) {
-			logger.info("첨부가 있음");
+			logger.info("팔방 대표 이미지 첨부가 있음");
 			palbang.setPalbang_imgoname(pattach.getOriginalFilename());
 			palbang.setPalbang_imgtype(pattach.getContentType());
 			String saveName = new Date().getTime() + "-" + palbang.getPalbang_imgoname();
 			palbang.setPalbang_imgsname(saveName);
+			
+			logger.info("팔방 대표이미지 : " + palbang.getPalbang_imgoname());
 
 			File file = new File(
-					"C:/Users/ant94/Documents/JavaProject/JavaHomework/uploadfiles/" + palbang.getPalbang_imgsname());
+					"resources/images/palbang_post/" + palbang.getPalbang_imgoname());
 			try {
 				pattach.transferTo(file);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else {
-			logger.info("첨부가 없음");
+		} else {                                                                       
+			logger.info("팔방 대표 이미지 첨부가 없음");
 		}
+		palbang.setPalbang_nickname(memberService.getByInquiryNickname(auth.getName()));
+		
+		/* 팔방 디테일 리뷰 이미지 - 최소 1개 ~ 3개 */
+		for(int i=0; i<palbang.getReviews().size(); i++) {
+			MultipartFile pdattach = palbang.getReviews().get(i).getPdattach();
+			logger.info(pdattach.getOriginalFilename());
+			if(!pdattach.isEmpty()) {
+				logger.info(i + "번째 리뷰 이미지 첨부 ");
+				palbang.getReviews().get(i).setPalbang_id(palbang.getPalbang_id()); // 이미 시퀀스키가 세팅되어있음 
+				palbang.getReviews().get(i).setPalbang_dimgoname(pdattach.getOriginalFilename());
+				palbang.getReviews().get(i).setPalbang_dimgtype(pdattach.getContentType());
+				String saveName = new Date().getTime() + "-" + palbang.getReviews().get(i).getPalbang_dimgoname();
+				palbang.getReviews().get(i).setPalbang_dimgsname(saveName);
+		
+				File file = new File(
+						"resources/images/palbang_detail/" + palbang.getReviews().get(i).getPalbang_dimgoname());
+				try {
+					pattach.transferTo(file);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else {                                                                       
+				logger.info("팔방 리뷰 이미지 첨부가 없음");
+			}
+		}
+		 // DB insert - 팔방디테일
+		palbangService.savePalbang(palbang);
+		
+		// 두 테이블에 insert가 제대로 되었다면 리다이렉트해서 작성한 디테일 페이지 보여주기 
+		return "redirect:/palbang_detail?pid="+palbang.getPalbang_id();
+	}
+	
+	@GetMapping("/downloadAttach")
+	public void downloadAttach(int bno, HttpServletResponse response) {
+		/*
+		 *  얘가 실행하고 나서 결과는 그림의 데이터이기 때문에 문자열을 반환하지 않는다. 
+		 */
+//		try {
+//			Board board = boardsService.getBoard(bno);
+//			
+//			// 응답 HTTP 헤더에 저장될 응답 바디의 타입 
+//			response.setContentType(board.getBattachtype());
+//			
+//			// 응답 HTTP 헤더에 다운로드할 수 있도록 파일 이름을 지정
+//			String originalName = board.getBattachoname();
+//			// 한글 파일일 경우, 깨짐 현상을 방지 
+//			// header에는 한글을 절대 넣을 수 없다. 헤더에는 아스키코드만 해석할 수 있으니까 UTF-8에서 변환한다. 
+//			originalName = new String(originalName.getBytes("UTF-8"), "ISO-8859-1");
+//			response.setHeader("Content-Disposition", "attachment; filename=\"" + originalName + "\"");  // 헤더의 위치 지정
+//			// attachment값이  파일로 다운로드 가능하게 해줌 
+//			
+//			// 응답 HTTP 바디로 이미지 데이터를 출력 
+//			InputStream in = new FileInputStream("/Users/homecj/dev/workspace/sts/Douzone/uploadfiles/" + board.getBattachsname());	    
+//			OutputStream out = response.getOutputStream();
+//			FileCopyUtils.copy(in, out);
+//			out.flush();
+//			in.close();
+//			out.close();
+//			
+//			
+//		} catch(Exception e) {
+//			e.printStackTrace();
+//		}
+	}
 
-		// palbangService.savePalbang(palbang);
+	
+	@PostMapping("/palbang_update_form")
+	public String updatePalbangForm(Palbang palbang, Authentication auth) {
+		/*  팔방 대표 이미지 */
+		MultipartFile pattach = palbang.getPattach();
+		if (!pattach.isEmpty()) {
+			logger.info("팔방 대표 이미지 첨부가 있음");
+			palbang.setPalbang_imgoname(pattach.getOriginalFilename());
+			palbang.setPalbang_imgtype(pattach.getContentType());
+			String saveName = new Date().getTime() + "-" + palbang.getPalbang_imgoname();
+			palbang.setPalbang_imgsname(saveName);
+			
+			logger.info("팔방 대표이미지 : " + palbang.getPalbang_imgoname());
 
-		return "redirect:/palbang_detail?p_id=" + pid;
+			File file = new File(
+					"/Users/homecj/dev/workspace/sts/Douzone/uploadfiles/" + palbang.getPalbang_imgsname());
+			try {
+				pattach.transferTo(file);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {                                                                       
+			logger.info("팔방 대표 이미지 첨부가 없음");
+		}
+		palbang.setPalbang_nickname(memberService.getByInquiryNickname(auth.getName()));
+		
+		/* 팔방 디테일 리뷰 이미지 - 최소 1개 ~ 3개 */
+		for(int i=0; i<palbang.getReviews().size(); i++) {
+			MultipartFile pdattach = palbang.getReviews().get(i).getPdattach();
+			if(!pdattach.isEmpty()) {
+				logger.info(i + "번째 리뷰 이미지 첨부 ");
+				palbang.getReviews().get(i).setPalbang_id(palbang.getPalbang_id()); // 이미 시퀀스키가 세팅되어있음 
+				palbang.getReviews().get(i).setPalbang_dimgoname(pdattach.getOriginalFilename());
+				palbang.getReviews().get(i).setPalbang_dimgtype(pdattach.getContentType());
+				String saveName = new Date().getTime() + "-" + palbang.getReviews().get(i).getPalbang_dimgoname();
+				palbang.getReviews().get(i).setPalbang_dimgsname(saveName);
+		
+				File file = new File(
+						"/Users/homecj/dev/workspace/sts/Douzone/uploadfiles/" + palbang.getReviews().get(i).getPalbang_dimgsname());
+				try {
+					pattach.transferTo(file);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else {                                                                       
+				logger.info("팔방 리뷰 이미지 첨부가 없음");
+			}
+		}
+		
+		 // DB update - 팔방디테일
+		//palbangService.savePalbang(palbang); update
+		
+		return "redirect:/palbang_detail?pid="+palbang.getPalbang_id();
 	}
 }

@@ -13,4 +13,5 @@ public interface PalbangDetailDao {
 	public int update(Palbang_detail palbang_detail);
 	public int deleteByPalbangDetailno(int palbangDetailid);
 	public List<Palbang_detail> selectAll(int pid);
+	public int insertPalbangDetail(Palbang_detail palbang_detail);
 }

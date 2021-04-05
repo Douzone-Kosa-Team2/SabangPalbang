@@ -11,6 +11,16 @@
 		(#{palbang_detailno}, #{palbang_id}, #{palbang_dimgoname}, #{palbang_dimgsname}, #{palbang_dimgtype}, #{palbang_explain})	
 	</insert>
 	
+	<insert id="insertPalbangDetail" parameterType="palbang_detail">
+		<selectKey keyProperty="palbang_detailno" resultType="int" order="BEFORE">
+			select seq_palbang_detailno.nextval from dual
+		</selectKey>
+		insert into palbang_detail
+		(palbang_detailno, palbang_id, palbang_dimgoname, palbang_dimgsname, palbang_dimgtype, palbang_explain)
+		values
+		(#{palbang_detailno}, #{palbang_id}, #{palbang_dimgoname}, #{palbang_dimgsname}, #{palbang_dimgtype}, #{palbang_explain})
+	</insert>
+	
 	<select id="selectAll" parameterType="int" resultType="palbang_detail">
 		select palbang_detailno, palbang_id, palbang_dimgoname, palbang_dimgsname, palbang_dimgtype, palbang_explain
 		from palbang_detail

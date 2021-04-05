@@ -1,6 +1,7 @@
 package com.mycompany.sabangpalbang.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -11,11 +12,12 @@ public class Palbang {
 	private int palbang_likecount;
 	private int palbang_viewcount;
 	private Date palbang_date;
+	private MultipartFile pattach;
 	private String palbang_imgoname;
 	private String palbang_imgsname;
 	private String palbang_imgtype;
-	private MultipartFile pattach;
-	
+	// 팔방 디테일 
+	private List<Palbang_detail> reviews;
 	
 	public int getPalbang_id() {
 		return palbang_id;
@@ -77,5 +79,21 @@ public class Palbang {
 	public void setPattach(MultipartFile pattach) {
 		this.pattach = pattach;
 	}
+	public List<Palbang_detail> getReviews() {
+		return reviews;
+	}
+	public void setReviews(List<Palbang_detail> reviews) {
+		this.reviews = reviews;
+	}
+	@Override
+	public String toString() {
+		return "Palbang [palbang_id=" + palbang_id + ", palbang_title=" + palbang_title + ", palbang_nickname="
+				+ palbang_nickname + ", palbang_likecount=" + palbang_likecount + ", palbang_viewcount="
+				+ palbang_viewcount + ", palbang_date=" + palbang_date + ", pattach=" + pattach + ", palbang_imgoname="
+				+ palbang_imgoname + ", palbang_imgsname=" + palbang_imgsname + ", palbang_imgtype=" + palbang_imgtype
+				+ ", reviews=" + reviews + "]";
+	}
+
+	
 	
 }

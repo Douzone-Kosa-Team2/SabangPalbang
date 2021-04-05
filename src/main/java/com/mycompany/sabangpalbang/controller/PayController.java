@@ -143,6 +143,7 @@ public class PayController {
 			model.addAttribute("member", member);
 			return "pay/paypage";
 		}
+
 	}
 	/*
 	 * @GetMapping("myPost") public String myPost(Ay) {
@@ -168,5 +169,6 @@ public class PayController {
 		logger.info("2" + mycartlist.size());
 		return "pay/shopping_basket";
 	}
+
 
 }

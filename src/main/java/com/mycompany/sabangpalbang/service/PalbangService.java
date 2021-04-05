@@ -2,9 +2,12 @@ package com.mycompany.sabangpalbang.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mycompany.sabangpalbang.controller.PalbangController;
 import com.mycompany.sabangpalbang.dao.PalbangDao;
 import com.mycompany.sabangpalbang.dao.PalbangDetailDao;
 import com.mycompany.sabangpalbang.dao.PalbangLikeDao;
@@ -15,6 +18,8 @@ import com.mycompany.sabangpalbang.dto.Sabang;
 
 @Service
 public class PalbangService {
+	private static final Logger logger = LoggerFactory.getLogger(PalbangService.class);
+
 	@Autowired
 	private PalbangDao palbangDao;
 	
@@ -91,5 +96,19 @@ public class PalbangService {
 	
 	public void updateLikeCountDown(int palbang_id) {
 		palbangDao.updateLikeCountDown(palbang_id);
+	}
+
+	/* 팔방 create */
+	public void savePalbang(Palbang palbang) {
+		palbangDao.insertPalbang(palbang);
+		for(int i=0; i<palbang.getReviews().size(); i++) { 
+			palbang.getReviews().get(i).setPalbang_id(palbang.getPalbang_id());
+			palbangDetailDao.insertPalbangDetail(palbang.getReviews().get(i));
+		}
+	}
+	/* 팔방 delete */
+	public void removePalbangById(int pid) {
+		int row = palbangDao.deleteByPalbangId(pid);
+		logger.info("row: " + row);
 	}
 }

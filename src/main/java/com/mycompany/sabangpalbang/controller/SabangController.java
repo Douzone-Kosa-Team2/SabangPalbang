@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.sabangpalbang.dto.Inquiry;
 import com.mycompany.sabangpalbang.dto.Member;
@@ -32,7 +35,6 @@ public class SabangController {
 
 	@Autowired
 	private MemberService memberService;
-	
 	@Autowired
 	private SabangService sabangService;
 	@Autowired
@@ -95,7 +97,7 @@ public class SabangController {
 	}
 
 	@GetMapping("/sabang_detail")
-	public String sabang_detail(int sid, Model model, String pageNo) {
+	public String sabang_detail(int sid, Model model, String pageNo, HttpSession session) {
 		logger.info("sabang_detail 메시지");
 		// 조회수 1증가 
 		sabangService.addViewCount(sid);
@@ -106,13 +108,22 @@ public class SabangController {
 		//사방 아이디에 대한 품목 리스트를 가져오기
 		List<Product> productList = sabangService.getSabangDetail(sid);
 		
+		/*
+		 * int intPageNo=1; if(pageNo==null) { //세션에서 Pager를 찾고, 있으면 pageNo를
+		 * 설정하고, Pager pager=(Pager)session.getAttribute("pager"); if(pager
+		 * !=null) { intPageNo=pager.getPageNo(); } }else {
+		 * intPageNo=Integer.parseInt(pageNo); }
+		 * 
+		 * int totalRows=inquiryService.getTotalRows(); Pager pager=new
+		 * Pager(10,5,totalRows,intPageNo); //사방 문의게시판 가져오기 List<Inquiry>
+		 * inquiryList = inquiryService.getInquiryList(pager, sid);
+		 */
 		
-		
-       
+        //session.setAttribute("pager", pager);
 		model.addAttribute("sid", sid);
 		model.addAttribute("sabang", sabang);
 		model.addAttribute("productList",productList);
-	
+		//model.addAttribute("inquiryList", inquiryList);
 		return "sabang/sabang_detail";
 	}
 
@@ -144,18 +155,47 @@ public class SabangController {
 	}
 	
 	
-	  @GetMapping("/pop_ask")
-	   public String pop_ask(String sid, Authentication auth, Model model) {
-	      logger.info("pop_ask 메시지");
-	      logger.info(""+sid);
-	      
-	      Sabang sabang = sabangService.getSabang(Integer.parseInt(sid));
-	      String user_email = auth.getName();
-	      
-	      Member member = memberService.showMember(user_email);
-	      model.addAttribute("sabang",sabang);
-	      model.addAttribute("member",member);
-	      return "sabang/pop_ask";
-	   }
+	@GetMapping("/pop_ask")
+	public String pop_ask(String sid, Authentication auth, Model model) {
+		logger.info("pop_ask 메시지");
+		logger.info(""+sid);
+		
+		Sabang sabang = sabangService.getSabang(Integer.parseInt(sid));
+		String user_email = auth.getName();
+		
+		Member member = memberService.showMember(user_email);
+		model.addAttribute("sabang",sabang);
+		model.addAttribute("member",member);
+		return "sabang/pop_ask";
+	}
+	
+	@PostMapping("/addInquiry")
+	public String addInquiry(Inquiry inquiry, Authentication auth, Model model) {
+		
+		inquiry.setInquiry_ansstate("대기중");
+		
+		logger.info("id"+inquiry.getInquiry_id());
+		logger.info("sid"+inquiry.getInquiry_sabangid());
+		logger.info("문의종류"+inquiry.getInquiry_type());
+		logger.info("답변상태"+inquiry.getInquiry_ansstate());
+		logger.info("제목"+inquiry.getInquiry_title());
+		logger.info("작성자"+inquiry.getInquiry_writer());
+		logger.info("작성일"+inquiry.getInquiry_date());
+		logger.info("내용"+inquiry.getInquiry_explain());
+		logger.info("답변내용"+inquiry.getInquiry_anscontent());
+		
+		
+		
+		//update 부분
+		inquiryService.addInquiry(inquiry);
+		//return "redirect:/sabang_detail";
+		//return "sabang/pop_ask";
+		
+		//JSONObject jsonObject = new JSONObject();
+		//jsonObject.put("result","success");
+		logger.info("완료");
+		
+		return "sabang/pop_askSuccess";
+	}
 
 }
