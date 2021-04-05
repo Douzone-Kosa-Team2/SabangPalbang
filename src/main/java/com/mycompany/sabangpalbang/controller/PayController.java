@@ -53,8 +53,7 @@ public class PayController {
 	}
 
 	@PostMapping("/shopping_basket_fromdetail")
-	public String shopping_basket_fromdetail(String[] products,
-			HttpSession session) {
+	public String shopping_basket_fromdetail(String[] products, HttpSession session) {
 		SimpleDateFormat format1 = new SimpleDateFormat("HHmmss");
 		logger.info("shopping_basket_fromdetail 메시지");
 		logger.info(products[0]);

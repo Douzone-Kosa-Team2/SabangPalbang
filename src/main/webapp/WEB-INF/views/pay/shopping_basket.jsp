@@ -2,6 +2,26 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
+
+<script>
+/* event.preventDefault();
+if($(':radio[name="cartKey"]:checked').length < 1){
+    alert('1개를 꼭 선택하세요.');                        
+} */
+
+function validate(){
+	//유효성검사 
+	event.preventDefault();
+	console.log($(':radio[name="cartKey"]:checked').length);
+	if($(':radio[name="cartKey"]:checked').length == 1){
+		$("form").submit();
+	}
+	else{
+		alert('1개 품목을 선택해주세요.');
+	}
+}
+</script>
+
 <!-- 장바구니 -->
 <div class="shopping_basket_title">
 	<strong>장바구니</strong>
@@ -63,7 +83,7 @@
 		</c:forEach>
 	</table>
 	<div class="shopping_basket_buy_button">
-		<button class="btn btn-lg btn-info" onclick="pay()"
+		<button class="btn btn-lg btn-info" onclick="validate()"
 			style="width: 40%; height: 40%; color: white">결제하기</button>
 	</div>
 </form>
