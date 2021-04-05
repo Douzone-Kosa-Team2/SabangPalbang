@@ -61,7 +61,7 @@ function enterkey(){
 							 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 							<button style="border: none; outline:none; background-color:white;" class="header_logIn_item" <%-- href="${pageContext.request.contextPath}/logout" --%>>로그아웃</button> 
 							</form>
-							<a class="header_logIn_item" href="${pageContext.request.contextPath}/mypage_memberInfo">마이페이지</a>
+							<a class="header_logIn_item" href="${pageContext.request.contextPath}/mypage_orderlist">마이페이지</a>
 							
 				</sec:authorize>
 				

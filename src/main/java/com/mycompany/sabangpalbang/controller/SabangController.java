@@ -4,20 +4,25 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.sabangpalbang.dto.Inquiry;
+import com.mycompany.sabangpalbang.dto.Member;
 import com.mycompany.sabangpalbang.dto.Pager;
 import com.mycompany.sabangpalbang.dto.Product;
 import com.mycompany.sabangpalbang.dto.Sabang;
 import com.mycompany.sabangpalbang.service.InquiryService;
+import com.mycompany.sabangpalbang.service.MemberService;
 import com.mycompany.sabangpalbang.service.SabangService;
 
 /**
@@ -28,6 +33,8 @@ public class SabangController {
 
 	private static final Logger logger = LoggerFactory.getLogger(SabangController.class);
 
+	@Autowired
+	private MemberService memberService;
 	@Autowired
 	private SabangService sabangService;
 	@Autowired
@@ -149,10 +156,46 @@ public class SabangController {
 	
 	
 	@GetMapping("/pop_ask")
-	public String pop_ask(int sid) {
+	public String pop_ask(String sid, Authentication auth, Model model) {
 		logger.info("pop_ask 메시지");
 		logger.info(""+sid);
+		
+		Sabang sabang = sabangService.getSabang(Integer.parseInt(sid));
+		String user_email = auth.getName();
+		
+		Member member = memberService.showMember(user_email);
+		model.addAttribute("sabang",sabang);
+		model.addAttribute("member",member);
 		return "sabang/pop_ask";
+	}
+	
+	@PostMapping("/addInquiry")
+	public String addInquiry(Inquiry inquiry, Authentication auth, Model model) {
+		
+		inquiry.setInquiry_ansstate("대기중");
+		
+		logger.info("id"+inquiry.getInquiry_id());
+		logger.info("sid"+inquiry.getInquiry_sabangid());
+		logger.info("문의종류"+inquiry.getInquiry_type());
+		logger.info("답변상태"+inquiry.getInquiry_ansstate());
+		logger.info("제목"+inquiry.getInquiry_title());
+		logger.info("작성자"+inquiry.getInquiry_writer());
+		logger.info("작성일"+inquiry.getInquiry_date());
+		logger.info("내용"+inquiry.getInquiry_explain());
+		logger.info("답변내용"+inquiry.getInquiry_anscontent());
+		
+		
+		
+		//update 부분
+		inquiryService.addInquiry(inquiry);
+		//return "redirect:/sabang_detail";
+		//return "sabang/pop_ask";
+		
+		//JSONObject jsonObject = new JSONObject();
+		//jsonObject.put("result","success");
+		logger.info("완료");
+		
+		return "sabang/pop_askSuccess";
 	}
 
 }

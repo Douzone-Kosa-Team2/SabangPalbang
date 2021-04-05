@@ -15,15 +15,16 @@
 			<h4>문의작성</h4>
 		</div>
 		<hr>
-		<form method="post">
+		<form method="post" name="askform" action="addInquiry">
 		    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		    <input type="hidden" name="inquiry_sabangid" value="${sabang.sabang_id}"/>
 		
 			<div class="pop_ask_table">
 
 				<div class="pop_ask_type">
 					<div class="pop_ask_menu">문의 유형</div>
 
-					<select name="ask_type" class="pop_ask_box" name="askType">
+					<select class="pop_ask_box" name="inquiry_type">
 						<option selected="" value="" disabled="">문의 유형 선택</option>
 						<option value="prod_info">상품정보</option>
 						<option value="delivery">배송정보</option>
@@ -33,39 +34,34 @@
 
 				<div class="pop_ask_prod">
 					<div class="pop_ask_menu">문의 상품</div>
-					<select name="ask_type" class="pop_ask_box" name="askProd">
-						<option selected="" value="" disabled="">문의 상품 선택</option>
-						<option value="prod_1">1.상품</option>
-						<option value="prod_2">2.상품</option>
-						<option value="prod_3">3.상품</option>
-					</select>
+					<input type="text" class="pop_ask_box" value="${sabang.sabang_name}" readonly/>
 				</div>
 
 				<div class="pop_ask_human">
 					<div class="pop_ask_menu">문의자</div>
-					<input type="text" class="pop_ask_box" value="이종현" placeholder="이름을 입력하세요." name="asker" />
+					<input type="text" class="pop_ask_box" value="${member.member_nickname}" 
+						name="inquiry_writer" readonly/>
 				</div>
 
 				<div class="pop_ask_tel">
 					<div class="pop_ask_menu">전화번호</div>
-					<input type="tel" class="pop_ask_box" value="010-9947-7430" placeholder="전화번호를 입력하세요."
-						name="askTel" />
+					<input type="tel" class="pop_ask_box" value="${member.member_phone}" readonly/>
 				</div>
 
 				<div class="pop_ask_email">
 					<div class="pop_ask_menu">이메일</div>
-					<input type="email" class="pop_ask_box" value="ant9406@naver.com" placeholder="이메일을 입력하세요."
-						name="askEmail" />
+					<input type="email" class="pop_ask_box" value="${member.member_email}" readonly/>
 				</div>
 
 				<div class="pop_ask_title">
 					<div class="pop_ask_menu">제목</div>
-					<input type="text" class="pop_ask_box" value="" placeholder="제목을 입력해주세요." name="askTitle" />
+					<input type="text" class="pop_ask_box" value="" placeholder="제목을 입력해주세요." 
+						name="inquiry_title" />
 				</div>
 
 				<div class="pop_ask_content">
 					<div class="pop_ask_menu">문의 내용</div>
-					<textarea value="" placeholder="내용을 입력해주세요." class="pop_ask_box" name="askContent"></textarea>
+					<textarea placeholder="내용을 입력해주세요." class="pop_ask_box" name="inquiry_explain"></textarea>
 				</div>
 
 			</div>
@@ -85,11 +81,24 @@ const cancel = () => { /* 취소하기 버튼 클릭 시 */
 };
 
 const confirm = () => {  /* 작성하기 버튼 클릭 시 - 문의창에서 입력받은 것들 요청경로에 파라미터로 넘겨줘야 함  */
-	window.opener.location.href="sabang_detail_insert";
-	/* 
-	너는 요청 경로가 나중에는 문의내용 insert 디비 작업을 포함한 컨트롤러로 요청해야함 
-		예를 들면 window.opener.location.href="sabang_detail_insert";
-	*/
+	//$("askform").attr("action", "addInquiry");
+	console.log("과정1");
+	$("askform")[0].submit;
+	console.log("과정2");
+	/* var queryString = $("form[name=askform]").serialize() ;
+	console.log("과정1");
+	$.ajax({
+		type : 'post',
+        url : 'addInquiry',
+        data : queryString
+	}); */
+	/* .then(data => {
+		console.log("과정3");
+		
+
+	});
+	 */
+	window.opener.location.reload();
 	window.close();
 };
 

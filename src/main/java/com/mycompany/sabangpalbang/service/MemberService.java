@@ -96,4 +96,32 @@ public class MemberService {
 		return nickname;
 	}
 	
+	// 중복 이메일 체크
+	
+	public Boolean isCheckedEmail(String member_email) {
+		
+		int dupEmail = memberDao.selectEmailCheck(member_email);
+		//겹치는게 없을때
+		if(dupEmail == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	// 중복 별명 체크
+
+	public Boolean isCheckedNickname(String member_nickname) {
+		int dupNickname = memberDao.selectNicknameCheck(member_nickname);
+		//겹치는게 없을때
+		if(dupNickname == 0) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+
+	
+	
 }

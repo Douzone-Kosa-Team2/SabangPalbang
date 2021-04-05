@@ -48,5 +48,11 @@ public class InquiryService {
 		int row = inquiryDao.mycount(nickname);
 		return row;
 	}
+
+	// 팝업에서 문의글 작성
+	public void addInquiry(Inquiry inquiry) {
+		inquiryDao.insertInquiryFirst(inquiry);
+		
+	}
 	
 }

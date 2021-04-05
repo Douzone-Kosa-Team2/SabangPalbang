@@ -32,7 +32,7 @@
 	};
 	
 	function pay(){
-		$("form").attr("action", "pay");
+		$("form").attr("action", "payNow");
 		$("form")[0].submit;
 	}
 	
@@ -116,7 +116,7 @@
 					</button>
 				</div>
 				<div class="sabang_detail_1_buyButton">
-					<button onclick="pay()" type="submit" class="btn btn-info">바로구매</button>
+					<button onclick="pay()" class="btn btn-info">바로구매</button>
 				</div>
 			</div>
 		</form>
@@ -201,16 +201,6 @@
 	<br />
 </div>
 <script>
-	function ask(sid){
-		window.open("pop_ask","사방팔방 문의하기","popup");
-		
-		$.ajax({
-			url: "pop_ask",
-			data: sid,
-			method: "get"
-		});
-		
-	}
 	$(function() {
 		console.log("success");
 		getList(${sid},1);

@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,15 +32,51 @@ public class MypageController {
 	private InquiryService inquiryService;
 	
 	//마이페이지
-		@GetMapping("/mypage_memberInfo")
-		public String mypage_memberInfo(Authentication auth, Model model) {
-			logger.info("mypage_memberInfo 메시지");
+		
+	
+	
+		@GetMapping("/mypage_memberInfo_check")
+		public String mypage_memberInfo_check(Authentication auth, Model model) {
+			logger.info("mypage_memberInfo_check 메시지");
 			
 			Member member = memberService.showMember(auth.getName());
 			model.addAttribute("member", member);
 			
-			return "mypage/mypage_memberInfo";
+			return "mypage/mypage_memberInfo_check";
 		}
+		
+		
+		@PostMapping("/updateMemberForm")
+		public String updateMember(Authentication auth, Model model, Member checkmember) {
+			logger.info("updateMember 메시지");
+			
+			Member member = memberService.showMember(auth.getName());
+			BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
+			
+			/*
+			 * logger.info("id" + checkmember.getMember_id() + " : " +
+			 * member.getMember_id()); logger.info("email" +
+			 * checkmember.getMember_email() + " : " +
+			 * member.getMember_email()); logger.info("pw" +
+			 * checkmember.getMember_pw() + " : " + member.getMember_pw());
+			 * logger.info(""+bpe.matches(checkmember.getMember_pw(),
+			 * member.getMember_pw()));
+			 */
+			if( (checkmember.getMember_id() == member.getMember_id()) 
+					&& (checkmember.getMember_email().equals(member.getMember_email())) 
+					&& (bpe.matches(checkmember.getMember_pw(), member.getMember_pw())) ){
+				
+				model.addAttribute("member", member);
+			
+				return "mypage/mypage_memberInfo";
+			}
+			else {
+				return "redirect:/mypage_memberInfo_check";
+			}
+			
+		}
+		
+		
 		@GetMapping("/mypage_orderlist")
 		public String mypage_orderlist() {
 			logger.info("mypage_orderlist 메시지");
@@ -98,6 +135,16 @@ public class MypageController {
 		}
 		
 		
+		
+		@PostMapping("/checkMember")
+		public String checkMember(Member member) {
+			logger.info("updateMember 메시지");
+			logger.info("member 비밀번호"+member.getMember_phone());
+			memberService.updateMember(member);
+			
+			
+			return "redirect:/mypage_memberInfo";
+		}
 		
 		
 		
