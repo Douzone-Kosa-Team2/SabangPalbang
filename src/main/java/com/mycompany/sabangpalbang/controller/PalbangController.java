@@ -1,9 +1,15 @@
 package com.mycompany.sabangpalbang.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,12 +17,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
 import com.mycompany.sabangpalbang.dto.Pager;
 import com.mycompany.sabangpalbang.dto.Palbang;
 import com.mycompany.sabangpalbang.dto.Palbang_detail;
@@ -188,7 +195,7 @@ public class PalbangController {
 			logger.info("팔방 대표이미지 : " + palbang.getPalbang_imgoname());
 
 			File file = new File(
-					"/Users/homecj/dev/workspace/sts/Douzone/uploadfiles/" + palbang.getPalbang_imgsname());
+					"resources/images/palbang_post/" + palbang.getPalbang_imgoname());
 			try {
 				pattach.transferTo(file);
 			} catch (Exception e) {
@@ -202,6 +209,7 @@ public class PalbangController {
 		/* 팔방 디테일 리뷰 이미지 - 최소 1개 ~ 3개 */
 		for(int i=0; i<palbang.getReviews().size(); i++) {
 			MultipartFile pdattach = palbang.getReviews().get(i).getPdattach();
+			logger.info(pdattach.getOriginalFilename());
 			if(!pdattach.isEmpty()) {
 				logger.info(i + "번째 리뷰 이미지 첨부 ");
 				palbang.getReviews().get(i).setPalbang_id(palbang.getPalbang_id()); // 이미 시퀀스키가 세팅되어있음 
@@ -211,7 +219,7 @@ public class PalbangController {
 				palbang.getReviews().get(i).setPalbang_dimgsname(saveName);
 		
 				File file = new File(
-						"/Users/homecj/dev/workspace/sts/Douzone/uploadfiles/" + palbang.getReviews().get(i).getPalbang_dimgsname());
+						"resources/images/palbang_detail/" + palbang.getReviews().get(i).getPalbang_dimgoname());
 				try {
 					pattach.transferTo(file);
 				} catch (Exception e) {
@@ -227,6 +235,40 @@ public class PalbangController {
 		// 두 테이블에 insert가 제대로 되었다면 리다이렉트해서 작성한 디테일 페이지 보여주기 
 		return "redirect:/palbang_detail?pid="+palbang.getPalbang_id();
 	}
+	
+	@GetMapping("/downloadAttach")
+	public void downloadAttach(int bno, HttpServletResponse response) {
+		/*
+		 *  얘가 실행하고 나서 결과는 그림의 데이터이기 때문에 문자열을 반환하지 않는다. 
+		 */
+//		try {
+//			Board board = boardsService.getBoard(bno);
+//			
+//			// 응답 HTTP 헤더에 저장될 응답 바디의 타입 
+//			response.setContentType(board.getBattachtype());
+//			
+//			// 응답 HTTP 헤더에 다운로드할 수 있도록 파일 이름을 지정
+//			String originalName = board.getBattachoname();
+//			// 한글 파일일 경우, 깨짐 현상을 방지 
+//			// header에는 한글을 절대 넣을 수 없다. 헤더에는 아스키코드만 해석할 수 있으니까 UTF-8에서 변환한다. 
+//			originalName = new String(originalName.getBytes("UTF-8"), "ISO-8859-1");
+//			response.setHeader("Content-Disposition", "attachment; filename=\"" + originalName + "\"");  // 헤더의 위치 지정
+//			// attachment값이  파일로 다운로드 가능하게 해줌 
+//			
+//			// 응답 HTTP 바디로 이미지 데이터를 출력 
+//			InputStream in = new FileInputStream("/Users/homecj/dev/workspace/sts/Douzone/uploadfiles/" + board.getBattachsname());	    
+//			OutputStream out = response.getOutputStream();
+//			FileCopyUtils.copy(in, out);
+//			out.flush();
+//			in.close();
+//			out.close();
+//			
+//			
+//		} catch(Exception e) {
+//			e.printStackTrace();
+//		}
+	}
+
 	
 	@PostMapping("/palbang_update_form")
 	public String updatePalbangForm(Palbang palbang, Authentication auth) {

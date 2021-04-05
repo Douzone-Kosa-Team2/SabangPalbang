@@ -100,13 +100,13 @@
 	
 	<div class="palbang_detail_content">
 		<div class="palbang_detail_content_mainImg">
-			<img src="resources/images/palbang_post/${palbang.palbang_imgsname}">
+			<img src="resources/images/palbang_post/${palbang.palbang_imgoname}">
 		</div>
 		<!-- 1번 상세 -->
 		<c:forEach var="palbangdetail" items="${palbanglist}">
 			<div class="palbang_detail_content_space">
 				<div class="palbang_detail_content_spaceImg">
-					<img src="resources/images/palbang_detail/${palbangdetail.palbang_dimgsname}">
+					<img src="resources/images/palbang_detail/${palbangdetail.palbang_dimgoname}">
 				</div>
 				<div class="palbang_detail_content_space_txt">
 					<p>${palbangdetail.palbang_explain}</p>
