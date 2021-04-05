@@ -78,6 +78,14 @@
 		where member_email=#{member_email}
 	</select>
 	
+	
+	<select id="selectByPostInfo" parameterType="string"
+		resultType="member">
+		select member_name, member_phone, zipcode, roadaddress, detailaddress
+		from member
+		where member_email=#{member_email}
+	</select>
+	
 	<update id="updateByMember" parameterType="member">
 		<if test="zipcode==null">
 			update member set

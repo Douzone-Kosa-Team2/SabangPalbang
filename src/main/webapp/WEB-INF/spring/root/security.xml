@@ -19,6 +19,7 @@
 		<security:intercept-url pattern="/shopping_basket_fromdetail" access="hasRole('ROLE_MEMBER')"/>
 	
 		<security:intercept-url pattern="/pay" access="hasRole('ROLE_MEMBER')"/>
+		<security:intercept-url pattern="/payNow" access="hasRole('ROLE_MEMBER')"/>
 		<security:intercept-url pattern="/pay_success" access="hasRole('ROLE_MEMBER')"/>
 		
 		<security:intercept-url pattern="/pop_ask" access="hasRole('ROLE_MEMBER')"/>

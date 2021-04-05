@@ -7,6 +7,7 @@ public class Product {
 	private String product_name;
 	private int sabang_id;
 	private int product_price;
+	private int product_totalprice;
 	private int product_buycount;
 	private String product_imgoname;
 	private String product_imgsname;
@@ -73,6 +74,12 @@ public class Product {
 	}
 	public void setProduct_explain2(String product_explain2) {
 		this.product_explain2 = product_explain2;
+	}
+	public int getProduct_totalprice() {
+		return product_totalprice;
+	}
+	public void setProduct_totalprice(int product_totalprice) {
+		this.product_totalprice = product_totalprice;
 	}
 	
 	
