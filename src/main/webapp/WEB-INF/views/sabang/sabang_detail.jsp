@@ -32,7 +32,7 @@
 	};
 	
 	function pay(){
-		$("form").attr("action", "pay");
+		$("form").attr("action", "payNow");
 		$("form")[0].submit;
 	}
 	
@@ -116,7 +116,7 @@
 					</button>
 				</div>
 				<div class="sabang_detail_1_buyButton">
-					<button onclick="pay()" type="submit" class="btn btn-info">바로구매</button>
+					<button onclick="pay()" class="btn btn-info">바로구매</button>
 				</div>
 			</div>
 		</form>

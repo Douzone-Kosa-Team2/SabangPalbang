@@ -22,27 +22,27 @@
 			</plugin>
 		</plugins>
 	</build>
-		<dependencies>
+	<dependencies>
 		<!-- 스프링 모듈 라이브러리 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>5.2.8.RELEASE</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
 			<version>5.2.8.RELEASE</version>
 		</dependency>
-		
+
 		<!-- 로깅 관련 라이브러리 -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.7.30</version>
 		</dependency>
-		
+
 		<!-- Servlet/JSP와 관련된 라이브러리 -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -63,14 +63,14 @@
 			<version>2.3.3</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<!-- JSON 관련 라이브러리 -->
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
 			<version>20210307</version>
 		</dependency>
-		
+
 		<!-- DB 관련 라이브러리 -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -84,7 +84,7 @@
 			<version>12.1.0.2</version>
 		</dependency>
 
-		 <dependency>
+		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
 			<version>3.5.6</version>
@@ -94,12 +94,12 @@
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>2.0.6</version>
-		</dependency> 
+		</dependency>
 
 		<!-- <dependency> <groupId>com.oracle</groupId> <artifactId>ojdbc7</artifactId> 
 			<version>12.1.0.2</version> <scope>system</scope> <systemPath>C:/Users/ant94/Documents/JavaProject/JavaHomework/springframework/src/main/webapp/WEB-INF/lib/ojdbc7.jar</systemPath> 
 			</dependency> -->
-			
+
 		<!-- File Upload 관련 라이브러리 -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
@@ -125,5 +125,13 @@
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>5.3.4.RELEASE</version>
 		</dependency>
+
+		<!-- Email 보내기 -->
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.5.6</version>
+		</dependency>
+
 	</dependencies>
 </project>

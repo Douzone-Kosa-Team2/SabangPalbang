@@ -102,6 +102,64 @@ public class PayController {
 			logger.info(cid);
 			return "pay/paypage";
 		}
+		
+		@PostMapping("/payNow")
+		public String payNow(String[] products, HttpSession session) {
+			//SimpleDateFormat format1 = new SimpleDateFormat("HHmmss");
+			logger.info("payNow 메시지");
+			
+			for(int i=0; i<products.length;i++) {
+				logger.info(products[i]);
+			}
+			
+			
+			
+			if(products == null)  {
+				return "pay/paypage";
+			}
+			else {
+				/*
+				 * Cart mycart = new Cart(); List<Product> productlist = new
+				 * ArrayList<Product>(); for(int i=0;i<products.length;i++) {
+				 * productlist.add(payService.getProductById(Integer.parseInt(
+				 * products[i]))); }
+				 * 
+				 * int sid = productlist.get(0).getSabang_id(); Sabang sabang =
+				 * sabangService.getSabang(sid);
+				 * 
+				 * 
+				 * String sabangImg = sabang.getSabang_imgoname(); String
+				 * sabangName = sabang.getSabang_name();
+				 * 
+				 * int totalprice=0; for(int i=0;i<products.length;i++) {
+				 * totalprice+=productlist.get(i).getProduct_price(); }
+				 * 
+				 * 
+				 * mycart.setSabang_imgoname(sabangImg);
+				 * mycart.setSabang_name(sabangName);
+				 * mycart.setProducts_totalcount(products.length);
+				 * mycart.setProduct_totalprice(totalprice); String cartId =
+				 * format1.format(new Date().getTime());
+				 * 
+				 * logger.info(cartId);
+				 * logger.info(mycart.getSabang_imgoname());
+				 * logger.info(mycart.getSabang_name());
+				 * logger.info(""+mycart.getProducts_totalcount());
+				 * logger.info(""+mycart.getProduct_totalprice());
+				 * 
+				 * Map<String, Cart> mycartlist = (Map<String,
+				 * Cart>)session.getAttribute("sessionCart");
+				 * 
+				 * if (mycartlist == null) { mycartlist = new HashMap<String,
+				 * Cart>(); } mycartlist.put(cartId,mycart);
+				 * session.setAttribute("sessionCart", mycartlist);
+				 */
+					
+				return "pay/paypage";
+			}
+		}
+		
+		
 		@RequestMapping(value = "/pay_success")
 		public String pay_success() {
 			logger.info("pay_success 메시지");

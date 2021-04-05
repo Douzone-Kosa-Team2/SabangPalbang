@@ -224,7 +224,7 @@ $(function(){
 
 			<div>비밀번호</div>
 			<div>
-				<small>영문+숫자+특수기호 8자리 이상으로 구성하여야 합니다.</small>
+				<small>비밀번호 8자 이상 특수기호 1개 이상으로 구성하여야 합니다.</small>
 			</div>
 			<div class="mb-3">
 				<input type="password" class="form-control" id="member_pw"
