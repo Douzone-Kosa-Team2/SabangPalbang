@@ -124,9 +124,6 @@
 							</div>
 
 							<div id="pop2" style="display: none; width: 60%">
-
-								<input type="hidden" name="${_csrf.parameterName}"
-									value="${_csrf.token}" />
 							
 								<div class="form-group">
 									<label for="btitle">주문자</label> <input type="text"
