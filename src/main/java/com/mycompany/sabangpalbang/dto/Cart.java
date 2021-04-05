@@ -1,11 +1,15 @@
 package com.mycompany.sabangpalbang.dto;
 
+import java.util.List;
+
 public class Cart {
 
 	private String sabang_imgoname;
 	private String sabang_name;
 	private int products_totalcount;
 	private int product_totalprice;
+	private List<ProductCart> productCarts;
+	
 	
 	public String getSabang_imgoname() {
 		return sabang_imgoname;
@@ -31,5 +35,11 @@ public class Cart {
 	public void setProduct_totalprice(int product_totalprice) {
 		this.product_totalprice = product_totalprice;
 	}
-
+	public List<ProductCart> getProductCarts() {
+		return productCarts;
+	}
+	public void setProductCarts(List<ProductCart> productCarts) {
+		this.productCarts = productCarts;
+	}
+	
 }

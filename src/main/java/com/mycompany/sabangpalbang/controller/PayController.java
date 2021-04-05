@@ -82,6 +82,8 @@ public class PayController {
 			mycart.setSabang_name(sabangName);
 			mycart.setProducts_totalcount(products.length);
 			mycart.setProduct_totalprice(totalprice);
+			
+			
 			String cartId = format1.format(new Date().getTime());
 
 			logger.info(cartId);
@@ -105,7 +107,15 @@ public class PayController {
 	@PostMapping("/pay")
 	public String pay() { // form이 넘어와야함
 		logger.info("/pay 메시지 ");
-
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		return "pay/paypage";
 	}
 
