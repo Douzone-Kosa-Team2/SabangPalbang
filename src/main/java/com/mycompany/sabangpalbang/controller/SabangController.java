@@ -85,14 +85,14 @@ public class SabangController {
 	
 
 	@GetMapping("/sabang_search")
-	public String sabang_search(int price,Model model) {
+	public String sabang_search(int price, Model model) {
 		logger.info("sabang_search 메시지");
 		
 		logger.info(""+price);
 		
 		List <Sabang> rslist = sabangService.getRecommendList(price);
+		//model.addAttribute("price", price);
 		model.addAttribute("rslist", rslist);
-		
 		return "sabang/sabang_search";
 	}
 
