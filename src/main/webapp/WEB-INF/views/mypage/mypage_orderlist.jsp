@@ -42,17 +42,17 @@
 			<th>상품명</th>
 			<th>가격</th>
 			<th>배송상태</th>
-	
 		</tr>
-	
-		<tr>
-			<td>4433514</td>
-			<td>2021.03.11</td>
-			<td><img src="resources/images/sabang_detail/sb1_0.png" width="100"></td>
-			<td>아늑하고 따뜻한 방<br />(스카르스타, 크란스크라게, 글라돔, 테르티알)
-			</td>
-			<td>W 350,000</td>
-			<td>배송준비중</td>
-		</tr>
+		<c:forEach var="orderMain" items="orderList">
+			<tr>
+				<td>${orderMain.order_id}</td>
+				<td>${orderMain.order_date}</td>
+				<td><img src="resources/images/sabang_detail/sb1_0.png" width="100"></td>
+				<td>아늑하고 따뜻한 방<br />(스카르스타, 크란스크라게, 글라돔, 테르티알)
+				</td>
+				<td>${orderMain.order_price}</td>
+				<td>${orderMain.order_state}</td>
+			</tr>
+		</c:forEach>
 	</table>
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
