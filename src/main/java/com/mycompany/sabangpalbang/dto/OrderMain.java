@@ -18,11 +18,8 @@ public class OrderMain {
 	private String order_state;
 	private String order_payment;
 	private String order_bankcode;
-	
 	private List<Order_detail> orderLists;
 
-	
-	
 	public int getOrder_id() {
 		return order_id;
 	}

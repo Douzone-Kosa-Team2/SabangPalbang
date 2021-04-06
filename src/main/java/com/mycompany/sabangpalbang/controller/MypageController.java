@@ -24,13 +24,10 @@ import com.mycompany.sabangpalbang.service.MemberService;
 @Controller
 public class MypageController {
 	private static final Logger logger = LoggerFactory.getLogger(MypageController.class);
-	// 마이페이지
 	@Autowired
 	private MemberService memberService;
-
 	@Autowired
 	private InquiryService inquiryService;
-
 
 	@GetMapping("/mypage_memberInfo_check")
 	public String mypage_memberInfo_check(Authentication auth, Model model) {
@@ -62,20 +59,19 @@ public class MypageController {
 				&& (bpe.matches(checkmember.getMember_pw(), member.getMember_pw()))) {
 
 			model.addAttribute("member", member);
-
 			return "mypage/mypage_memberInfo";
-		} else {
+		}else {
 			return "redirect:/mypage_memberInfo_check";
 		}
-
 	}
 
 	@GetMapping("/mypage_orderlist")
 	public String mypage_orderlist(String pageNo, Model model, Authentication auth, HttpSession session) {
 		logger.info("mypage_orderlist 메시지");
-		
+
 		int intPageNo = 1;
 		if (pageNo == null) { // 클라이언트에서 pageNo가 넘어오지 않앗을때
+			logger.info("here~!!!");
 			// 세션에서 Pager를 찾고 PageNo를 설정
 			Pager pager = (Pager) session.getAttribute("mypage_order_pager");
 			if (pager != null) {
@@ -90,16 +86,11 @@ public class MypageController {
 		int totalRows = memberService.getTotalOrderRows(order_memberid);
 		Pager pager = new Pager(6, 5, totalRows, intPageNo);
 		session.setAttribute("mypage_order_pager", pager);
-	
+
 		// db select
-		List<OrderMain> myOrderList = memberService.getOrderListById(pager, order_memberid);		
+		List<OrderMain> myOrderList = memberService.getOrderListById(pager, order_memberid);
 		
-		logger.info("img : " +  myOrderList.get(0).getSabang_imgoname());
-		logger.info("name: " + myOrderList.get(0).getSabang_name());
-		
-		model.addAttribute("sabang_imgoname", myOrderList.get(0).getSabang_imgoname());
-		model.addAttribute("sabang_name", myOrderList.get(0).getSabang_name());
-		model.addAttribute("myOrderList", myOrderList); 
+		model.addAttribute("myOrderList", myOrderList);
 		return "mypage/mypage_orderlist";
 	}
 
@@ -116,21 +107,16 @@ public class MypageController {
 		return "mypage/mypage_inquiry";
 	}
 
+	
 	@GetMapping("/userInquiryList")
-
 	public String userInquiryList(String anickname, Model model, String pageNo, HttpSession session) {
 		logger.info("userInquiryList 메시지");
-
-		/*
-		 * String userNickName = auth.getName(); String anickname =
-		 * memberService.getByInquiryNickname(auth.getName());
-		 */
 		logger.info(anickname);
 
 		int intPageNo = 1;
 		if (pageNo == null) {
 			// 세션에서 Pager를 찾고, 있으면 pageNo를 설정하고,
-			Pager pager = (Pager) session.getAttribute("pager");
+			Pager pager = (Pager) session.getAttribute("mypage_inquiry_pager");
 			if (pager != null) {
 				intPageNo = pager.getPageNo();
 			}
@@ -143,14 +129,10 @@ public class MypageController {
 		// 사방 문의게시판 가져오기
 		List<Inquiry> inquiryList = inquiryService.getInquiryList(pager, anickname);
 
-		session.setAttribute("pager", pager);
+		session.setAttribute("mypage_inquiry_pager", pager);
 		model.addAttribute("inquiryList", inquiryList);
-
 		model.addAttribute("anickname", anickname);
-		// model.addAttribute("sid", sid);
-
 		return "mypage/userInquiry";
-
 	}
 
 	@PostMapping("/checkMember")

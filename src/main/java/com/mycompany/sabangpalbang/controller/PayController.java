@@ -32,22 +32,18 @@ import com.mycompany.sabangpalbang.service.SabangService;
 
 @Controller
 public class PayController {
+	private static final Logger logger = LoggerFactory.getLogger(PayController.class);
 	@Autowired
 	private PayService payService;
-
 	@Autowired
 	private SabangService sabangService;
-
 	@Autowired
 	private MemberService memberService;
-
-	private static final Logger logger = LoggerFactory.getLogger(PayController.class);
 
 	// pay페이지
 	@GetMapping("/shopping_basket")
 	public String shopping_basket(HttpSession session) {
 		logger.info("shoppingbasket 메시지");
-
 		return "pay/shopping_basket";
 	}
 
@@ -66,7 +62,6 @@ public class PayController {
 
 			int sid = productlist.get(0).getSabang_id();
 			Sabang sabang = sabangService.getSabang(sid);
-			//
 
 			String sabangImg = sabang.getSabang_imgoname();
 			String sabangName = sabang.getSabang_name();
@@ -162,14 +157,11 @@ public class PayController {
 		}
 		return "pay/paypage";
 	}
-	
 
 	@PostMapping("/paySuccess")
 	public String pay_success(Model model, HttpSession session, OrderMain order,
-			@RequestParam(name = "sabangid") int sabangid,
-			@RequestParam(name = "cartKey") String cartKey, 
-			@RequestParam(name = "productlist") String[] productlist,
-			Authentication auth) {
+			@RequestParam(name = "sabangid") int sabangid, @RequestParam(name = "cartKey") String cartKey,
+			@RequestParam(name = "productlist") String[] productlist, Authentication auth) {
 		logger.info("pay_success 메시지");
 
 		logger.info("" + auth.getName());
@@ -182,7 +174,6 @@ public class PayController {
 		logger.info(order.getOrder_payment());
 		logger.info(order.getOrder_bankcode());
 
-
 		int memberId = memberService.getIdByEmail(auth.getName());
 		order.setOrder_memberid(memberId);
 
@@ -191,56 +182,54 @@ public class PayController {
 		for (int i = 0; i < productlist.length; i++) {
 			orderList.add(new Order_detail(Integer.parseInt(productlist[i])));
 		}
-		
+
 		List<Product> productname = new ArrayList<>();
 		Product productzz = new Product();
 		String proid;
 		int proid2;
-		for(int i=0;i<productlist.length;i++) {
+		for (int i = 0; i < productlist.length; i++) {
 			proid = productlist[i];
 			proid2 = Integer.parseInt(proid);
-			productzz = payService.getProductById(proid2);		
-			productname.add(productzz);			
+			productzz = payService.getProductById(proid2);
+			productname.add(productzz);
 		}
 		order.setOrderLists(orderList);
 		order.setOrder_sabangid(sabangid);
 		order.setOrder_state("배송준비중");
-	
+
 		// 저장 부분
 		String result = payService.addOrder(order);
 
-		//넘겨주는 부분
+		// 넘겨주는 부분
 		Sabang sabangname = sabangService.getSabang(sabangid);
 
-		// 세션 삭제 
+		// 세션 삭제
 		Map<String, Cart> mycartlist = (Map<String, Cart>) session.getAttribute("sessionCart");
 		mycartlist.remove(cartKey);
 		session.setAttribute("sessionCart", mycartlist);
-		
+
 		model.addAttribute("productname", productname);
 		model.addAttribute("sabangname", sabangname);
 		model.addAttribute("result", result);
 		model.addAttribute("order", order);
 
 		// 넘겨주는 부분
-
 		return "pay/pay_success";
 	}
-	
+
 	@PostMapping("/payDirectSuccess")
 	public String payDirectSuccess(OrderMain order, String[] productlist, Authentication auth, Model model) {
 		logger.info("pay_DDsuccess 메시지");
-		
-		logger.info("pay_DDsuccess"+auth.getName());
-		logger.info("pay_DDsuccess"+order.getOrder_phone());
-		logger.info("pay_DDsuccess"+order.getOrder_zipcode());
-		logger.info("pay_DDsuccess"+order.getOrder_roadaddress());
-		logger.info("pay_DDsuccess"+order.getOrder_detailaddress());
-		logger.info("pay_DDsuccess"+order.getOrder_price());
-		logger.info("pay_DDsuccess"+order.getOrder_payment());
-		logger.info("pay_DDsuccess"+order.getOrder_bankcode());
-		
-		
+
+		logger.info("pay_DDsuccess" + auth.getName());
+		logger.info("pay_DDsuccess" + order.getOrder_phone());
+		logger.info("pay_DDsuccess" + order.getOrder_zipcode());
+		logger.info("pay_DDsuccess" + order.getOrder_roadaddress());
+		logger.info("pay_DDsuccess" + order.getOrder_detailaddress());
+		logger.info("pay_DDsuccess" + order.getOrder_price());
+		logger.info("pay_DDsuccess" + order.getOrder_payment());
+		logger.info("pay_DDsuccess" + order.getOrder_bankcode());
+
 		/*
 		 * int memberId = memberService.getIdByEmail(auth.getName());
 		 * order.setOrder_memberid(memberId);
@@ -266,9 +255,7 @@ public class PayController {
 		 */
 		return "pay/pay_Dsuccess";
 	}
-	
 
-	
 	@GetMapping("/deleteCart")
 	public String deleteCart(String cid, HttpSession session) {
 		logger.info("deleteCart");

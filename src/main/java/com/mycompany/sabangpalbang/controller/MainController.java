@@ -1,38 +1,28 @@
 package com.mycompany.sabangpalbang.controller;
 
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.mycompany.sabangpalbang.dto.Palbang;
 import com.mycompany.sabangpalbang.dto.Sabang;
 import com.mycompany.sabangpalbang.service.PalbangService;
 import com.mycompany.sabangpalbang.service.SabangService;
 
 
-
-/**
- * Handles requests for the application home page.
- */
 @Controller
 public class MainController {
-
-	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
-	
 	@Autowired
 	private SabangService sabangService;
 	@Autowired
 	private PalbangService palbangService;
 	
 	//메인페이지 
-	@RequestMapping(value = "/main")
+	@GetMapping("/main")
 	public String home(Model model) {
 		logger.info("main 메시지");
 		List<Sabang> slist = sabangService.showSabang();
@@ -51,7 +41,7 @@ public class MainController {
 	}
 	
 	//인포페이지
-	@RequestMapping(value = "/info")
+	@GetMapping("/info")
 	public String info() {
 		logger.info("info 메시지");
 		return "info";

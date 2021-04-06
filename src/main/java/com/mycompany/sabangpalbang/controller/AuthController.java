@@ -13,13 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.mycompany.sabangpalbang.dto.Member;
 import com.mycompany.sabangpalbang.service.MemberService;
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
 public class AuthController {
 
@@ -34,9 +30,9 @@ public class AuthController {
 		logger.info("loginForm 메시지");
 		String ajaxHeader = request.getHeader("X-Requested-With");
 		logger.info("ajaxHeader: " + ajaxHeader);
-		if(ajaxHeader == null) {
+		if (ajaxHeader == null) {
 			return "auth/loginForm";
-		}else { // AJAX 요청 - JSON Body를 응답해야 한다. 
+		} else { // AJAX 요청 - JSON Body를 응답해야 한다.
 			response.setContentType("application/json;charset=UTF-8");
 			JSONObject jObj = new JSONObject();
 			jObj.put("result", "goLogin");
@@ -45,7 +41,7 @@ public class AuthController {
 				writer.write(jObj.toString());
 				writer.flush();
 				writer.close();
-			}catch(Exception e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			return null;
@@ -102,50 +98,37 @@ public class AuthController {
 
 		return "redirect:/loginForm";
 	}
-	
-	//이메일 중복 체크
-	@PostMapping(value="/checkEmail", produces="application/json;charset=UTF-8")
+
+	// 이메일 중복 체크
+	@PostMapping(value = "/checkEmail", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String checkEmail(String email) {
-		
 		logger.info(email);
-		
 		Boolean result = memberService.isCheckedEmail(email);
-		
 		JSONObject jsonObject = new JSONObject();
-		
-		if(result == true) {
-			jsonObject.put("resultEmail","success");
-		
+		if (result == true) {
+			jsonObject.put("resultEmail", "success");
 			return jsonObject.toString();
 		} else {
-			jsonObject.put("resultEmail","fail");
-		
+			jsonObject.put("resultEmail", "fail");
 			return jsonObject.toString();
 		}
 	}
 
-	//닉네임 중복 체크
-	@PostMapping(value="/checkNickname", produces="application/json;charset=UTF-8")
+	// 닉네임 중복 체크
+	@PostMapping(value = "/checkNickname", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String checkNickname(String nickname) {
-		
 		logger.info(nickname);
-		
 		Boolean result = memberService.isCheckedNickname(nickname);
-		
 		JSONObject jsonObject = new JSONObject();
-		
-		if(result == true) {
-			jsonObject.put("resultNickname","success");
-		
+		if (result == true) {
+			jsonObject.put("resultNickname", "success");
 			return jsonObject.toString();
 		} else {
-			jsonObject.put("resultNickname","fail");
-		
+			jsonObject.put("resultNickname", "fail");
 			return jsonObject.toString();
 		}
-		
 	}
 
 	// 아이디 찾기
@@ -168,10 +151,8 @@ public class AuthController {
 		model.addAttribute("member_nickname", member.getMember_nickname());
 
 		// 비밀번호 재설정 후 디비에 저장
-
 		String resetPw = memberService.resetPwd(member_email);
 		logger.info(resetPw);
-
 		return "auth/resetPw_successForm"; // 찾으면
 	}
 
