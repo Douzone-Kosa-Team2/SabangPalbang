@@ -35,93 +35,44 @@
 				<p>${selectedInq.inquiry_anscontent}</p>
 
 			</div>
-			<table class="table table-bordered">
-				<thead>
-					<tr>
-						<th scope="col">#</th>
-						<th scope="col">First</th>
-						<th scope="col">Last</th>
-						<th scope="col">Handle</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th scope="row">1</th>
-						<td>Mark</td>
-						<td>Otto</td>
-						<td>@mdo</td>
-					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td>Jacob</td>
-						<td>Thornton</td>
-						<td>@fat</td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td colspan="2">Larry the Bird</td>
-						<td>@twitter</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-
-		<%-- <form method="post" name="askform" action="addInquiry">
-		    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-		    <input type="hidden" name="inquiry_sabangid" value="${sabang.sabang_id}"/>
-		
-			<div class="pop_ask_table">
-
-				<div class="pop_ask_type">
-					<div class="pop_ask_menu">문의 유형</div>
-
-					<select class="pop_ask_box" name="inquiry_type">
-						<option selected="" value="" disabled="">문의 유형 선택</option>
-						<option value="prod_info">상품정보</option>
-						<option value="delivery">배송정보</option>
-						<option value="change">환불/교환</option>
-					</select>
-				</div>
-
-				<div class="pop_ask_prod">
-					<div class="pop_ask_menu">문의 상품</div>
-					<input type="text" class="pop_ask_box" value="${sabang.sabang_name}" readonly/>
-				</div>
-
-				<div class="pop_ask_human">
-					<div class="pop_ask_menu">문의자</div>
-					<input type="text" class="pop_ask_box" value="${member.member_nickname}" 
-						name="inquiry_writer" readonly/>
-				</div>
-
-				<div class="pop_ask_tel">
-					<div class="pop_ask_menu">전화번호</div>
-					<input type="tel" class="pop_ask_box" value="${member.member_phone}" readonly/>
-				</div>
-
-				<div class="pop_ask_email">
-					<div class="pop_ask_menu">이메일</div>
-					<input type="email" class="pop_ask_box" value="${member.member_email}" readonly/>
-				</div>
-
-				<div class="pop_ask_title">
-					<div class="pop_ask_menu">제목</div>
-					<input type="text" class="pop_ask_box" value="" placeholder="제목을 입력해주세요." 
-						name="inquiry_title" />
-				</div>
-
-				<div class="pop_ask_content">
-					<div class="pop_ask_menu">문의 내용</div>
-					<textarea placeholder="내용을 입력해주세요." class="pop_ask_box" name="inquiry_explain"></textarea>
-				</div>
-
-			</div>
-
-			<div class="pop_ask_btn">
-				<button class="pop_ask_btn_cancel" onclick="cancel()">취소</button>
-				<button class="pop_ask_btn_create" onclick="confirm()">작성하기</button>
-			</div>
-		</form> --%>
+<%-- <div class="sabang_detail_3_div_table">
+	<table class="table inquiry_table" id="sabang_inquiry_table">
+		<thead class="thead-light">
+			<tr>
+				<th scope="col">번호</th>
+				<th scope="col">문의종류 <svg xmlns="http://www.w3.org/2000/svg"
+						width="16" height="16" fill="currentColor"
+						class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+	  						<path fill-rule="evenodd"
+							d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
+						</svg>
+				</th>
+				<th scope="col">답변상태 <svg xmlns="http://www.w3.org/2000/svg"
+						width="16" height="16" fill="currentColor"
+						class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+	  						<path fill-rule="evenodd"
+							d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
+						</svg>
+				</th>
+				<th scope="col">제목</th>
+				<th scope="col">문의자</th>
+				<th scope="col">등록일</th>
+			</tr>
+		</thead>
+	
+		<tbody>
+			
+					
+					<tr class="check_inq" onclick="showInq(${inquiry.inquiry_id})">
+						<td scope="row">${inquiry.inquiry_id}</td>
+						<td>${inquiry.inquiry_type}</td>
+						<td>${inquiry.inquiry_ansstate}</td>
+						<td>${inquiry.inquiry_title}</td>
+						<td>${inquiry.inquiry_writer}</td>
+						<td><fmt:formatDate value="${inquiry.inquiry_date}"
+								pattern="YYYY.MM.dd" /></td>
+					</tr> --%>
+					</div>
 	</div>
 </body>
 <script>
