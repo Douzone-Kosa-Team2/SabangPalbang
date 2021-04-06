@@ -72,10 +72,14 @@ public class MypageController {
 		logger.info("mypage_orderlist 메시지");
 		
 		// db select
-		List<OrderMain> orderList = memberService.getOrderListById(memberService.getIdByEmail(auth.getName()));
-		logger.info("" + orderList.size());
+		List<OrderMain> myOrderList = memberService.getOrderListById(memberService.getIdByEmail(auth.getName()));		
+
+		logger.info("img : " +  myOrderList.get(0).getSabang_imgoname());
+		logger.info("name: " + myOrderList.get(0).getSabang_name());
 		
-		model.addAttribute("orderList", orderList);
+		model.addAttribute("sabang_imgoname", myOrderList.get(0).getSabang_imgoname());
+		model.addAttribute("sabang_name", myOrderList.get(0).getSabang_name());
+		model.addAttribute("myOrderList", myOrderList); 
 		return "mypage/mypage_orderlist";
 	}
 
