@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <div class="sabang_detail_3_div_table">
-	<table class="table inquiry_table">
+	<table class="table inquiry_table" id="sabang_inquiry_table">
 		<thead class="thead-light">
 			<tr>
 				<th scope="col">번호</th>
@@ -29,17 +29,17 @@
 	
 		<tbody>
 			<c:forEach var="inquiry" items="${inquiryList}">
-				
-					<tr>
+					
+					<tr class="check_inq" onclick="showInq(${inquiry.inquiry_id})">
 						<td scope="row">${inquiry.inquiry_id}</td>
 						<td>${inquiry.inquiry_type}</td>
-						<td style="color: #adb5bd;">${inquiry.inquiry_ansstate}</td>
+						<td>${inquiry.inquiry_ansstate}</td>
 						<td>${inquiry.inquiry_title}</td>
 						<td>${inquiry.inquiry_writer}</td>
 						<td><fmt:formatDate value="${inquiry.inquiry_date}"
 								pattern="YYYY.MM.dd" /></td>
 					</tr>
-			
+					
 			</c:forEach>
 			<tr style="border-bottom: hidden;">
 				<td colspan="2"></td>
@@ -104,4 +104,25 @@ function ask(sid){
 	console.log("sabang Id: "+sid);
 	
 }
+function showInq(inquiry_id){
+	console.log("inquiry_id : " + inquiry_id);
+	window.open("pop_ask_content?inquiry_id="+inquiry_id,"문의사항","popup");
+}
+/* $(".check_inq").click(function(){
+	var tr = $(this);
+    var td = tr.children();
+
+	var inquiry_id = td.eq(0).text();
+	console.log("inquiry_id : " + inquiry_id);
+
+	window.open("pop_ask_content?inquiry_id=","문의사항","popup");
+	
+}); */
 </script>
+<style>
+.check_inq:hover {
+	color: white;
+	background-color: #00B0F0;
+	cursor:pointer;
+}
+</style>
