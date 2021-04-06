@@ -3,12 +3,28 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <script>
-	var index;
+	var index; // 리뷰 인덱스 0, 1, 2 여야 함 .. 개수 안에서 인덱스가 반복되니까.. 
+	var count; // 리뷰 개수 1개 - 3개 
+	
+	var reviewSet =  "<div id='review_"+index+"'" + "class='palbang_create_reviewSet'>" + 
+	"<div class='palbang_create_reviewSet_minusBtn'/>" +  
+	"<svg onclick=\"removeCol("+index+")\" xmlns=\'http://www.w3.org/2000/svg\' width='30' height='30'" +
+	"fill='currentColor' class='bi bi-dash-circle' viewBox='0 0 16 16'>" + 
+		"<path d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/> " + 
+		"<path d='M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z' />" + 
+		"</svg></div>" +	
+		"<div class='palbang_create_reviewSet_left form-control d-flex flex-column' style='padding:0px;'>" +
+		"<div id='image_container_"+index+"'" + "style='height:100%;'>" + 
+		"<input type='file'  class='form-control' name='reviews["+index+"].pdattach'>" +
+		"</div>" +
+		"</div><div class='palbang_create_reviewSet_right'>"+ 
+		"<input type='text' style='height: 100%; text-align: center;' class='form-control' placeholder='리뷰를 입력하세요.' name='reviews["+index+"].palbang_explain' /></div></div>";
+				
 	
 	$.when($.ready).then(function(){
 		// 처음 로드될 때는 하나의 리뷰 세트가 있어야 함 
 		index = 0;
-	
+		count = 1; // 개수 
 		var reviewSet =  "<div id='review_"+index+"'" + "class='palbang_create_reviewSet'>" + 
 		"<div class='palbang_create_reviewSet_minusBtn'/>" +  
 		"<svg onclick=\"removeCol("+index+")\" xmlns=\'http://www.w3.org/2000/svg\' width='30' height='30'" +
@@ -23,15 +39,17 @@
 			"</div><div class='palbang_create_reviewSet_right'>"+ 
 			"<input type='text' style='height: 100%; text-align: center;' class='form-control' placeholder='리뷰를 입력하세요.' name='reviews["+index+"].palbang_explain' /></div></div>";
 					
+		
+		console.log(reviewSet);
 		$('#div_reviews').append(reviewSet);
 	});
 
 	function addCol() {
 		console.log("addCol() method");
 		
-		if(index < 2){
-			index += 1;
-			console.log("추가하는 현재 인덱스: " + index);
+		if(count < 3){
+			index += 1;			
+			
 			var reviewSet =  "<div id='review_"+index+"'" + "class='palbang_create_reviewSet'>" + 
 			"<div class='palbang_create_reviewSet_minusBtn'/>" +  
 			"<svg onclick=\"removeCol("+index+")\" xmlns=\'http://www.w3.org/2000/svg\' width='30' height='30'" +
@@ -46,8 +64,11 @@
 				"</div><div class='palbang_create_reviewSet_right'>"+ 
 				"<input type='text' style='height: 100%; text-align: center;' class='form-control' placeholder='리뷰를 입력하세요.' name='reviews["+index+"].palbang_explain' /></div></div>";
 						
+			
+			console.log("추가하는 현재 인덱스: " + index);
+			console.log(reviewSet);
 			$('#div_reviews').append(reviewSet);
-
+			count += 1;
 		}else{
 			console.log("error : 최대 3개까지 작성가능합니다!! ");
 		}
@@ -55,22 +76,37 @@
 	
 	function removeCol(idx) {
 		console.log("removeCol() method");
+
+		var reviewSet =  "<div id='review_"+index+"'" + "class='palbang_create_reviewSet'>" + 
+		"<div class='palbang_create_reviewSet_minusBtn'/>" +  
+		"<svg onclick=\"removeCol("+index+")\" xmlns=\'http://www.w3.org/2000/svg\' width='30' height='30'" +
+		"fill='currentColor' class='bi bi-dash-circle' viewBox='0 0 16 16'>" + 
+			"<path d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/> " + 
+			"<path d='M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z' />" + 
+			"</svg></div>" +	
+			"<div class='palbang_create_reviewSet_left form-control d-flex flex-column' style='padding:0px;'>" +
+			"<div id='image_container_"+index+"'" + "style='height:100%;'>" + 
+			"<input type='file'  class='form-control' name='reviews["+index+"].pdattach'>" +
+			"</div>" +
+			"</div><div class='palbang_create_reviewSet_right'>"+ 
+			"<input type='text' style='height: 100%; text-align: center;' class='form-control' placeholder='리뷰를 입력하세요.' name='reviews["+index+"].palbang_explain' /></div></div>";
+					
 		
-		if(index > 0){
+		if(count > 1){
 			console.log("삭제하는 현재 인덱스: " + idx);
 			$('#review_'+idx).remove();
-			index -= 1;
+			console.log(reviewSet);
+			count -= 1;
 		}else{
 			console.log("error : 더 이상 지울 수 없습니다.");
 		}
 	}
 
 	// 등록 버튼 눌렀을 때 사진 없으면 등록 못하게 validation 해줘야 함 
-	function beforeSend(){
+	function beforeSend() {
 		event.preventDefault();
 		console.log("컨트롤러로 넘어가기 전에 validation - 이미지 not null이어야 함 !!!");
 		$("#target").submit();
-		
 	} 
 	
 	function setThumbnail(event) { 

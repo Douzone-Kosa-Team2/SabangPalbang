@@ -1,13 +1,10 @@
 package com.mycompany.sabangpalbang.controller;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
@@ -17,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -207,17 +203,22 @@ public class PalbangController {
 		palbang.setPalbang_nickname(memberService.getByInquiryNickname(auth.getName()));
 		
 		/* 팔방 디테일 리뷰 이미지 - 최소 1개 ~ 3개 */
+		logger.info("size: " + palbang.getReviews().size());
+		
+	//	int idx = 0; // 디테일 리스트 실제 인덱스 
+		List<Palbang_detail> newReviews = new ArrayList<>();
 		for(int i=0; i<palbang.getReviews().size(); i++) {
 			MultipartFile pdattach = palbang.getReviews().get(i).getPdattach();
-			logger.info(pdattach.getOriginalFilename());
-			if(!pdattach.isEmpty()) {
+			
+			if(!pdattach.isEmpty()) {  // 널이 아니면 디비에 저장 
 				logger.info(i + "번째 리뷰 이미지 첨부 ");
 				palbang.getReviews().get(i).setPalbang_id(palbang.getPalbang_id()); // 이미 시퀀스키가 세팅되어있음 
 				palbang.getReviews().get(i).setPalbang_dimgoname(pdattach.getOriginalFilename());
 				palbang.getReviews().get(i).setPalbang_dimgtype(pdattach.getContentType());
 				String saveName = new Date().getTime() + "-" + palbang.getReviews().get(i).getPalbang_dimgoname();
 				palbang.getReviews().get(i).setPalbang_dimgsname(saveName);
-		
+				newReviews.add(palbang.getReviews().get(i));
+				
 				File file = new File(
 						"resources/images/palbang_detail/" + palbang.getReviews().get(i).getPalbang_dimgoname());
 				try {
@@ -229,6 +230,8 @@ public class PalbangController {
 				logger.info("팔방 리뷰 이미지 첨부가 없음");
 			}
 		}
+		palbang.setReviews(newReviews);
+
 		 // DB insert - 팔방디테일
 		palbangService.savePalbang(palbang);
 		
