@@ -57,9 +57,7 @@ public class PayController {
 		logger.info("shopping_basket_fromdetail 메시지");
 		logger.info(products[0]);
 
-		if (products == null) {
-			return "pay/shopping_basket";
-		} else {
+		if (products != null) {
 			Cart mycart = new Cart();
 			List<Product> productlist = new ArrayList<Product>();
 			for (int i = 0; i < products.length; i++) {
@@ -108,9 +106,8 @@ public class PayController {
 			}
 			mycartlist.put(cartId, mycart);
 			session.setAttribute("sessionCart", mycartlist);
-
-			return "pay/shopping_basket";
 		}
+		return "pay/shopping_basket";
 	}
 
 	@PostMapping("/pay")
@@ -128,6 +125,7 @@ public class PayController {
 		Cart selectedCart = mycartlist.get(cartKey);
 
 		model.addAttribute("selectedCart", selectedCart);
+		model.addAttribute("cartKey", cartKey);
 		model.addAttribute("member", member);
 		return "pay/paypageCart";
 
@@ -168,8 +166,10 @@ public class PayController {
 
 	@PostMapping("/paySuccess")
 	public String pay_success(Model model, HttpSession session, OrderMain order,
-			@RequestParam(name = "sabangid") int sabangid, Authentication auth,
-			@RequestParam(name = "productlist") String[] productlist) {
+			@RequestParam(name = "sabangid") int sabangid,
+			@RequestParam(name = "cartKey") String cartKey, 
+			@RequestParam(name = "productlist") String[] productlist,
+			Authentication auth) {
 		logger.info("pay_success 메시지");
 
 		logger.info("" + auth.getName());
@@ -189,7 +189,6 @@ public class PayController {
 		List<Order_detail> orderList = new ArrayList<>();
 
 		for (int i = 0; i < productlist.length; i++) {
-
 			orderList.add(new Order_detail(Integer.parseInt(productlist[i])));
 		}
 		
@@ -203,23 +202,21 @@ public class PayController {
 			productzz = payService.getProductById(proid2);		
 			productname.add(productzz);			
 		}
-		
 		order.setOrderLists(orderList);
 		order.setOrder_sabangid(sabangid);
-
 		order.setOrder_state("배송준비중");
-		//저장 부분
-
-
+	
+		// 저장 부분
+		String result = payService.addOrder(order);
 
 		//넘겨주는 부분
 		Sabang sabangname = sabangService.getSabang(sabangid);
 
-		// 저장 부분
-		String result = payService.addOrder(order);
-
+		// 세션 삭제 
+		Map<String, Cart> mycartlist = (Map<String, Cart>) session.getAttribute("sessionCart");
+		mycartlist.remove(cartKey);
+		session.setAttribute("sessionCart", mycartlist);
 		
-
 		model.addAttribute("productname", productname);
 		model.addAttribute("sabangname", sabangname);
 		model.addAttribute("result", result);
