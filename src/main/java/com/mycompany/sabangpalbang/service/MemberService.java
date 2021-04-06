@@ -2,6 +2,7 @@ package com.mycompany.sabangpalbang.service;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -16,6 +17,7 @@ import com.mycompany.sabangpalbang.dao.OrderMainDao;
 import com.mycompany.sabangpalbang.dto.Member;
 import com.mycompany.sabangpalbang.dto.OrderMain;
 import com.mycompany.sabangpalbang.dto.Order_detail;
+import com.mycompany.sabangpalbang.dto.Pager;
 
 @Service
 public class MemberService {
@@ -134,14 +136,23 @@ public class MemberService {
 	}
 
 	// 마이페이지 - 주문 내역 얻어오기 
-	public List<OrderMain> getOrderListById(int order_memberid) {
-		List<OrderMain>  myOrderList = (List<OrderMain>) orderMainDao.selectOrderByUid(order_memberid);
+	public List<OrderMain> getOrderListById(Pager pager, int order_memberid) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("pager", pager);
+		map.put("order_memberid", order_memberid);
+		
+		List<OrderMain>  myOrderList = (List<OrderMain>)orderMainDao.selectOrderByUid(map);
 		
 		for(int i=0; i< myOrderList.size(); i++) {
 			List<Order_detail> orderDetailList = orderDetailDao.selectOrderDetailById(myOrderList.get(i).getOrder_id());
 			myOrderList.get(i).setOrderLists(orderDetailList);
 		}
 		return myOrderList;
+	}
+
+	public int getTotalOrderRows(int order_memberid) {
+		int rows = orderMainDao.count(order_memberid);
+		return rows;
 	}
 
 }
