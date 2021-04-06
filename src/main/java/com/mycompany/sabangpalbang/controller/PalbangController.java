@@ -236,40 +236,6 @@ public class PalbangController {
 		return "redirect:/palbang_detail?pid="+palbang.getPalbang_id();
 	}
 	
-	@GetMapping("/downloadAttach")
-	public void downloadAttach(int bno, HttpServletResponse response) {
-		/*
-		 *  얘가 실행하고 나서 결과는 그림의 데이터이기 때문에 문자열을 반환하지 않는다. 
-		 */
-//		try {
-//			Board board = boardsService.getBoard(bno);
-//			
-//			// 응답 HTTP 헤더에 저장될 응답 바디의 타입 
-//			response.setContentType(board.getBattachtype());
-//			
-//			// 응답 HTTP 헤더에 다운로드할 수 있도록 파일 이름을 지정
-//			String originalName = board.getBattachoname();
-//			// 한글 파일일 경우, 깨짐 현상을 방지 
-//			// header에는 한글을 절대 넣을 수 없다. 헤더에는 아스키코드만 해석할 수 있으니까 UTF-8에서 변환한다. 
-//			originalName = new String(originalName.getBytes("UTF-8"), "ISO-8859-1");
-//			response.setHeader("Content-Disposition", "attachment; filename=\"" + originalName + "\"");  // 헤더의 위치 지정
-//			// attachment값이  파일로 다운로드 가능하게 해줌 
-//			
-//			// 응답 HTTP 바디로 이미지 데이터를 출력 
-//			InputStream in = new FileInputStream("/Users/homecj/dev/workspace/sts/Douzone/uploadfiles/" + board.getBattachsname());	    
-//			OutputStream out = response.getOutputStream();
-//			FileCopyUtils.copy(in, out);
-//			out.flush();
-//			in.close();
-//			out.close();
-//			
-//			
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//		}
-	}
-
-	
 	@PostMapping("/palbang_update_form")
 	public String updatePalbangForm(Palbang palbang, Authentication auth) {
 		/*  팔방 대표 이미지 */

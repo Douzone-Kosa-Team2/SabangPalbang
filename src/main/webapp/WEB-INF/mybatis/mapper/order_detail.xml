@@ -17,6 +17,12 @@
 		from order_detail
 		order by order_detailno desc
 	</select>
+	
+	<select id="selectOrderDetailById" resultType="order_detail">
+		select order_detailno, order_id, order_productid, product_name
+		from order_detail, product
+		where order_detail.order_productid = product.product_id and order_id = #{order_id}
+	</select>
 
 	<delete id="deleteByOrderDetailno" parameterType="int">
 		delete from order_detail
