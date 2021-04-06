@@ -48,7 +48,7 @@
 		<!-- <security:csrf disabled="true"/>	 -->	
 		
 		<!-- Post 방식으로 요청해야 함 -->
-		<security:logout logout-url="/logout"/>
+		<security:logout logout-url="/logout" invalidate-session="true"/>
 		
 		<!-- 로그인 중복 처리 설정 -->
 		<security:session-management>

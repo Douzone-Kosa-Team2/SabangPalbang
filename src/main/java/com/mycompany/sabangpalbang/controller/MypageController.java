@@ -71,7 +71,6 @@ public class MypageController {
 
 		int intPageNo = 1;
 		if (pageNo == null) { // 클라이언트에서 pageNo가 넘어오지 않앗을때
-			logger.info("here~!!!");
 			// 세션에서 Pager를 찾고 PageNo를 설정
 			Pager pager = (Pager) session.getAttribute("mypage_order_pager");
 			if (pager != null) {
@@ -89,7 +88,8 @@ public class MypageController {
 
 		// db select
 		List<OrderMain> myOrderList = memberService.getOrderListById(pager, order_memberid);
-		
+
+		model.addAttribute("myOrderSize", myOrderList.size());
 		model.addAttribute("myOrderList", myOrderList);
 		return "mypage/mypage_orderlist";
 	}
