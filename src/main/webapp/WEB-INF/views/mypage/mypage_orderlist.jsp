@@ -1,8 +1,7 @@
 	<%@ page contentType="text/html; charset=UTF-8"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
-	
 	
 	
 	<!-- 마이페이지 메뉴 헤더 -->
@@ -36,19 +35,29 @@
 			<col width="6%">
 		</colgroup>
 		<tr>
-			<th>송장번호</th>
+			<th>주문번호</th>
 			<th>주문날짜</th>
 			<th></th>
 			<th>상품명</th>
 			<th>가격</th>
 			<th>배송상태</th>
 		</tr>
-		<c:forEach var="orderMain" items="orderList">
+		<c:forEach var="orderMain" items="${myOrderList}">
 			<tr>
 				<td>${orderMain.order_id}</td>
-				<td>${orderMain.order_date}</td>
-				<td><img src="resources/images/sabang_detail/sb1_0.png" width="100"></td>
-				<td>아늑하고 따뜻한 방<br />(스카르스타, 크란스크라게, 글라돔, 테르티알)
+				<td><fmt:formatDate value="${orderMain.order_date}" pattern="YYYY.MM.dd"/></td>
+				<td><img src="resources/images/sabang_post/${sabang_imgoname}" width="100"></td>
+				<td>${sabang_name}<br/>
+				(
+				<c:forEach var="orderDetail" items="${orderMain.orderList}" varStatus="status">
+					<c:if test="${!status.last}">
+						${orderDetail.product_name},
+					</c:if>
+					<c:if test="${status.last}">
+						${orderDetail.product_name}
+					</c:if>
+				</c:forEach>
+				)
 				</td>
 				<td>${orderMain.order_price}</td>
 				<td>${orderMain.order_state}</td>
