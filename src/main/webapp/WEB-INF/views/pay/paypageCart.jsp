@@ -79,7 +79,9 @@
 
 <div class="pay_main">
 	<form id="payForm" method="post" action="paySuccess">
-	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		<input type="hidden" name="cartKey" value="${cartKey}" />
+
 		<div class="pay_header">
 			<div>주문결제</div>
 		</div>
