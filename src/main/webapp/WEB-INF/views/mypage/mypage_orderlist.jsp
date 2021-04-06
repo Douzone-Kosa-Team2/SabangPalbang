@@ -12,7 +12,6 @@
 	
 	</div>
 	<!-- 마이페이지 주문 내역 -->
-	
 	<div class="state_button">
 		<select name="time_button">
 			<option selected="" value="" disabled="">기간</option>
@@ -25,7 +24,7 @@
 			<option value="최신 순">배송 완료</option>
 		</select>
 	</div>
-	<table class="orderlist_table">
+	<table class="orderlist_table" >
 		<colgroup>
 			<col width="1%">
 			<col width="3%">
@@ -63,5 +62,30 @@
 				<td>${orderMain.order_state}</td>
 			</tr>
 		</c:forEach>
+		<tr>
+					<!-- 처음 이전 12345 다음 맨끝 -->
+					<td colspan="5" class="text-center"><a
+						class="btn btn-outline-primary btn-sm" href="mypage_orderlist?pageNo=1">처음</a>
+						<c:if test="${mypage_order_pager.groupNo>1}">
+							<a class="btn btn-outline-info btn-sm"
+								href="mypage_orderlist?pageNo=${mypage_order_pager.startPageNo-1}">이전</a>
+						</c:if> <c:forEach var="i" begin="${mypage_order_pager.startPageNo}"
+							end="${mypage_order_pager.endPageNo}">
+	
+							<c:if test="${mypage_order_pager.pageNo!=i}">
+								<a class="btn btn-outline-success btn-sm"
+									href="mypage_orderlist?pageNo=${i}">${i}</a>
+							</c:if>
+							<c:if test="${mypage_order_pager.pageNo==i}">
+								<a class="btn btn-outline-danger btn-sm"
+									href="mypage_orderlist?pageNo=${i}">${i}</a>
+							</c:if>
+						</c:forEach> <c:if test="${mypage_order_pager.groupNo<mypage_order_pager.totalGroupNo}">
+							<a class="btn btn-outline-info btn-sm"
+								href="mypage_orderlist?pageNo=${mypage_order_pager.endPageNo+1}">다음</a>
+						</c:if> <a class="btn btn-outline-primary btn-sm"
+						href="mypage_orderlist?pageNo=${mypage_order_pager.totalPageNo}">맨끝</a></td>
+		</tr>
 	</table>
+
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
