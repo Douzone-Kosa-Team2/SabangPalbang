@@ -49,7 +49,7 @@
 				<td><img src="resources/images/sabang_post/${sabang_imgoname}" width="100"></td>
 				<td>${sabang_name}<br/>
 				(
-				<c:forEach var="orderDetail" items="${orderMain.orderList}" varStatus="status">
+				<c:forEach var="orderDetail" items="${orderMain.orderLists}" varStatus="status">
 					<c:if test="${!status.last}">
 						${orderDetail.product_name},
 					</c:if>
