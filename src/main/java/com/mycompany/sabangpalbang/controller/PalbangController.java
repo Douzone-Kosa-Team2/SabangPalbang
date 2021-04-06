@@ -1,6 +1,7 @@
 package com.mycompany.sabangpalbang.controller;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -201,20 +202,21 @@ public class PalbangController {
 		palbang.setPalbang_nickname(memberService.getByInquiryNickname(auth.getName()));
 		
 		/* 팔방 디테일 리뷰 이미지 - 최소 1개 ~ 3개 */
+		logger.info("size: " + palbang.getReviews().size());
+		
+	//	int idx = 0; // 디테일 리스트 실제 인덱스 
+		List<Palbang_detail> newReviews = new ArrayList<>();
 		for(int i=0; i<palbang.getReviews().size(); i++) {
 			MultipartFile pdattach = palbang.getReviews().get(i).getPdattach();
-			logger.info("pdattach: " + pdattach.getOriginalFilename());
-			logger.info("pdattach2: " + pdattach);
-			if(!pdattach.isEmpty()) {
+			
+			if(!pdattach.isEmpty()) {  // 널이 아니면 디비에 저장 
 				logger.info(i + "번째 리뷰 이미지 첨부 ");
 				palbang.getReviews().get(i).setPalbang_id(palbang.getPalbang_id()); // 이미 시퀀스키가 세팅되어있음 
 				palbang.getReviews().get(i).setPalbang_dimgoname(pdattach.getOriginalFilename());
 				palbang.getReviews().get(i).setPalbang_dimgtype(pdattach.getContentType());
 				String saveName = new Date().getTime() + "-" + palbang.getReviews().get(i).getPalbang_dimgoname();
 				palbang.getReviews().get(i).setPalbang_dimgsname(saveName);
-//				palbang.getReviews().get(i).setPdattach(pdattach);
-				logger.info("detail imgoname: " + palbang.getReviews().get(i).getPalbang_dimgoname());
-				
+				newReviews.add(palbang.getReviews().get(i));		
 				File file = new File(
 						request.getServletContext().getRealPath("resources/images/palbang_detail/"+palbang.getReviews().get(i).getPalbang_dimgoname()));
 				
@@ -227,6 +229,8 @@ public class PalbangController {
 				logger.info("팔방 리뷰 이미지 첨부가 없음");
 			}
 		}
+		palbang.setReviews(newReviews);
+
 		 // DB insert - 팔방디테일
 		palbangService.savePalbang(palbang);
 		
