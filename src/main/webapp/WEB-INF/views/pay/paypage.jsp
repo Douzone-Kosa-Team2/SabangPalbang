@@ -320,12 +320,11 @@ function DaumPostcode() {
                           
                         <div class="content_4_2"><text style="font-family:'Cafe24Dangdanghae';">&#8361;</text><c:out value="${sum}"/></div>
                     </div>
-                    <a href="pay_success">
-                        <button type="button" class="btn btn-lg btn-info" style="width: 82%; height: 30%; color:white">결제하기</button>
-                    </a>
-                    <a href="shopping_basket">
-                        <button type="button" class="btn btn-lg btn-light" style="width: 82%; height: 30%; color:black">취소하기</button>
-                    </a>
+                    <button type="button" class="btn btn-lg btn-info"
+							style="width: 82%; height: 30%; color: white" onclick="success()">결제하기</button>
+					
+						<button type="button" class="btn btn-lg btn-light"
+							style="width: 82%; height: 30%; color: black" onclick="cancel()">취소하기</button>
                 </div>
             </div>
         </div>
