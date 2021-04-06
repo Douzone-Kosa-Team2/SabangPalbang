@@ -139,7 +139,7 @@ public class MemberService {
 		
 		for(int i=0; i< myOrderList.size(); i++) {
 			List<Order_detail> orderDetailList = orderDetailDao.selectOrderDetailById(myOrderList.get(i).getOrder_id());
-			myOrderList.get(i).setOrderList(orderDetailList);
+			myOrderList.get(i).setOrderLists(orderDetailList);
 		}
 		return myOrderList;
 	}
