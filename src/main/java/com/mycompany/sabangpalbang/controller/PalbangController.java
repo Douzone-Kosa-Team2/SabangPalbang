@@ -178,26 +178,20 @@ public class PalbangController {
 
 	@PostMapping("/palbang_create_form")
 	public String createPalbangForm(Palbang palbang, Authentication auth, HttpServletRequest request) {
-		logger.info("대표: " + palbang.getPattach());
-		logger.info("detail: " + palbang.getReviews().get(0).getPdattach());
-		
 		/*  팔방 대표 이미지 */
 		MultipartFile pattach = palbang.getPattach();
 		if (!pattach.isEmpty()) {
-			logger.info("팔방 대표 이미지 첨부가 있음");
-			
 			palbang.setPalbang_imgoname(pattach.getOriginalFilename());
 			palbang.setPalbang_imgtype(pattach.getContentType());
 			String saveName = new Date().getTime() + "-" + palbang.getPalbang_imgoname();
 			palbang.setPalbang_imgsname(saveName);
-			
 			logger.info("팔방 대표이미지 : " + palbang.getPalbang_imgoname());
 
 			File file = new File(
-					request.getSession().getServletContext().getRealPath("resources/images/palbang_post/"+palbang.getPalbang_imgoname()));
+					request.getServletContext().getRealPath("resources/images/palbang_post/"+palbang.getPalbang_imgoname()));
+			
 			try {
 				pattach.transferTo(file);
-				logger.info(request.getSession().getServletContext().getRealPath("resources/images/palbang_post/"+palbang.getPalbang_imgoname()));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -209,7 +203,8 @@ public class PalbangController {
 		/* 팔방 디테일 리뷰 이미지 - 최소 1개 ~ 3개 */
 		for(int i=0; i<palbang.getReviews().size(); i++) {
 			MultipartFile pdattach = palbang.getReviews().get(i).getPdattach();
-			logger.info(pdattach.getOriginalFilename());
+			logger.info("pdattach: " + pdattach.getOriginalFilename());
+			logger.info("pdattach2: " + pdattach);
 			if(!pdattach.isEmpty()) {
 				logger.info(i + "번째 리뷰 이미지 첨부 ");
 				palbang.getReviews().get(i).setPalbang_id(palbang.getPalbang_id()); // 이미 시퀀스키가 세팅되어있음 
@@ -217,11 +212,14 @@ public class PalbangController {
 				palbang.getReviews().get(i).setPalbang_dimgtype(pdattach.getContentType());
 				String saveName = new Date().getTime() + "-" + palbang.getReviews().get(i).getPalbang_dimgoname();
 				palbang.getReviews().get(i).setPalbang_dimgsname(saveName);
-		
+//				palbang.getReviews().get(i).setPdattach(pdattach);
+				logger.info("detail imgoname: " + palbang.getReviews().get(i).getPalbang_dimgoname());
+				
 				File file = new File(
-						request.getSession().getServletContext().getRealPath("resources/images/palbang_detail/" + palbang.getReviews().get(i).getPalbang_dimgoname()));
+						request.getServletContext().getRealPath("resources/images/palbang_detail/"+palbang.getReviews().get(i).getPalbang_dimgoname()));
+				
 				try {
-					pattach.transferTo(file);
+					pdattach.transferTo(file);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -237,7 +235,7 @@ public class PalbangController {
 	}
 	
 	@PostMapping("/palbang_update_form")
-	public String updatePalbangForm(Palbang palbang, Authentication auth) {
+	public String updatePalbangForm(Palbang palbang, Authentication auth, HttpServletRequest request) {
 		/*  팔방 대표 이미지 */
 		MultipartFile pattach = palbang.getPattach();
 		if (!pattach.isEmpty()) {
@@ -250,7 +248,7 @@ public class PalbangController {
 			logger.info("팔방 대표이미지 : " + palbang.getPalbang_imgoname());
 
 			File file = new File(
-					"/Users/homecj/dev/workspace/sts/Douzone/uploadfiles/" + palbang.getPalbang_imgsname());
+					request.getServletContext().getRealPath("resources/images/palbang_post/"+palbang.getPalbang_imgoname()));
 			try {
 				pattach.transferTo(file);
 			} catch (Exception e) {
@@ -273,7 +271,8 @@ public class PalbangController {
 				palbang.getReviews().get(i).setPalbang_dimgsname(saveName);
 		
 				File file = new File(
-						"/Users/homecj/dev/workspace/sts/Douzone/uploadfiles/" + palbang.getReviews().get(i).getPalbang_dimgsname());
+					request.getServletContext().getRealPath("resources/images/palbang_detail/" + palbang.getReviews().get(i).getPalbang_dimgoname()));
+					
 				try {
 					pattach.transferTo(file);
 				} catch (Exception e) {
