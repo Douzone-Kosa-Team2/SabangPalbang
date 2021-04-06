@@ -194,9 +194,10 @@ public class PalbangController {
 			logger.info("팔방 대표이미지 : " + palbang.getPalbang_imgoname());
 
 			File file = new File(
-					request.getServletContext().getRealPath("resources/images/palbang_post/"+palbang.getPalbang_imgoname()));
+					request.getSession().getServletContext().getRealPath("resources/images/palbang_post/"+palbang.getPalbang_imgoname()));
 			try {
 				pattach.transferTo(file);
+				logger.info(request.getSession().getServletContext().getRealPath("resources/images/palbang_post/"+palbang.getPalbang_imgoname()));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -218,7 +219,7 @@ public class PalbangController {
 				palbang.getReviews().get(i).setPalbang_dimgsname(saveName);
 		
 				File file = new File(
-						"/sabangpalbang/resources/images/palbang_detail/" + palbang.getReviews().get(i).getPalbang_dimgoname());
+						request.getSession().getServletContext().getRealPath("resources/images/palbang_detail/" + palbang.getReviews().get(i).getPalbang_dimgoname()));
 				try {
 					pattach.transferTo(file);
 				} catch (Exception e) {
