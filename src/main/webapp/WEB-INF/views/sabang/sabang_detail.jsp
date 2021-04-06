@@ -27,22 +27,28 @@
       }
    }
    function cart(){
-      $("form").attr("action", "shopping_basket_fromdetail");
-      $("form")[0].submit;
+      event.preventDefault();
+      if($('input:checkbox[name=form]:checked').length>=1){
+    	  $("form").attr("action", "shopping_basket_fromdetail");
+	  	  $("form")[0].submit;
+      } else{
+    	  alert("1개 품목 이상을 체크해주세요.");
+      }
+	 
       
    };
    
    function pay(){
-      $("form").attr("action", "payNow");
-      $("form")[0].submit;
+	   event.preventDefault();
+	   if($('input:checkbox[name=form]:checked').length>=1){
+      	   $("form").attr("action", "payNow");
+           $("form")[0].submit;
+  	   } else{
+ 	  	   alert("1개 품목 이상을 체크해주세요.");
+   	   }
    }
    
-	
 
-	
-
-
- 
  const updateSum = function (price) {
     //console.log(event.target);
     console.log($("#sum_price").text());

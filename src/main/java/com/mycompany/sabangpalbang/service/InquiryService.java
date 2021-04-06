@@ -54,5 +54,10 @@ public class InquiryService {
 		inquiryDao.insertInquiryFirst(inquiry);
 		
 	}
+
+	public Inquiry getInquiry(int inquiry_id) {
+		Inquiry inquiry = inquiryDao.selectInquiryById(inquiry_id);
+		return inquiry;
+	}
 	
 }

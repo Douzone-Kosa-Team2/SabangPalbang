@@ -1,8 +1,7 @@
 	<%@ page contentType="text/html; charset=UTF-8"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
-	
 	
 	
 	<!-- 마이페이지 메뉴 헤더 -->
@@ -13,7 +12,6 @@
 	
 	</div>
 	<!-- 마이페이지 주문 내역 -->
-	
 	<div class="state_button">
 		<select name="time_button">
 			<option selected="" value="" disabled="">기간</option>
@@ -26,7 +24,7 @@
 			<option value="최신 순">배송 완료</option>
 		</select>
 	</div>
-	<table class="orderlist_table">
+	<table class="orderlist_table" >
 		<colgroup>
 			<col width="1%">
 			<col width="3%">
@@ -36,23 +34,58 @@
 			<col width="6%">
 		</colgroup>
 		<tr>
-			<th>송장번호</th>
+			<th>주문번호</th>
 			<th>주문날짜</th>
 			<th></th>
 			<th>상품명</th>
 			<th>가격</th>
 			<th>배송상태</th>
-	
 		</tr>
-	
+		<c:forEach var="orderMain" items="${myOrderList}">
+			<tr>
+				<td>${orderMain.order_id}</td>
+				<td><fmt:formatDate value="${orderMain.order_date}" pattern="YYYY.MM.dd"/></td>
+				<td><img src="resources/images/sabang_post/${sabang_imgoname}" width="100"></td>
+				<td>${sabang_name}<br/>
+				(
+				<c:forEach var="orderDetail" items="${orderMain.orderLists}" varStatus="status">
+					<c:if test="${!status.last}">
+						${orderDetail.product_name},
+					</c:if>
+					<c:if test="${status.last}">
+						${orderDetail.product_name}
+					</c:if>
+				</c:forEach>
+				)
+				</td>
+				<td>${orderMain.order_price}</td>
+				<td>${orderMain.order_state}</td>
+			</tr>
+		</c:forEach>
 		<tr>
-			<td>4433514</td>
-			<td>2021.03.11</td>
-			<td><img src="resources/images/sabang_detail/sb1_0.png" width="100"></td>
-			<td>아늑하고 따뜻한 방<br />(스카르스타, 크란스크라게, 글라돔, 테르티알)
-			</td>
-			<td>W 350,000</td>
-			<td>배송준비중</td>
+					<!-- 처음 이전 12345 다음 맨끝 -->
+					<td colspan="5" class="text-center"><a
+						class="btn btn-outline-primary btn-sm" href="mypage_orderlist?pageNo=1">처음</a>
+						<c:if test="${mypage_order_pager.groupNo>1}">
+							<a class="btn btn-outline-info btn-sm"
+								href="mypage_orderlist?pageNo=${mypage_order_pager.startPageNo-1}">이전</a>
+						</c:if> <c:forEach var="i" begin="${mypage_order_pager.startPageNo}"
+							end="${mypage_order_pager.endPageNo}">
+	
+							<c:if test="${mypage_order_pager.pageNo!=i}">
+								<a class="btn btn-outline-success btn-sm"
+									href="mypage_orderlist?pageNo=${i}">${i}</a>
+							</c:if>
+							<c:if test="${mypage_order_pager.pageNo==i}">
+								<a class="btn btn-outline-danger btn-sm"
+									href="mypage_orderlist?pageNo=${i}">${i}</a>
+							</c:if>
+						</c:forEach> <c:if test="${mypage_order_pager.groupNo<mypage_order_pager.totalGroupNo}">
+							<a class="btn btn-outline-info btn-sm"
+								href="mypage_orderlist?pageNo=${mypage_order_pager.endPageNo+1}">다음</a>
+						</c:if> <a class="btn btn-outline-primary btn-sm"
+						href="mypage_orderlist?pageNo=${mypage_order_pager.totalPageNo}">맨끝</a></td>
 		</tr>
 	</table>
+
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>

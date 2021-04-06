@@ -22,5 +22,6 @@ public interface InquiryDao {
 	public int mycount(String nickname);
 	public List<Inquiry> selectNicknameInquiry(HashMap<String, Object> map);
 	public int insertInquiryFirst(Inquiry inquiry);
+	public Inquiry selectInquiryById(int inquiry_id);
 	
 }
