@@ -107,7 +107,7 @@
 	
 	<bean id="authFailureHandler" 
 	      class="com.mycompany.sabangpalbang.security.AuthFailureHandler">
-		<property name="defaultFailureUrl" value="/signinForm"/>
+		<property name="defaultFailureUrl" value="/loginForm"/>
 	</bean>
 	
 </beans>
