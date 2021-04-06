@@ -19,9 +19,9 @@
 	</select>
 	
 	<select id="selectOrderByUid" parameterType="int" resultType="ordermain">
-		select order_id, order_memberid, order_phone, order_zipcode, order_roadaddress, order_detailaddress, order_sabangid, order_price, order_date , order_state, order_payment, order_bankcode	
-		from ordermain
-		where order_memberid=#{order_memberid}
+		select order_id, order_memberid, order_phone, order_zipcode, order_roadaddress, order_detailaddress, order_sabangid, sabang_imgoname, sabang_name, order_price, order_date , order_state, order_payment, order_bankcode	
+		from ordermain, sabang
+		where order_sabangid = sabang_id and order_memberid=#{order_memberid}
 		order by order_id desc
 	</select> 
 
