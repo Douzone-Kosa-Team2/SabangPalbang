@@ -11,6 +11,8 @@ public class OrderMain {
 	private String order_roadaddress;
 	private String order_detailaddress;
 	private int order_sabangid;
+	private String sabang_imgoname; /* 사방 테이블과 조인해서 가져온 데이터 */
+	private String sabang_name;  /* 사방 테이블과 조인해서 가져온 데이터 */
 	private int order_price;
 	private Date order_date;
 	private String order_state;
@@ -99,6 +101,18 @@ public class OrderMain {
 	}
 	public void setOrderLists(List<Order_detail> orderLists) {
 		this.orderLists = orderLists;
+	}
+	public String getSabang_imgoname() {
+		return sabang_imgoname;
+	}
+	public void setSabang_imgoname(String sabang_imgoname) {
+		this.sabang_imgoname = sabang_imgoname;
+	}
+	public String getSabang_name() {
+		return sabang_name;
+	}
+	public void setSabang_name(String sabang_name) {
+		this.sabang_name = sabang_name;
 	}
 	
 }
