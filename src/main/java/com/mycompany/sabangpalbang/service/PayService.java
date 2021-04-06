@@ -22,7 +22,7 @@ public class PayService {
 		Product product = productDao.selectCartByProductId(product_id);
 		return product;
 	}
-
+	
 	public String addOrder(OrderMain order) {
 		orderMainDao.insertOrder(order);
 		for(int i=0; i<order.getOrderLists().size(); i++) { 
