@@ -28,10 +28,12 @@
    }
    function cart(){
       event.preventDefault();
-      if($('input:checkbox[name=form]:checked').length>=1){
+      if($('input:checkbox[name=products]:checked').length>=1){
+    	  console.log($('input:checkbox[name=products]:checked').length);
     	  $("form").attr("action", "shopping_basket_fromdetail");
-	  	  $("form")[0].submit;
+	  	  $("form").submit();
       } else{
+    	  console.log($('input:checkbox[name=products]:checked').length);
     	  alert("1개 품목 이상을 체크해주세요.");
       }
 	 
@@ -40,9 +42,9 @@
    
    function pay(){
 	   event.preventDefault();
-	   if($('input:checkbox[name=form]:checked').length>=1){
-      	   $("form").attr("action", "payNow");
-           $("form")[0].submit;
+	   if($('input:checkbox[name=products]:checked').length>=1){
+      	 $("form").attr("action", "payNow");
+      	 $("form").submit();
   	   } else{
  	  	   alert("1개 품목 이상을 체크해주세요.");
    	   }
