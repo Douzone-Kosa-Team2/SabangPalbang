@@ -1,16 +1,21 @@
 package com.mycompany.sabangpalbang.service;
 
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import com.mycompany.sabangpalbang.dao.MemberDao;
+import com.mycompany.sabangpalbang.dao.OrderDetailDao;
 import com.mycompany.sabangpalbang.dao.OrderMainDao;
 import com.mycompany.sabangpalbang.dto.Member;
 import com.mycompany.sabangpalbang.dto.OrderMain;
+import com.mycompany.sabangpalbang.dto.Order_detail;
 
 @Service
 public class MemberService {
@@ -18,6 +23,8 @@ public class MemberService {
 	private MemberDao memberDao;
 	@Autowired
 	private OrderMainDao orderMainDao;
+	@Autowired
+	private OrderDetailDao orderDetailDao;
 	
 	private static SecureRandom random = new SecureRandom();
 	private static final Logger logger = LoggerFactory.getLogger(MemberService.class);
@@ -128,8 +135,13 @@ public class MemberService {
 
 	// 마이페이지 - 주문 내역 얻어오기 
 	public List<OrderMain> getOrderListById(int order_memberid) {
-		List<OrderMain>  orderList = (List<OrderMain>) orderMainDao.selectOrderByUid(order_memberid);
-		return orderList;
+		List<OrderMain>  myOrderList = (List<OrderMain>) orderMainDao.selectOrderByUid(order_memberid);
+		
+		for(int i=0; i< myOrderList.size(); i++) {
+			List<Order_detail> orderDetailList = orderDetailDao.selectOrderDetailById(myOrderList.get(i).getOrder_id());
+			myOrderList.get(i).setOrderList(orderDetailList);
+		}
+		return myOrderList;
 	}
 
 }
