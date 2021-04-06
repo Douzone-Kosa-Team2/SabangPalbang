@@ -1,10 +1,13 @@
 package com.mycompany.sabangpalbang.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
@@ -14,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -177,15 +181,12 @@ public class PalbangController {
 	}
 
 	@PostMapping("/palbang_create_form")
-	public String createPalbangForm(Palbang palbang, Authentication auth, HttpServletRequest request) {
-		logger.info("대표: " + palbang.getPattach());
-		logger.info("detail: " + palbang.getReviews().get(0).getPdattach());
+	public String createPalbangForm(Palbang palbang, Authentication auth) {
 		
 		/*  팔방 대표 이미지 */
 		MultipartFile pattach = palbang.getPattach();
 		if (!pattach.isEmpty()) {
 			logger.info("팔방 대표 이미지 첨부가 있음");
-			
 			palbang.setPalbang_imgoname(pattach.getOriginalFilename());
 			palbang.setPalbang_imgtype(pattach.getContentType());
 			String saveName = new Date().getTime() + "-" + palbang.getPalbang_imgoname();
@@ -194,7 +195,7 @@ public class PalbangController {
 			logger.info("팔방 대표이미지 : " + palbang.getPalbang_imgoname());
 
 			File file = new File(
-					request.getServletContext().getRealPath("resources/images/palbang_post/"+palbang.getPalbang_imgoname()));
+					"resources/images/palbang_post/" + palbang.getPalbang_imgoname());
 			try {
 				pattach.transferTo(file);
 			} catch (Exception e) {
@@ -218,7 +219,7 @@ public class PalbangController {
 				palbang.getReviews().get(i).setPalbang_dimgsname(saveName);
 		
 				File file = new File(
-						"/sabangpalbang/resources/images/palbang_detail/" + palbang.getReviews().get(i).getPalbang_dimgoname());
+						"resources/images/palbang_detail/" + palbang.getReviews().get(i).getPalbang_dimgoname());
 				try {
 					pattach.transferTo(file);
 				} catch (Exception e) {
