@@ -156,6 +156,7 @@ public class PayController {
 			Member member = memberService.getPostInfo(user_email);
 
 			logger.info(member.getMember_name());
+			model.addAttribute("products", products);
 			model.addAttribute("sabang", sabang);
 			model.addAttribute("productlist", productlist);
 			model.addAttribute("member", member);
@@ -181,6 +182,8 @@ public class PayController {
 		logger.info("" + order.getOrder_price());
 		logger.info(order.getOrder_payment());
 		logger.info(order.getOrder_bankcode());
+		
+
 
 
 		int memberId = memberService.getIdByEmail(auth.getName());
@@ -228,42 +231,47 @@ public class PayController {
 	}
 	
 	@PostMapping("/payDirectSuccess")
-	public String payDirectSuccess(OrderMain order, String[] productlist, Authentication auth, Model model) {
+	public String payDirectSuccess(OrderMain order, @RequestParam(name = "products") String[] products, Authentication auth, @RequestParam(name = "sabangid") int sabangid, Model model) {
 		logger.info("pay_DDsuccess 메시지");
 		
-		logger.info("pay_DDsuccess"+auth.getName());
-		logger.info("pay_DDsuccess"+order.getOrder_phone());
-		logger.info("pay_DDsuccess"+order.getOrder_zipcode());
-		logger.info("pay_DDsuccess"+order.getOrder_roadaddress());
-		logger.info("pay_DDsuccess"+order.getOrder_detailaddress());
-		logger.info("pay_DDsuccess"+order.getOrder_price());
-		logger.info("pay_DDsuccess"+order.getOrder_payment());
-		logger.info("pay_DDsuccess"+order.getOrder_bankcode());
+
+		int memberId = memberService.getIdByEmail(auth.getName());
+		order.setOrder_memberid(memberId);
 		
 		
-		/*
-		 * int memberId = memberService.getIdByEmail(auth.getName());
-		 * order.setOrder_memberid(memberId);
-		 * 
-		 * List<Order_detail> orderList = new ArrayList<>(); for(int
-		 * i=0;i<productlist.length;i++) { orderList.add(new
-		 * Order_detail(Integer.parseInt(productlist[i]))); }
-		 * 
-		 * List<Product> productname = new ArrayList<>(); Product productzz = new
-		 * Product(); String proid; int proid2; for(int i=0;i<productlist.length;i++) {
-		 * proid = productlist[i]; proid2 = Integer.parseInt(proid); productzz =
-		 * payService.getProductById(proid2); productname.add(productzz); }
-		 * 
-		 * order.setOrderLists(orderList); order.setOrder_sabangid(sabangid);
-		 * order.setOrder_state("배송준비중"); //저장 부분
-		 * 
-		 * String result; result = payService.addOrder(order); //넘겨주는 부분 Sabang
-		 * sabangname = sabangService.getSabang(sabangid);
-		 * 
-		 * model.addAttribute("productname", productname);
-		 * model.addAttribute("sabangname", sabangname); model.addAttribute("result",
-		 * result); model.addAttribute("order", order);
-		 */
+		List<Order_detail> orderList = new ArrayList<>();
+
+		for (int i = 0; i < products.length; i++) {
+			orderList.add(new Order_detail(Integer.parseInt(products[i])));
+			
+		}
+		
+		List<Product> productname = new ArrayList<>();
+		Product productzz = new Product();
+		String proid;
+		int proid2;
+		for(int i=0;i<products.length;i++) {
+			proid = products[i];
+			proid2 = Integer.parseInt(proid);
+			productzz = payService.getProductById(proid2);		
+			productname.add(productzz);			
+			
+		}
+		
+	
+		order.setOrderLists(orderList);
+		order.setOrder_sabangid(sabangid);
+		order.setOrder_state("배송준비중");
+	
+		// 저장 부분
+		String result = payService.addOrder(order);
+
+		//넘겨주는 부분
+		Sabang sabangname = sabangService.getSabang(sabangid);
+		model.addAttribute("productname", productname);
+		model.addAttribute("sabangname", sabangname);
+		model.addAttribute("result", result);
+		model.addAttribute("order", order);
 		return "pay/pay_Dsuccess";
 	}
 	

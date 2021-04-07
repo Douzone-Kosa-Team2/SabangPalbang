@@ -22,50 +22,39 @@
 		}
 	};
 
-	$(function() {
-		$('input[type=radio][name=post_way]').on('click', function() {
-
+	
+	$(function (){
+		$('input[type=radio][name=post_way]').on('click',function(){
+			
 			var chkValue = $('input[type=radio][name=post_way]:checked').val();
-
-			if (chkValue == 'default_location') {
-				$('#pop1').css('display', 'block');
-				$('#pop2').css('display', 'none');
-			} else if (chkValue == 'direct_input') {
-				$('#pop1').css('display', 'none');
-				$('#pop2').css('display', 'block');
-			}
-		});
-	});
-
-	$(function() {
-		$('input[type=radio][name=post_way]').on('click', function() {
-
-			var chkValue = $('input[type=radio][name=post_way]:checked').val();
-
-			if (chkValue == 'default_location') {
+			
+			if(chkValue == 'default_location'){
 				$('#pop1').show();
 				$('#pop2').hide();
-			} else if (chkValue == 'direct_input') {
-				$('#pop1').hide();
-				$('#pop2').show();
 			}
+			else if (chkValue == 'direct_input'){
+				$('#pop1').hide();
+				$('#pop2').show();	
+			}	
 		});
 	});
 
-	$(function() {
-		$('input[type=radio][name=pay_way]').on('click', function() {
-
-			var chkValue = $('input[type=radio][name=pay_way]:checked').val();
-
-			if (chkValue == 'payByCard') {
+	$(function (){
+		$('input[type=radio][name=order_payment]').on('click',function(){
+			
+			var chkValue = $('input[type=radio][name=order_payment]:checked').val();
+			
+			if(chkValue == 'payByCard'){
 				$('#card').show();
 				$('#deposit').hide();
 				$('#phone22').hide();
-			} else if (chkValue == 'payByDeposit') {
+			}
+			else if (chkValue == 'payByDeposit'){
 				$('#deposit').show();
 				$('#card').hide();
 				$('#phone22').hide();
-			} else {
+			}
+			else {
 				$('#phone22').show();
 				$('#card').hide();
 				$('#deposit').hide();
@@ -112,8 +101,7 @@
 							</div>
 						</div>
 						<hr />
-						<div
-							class="pay_content_left_delivery_content_address d-flex flex-column">
+						<div class="pay_content_left_delivery_content_address d-flex flex-column">
 
 							<div id="pop1">
 
@@ -134,6 +122,7 @@
 										class="form-control" id="oderer" name="oderer"
 										value="${member.member_name}">
 								</div>
+								
 								<div class="form-group">
 									<label for="bcontent">주소</label>
 									<!-- daum 도로검색 api -->
@@ -155,6 +144,7 @@
 											readonly>
 									</div>
 								</div>
+								
 								<div class="form-group">
 									<label for="bcontent">번호</label> <input type="text"
 										class="form-control" id="order_phone" name="order_phone"
@@ -289,9 +279,8 @@
 								<c:set var="sum" value="${sum + product.product_price}" />
 							</c:forEach>
 						</div>
-						
-
 					</div>
+					
 					<div class="pay_content_right_content_4">
 						<div class="content_4_1">총 합계</div>
 
@@ -304,13 +293,13 @@
 					</div>
 
 
-					
-						<button type="button" class="btn btn-lg btn-info"
-							style="width: 82%; height: 30%; color: white" onclick="success()">결제하기</button>
-					
-						<button type="button" class="btn btn-lg btn-light"
-							style="width: 82%; height: 30%; color: black" onclick="cancel()">취소하기</button>
-					
+
+					<button type="button" class="btn btn-lg btn-info"
+						style="width: 82%; height: 30%; color: white" onclick="success()">결제하기</button>
+
+					<button type="button" class="btn btn-lg btn-light"
+						style="width: 82%; height: 30%; color: black" onclick="cancel()">취소하기</button>
+
 
 				</div>
 			</div>
