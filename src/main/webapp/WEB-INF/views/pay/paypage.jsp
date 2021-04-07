@@ -25,9 +25,31 @@
 		});
 	});	
 	
-	
+	$(document).ready(function() {
+	 var init = true;		
+		if(init === true){
+			console.log("초기화 비교 화면");	
+			$(function initPost(){
+				console.log("초기화 함수진입 화면");	
+				var initPostWay =`
+					<div id="pop1">
+
+					<div>${member.member_name}</div>
+					<div>
+						<span>${member.roadaddress}</span><span>${member.detailaddress}</span>
+					</div>
+					<div>${member.member_phone}</div>
+					<input type="hidden" name="order_zipcode" value="${member.zipcode}"/>
+					<input type="hidden" name="order_roadaddress" value="${member.roadaddress}"/>
+					<input type="hidden" name="order_detailaddress" value="${member.detailaddress}"/>
+					<input type="hidden" name="order_phone" value="${member.member_phone}"/>
+				</div>`;
+					$('#addPostWay').html(initPostWay);
+			})			
+		}	
+	});
+
 	 $(function() {
-		 
 		$('input[type=radio][name=post_way]').on('click', function() {
 			var chkValue = $('input[type=radio][name=post_way]:checked').val();
 			if (chkValue == 'default_location') {	
@@ -43,14 +65,17 @@
 							<span>${member.roadaddress}</span><span>${member.detailaddress}</span>
 						</div>
 						<div>${member.member_phone}</div>
-
+						<input type="hidden" name="order_zipcode" value="${member.zipcode}"/>
+						<input type="hidden" name="order_roadaddress" value="${member.roadaddress}"/>
+						<input type="hidden" name="order_detailaddress" value="${member.detailaddress}"/>
+						<input type="hidden" name="order_phone" value="${member.member_phone}"/>
 					</div>`;
 							
-						$('#addPostWay').append(viewPostWay);
+						$('#addPostWay').html(viewPostWay);
 					 })
 				
 			} else if (chkValue == 'direct_input') {
-						
+				
 				console.log("직접배송 함수 호출");
 				$(function viewdPost() {
 					console.log("직접 배송지 함수 들어옴");
@@ -69,85 +94,15 @@
 						<div class='form-group'><label for='bcontent'>번호</label> <input type='text' class='form-control' id='phone' name='order_phone' value='${member.member_phone}'></div>
 						</div>`;
 						
-						$('#addPostWay').append(viewPostWay2);
+						init = false;
+						
+						$('#addPostWay').html(viewPostWay2);
 					})  
 			}		
 		});
 	 });
 	 
-	/*  function removeCol(idx) {
-	      console.log("removeCol() method");
-	      
-	      if(count > 0){
-	         console.log("삭제하는 현재 인덱스: " + idx);
-	         $('#review_'+idx).remove();
-	         count -= 1;
-	      }else{
-	         console.log("error : 더 이상 지울 수 없습니다.");
-	      }
-	   } */
-	/* function viewbPost() {
-	console.log("기본 배송지 함수 들어옴");
-		var viewPostWay = "<div id='pop1'>"+
-		"<div>${member.member_name}</div>"+
-		"<div><span>${member.roadaddress}</span><span>${member.detailaddress}</span></div>"+
-		"<div>${member.member_phone}</div></div>";
-			
-		$('#addPostWay').append(viewPostWay);
-	 }
-	function viewdPost() {
-	console.log("직접 배송지 함수 들어옴");
-		var viewPostWay2 =
-			"<div id='pop2' style='display: none; width: 60%'>"+
-		"<div class='form-group'>"+
-			"<label for='btitle'>주문자</label> <input type='text' class='form-control' id='oderer' name='oderer' value='${member.member_name}'></div>"+
-		"<div class='form-group'>"+
-			"<label for='bcontent'>주소</label>"+
-			"<div class='mb-1'><input type='text' id='zipcode' placeholder='우편번호' value='${member.zipcode}' name='order_zipcode' style='width: 69%' readonly> <input type='button' onclick='DaumPostcode()' value='우편번호 찾기' style='width: 30%'></div>"+
-			"<div class='mb-1'><input type='text' id='roadaddress' placeholder='주소' value='${member.roadaddress}' name='order_roadaddress' style='width: 100%' readonly>"+
-			"</div>"+
-			"<div class='mb-1'><input type='text' id='detailaddress' placeholder='상세주소' value='${member.detailaddress}' name='order_detailaddress'><input type='text' id='extraAddress' placeholder='참고항목' readonly></div>"+
-		"</div>"+
-		
-		"<div class='form-group'><label for='bcontent'>번호</label> <input type='text' class='form-control' id='phone' name='order_phone' value='${member.member_phone}'></div>"+
-		"</div>";
-		$('#addPostWay').append(viewPostWay2);
-	} */  
 	
-	
-	
-	 /*   $(function() {
-			$('input[type=radio][name=post_way]').on('click', function() {
-				console.log("체크함수 들어가기");
-				var chkValue = $('input[type=radio][name=post_way]:checked').val();
-
-				if (chkValue == 'default_location') {
-					console.log("기본배송 함수 호출");
-					viewbPost();
-				} else if (chkValue == 'direct_input') {
-					console.log("직접배송 함수 호출");
-					viewdPost();
-				}
-			});
-		});     */
-	
-	
-	
-	
-	/*  $(function() {
-		$('input[type=radio][name=post_way]').on('click', function() {
-
-			var chkValue = $('input[type=radio][name=post_way]:checked').val();
-
-			if (chkValue == 'default_location') {
-				$('#pop1').show();
-				$('#pop2').hide();
-			} else if (chkValue == 'direct_input') {
-				$('#pop1').hide();
-				$('#pop2').show();
-			}
-		});
-	});  */
 
 	const totalSum = function(price) {
 		//console.log(event.target);
@@ -165,7 +120,7 @@
 			document.getElementById("sum_price").innerHTML = sum - price;
 			console.log($("#sum_price").text());
 		}
-	};
+	};	
 </script>
 
 <!-- 메인 결제부분 -->
@@ -228,41 +183,41 @@
 
 						<div class="pay_content_left_way_content_bank_1">
 						<input type="hidden" name="order_bankcode" value="032"/>
-							<div id="card" class="btn btn-group-lg">
-								<button type="button" class="btn_image" id="img_btn">
+							<div id="card" role="group" class="btn btn-group-lg">
+								<button type="button" class=" bankbutton btn" id="img_btn">
 									<img src="resources/images/pay_bank/bank_kb.png">
 								</button>
-								<button type="button" class="btn_image" id="img_btn">
+								<button type="button" class=" bankbutton btn" id="img_btn">
 									<img src="resources/images/pay_bank/bank_samsung.png">
 								</button>
-								<button type="button" class="btn_image" id="img_btn">
+								<button type="button" class=" bankbutton btn" id="img_btn">
 									<img src="resources/images/pay_bank/bank_hyundai.png">
 								</button>
-								<button type="button" class="btn_image" id="img_btn">
+								<button type="button" class=" bankbutton btn" id="img_btn">
 									<img src="resources/images/pay_bank/bank_shinhan.png">
 								</button>
-								<button type="button" class="btn_image" id="img_btn">
+								<button type="button" class=" bankbutton btn" id="img_btn">
 									<img src="resources/images/pay_bank/bank_lotte.png">
 								</button>
-								<button type="button" class="btn_image" id="img_btn">
+								<button type="button" class=" bankbutton btn" id="img_btn">
 									<img src="resources/images/pay_bank/bank_nh.png">
 								</button>
-								<button type="button" class="btn_image" id="img_btn">
+								<button type="button" class=" bankbutton btn" id="img_btn">
 									<img src="resources/images/pay_bank/bank_bc.png">
 								</button>
-								<button type="button" class="btn_image" id="img_btn">
+								<button type="button" class=" bankbutton btn" id="img_btn">
 									<img src="resources/images/pay_bank/bank_citi.png">
 								</button>
-								<button type="button" class="btn_image" id="img_btn">
+								<button type="button" class=" bankbutton btn" id="img_btn">
 									<img src="resources/images/pay_bank/bank_kakao.png">
 								</button>
-								<button type="button" class="btn_image" id="img_btn">
+								<button type="button" class=" bankbutton btn" id="img_btn">
 									<img src="resources/images/pay_bank/bank_sc.png">
 								</button>
-								<button type="button" class="btn_image" id="img_btn">
+								<button type="button" class=" bankbutton btn" id="img_btn">
 									<img src="resources/images/pay_bank/bank_hana.png">
 								</button>
-								<button type="button" class="btn_image" id="img_btn">
+								<button type="button" class=" bankbutton btn" id="img_btn">
 									<img src="resources/images/pay_bank/bank_uri.png">
 								</button>
 							</div>
