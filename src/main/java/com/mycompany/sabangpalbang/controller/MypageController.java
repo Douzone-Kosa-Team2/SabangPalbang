@@ -88,8 +88,6 @@ public class MypageController {
 
 		// db select
 		List<OrderMain> myOrderList = memberService.getOrderListById(pager, order_memberid);
-
-		model.addAttribute("myOrderSize", myOrderList.size());
 		model.addAttribute("myOrderList", myOrderList);
 		return "mypage/mypage_orderlist";
 	}

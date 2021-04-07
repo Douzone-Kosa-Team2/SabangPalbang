@@ -36,8 +36,8 @@ public class InquiryService {
 	}
 	
 
-	public int getTotalRows() {
-		int row = inquiryDao.count();
+	public int getTotalRows(int sid) {
+		int row = inquiryDao.count(sid);
 		return row;
 	}
 	public Inquiry getInquiryWriter(String nickname) {

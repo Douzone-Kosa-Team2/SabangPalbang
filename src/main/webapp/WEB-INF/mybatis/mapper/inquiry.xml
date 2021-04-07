@@ -145,6 +145,7 @@
 
 	<select id="count" resultType="int">
 		select count(*) from inquiry
+		where inquiry_sabangid=#{inquiry_sabangid}
 	</select>
 
 	<select id="mycount" resultType="int" parameterType="string">
