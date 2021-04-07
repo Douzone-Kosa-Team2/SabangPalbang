@@ -100,13 +100,13 @@
 <script>
 console.log(${sid});
 function ask(sid){
-	window.open("pop_ask?sid=${sid}","사방팔방 문의하기","popup");
+	window.open("pop_ask?sid=${sid}","사방팔방 문의하기","status=no ,location=no, directoryies=no, resizable=no, scrollbars=yes, titlebar=no");
 	console.log("sabang Id: "+sid);
 	
 }
 function showInq(inquiry_id){
 	console.log("inquiry_id : " + inquiry_id);
-	window.open("pop_ask_content?inquiry_id="+inquiry_id,"문의사항","popup");
+	window.open("pop_ask_content?inquiry_id="+inquiry_id+"&sid=${sid}","문의사항","status=no ,location=no, directoryies=no, resizable=no, scrollbars=yes, titlebar=no");
 }
 /* $(".check_inq").click(function(){
 	var tr = $(this);

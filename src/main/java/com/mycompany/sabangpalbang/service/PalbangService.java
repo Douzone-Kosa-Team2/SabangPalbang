@@ -6,15 +6,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.mycompany.sabangpalbang.controller.PalbangController;
 import com.mycompany.sabangpalbang.dao.PalbangDao;
 import com.mycompany.sabangpalbang.dao.PalbangDetailDao;
 import com.mycompany.sabangpalbang.dao.PalbangLikeDao;
 import com.mycompany.sabangpalbang.dto.Pager;
 import com.mycompany.sabangpalbang.dto.Palbang;
 import com.mycompany.sabangpalbang.dto.Palbang_detail;
-import com.mycompany.sabangpalbang.dto.Sabang;
 
 @Service
 public class PalbangService {

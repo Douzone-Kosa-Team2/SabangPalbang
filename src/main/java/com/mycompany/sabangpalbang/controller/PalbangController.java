@@ -199,43 +199,91 @@ public class PalbangController {
 		} else {                                                                       
 			logger.info("팔방 대표 이미지 첨부가 없음");
 		}
+		
 		palbang.setPalbang_nickname(memberService.getByInquiryNickname(auth.getName()));
+		
+		for(int i=0; i<palbang.getReviews().size(); i++) {
+			logger.info(""+palbang.getReviews().get(i).getPdattach());
+		}
 		
 		/* 팔방 디테일 리뷰 이미지 - 최소 1개 ~ 3개 */
 		logger.info("size: " + palbang.getReviews().size());
 		
-	//	int idx = 0; // 디테일 리스트 실제 인덱스 
+	    //int idx = 0; // 디테일 리스트 실제 인덱스 
 		List<Palbang_detail> newReviews = new ArrayList<>();
 		for(int i=0; i<palbang.getReviews().size(); i++) {
-			MultipartFile pdattach = palbang.getReviews().get(i).getPdattach();
+			if(palbang.getReviews().get(i).getPdattach() != null) {
+				newReviews.add(palbang.getReviews().get(i));
+			}
+			else {
+				continue;
+			}	
+		}
+		
+		logger.info("size: " + newReviews.size());
+		for(int i=0; i<newReviews.size(); i++) {
+			logger.info(""+newReviews.get(i).getPdattach());
+		}
+		for(int i=0; i<newReviews.size(); i++) {
+
+			MultipartFile pdattach = newReviews.get(i).getPdattach();
 			
-			if(!pdattach.isEmpty()) {  // 널이 아니면 디비에 저장 
+			if(!pdattach.isEmpty()) {
 				logger.info(i + "번째 리뷰 이미지 첨부 ");
-				palbang.getReviews().get(i).setPalbang_id(palbang.getPalbang_id()); // 이미 시퀀스키가 세팅되어있음 
-				palbang.getReviews().get(i).setPalbang_dimgoname(pdattach.getOriginalFilename());
-				palbang.getReviews().get(i).setPalbang_dimgtype(pdattach.getContentType());
-				String saveName = new Date().getTime() + "-" + palbang.getReviews().get(i).getPalbang_dimgoname();
-				palbang.getReviews().get(i).setPalbang_dimgsname(saveName);
-				newReviews.add(palbang.getReviews().get(i));		
+				newReviews.get(i).setPalbang_id(palbang.getPalbang_id());
+				newReviews.get(i).setPalbang_dimgoname(pdattach.getOriginalFilename());
+				newReviews.get(i).setPalbang_dimgtype(pdattach.getContentType());
+				
+				String saveName = new Date().getTime() + "-" + newReviews.get(i).getPalbang_dimgoname();
+				
+				newReviews.get(i).setPalbang_dimgsname(saveName);
 				File file = new File(
-						request.getServletContext().getRealPath("resources/images/palbang_detail/"+palbang.getReviews().get(i).getPalbang_dimgoname()));
+						request.getServletContext().getRealPath("resources/images/palbang_detail/"+newReviews.get(i).getPalbang_dimgoname()));
 				
 				try {
 					pdattach.transferTo(file);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}else {                                                                       
+			}
+			else {                                                                       
 				logger.info("팔방 리뷰 이미지 첨부가 없음");
 			}
+
 		}
+		/*
+		 * for(int i=0; i<newReviews.size(); i++) { MultipartFile pdattach =
+		 * palbang.getReviews().get(i).getPdattach();
+		 * 
+		 * if(!pdattach.isEmpty()) { // 널이 아니면 디비에 저장 logger.info(i +
+		 * "번째 리뷰 이미지 첨부 ");
+		 * palbang.getReviews().get(i).setPalbang_id(palbang.getPalbang_id());
+		 * // 이미 시퀀스키가 세팅되어있음
+		 * palbang.getReviews().get(i).setPalbang_dimgoname(pdattach.
+		 * getOriginalFilename());
+		 * palbang.getReviews().get(i).setPalbang_dimgtype(pdattach.
+		 * getContentType()); String saveName = new Date().getTime() + "-" +
+		 * palbang.getReviews().get(i).getPalbang_dimgoname();
+		 * palbang.getReviews().get(i).setPalbang_dimgsname(saveName);
+		 * newReviews.add(palbang.getReviews().get(i)); File file = new File(
+		 * request.getServletContext().getRealPath(
+		 * "resources/images/palbang_detail/"+palbang.getReviews().get(i).
+		 * getPalbang_dimgoname()));
+		 * 
+		 * try { pdattach.transferTo(file); } catch (Exception e) {
+		 * e.printStackTrace(); } }else { logger.info("팔방 리뷰 이미지 첨부가 없음"); } }
+		 */
 		palbang.setReviews(newReviews);
 
+		for(int i=0; i<palbang.getReviews().size(); i++) {
+			logger.info(""+palbang.getReviews().get(i).getPdattach());
+		}
+		
 		 // DB insert - 팔방디테일
 		palbangService.savePalbang(palbang);
 		
 		// 두 테이블에 insert가 제대로 되었다면 리다이렉트해서 작성한 디테일 페이지 보여주기 
-		return "redirect:/palbang_detail?pid="+palbang.getPalbang_id();
+		return "redirect:/palbang_main";
 	}
 	
 	@PostMapping("/palbang_update_form")

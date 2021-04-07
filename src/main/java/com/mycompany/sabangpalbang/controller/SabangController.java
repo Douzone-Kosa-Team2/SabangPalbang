@@ -169,24 +169,19 @@ public class SabangController {
 		return "sabang/pop_ask";
 	}
 	@GetMapping("/pop_ask_content")
-	public String pop_ask_content(String inquiry_id, Authentication auth, Model model) {
+	public String pop_ask_content(String inquiry_id,String sid, Authentication auth, Model model) {
 		logger.info("pop_ask_content 메시지");
-		logger.info(""+inquiry_id);
+		logger.info(sid);
+		logger.info(inquiry_id);
 		
+		
+		Sabang sabang = sabangService.getSabang(Integer.parseInt(sid));
 		int inq_id = Integer.parseInt(inquiry_id);
 		
 		Inquiry selectedInq = inquiryService.getInquiry(inq_id);
+		
+		model.addAttribute("sabang",sabang);
 		model.addAttribute("selectedInq",selectedInq);
-		/*
-		 * Sabang sabang = sabangService.getSabang(Integer.parseInt(sid));
-		 * String user_email = auth.getName();
-		 * 
-		 * Member member = memberService.showMember(user_email);
-		 * 
-		 * model.addAttribute("sabang",sabang);
-			model.addAttribute("member",member);
-		 * 
-		 */
 		
 		return "sabang/pop_ask_content";
 	}
