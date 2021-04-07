@@ -108,4 +108,12 @@ public class PalbangService {
 		int row = palbangDao.deleteByPalbangId(pid);
 		logger.info("row: " + row);
 	}
+
+	/* 팔방 update */
+	public void updatePalbang(Palbang palbang) {
+		palbangDao.updatePalbang(palbang);
+		for(int i=0; i<palbang.getReviews().size(); i++) { 
+			palbangDetailDao.updatePalbangDetail(palbang.getReviews().get(i));
+		}
+	}
 }
