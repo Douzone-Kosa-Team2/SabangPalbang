@@ -25,7 +25,7 @@ function generateReviewSet(index){
 function addCol() {
      console.log("addCol() method");
      
-     if(count < 2){
+     if(count < 3){
         index += 1;
         count += 1;
         console.log("추가하는 현재 인덱스: " + index);
@@ -40,7 +40,7 @@ function addCol() {
 function removeCol(idx) {
      console.log("removeCol() method");
      
-     if(count > 0){
+     if(count > 1){
         console.log("삭제하는 현재 인덱스: " + idx);
         $('#review_'+idx).remove();
         count -= 1;

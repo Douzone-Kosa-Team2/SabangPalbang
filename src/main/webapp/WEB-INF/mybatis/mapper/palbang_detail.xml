@@ -41,4 +41,9 @@
 		where palbang_detailno=#{palbang_detailno}
 	</delete>
 	
+	<delete id="deletePalDetailByPalId" parameterType="int">
+		delete from palbang_detail 
+		where palbang_id=#{palbang_id}
+	</delete>
+	
 </mapper>

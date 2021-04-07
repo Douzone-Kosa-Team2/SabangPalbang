@@ -112,8 +112,11 @@ public class PalbangService {
 	/* 팔방 update */
 	public void updatePalbang(Palbang palbang) {
 		palbangDao.updatePalbang(palbang);
+		// palbang_detail delete 
+		palbangDetailDao.deletePalDetailByPalId(palbang.getPalbang_id());
 		for(int i=0; i<palbang.getReviews().size(); i++) { 
-			palbangDetailDao.updatePalbangDetail(palbang.getReviews().get(i));
+			// insert
+			palbangDetailDao.insertPalbangDetail((palbang.getReviews().get(i)));
 		}
 	}
 }
