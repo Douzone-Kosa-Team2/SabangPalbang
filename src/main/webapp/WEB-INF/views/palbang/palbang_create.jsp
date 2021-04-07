@@ -8,6 +8,7 @@
 	$.when($.ready).then(function(){
 		// 처음 로드될 때는 하나의 리뷰 세트가 있어야 함 
 		index = 0;
+		count = 0;
 	
 		var reviewSet =  "<div id='review_"+index+"'" + "class='palbang_create_reviewSet'>" + 
 		"<div class='palbang_create_reviewSet_minusBtn'/>" +  
@@ -29,8 +30,9 @@
 	function addCol() {
 		console.log("addCol() method");
 		
-		if(index < 2){
+		if(count < 2){
 			index += 1;
+			count += 1;
 			console.log("추가하는 현재 인덱스: " + index);
 			var reviewSet =  "<div id='review_"+index+"'" + "class='palbang_create_reviewSet'>" + 
 			"<div class='palbang_create_reviewSet_minusBtn'/>" +  
@@ -56,10 +58,10 @@
 	function removeCol(idx) {
 		console.log("removeCol() method");
 		
-		if(index > 0){
+		if(count > 0){
 			console.log("삭제하는 현재 인덱스: " + idx);
 			$('#review_'+idx).remove();
-			index -= 1;
+			count -= 1;
 		}else{
 			console.log("error : 더 이상 지울 수 없습니다.");
 		}
