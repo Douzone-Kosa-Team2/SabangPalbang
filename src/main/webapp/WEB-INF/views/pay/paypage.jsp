@@ -3,6 +3,152 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+	$(function() {
+		$('input[type=radio][name=order_payment]').on('click', function() {
+	
+			var chkValue = $('input[type=radio][name=order_payment]:checked').val();
+	
+			if (chkValue == 'payByCard') {
+				$('#card').show();
+				$('#deposit').hide();
+				$('#phone22').hide();
+			} else if (chkValue == 'payByDeposit') {
+				$('#deposit').show();
+				$('#card').hide();
+				$('#phone22').hide();
+			} else {
+				$('#phone22').show();
+				$('#card').hide();
+				$('#deposit').hide();
+	
+			}
+		});
+	});	
+	
+	
+	 $(function() {
+		 
+		$('input[type=radio][name=post_way]').on('click', function() {
+			var chkValue = $('input[type=radio][name=post_way]:checked').val();
+			if (chkValue == 'default_location') {	
+				
+				console.log("기본배송 함수 호출");
+				$(function viewbPost() {
+					console.log("기본 배송지 함수 들어옴");
+						var viewPostWay =`
+						<div id="pop1">
+
+						<div>${member.member_name}</div>
+						<div>
+							<span>${member.roadaddress}</span><span>${member.detailaddress}</span>
+						</div>
+						<div>${member.member_phone}</div>
+
+					</div>`;
+							
+						$('#addPostWay').append(viewPostWay);
+					 })
+				
+			} else if (chkValue == 'direct_input') {
+						
+				console.log("직접배송 함수 호출");
+				$(function viewdPost() {
+					console.log("직접 배송지 함수 들어옴");
+						var viewPostWay2 = `
+							<div style='width: 60%'>
+						<div class='form-group'>
+							<label for='btitle'>주문자</label> <input type='text' class='form-control' id='oderer' name='oderer' value='${member.member_name}'></div>
+						<div class='form-group'>
+							<label for='bcontent'>주소</label>
+							<div class='mb-1'><input type='text' id='zipcode' placeholder='우편번호' value='${member.zipcode}' name='order_zipcode' style='width: 69%' readonly> <input type='button' onclick='DaumPostcode()' value='우편번호 찾기' style='width: 30%'></div>
+							<div class='mb-1'><input type='text' id='roadaddress' placeholder='주소' value='${member.roadaddress}' name='order_roadaddress' style='width: 100%' readonly>
+							</div>
+							<div class='mb-1'><input type='text' id='detailaddress' placeholder='상세주소' value='${member.detailaddress}' name='order_detailaddress'><input type='text' id='extraAddress' placeholder='참고항목' readonly></div>
+						</div>
+						
+						<div class='form-group'><label for='bcontent'>번호</label> <input type='text' class='form-control' id='phone' name='order_phone' value='${member.member_phone}'></div>
+						</div>`;
+						
+						$('#addPostWay').append(viewPostWay2);
+					})  
+			}		
+		});
+	 });
+	 
+	/*  function removeCol(idx) {
+	      console.log("removeCol() method");
+	      
+	      if(count > 0){
+	         console.log("삭제하는 현재 인덱스: " + idx);
+	         $('#review_'+idx).remove();
+	         count -= 1;
+	      }else{
+	         console.log("error : 더 이상 지울 수 없습니다.");
+	      }
+	   } */
+	/* function viewbPost() {
+	console.log("기본 배송지 함수 들어옴");
+		var viewPostWay = "<div id='pop1'>"+
+		"<div>${member.member_name}</div>"+
+		"<div><span>${member.roadaddress}</span><span>${member.detailaddress}</span></div>"+
+		"<div>${member.member_phone}</div></div>";
+			
+		$('#addPostWay').append(viewPostWay);
+	 }
+	function viewdPost() {
+	console.log("직접 배송지 함수 들어옴");
+		var viewPostWay2 =
+			"<div id='pop2' style='display: none; width: 60%'>"+
+		"<div class='form-group'>"+
+			"<label for='btitle'>주문자</label> <input type='text' class='form-control' id='oderer' name='oderer' value='${member.member_name}'></div>"+
+		"<div class='form-group'>"+
+			"<label for='bcontent'>주소</label>"+
+			"<div class='mb-1'><input type='text' id='zipcode' placeholder='우편번호' value='${member.zipcode}' name='order_zipcode' style='width: 69%' readonly> <input type='button' onclick='DaumPostcode()' value='우편번호 찾기' style='width: 30%'></div>"+
+			"<div class='mb-1'><input type='text' id='roadaddress' placeholder='주소' value='${member.roadaddress}' name='order_roadaddress' style='width: 100%' readonly>"+
+			"</div>"+
+			"<div class='mb-1'><input type='text' id='detailaddress' placeholder='상세주소' value='${member.detailaddress}' name='order_detailaddress'><input type='text' id='extraAddress' placeholder='참고항목' readonly></div>"+
+		"</div>"+
+		
+		"<div class='form-group'><label for='bcontent'>번호</label> <input type='text' class='form-control' id='phone' name='order_phone' value='${member.member_phone}'></div>"+
+		"</div>";
+		$('#addPostWay').append(viewPostWay2);
+	} */  
+	
+	
+	
+	 /*   $(function() {
+			$('input[type=radio][name=post_way]').on('click', function() {
+				console.log("체크함수 들어가기");
+				var chkValue = $('input[type=radio][name=post_way]:checked').val();
+
+				if (chkValue == 'default_location') {
+					console.log("기본배송 함수 호출");
+					viewbPost();
+				} else if (chkValue == 'direct_input') {
+					console.log("직접배송 함수 호출");
+					viewdPost();
+				}
+			});
+		});     */
+	
+	
+	
+	
+	/*  $(function() {
+		$('input[type=radio][name=post_way]').on('click', function() {
+
+			var chkValue = $('input[type=radio][name=post_way]:checked').val();
+
+			if (chkValue == 'default_location') {
+				$('#pop1').show();
+				$('#pop2').hide();
+			} else if (chkValue == 'direct_input') {
+				$('#pop1').hide();
+				$('#pop2').show();
+			}
+		});
+	});  */
+
 	const totalSum = function(price) {
 		//console.log(event.target);
 		console.log($("#sum_price").text());
@@ -20,43 +166,6 @@
 			console.log($("#sum_price").text());
 		}
 	};
-
-	$(function() {
-		$('input[type=radio][name=post_way]').on('click', function() {
-
-			var chkValue = $('input[type=radio][name=post_way]:checked').val();
-
-			if (chkValue == 'default_location') {
-				$('#pop1').show();
-				$('#pop2').hide();
-			} else if (chkValue == 'direct_input') {
-				$('#pop1').hide();
-				$('#pop2').show();
-			}
-		});
-	});
-
-	$(function() {
-		$('input[type=radio][name=order_payment]').on('click', function() {
-
-			var chkValue = $('input[type=radio][name=order_payment]:checked').val();
-
-			if (chkValue == 'payByCard') {
-				$('#card').show();
-				$('#deposit').hide();
-				$('#phone22').hide();
-			} else if (chkValue == 'payByDeposit') {
-				$('#deposit').show();
-				$('#card').hide();
-				$('#phone22').hide();
-			} else {
-				$('#phone22').show();
-				$('#card').hide();
-				$('#deposit').hide();
-
-			}
-		});
-	});	
 </script>
 
 <!-- 메인 결제부분 -->
@@ -76,16 +185,14 @@
 
 					<div class="pay_content_left_delivery_content">
 						<div class="pay_content_left_delivery_content_select">
-							<div class="pay_content_left_delivery_content_select_1"
-								onclick="document.querySelector('.pay_content_left_delivery_content_select_1').style.color='black';">
+							<div class="pay_content_left_delivery_content_select_1">
 								<input id="basicPost" type="radio" name="post_way"
 									value="default_location"
 									style="width: 30px; height: 30px; vertical-align: -5px;"
 									checked><label for="id1">기본배송지</label>
 
 							</div>
-							<div class="pay_content_left_delivery_content_select_2"
-								onclick="document.querySelector('.pay_content_left_delivery_content_select_2').style.color='black';">
+							<div class="pay_content_left_delivery_content_select_2">
 								<input id="directPost" type="radio" name="post_way"
 									value="direct_input"
 									style="width: 30px; height: 30px; vertical-align: -5px;"><label
@@ -94,57 +201,8 @@
 							</div>
 						</div>
 						<hr />
-						<div class="pay_content_left_delivery_content_address d-flex flex-column">
+						<div id="addPostWay" class="pay_content_left_delivery_content_address d-flex flex-column">
 
-							<div id="pop1">
-
-								<div>${member.member_name}</div>
-								<div>
-									<span>${member.roadaddress}</span><span>${member.detailaddress}</span>
-								</div>
-								<div>${member.member_phone}</div>
-
-							</div>
-
-							<div id="pop2" style="display: none; width: 60%">
-
-
-								<div class="form-group">
-									<label for="btitle">주문자</label> <input type="text"
-										class="form-control" id="oderer" name="oderer"
-										value="${member.member_name}">
-								</div>
-
-								<div class="form-group">
-
-									<label for="bcontent">주소</label>
-									<!-- daum 도로검색 api -->
-									<div class="mb-1">
-										<input type="text" id="zipcode" placeholder="우편번호"
-											value="${member.zipcode}" name="order_zipcode"
-											style="width: 69%" readonly> <input type="button"
-											onclick="DaumPostcode()" value="우편번호 찾기" style="width: 30%">
-									</div>
-									<div class="mb-1">
-										<input type="text" id="roadaddress" placeholder="주소"
-											value="${member.roadaddress}" name="order_roadaddress"
-											style="width: 100%" readonly>
-									</div>
-									<div class="mb-1">
-										<input type="text" id="detailaddress" placeholder="상세주소"
-											value="${member.detailaddress}" name="order_detailaddress">
-										<input type="text" id="extraAddress" placeholder="참고항목"
-											readonly>
-									</div>
-								</div>
-								
-								<div class="form-group">
-									<label for="bcontent">번호</label> <input type="text"
-										class="form-control" id="phone" name="order_phone"
-										value="${member.member_phone}">
-								</div>
-
-							</div>
 						</div>
 					</div>
 
