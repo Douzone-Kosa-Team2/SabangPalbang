@@ -50,7 +50,7 @@
       }
    }
 
-   // 등록 버튼 눌렀을 때 사진 없으면 등록 못하게 validation 해줘야 함 
+   // 등록 버튼 눌렀을 때 validation 해줘야 함 
    function beforeSend(){
       event.preventDefault();
       
@@ -59,16 +59,23 @@
       $("#errorDetailImg").html('');
       $("#errorReview").html('');
       
+      var isValidTitle = true;
+      var isValidMainImg = true;
+      var isValidDetailImg = true;
+      var isValidReview = true;
+      
       // 제목 validation
       var title = $("#palbang_title").val();
       if(title === ''){
     	  $("#errorTitle").html("제목은 반드시 입력해야 합니다.");
+    	  isValidTitle = false;
       }
       
       // 대표 이미지 validation
       var img = $("#pattach").val();
       if(img === ''){
     	  $("#errorMainImg").html("대표 이미지를 반드시 첨부해야 합니다.");
+    	  isValidMainImg = false;
       }
       
       // 디테일 이미지 validation
@@ -77,6 +84,7 @@
       for(var i=0; i<len1; i++){
     	  if(imgs.get(i).value === ''){
     		  $("#errorDetailImg").html("모든 이미지를 반드시 첨부해야 합니다.");
+    		  isValidDetailImg = false;
     		  break;
     	  }
       }
@@ -87,11 +95,15 @@
       for(var i=0; i<len2; i++){
     	  if(reviews.get(i).value === ''){
     		  $("#errorReview").html("모든 리뷰글은 반드시 입력해야 합니다.");
+    		  isValidReview = false;
     		  break;
     	  }
       }
       
-     // $("#target").submit();
+      if(isValidTitle && isValidMainImg && isValidDetailImg && isValidReview){
+    	  $("#target").submit();
+      }
+    
    } 
 </script>
 
