@@ -1,18 +1,24 @@
 package com.mycompany.sabangpalbang.controller;
 
 import java.io.Writer;
+
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.mycompany.sabangpalbang.dto.Member;
 import com.mycompany.sabangpalbang.service.MemberService;
 
@@ -23,6 +29,9 @@ public class AuthController {
 
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private JavaMailSender mailSender;
 
 	// 로그인페이지 form
 	@GetMapping("/loginForm")
@@ -153,6 +162,23 @@ public class AuthController {
 		// 비밀번호 재설정 후 디비에 저장
 		String resetPw = memberService.resetPwd(member_email);
 		logger.info(resetPw);
+		
+		// 이메일 보내주기 
+		try {
+			MimeMessage message = mailSender.createMimeMessage();
+			MimeMessageHelper messageHelper = new MimeMessageHelper(message,
+					true, "UTF-8");
+
+			messageHelper.setFrom("projectforjhl@gmail.com"); // 보내는사람 생략하면 정상작동을 안함
+			messageHelper.setTo(member_email); // 받는사람 이메일
+			messageHelper.setSubject("사방 팔방 새로운 비밀번호"); // 메일제목은 생략이 가능하다
+			messageHelper.setText("새로운 비밀번호는 "+ resetPw +" 입니다."); // 메일 내용
+
+			mailSender.send(message);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
 		return "auth/resetPw_successForm"; // 찾으면
 	}
 
