@@ -15,8 +15,8 @@
    		   "</svg></div>" +   
    		   "<div class='palbang_create_reviewSet_left form-control d-flex flex-column' style='padding:0px;width:60%; '>" +
    		   "<div id='image_container_"+index+"'" + "style='height:100%;'>" + 
-   		   "<input type='file' class='form-control' name='reviews["+index+"].pdattach'>" +
-   		   "<input type='text' style='height: 100%; text-align: center;' class='form-control'"+
+   		   "<input type='file' class='form-control class_img' name='reviews["+index+"].pdattach'>" +
+   		   "<input type='text' style='height: 100%; text-align: center;' class='form-control class_review'"+
    		   "placeholder='리뷰를 입력하세요.' name='reviews["+index+"].palbang_explain'/></div></div>";	
    } 
 
@@ -53,10 +53,45 @@
    // 등록 버튼 눌렀을 때 사진 없으면 등록 못하게 validation 해줘야 함 
    function beforeSend(){
       event.preventDefault();
-      console.log("컨트롤러로 넘어가기 전에 validation - 이미지랑 리뷰글이 not null이어야 함.");
-      $(#pattach).
       
-      $("#target").submit();
+      $("#errorTitle").html('');
+      $("#errorMainImg").html('');
+      $("#errorDetailImg").html('');
+      $("#errorReview").html('');
+      
+      // 제목 validation
+      var title = $("#palbang_title").val();
+      if(title === ''){
+    	  $("#errorTitle").html("제목은 반드시 입력해야 합니다.");
+      }
+      
+      // 대표 이미지 validation
+      var img = $("#pattach").val();
+      if(img === ''){
+    	  $("#errorMainImg").html("대표 이미지를 반드시 첨부해야 합니다.");
+      }
+      
+      // 디테일 이미지 validation
+      var imgs = $(".class_img");
+      var len1 = $(".class_img").length;
+      for(var i=0; i<len1; i++){
+    	  if(imgs.get(i).value === ''){
+    		  $("#errorDetailImg").html("모든 이미지를 반드시 첨부해야 합니다.");
+    		  break;
+    	  }
+      }
+      
+     // 댓글 validation 
+      var reviews = $(".class_review");
+      var len2 = $(".class_review").length;
+      for(var i=0; i<len2; i++){
+    	  if(reviews.get(i).value === ''){
+    		  $("#errorReview").html("모든 리뷰글은 반드시 입력해야 합니다.");
+    		  break;
+    	  }
+      }
+      
+     // $("#target").submit();
    } 
 </script>
 
@@ -68,7 +103,7 @@
 <div class="palbang_create_main">
    <form id="target" method="post" action="palbang_create_form?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data">
       <div class="palbang_create_title">
-         <input class="palbang_create_txt" style="width:40%;" type="text" placeholder="제목을 입력하세요" name="palbang_title">
+         <input class="palbang_create_txt" style="width:40%;" type="text" placeholder="제목을 입력하세요" name="palbang_title" id="palbang_title">
       </div>
       <div class="palbang_create_mainImage" style="margin-left:20em; width:50%;">
          <!-- 파일 업로드 박스 -->
@@ -77,10 +112,13 @@
             <input type="file" class="form-control" name="pattach" id="pattach"/>
          </div>
       </div>
-      <div id="errorReview" style="color:red;font-size:1.2em;"></div>
+      <div id="errorTitle" style="color:red;font-size:0.8em;"></div>
+      <div id="errorMainImg" style="color:red;font-size:0.8em;"></div>
+      <div id="errorDetailImg" style="color:red;font-size:0.8em;"></div>
+      <div id="errorReview" style="color:red;font-size:0.8em;"></div>
+    
       <div id="div_reviews">   
       <!-- 리뷰세트가 최소 1개에서 최대 3개까지 동적으로 생성되는 곳 -->
-
       </div>
       <div class="palbang_create_reviewSet_addSet"> <!--  추가하기 버튼을 누르면 위에 저 한 세트가 생겨야 한다.  -->
             <div class="palbang_create_reviewSet_addSet_addImg">
