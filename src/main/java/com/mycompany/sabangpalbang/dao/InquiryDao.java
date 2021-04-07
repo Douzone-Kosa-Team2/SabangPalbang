@@ -18,7 +18,7 @@ public interface InquiryDao {
 	public int updateInquiryAnswerById(int inquiry_id);
 	public int deleteInquiryByInquiryId(int inquiry_id);
 	public List<Inquiry> selectInquiry(HashMap<String, Object> map);
-	public int count();
+	public int count(int sid);
 	public int mycount(String nickname);
 	public List<Inquiry> selectNicknameInquiry(HashMap<String, Object> map);
 	public int insertInquiryFirst(Inquiry inquiry);

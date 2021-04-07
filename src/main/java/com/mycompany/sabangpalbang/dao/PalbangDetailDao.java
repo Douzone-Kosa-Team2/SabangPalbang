@@ -10,8 +10,8 @@ import com.mycompany.sabangpalbang.dto.Palbang_detail;
 public interface PalbangDetailDao {
 	
 	public int insert(Palbang_detail palbang_detail);
-	public int update(Palbang_detail palbang_detail);
 	public int deleteByPalbangDetailno(int palbangDetailid);
 	public List<Palbang_detail> selectAll(int pid);
 	public int insertPalbangDetail(Palbang_detail palbang_detail);
+	public int updatePalbangDetail(Palbang_detail palbang_detail);
 }

@@ -14,7 +14,6 @@ public interface PalbangDao {
 	
 	public int insert(Palbang palbang);
 	public List<Palbang> selectAll();
-	public int update(Palbang palbang);
 	public int deleteByPalbangId(int palbangid);
 	public int count2();
 	public List<Palbang> selectByLike(Pager pager);
@@ -28,4 +27,5 @@ public interface PalbangDao {
 	public int updateLikeCountDown(int palbang_id);
 	/* palbang create */
 	public int insertPalbang(Palbang palbang);
+	public int updatePalbang(Palbang palbang);
 }
