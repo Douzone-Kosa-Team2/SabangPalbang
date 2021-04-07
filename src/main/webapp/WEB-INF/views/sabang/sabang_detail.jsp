@@ -17,7 +17,7 @@
                smallImg[i].style.opacity = "1";
             }
             else{
-               bigImg.src= "resources/images/sabang_detail/sb1_"+i+".png";
+               bigImg.src= "resources/images/sabang_detail/${sabang.sabang_id}-"+i+".jpg";
                smallImg[i].style.opacity = "1";
             }
          }
@@ -121,7 +121,7 @@
          </div>
          <div class="sabang_detail_1_trolley_buyButton">
             <div class="trolley_button">
-               <button onclick="cart()">
+               <button onclick="cart()" style="border: none; background-color: white;">
                   <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50"
                      fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
                        <path

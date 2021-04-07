@@ -31,16 +31,13 @@ a:hover{
    width: 30%;
 }
 
-.header_search_input:placeholder-shown { 
+.header_search_input { 
         background-image : url('../images/common/search.png'); 
         background-position: 18px 10px;
         background-size: 15px 15px;
-        background-repeat:no-repeat; 
-                 
+        background-repeat:no-repeat;        
 }
-.header_search_input:valid {
-	background-image: none;
-}
+
 .header_search_input:focus {
 	background-image: none;
 }

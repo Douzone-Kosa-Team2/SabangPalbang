@@ -2,6 +2,30 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
+<style>
+.palbang_div3_line_item2  { 
+	overflow: hidden; 
+	}
+.palbang_div3_line_item2  img {
+    -webkit-transform:scale(1);
+    -moz-transform:scale(1);
+    -ms-transform:scale(1); 
+    -o-transform:scale(1);  
+    transform:scale(1);
+    -webkit-transition:.3s;
+    -moz-transition:.3s;
+    -ms-transition:.3s;
+    -o-transition:.3s;
+    transition:.3s;
+}
+.palbang_div3_line_item2:hover img {
+    -webkit-transform:scale(1.1);
+    -moz-transform:scale(1.1);
+    -ms-transform:scale(1.1);   
+    -o-transform:scale(1.1);
+    transform:scale(1.1);
+}
+</style>
 <!-- palbang_main -->
     <div class="palbang_main">
         <div class="palbang_div1"> <!-- 슬로건 -->
@@ -27,7 +51,7 @@
 						<div class="palbang_div3_line"> <!-- 게시물 첫번째 행 , 게시물 3개 포함 -->
 							<div class="palbang_div3_line_item">
 								<a class="palbang_div3_move" href="palbang_detail?pid=${palbang.palbang_id}"> 
-									<img src="resources/images/palbang_post/${palbang.palbang_imgoname}" height="200"><br/> 
+									<div class="palbang_div3_line_item2"><img src="resources/images/palbang_post/${palbang.palbang_imgoname}" height="200"></div><br/> 
 									<div style="font-size: 1.3em;">${palbang.palbang_title}</div>
 								    <div style="font-size: 1em;">${palbang.palbang_nickname}</div>
 									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16" style="color: red;">

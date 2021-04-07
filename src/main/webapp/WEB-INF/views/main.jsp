@@ -137,6 +137,54 @@
 
 		</div>
 	</div>
+<style>
+.main_sabang_content_1_img { 
+	overflow: hidden; 
+	}
+.main_sabang_content_1_img  img {
+    -webkit-transform:scale(1);
+    -moz-transform:scale(1);
+    -ms-transform:scale(1); 
+    -o-transform:scale(1);  
+    transform:scale(1);
+    -webkit-transition:.3s;
+    -moz-transition:.3s;
+    -ms-transition:.3s;
+    -o-transition:.3s;
+    transition:.3s;
+}
+.main_sabang_content_1_img:hover img {
+    -webkit-transform:scale(1.1);
+    -moz-transform:scale(1.1);
+    -ms-transform:scale(1.1);   
+    -o-transform:scale(1.1);
+    transform:scale(1.1);
+}
 
+
+.main_palbang_content_1_img { 
+	overflow: hidden; 
+	}
+.main_palbang_content_1_img  img {
+    -webkit-transform:scale(1);
+    -moz-transform:scale(1);
+    -ms-transform:scale(1); 
+    -o-transform:scale(1);  
+    transform:scale(1);
+    -webkit-transition:.3s;
+    -moz-transition:.3s;
+    -ms-transition:.3s;
+    -o-transition:.3s;
+    transition:.3s;
+}
+.main_palbang_content_1_img:hover img {
+    -webkit-transform:scale(1.1);
+    -moz-transform:scale(1.1);
+    -ms-transform:scale(1.1);   
+    -o-transform:scale(1.1);
+    transform:scale(1.1);
+}
+
+</style>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

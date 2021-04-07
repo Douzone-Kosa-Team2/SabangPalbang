@@ -20,15 +20,9 @@
 	<!-- 마이페이지 주문 내역 - 내용이 있을 때-->
 	<div class="state_button">
 		<select name="time_button">
-			<option selected="" value="" disabled="">기간</option>
-			<option value="오래된 순">오래된 순</option>
-			<option value="최신 순">최신 순</option>
-		</select> <select name="order_button">
-			<option selected="" value="" disabled="">배송상태</option>
-			<option value="오래된 순">배송 준비 중</option>
-			<option value="최신 순">배송 중</option>
-			<option value="최신 순">배송 완료</option>
-		</select>
+			<option value="최신순" selected>최신순</option>
+			<option value="오래된순">오래된순</option>
+		</select> 
 	</div>
 	<table class="orderlist_table">
 		<colgroup>

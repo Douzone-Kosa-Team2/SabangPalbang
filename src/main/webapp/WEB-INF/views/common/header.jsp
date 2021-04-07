@@ -29,6 +29,20 @@
 		}
 	}
 </script>
+<style>
+.header_search_input { 
+    background-image : url("resources/images/common/search.png")!important; 
+    background-position: 18px 10px !important;
+    background-size: 15px 15px;
+    background-repeat:no-repeat;        
+}
+
+.header_search_input:focus {
+background-image: none !important;
+}
+
+
+</style>
 <body>
 	<!-- 헤더 반응형 구현 -->
 	<div class="container">
@@ -48,7 +62,6 @@
 						class="header_search_input input-group mb-3 mt-5 form-control rounded-pill"
 						name="price" id="price" style="background-color: #e9ecef;"
 						placeholder="             내 예산에 맞는 방 찾기">
-
 				</div>
 
 				<div class="header_cart">

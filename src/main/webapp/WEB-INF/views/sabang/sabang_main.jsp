@@ -9,7 +9,30 @@
 		$(".percent").html(Math.floor(percent)+"%");
 	};
 </script>
-
+<style>
+.sabang_div3_line_item2  { 
+	overflow: hidden; 
+	}
+.sabang_div3_line_item2  img {
+    -webkit-transform:scale(1);
+    -moz-transform:scale(1);
+    -ms-transform:scale(1); 
+    -o-transform:scale(1);  
+    transform:scale(1);
+    -webkit-transition:.3s;
+    -moz-transition:.3s;
+    -ms-transition:.3s;
+    -o-transition:.3s;
+    transition:.3s;
+}
+.sabang_div3_line_item2:hover img {
+    -webkit-transform:scale(1.1);
+    -moz-transform:scale(1.1);
+    -ms-transform:scale(1.1);   
+    -o-transform:scale(1.1);
+    transform:scale(1.1);
+}
+</style>
 <!-- sabang_main -->
 <div class="sabang_main">
 	<div class="sabang_div1">
@@ -31,9 +54,12 @@
 		<c:forEach var="sabang" items="${list}">
 			<div class="sabang_div3_line ">
 				<div class="sabang_div3_line_item">
-					<a class="sabang_div3_move" href="sabang_detail?sid=${sabang.sabang_id}"> <img
+					<a class="sabang_div3_move" href="sabang_detail?sid=${sabang.sabang_id}"> 
+					<div class="sabang_div3_line_item2">
+						<img
 						src="resources/images/sabang_post/${sabang.sabang_imgoname}"
-						height="200"><br /> ${sabang.sabang_name}<br /> 
+						height="200">
+					</div><br /> ${sabang.sabang_name}<br /> 
 						
 						<c:if test="${sabang.sabang_price != sabang.sabang_saleprice}">
 							<span
