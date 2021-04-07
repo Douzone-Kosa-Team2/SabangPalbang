@@ -1,61 +1,97 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
-
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
+<script>
+var index;
+function generateReviewSet(index){
+	return  "<div id='review_"+index+"'" + "class='palbang_create_reviewSet'>" + 
+		"<div class='palbang_create_reviewSet_minusBtn'/>" +  
+		"<svg onclick=\"removeCol("+index+")\" xmlns=\'http://www.w3.org/2000/svg\' width='30' height='30'" +
+		"fill='currentColor' class='bi bi-dash-circle' viewBox='0 0 16 16'>" + 
+		   "<path d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/> " + 
+		   "<path d='M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z' />" + 
+		   "</svg></div>" +   
+		   "<div class='palbang_create_reviewSet_left form-control d-flex flex-column' style='padding:0px;'>" +
+		   "<div id='image_container_"+index+"'" + "style='height:100%;'>" + 
+		   "<input type='file'  class='form-control' name='reviews["+index+"].pdattach' value='`${palbang.reviews[0].palbang_dimgoname}`'>" +
+		   "</div>" +
+		   "</div><div class='palbang_create_reviewSet_right'>"+ 
+		   "<input type='text' style='height: 100%; text-align: center;' class='form-control'"+
+		   "placeholder='리뷰를 입력하세요.' name='reviews["+index+"].palbang_explain' value='`${palbang.reviews[index].palbang_explain}`' /></div></div>";	
+} 
+   
+ $.when($.ready).then(function(){
+ 	// db에 있는 리뷰 개수 만큼 출력되어야 함 
+ 	var rvNum = ${fn:length(palbang.reviews)};
+ 	console.log("rvNnum: " + rvNum);
+ 	
+ 	for(var i=0;i<rvNum;i++){
+ 		var reviewSet = generateReviewSet(i);
+ 		console.log(reviewSet);
+ 		console.log(`${palbang.reviews[0].palbang_explain}`);
+ 		console.log(`${palbang.reviews[0].palbang_dimgoname}`);
+ 		$('#div_reviews').append(reviewSet);
+ 	}
 
+
+ });
+ 
+ function addCol() {
+     console.log("addCol() method");
+     
+     if(count < 2){
+        index += 1;
+        count += 1;
+        console.log("추가하는 현재 인덱스: " + index);
+        var reviewSet = generateReviewSet(index);
+        $('#div_reviews').append(reviewSet);
+
+     }else{
+        console.log("error : 최대 3개까지 작성가능합니다!! ");
+     }
+  } 
+  
+  function removeCol(idx) {
+     console.log("removeCol() method");
+     
+     if(count > 0){
+        console.log("삭제하는 현재 인덱스: " + idx);
+        $('#review_'+idx).remove();
+        count -= 1;
+     }else{
+        console.log("error : 더 이상 지울 수 없습니다.");
+     }
+  }
+
+ 
+</script>
 <!-- palbang_update-->
 <br />
 <br />
 <br />
 <br />
 <div class="palbang_update">
-	<form name="form" method="post" action="palbang_update_form?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data">
+	<form name="form" method="post"
+		action="palbang_update_form?${_csrf.parameterName}=${_csrf.token}"
+		enctype="multipart/form-data">
 		<div class="palbang_create_title">
-			<input class="palbang_create_txt" type="text" value="${palbang.palbang_title}" name="palbang_title">
+			<input class="palbang_create_txt" type="text"
+				value="${palbang.palbang_title}" name="palbang_title">
 		</div>
 		<div class="palbang_create_mainImage">
 			<!-- 파일 업로드 박스 -->
 			<h4 class="palbang_create_mainImage_img">대표이미지</h4>
 			<div class="input-group mb-3">
-				<input type="file" class="form-control" name="pattach" placeholder="사진을 첨부하세요" >
+				<input type="file" class="form-control" name="pattach"
+					placeholder="사진을 첨부하세요">
 			</div>
 		</div>
 		<div class="palbang_detail_content">
-		<div id="div_reviews">
-			<!-- 리뷰세트가 최소 1개에서 최대 3개까지 동적으로 생성되는 곳 -->
-			<c:forEach var="review" items="${palbang.reviews}">
-				
-				<%-- <div class='palbang_create_reviewSet_minusBtn'/>
-					<svg onclick="removeCol("+index+")" xmlns=\'http://www.w3.org/2000/svg\' width='30' height='30'"
-				
-				<div class="palbang_detail_content_space">
-					<div class="palbang_detail_content_spaceImg">
-						<img src="resources/images/palbang_detail/${review.palbang_dimgoname}">
-					</div>
-					<div class="palbang_detail_content_space_txt">
-						<p>${review.palbang_explain}</p>
-					</div>
-				</div> --%>
-			</c:forEach>
-<!-- 			
-			"<div id='review_"+index+"'" + "class='palbang_create_reviewSet'>" + 
-		"<div class='palbang_create_reviewSet_minusBtn'/>" +  
-		"<svg onclick=\"removeCol("+index+")\" xmlns=\'http://www.w3.org/2000/svg\' width='30' height='30'" +
-		"fill='currentColor' class='bi bi-dash-circle' viewBox='0 0 16 16'>" + 
-			"<path d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/> " + 
-			"<path d='M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z' />" + 
-			"</svg></div>" +	
-			"<div class='palbang_create_reviewSet_left form-control d-flex flex-column' style='padding:0px;'>" +
-			"<div id='image_container_"+index+"'" + "style='height:100%;'>" + 
-			"<input type='file'  class='form-control' name='reviews["+index+"].pdattach'>" +
-			"</div>" +
-			"</div><div class='palbang_create_reviewSet_right'>"+ 
-			"<input type='text' style='height: 100%; text-align: center;' class='form-control' placeholder='리뷰를 입력하세요.' name='reviews["+index+"].palbang_explain' /></div></div>";
-					 -->
-		</div>
+			<div id="div_reviews">
+				<!-- 리뷰세트가 최소 1개에서 최대 3개까지 동적으로 생성되는 곳 -->
+			</div>
 		</div>
 		<div class="palbang_update_main_add_set">
 			<div class="palbang_update_main_add_img">
@@ -68,13 +104,16 @@
 					</svg>
 			</div>
 			<div class="palbang_update_main_add_txt">
-				<button type="button" class="palbang_update_main_b_a" onclick="addCol()">추가하기</button>
+				<button type="button" class="palbang_update_main_b_a"
+					onclick="addCol()">추가하기</button>
 			</div>
 		</div>
 		<hr style="width: 85%; text-align: center; margin: auto;" />
 		<div class="submit_btn">
-			<button type="button" onclick="location.href='palbang_main'" class="btn btn-outline-dark"> 취소</button>  
-			<button type="submit" onclick="beforeSend()" class="btn btn-outline-primary">수정</button>  
+			<button type="button" onclick="location.href='palbang_main'"
+				class="btn btn-outline-dark">취소</button>
+			<button type="submit" onclick="beforeSend()"
+				class="btn btn-outline-primary">수정</button>
 		</div>
 	</form>
 </div>
