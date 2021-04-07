@@ -28,7 +28,7 @@
 		where rownum &lt;= 3
 	</select>
 	
-	<update id="update" parameterType="palbang">
+	<update id="updatePalbang" parameterType="palbang">
 		update palbang set
 		palbang_title=#{palbang_title}, 
 		palbang_likecount=#{palbang_likecount}, 

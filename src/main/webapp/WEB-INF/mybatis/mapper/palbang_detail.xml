@@ -27,7 +27,7 @@
 		where palbang_id=#{palbang_id}
 	</select>
 	
-	<update id="update" parameterType="palbang_detail">
+	<update id="updatePalbangDetail" parameterType="palbang_detail">
 		update palbang_detail set
 		palbang_dimgoname=#{palbang_dimgoname}, 
 		palbang_dimgsname=#{palbang_dimgsname}, 
