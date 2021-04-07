@@ -17,7 +17,7 @@
                smallImg[i].style.opacity = "1";
             }
             else{
-               bigImg.src= "resources/images/sabang_detail/${sabang.sabang_id}-"+i+".jpg";
+               bigImg.src= "resources/images/sabang_detail/"+${sabang.sabang_id}+"-"+i+".jpg";
                smallImg[i].style.opacity = "1";
             }
          }
