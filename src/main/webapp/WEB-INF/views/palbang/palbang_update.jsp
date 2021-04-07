@@ -6,7 +6,6 @@
 <script>
 var index = ${fn:length(palbang.reviews)}-1;
 var count = ${fn:length(palbang.reviews)};
-
 function generateReviewSet(index){
 	return  "<div id='review_"+index+"'" + "class='palbang_create_reviewSet'>" + 
 		"<div class='palbang_create_reviewSet_minusBtn'/>" +  
@@ -23,29 +22,24 @@ function generateReviewSet(index){
 } 
 
 function addCol() {
-     console.log("addCol() method");
-     
      if(count < 3){
+    	$("#errorReview").empty();
         index += 1;
         count += 1;
-        console.log("추가하는 현재 인덱스: " + index);
         var reviewSet = generateReviewSet(index);
         $('#div_reviews').append(reviewSet);
-
      }else{
-        console.log("error : 최대 3개까지 작성가능합니다!! ");
+    	$("#errorReview").html("리뷰 글은 최대 3개까지 작성 가능합니다.");
      }
 } 
   
 function removeCol(idx) {
-     console.log("removeCol() method");
-     
      if(count > 1){
-        console.log("삭제하는 현재 인덱스: " + idx);
+    	$("#errorReview").empty();
         $('#review_'+idx).remove();
         count -= 1;
      }else{
-        console.log("error : 더 이상 지울 수 없습니다.");
+    	 $("#errorReview").html("더 이상 삭제할 수 없습니다.");
      }
 }
 

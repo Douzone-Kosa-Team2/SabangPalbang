@@ -126,10 +126,8 @@ public class MypageController {
 		Pager pager = new Pager(10, 5, totalRows, intPageNo);
 		// 사방 문의게시판 가져오기
 		List<Inquiry> inquiryList = inquiryService.getInquiryList(pager, anickname);
-
-		session.setAttribute("mypage_inquiry_pager", pager);
 		model.addAttribute("inquiryList", inquiryList);
-		model.addAttribute("anickname", anickname);
+		session.setAttribute("mypage_inquiry_pager", pager);
 		return "mypage/userInquiry";
 	}
 
