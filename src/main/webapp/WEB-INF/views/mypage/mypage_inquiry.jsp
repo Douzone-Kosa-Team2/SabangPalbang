@@ -1,28 +1,33 @@
-<%@ page  contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
 
- <!-- 마이페이지 메뉴 헤더 -->
- <div class="mypage_header">
-        <a class="mypage_header_memberInfo" href="mypage_memberInfo_check">회원 정보</a>
-        <a class="mypage_header_orderInfo" href="mypage_orderlist">주문 내역</a>
-        <a class="mypage_header_inquiryInfo" href="mypage_inquiry">내가 쓴 문의글</a>
- </div>
-
-
- 
- <!-- 마이페이지 > 내가 쓴 문의글 -->
-<%-- <c:if test="${loginmember_email == member.member_email}"> --%>
-<div class="d-flex justify-content-center p-2">
-	<br/>
- 	<div class="mt-1 mr-2" id="userInquiry">
-
-		<br/>
-	</div>
+<!-- 마이페이지 메뉴 헤더 -->
+<div class="mypage_header">
+	<a class="mypage_header_memberInfo" href="mypage_memberInfo_check">회원
+		정보</a> <a class="mypage_header_orderInfo" href="mypage_orderlist">주문
+		내역</a> <a class="mypage_header_inquiryInfo" href="mypage_inquiry">내가 쓴
+		문의글</a>
 </div>
 
+
+<!-- 마이페이지 > 내가 쓴 문의글 -->
+<div class="d-flex justify-content-center p-2">
+	<br />
+	<c:if test="${fn:length(inquiryList) > 0}">
+		<div class="mt-1 mr-2" id="userInquiry">
+			<br />
+		</div>
+	</c:if>
+	<c:if test="${fn:length(inquiryList) == 0}">
+		<p style="text-align:center;font-size:20px;margin:200px;color:grey;">
+			<sec:authentication property="name"/> 님의 <span style="color:#00B0F0;"> 문의 </span> 내역이 없습니다 </p>
+	</c:if>
+</div>
 
 
 <script>
@@ -49,6 +54,6 @@ console.log("success");
 	
 </script>
 
-   
+
 
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

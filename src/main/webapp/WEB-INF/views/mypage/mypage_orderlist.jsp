@@ -2,6 +2,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
 
@@ -12,11 +13,11 @@
 		href="mypage_inquiry">내가 쓴 문의글</a>
 </div>
 
-<c:if test="${myOrderSize == 0}">
-	<p style="text-align:center;font-size:20px;margin:100px;color:grey;">
-		<sec:authentication property="name"/> 님의 주문 내역이 없습니다. </p>
+<c:if test="${fn:length(myOrderList) == 0}">
+	<p style="text-align:center;font-size:20px;margin:200px;color:grey;">
+		<sec:authentication property="name"/> 님의 <span style="color:#00B0F0;"> 주문</span> 내역이 없습니다 </p>
 </c:if>
-<c:if test="${myOrderSize > 0}">
+<c:if test="${fn:length(myOrderList) > 0}">
 	<!-- 마이페이지 주문 내역 - 내용이 있을 때-->
 	<div class="state_button">
 		<select name="time_button">

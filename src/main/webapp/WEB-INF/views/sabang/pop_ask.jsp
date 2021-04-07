@@ -15,7 +15,7 @@
 			<h4>문의작성</h4>
 		</div>
 		<hr>
-		<form method="post" name="askform" action="addInquiry">
+		<form method="post" id="askform" onsubmit="return validate()" novalidate action="addInquiry">
 		    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		    <input type="hidden" name="inquiry_sabangid" value="${sabang.sabang_id}"/>
 		
@@ -24,82 +24,129 @@
 				<div class="pop_ask_type">
 					<div class="pop_ask_menu">문의 유형</div>
 
-					<select class="pop_ask_box" name="inquiry_type">
+					<select class="pop_ask_box" name="inquiry_type" id="inquiry_type">
 						<option selected="" value="" disabled="">문의 유형 선택</option>
-						<option value="prod_info">상품정보</option>
-						<option value="delivery">배송정보</option>
-						<option value="change">환불/교환</option>
+						<option value="상품정보">상품정보</option>
+						<option value="배송정보">배송정보</option>
+						<option value="환불/교환">환불/교환</option>
 					</select>
+					<div class="errorsession" id="errorType"></div>
 				</div>
 
 				<div class="pop_ask_prod">
 					<div class="pop_ask_menu">문의 상품</div>
-					<input type="text" class="pop_ask_box" value="${sabang.sabang_name}" readonly/>
+					<div style="width:100%; border-style: solid; border-width: 1px;">${sabang.sabang_name}</div>
+					<div class="errorsession"></div>
 				</div>
 
 				<div class="pop_ask_human">
 					<div class="pop_ask_menu">문의자</div>
 					<input type="text" class="pop_ask_box" value="${member.member_nickname}" 
-						name="inquiry_writer" readonly/>
+						name="inquiry_writer" id="inquiry_writer" readonly/>
+					<div class="errorsession"></div>
 				</div>
 
 				<div class="pop_ask_tel">
 					<div class="pop_ask_menu">전화번호</div>
-					<input type="tel" class="pop_ask_box" value="${member.member_phone}" readonly/>
+					<div style="width:100%; border-style: solid; border-width: 1px;">${member.member_phone}</div>
+					<div class="errorsession"></div>
 				</div>
 
 				<div class="pop_ask_email">
 					<div class="pop_ask_menu">이메일</div>
-					<input type="email" class="pop_ask_box" value="${member.member_email}" readonly/>
+					<div style="width:100%; border-style: solid; border-width: 1px;">${member.member_email}</div>
+					<div class="errorsession"></div>
 				</div>
 
 				<div class="pop_ask_title">
 					<div class="pop_ask_menu">제목</div>
 					<input type="text" class="pop_ask_box" value="" placeholder="제목을 입력해주세요." 
-						name="inquiry_title" />
+						name="inquiry_title" id="inquiry_title"/>
+					<div class="errorsession" id="errorTitle"></div>
 				</div>
 
 				<div class="pop_ask_content">
 					<div class="pop_ask_menu">문의 내용</div>
-					<textarea placeholder="내용을 입력해주세요." class="pop_ask_box" name="inquiry_explain"></textarea>
+					<textarea placeholder="내용을 입력해주세요." class="pop_ask_box" name="inquiry_explain" id="inquiry_explain"></textarea>
+					<div class="errorsession" id="errorContent"></div>
 				</div>
 
 			</div>
 
 			<div class="pop_ask_btn">
 				<button class="pop_ask_btn_cancel" onclick="cancel()">취소</button>
-				<button class="pop_ask_btn_create" onclick="confirm()">작성하기</button>
+				<button class="pop_ask_btn_create" type="submit">작성하기</button>
 			</div>
 		</form>
 </div>
 </body>
 <script>
+function validate(){
+	var result = true;
+
+	$("#errorType").html("");
+	$("#errorTitle").html("");
+	$("#errorContent").html("");
+	
+	const inquiry_type = $("#inquiry_type").val();
+
+	const inquiry_title = $("#inquiry_title").val();
+	const inquiry_explain = $("#inquiry_explain").val();
+	
+	console.log(inquiry_type);
+	console.log(inquiry_title);
+	console.log(inquiry_explain);
+	
+	if(inquiry_type === null){
+		result = false;
+		$("#errorType").html("문의 유형을 체크해 주세요.");
+	}
+
+	if(inquiry_title === ""){
+		result = false;
+		$("#errorTitle").html("제목을 입력해 주세요.");
+	} else if(inquiry_title.length < 2) {
+		result = false;
+		$("#errorTitle").html("제목을 2자이상 입력해 주세요.");
+	} else if(inquiry_title.length > 50) {
+		result = false;
+		$("#errorTitle").html("제목을 50자 이하로 입력해 주세요.");
+	}
+
+	if(inquiry_explain === ""){
+		result = false;
+		$("#errorContent").html("내용을 입력해 주세요.");
+	} else if(inquiry_explain.length < 2) {
+		result = false;
+		$("#errorContent").html("내용을 2자이상 입력해 주세요.");
+	} else if(inquiry_explain.length > 1000) {
+		result = false;
+		$("#errorContent").html("내용을 1000자 이하로 입력해 주세요.");
+	}
+	
+	/* if(result){
+		//$("#askform").attr("action", "addInquiry");
+		//$("#askform").submit();
+		window.opener.location.reload();
+		window.close();
+	} */
+	
+	return result;
+}
 
 const cancel = () => { /* 취소하기 버튼 클릭 시 */
-	//window.opener.location.href="sabang_detail"; 
 	window.close();
 };
 
-const confirm = () => {  /* 작성하기 버튼 클릭 시 - 문의창에서 입력받은 것들 요청경로에 파라미터로 넘겨줘야 함  */
+/* const confirm = () => {  /* 작성하기 버튼 클릭 시 - 문의창에서 입력받은 것들 요청경로에 파라미터로 넘겨줘야 함  */
 	//$("askform").attr("action", "addInquiry");
-	console.log("과정1");
-	$("askform")[0].submit;
+	
+/* 	console.log("과정1");
+	$("#askform").submit();
 	console.log("과정2");
-	/* var queryString = $("form[name=askform]").serialize() ;
-	console.log("과정1");
-	$.ajax({
-		type : 'post',
-        url : 'addInquiry',
-        data : queryString
-	}); */
-	/* .then(data => {
-		console.log("과정3");
-		
 
-	});
-	 */
 	window.opener.location.reload();
 	window.close();
-};
+}; */
 
 </script>
