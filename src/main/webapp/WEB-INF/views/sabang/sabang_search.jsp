@@ -39,7 +39,8 @@
 <div class="sabang_search">
 	<div class="sabang_search_div1">
 		<img class="sabang_search_div1_img"
-			src="resources/images/sabang_search/slogan_search.png" width="100%">
+			src="resources/images/main/sabang_search_header.jpg" width="100%">
+			<br/>
 	</div>
 	<div class="sabang_search_sabang_div2">
 	<br/>
@@ -79,4 +80,6 @@
 		</div>
 	</div>
 </div>
+<br/>
+<br/>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>
