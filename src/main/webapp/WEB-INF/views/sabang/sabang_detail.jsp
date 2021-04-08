@@ -158,11 +158,9 @@
    </div>
    <div class="sabang_detail_1_Explanatin">
       <div class="sabang_detail_1_Explanatin_top">
-         따뜻한 조명의 테르티알로 방의 분위기를 더 아늑하게 해보세요.<br /> 어느자세든 편하게 높이를 조절해 허리를 편안하게
-         해주는 스카르스타...
+         ${productList[0].product_explain1}
       </div>
-      <div class="sabang_detail_1_Explanatin_down">※ 이 이미지는 8평 기준
-         가구입니다</div>
+      <div class="sabang_detail_1_Explanatin_down">${productList[0].product_explain2}</div>
    </div>
 
 </div>
