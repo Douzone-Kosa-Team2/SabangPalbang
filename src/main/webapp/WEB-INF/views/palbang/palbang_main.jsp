@@ -33,10 +33,30 @@
         </div>
         <div class="palbang_div2"> <!-- 정렬 카테고리 -->
             <ul class="palbang_div2_sort_type">
-                <li class="menu"><a href="palbang_main?std=0">좋아요 순</a></li>
-                <li class="menu"><a href="palbang_main?std=1" style="color:gray;">조회수 순</a></li>
-                <li class="menu"><a href="palbang_main?std=2" style="color:gray;">등록일 순</a></li>
-                <li class="menu"><a href="palbang_main?std=3" style="color:gray;">오래된 순</a></li>
+            	<c:if test="${stdno==0}">
+            		<li class="menu"><a href="palbang_main?std=0" style="text-decoration: underline !important; text-underline-position: under;">좋아요 순</a></li>
+                	<li class="menu"><a href="palbang_main?std=1">조회수 순</a></li>
+	                <li class="menu"><a href="palbang_main?std=2">등록일 순</a></li>
+	                <li class="menu"><a href="palbang_main?std=3">오래된 순</a></li>
+            	</c:if>
+				<c:if test="${stdno==1}">
+            		<li class="menu"><a href="palbang_main?std=0" >좋아요 순</a></li>
+                	<li class="menu"><a href="palbang_main?std=1" style="text-decoration: underline !important; text-underline-position: under;">조회수 순</a></li>
+	                <li class="menu"><a href="palbang_main?std=2">등록일 순</a></li>
+	                <li class="menu"><a href="palbang_main?std=3">오래된 순</a></li>
+            	</c:if>
+           		<c:if test="${stdno==2}">
+            		<li class="menu"><a href="palbang_main?std=0">좋아요 순</a></li>
+                	<li class="menu"><a href="palbang_main?std=1">조회수 순</a></li>
+	                <li class="menu"><a href="palbang_main?std=2" style="text-decoration: underline !important; text-underline-position: under;">등록일 순</a></li>
+	                <li class="menu"><a href="palbang_main?std=3">오래된 순</a></li>
+            	</c:if>
+            	<c:if test="${stdno==3}">
+            		<li class="menu"><a href="palbang_main?std=0">좋아요 순</a></li>
+                	<li class="menu"><a href="palbang_main?std=1">조회수 순</a></li>
+	                <li class="menu"><a href="palbang_main?std=2">등록일 순</a></li>
+	                <li class="menu"><a href="palbang_main?std=3" style="text-decoration: underline !important; text-underline-position: under;">오래된 순</a></li>
+            	</c:if>
             </ul>
         </div>
        <div class="palbang_div3_parent"> 

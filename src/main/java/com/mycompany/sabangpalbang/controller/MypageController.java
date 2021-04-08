@@ -141,12 +141,32 @@ public class MypageController {
 	}
 
 	@PostMapping("/updateMember")
-	public String updateMember(Member member) {
+	public String updateMember(Member member, Authentication auth) {
 		logger.info("updateMember 메시지");
-		logger.info("member 비밀번호" + member.getMember_phone());
+		logger.info("member 비밀번호" + member.getMember_pw());
+		logger.info("member 전화번호" + member.getMember_phone());
+		
+		Member originMember = memberService.showMember(auth.getName());
+		
+		logger.info("originMember 비밀번호" + originMember.getMember_pw());
+		logger.info("originMember 전화번호" + originMember.getMember_phone());
+		
+		if(member.getMember_pw().equals("")) {
+			member.setMember_pw(originMember.getMember_pw());
+			logger.info("member 비밀번호" + member.getMember_pw());
+			logger.info("member 전화번호" + member.getMember_phone());
+		} else {
+			BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
+			member.setMember_pw(bpe.encode(member.getMember_pw()));
+		}
+		if(member.getMember_phone().equals("")) {
+			member.setMember_phone(originMember.getMember_phone());
+			logger.info("member 비밀번호" + member.getMember_pw());
+			logger.info("member 전화번호" + member.getMember_phone());
+		}
 		memberService.updateMember(member);
 
-		return "redirect:/mypage_memberInfo";
+		return "redirect:/main";
 	}
 
 }
