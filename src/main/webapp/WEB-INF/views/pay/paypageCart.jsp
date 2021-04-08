@@ -243,7 +243,7 @@
 								</button>
 							</div>
 
-                     <div id="deposit" style="display: none;">
+                     <div id="deposit" style="display: none;" class="ml-5">
                         <div class="form-group" style="width: 30%">
                            <label for="btitle">입금자명</label> <input type="text"
                               class="form-control" id="depositer" name="depositer">
@@ -267,7 +267,7 @@
                         </div>
                      </div>
 
-                     <div id="phone22" style="display: none;">
+                     <div id="phone22" style="display: none;" class="ml-5">
                         <div class="form-group" style="width: 30%">
                            <label for="btitle">휴대폰 번호</label> <input type="text"
                               class="form-control" id="phone22" name="#"> <small>"-"생략하고
