@@ -28,6 +28,15 @@
 			console.log(price);
 		}
 	}
+	
+	function removeSession() {
+		console.log("removeSession() 메소드 진입");
+		
+		/* 세션 지우기 */
+		sessionStorage.removeItem("sabang_pager");
+		sessionStorage.removeItem("palbang_pager");
+		sessionStorage.removeItem("mypage_inquiry_pager");
+	}
 </script>
 <style>
 .header_search_input { 
@@ -49,11 +58,11 @@ background-image: none !important;
 		<div class="nav-scroller py-1 mb-2">
 			<nav class="header nav d-flex justify-content-between">
 				<div class="header_logo">
-					<a class="logo" href="/sabangpalbang/main"> 사방 팔방 </a>
+					<a class="logo" onclick="removeSession()" href="/sabangpalbang/main"> 사방 팔방 </a>
 				</div>
 				<div class="header_menu">
-					<a class="header_menu_item" href="/sabangpalbang/sabang_main">사방</a>
-					<a class="header_menu_item" href="/sabangpalbang/palbang_main">팔방</a>
+					<a class="header_menu_item" onclick="removeSession()"  href="/sabangpalbang/sabang_main">사방</a>
+					<a class="header_menu_item" onclick="removeSession()"  href="/sabangpalbang/palbang_main">팔방</a>
 				</div>
 
 				<div class="header_search">
