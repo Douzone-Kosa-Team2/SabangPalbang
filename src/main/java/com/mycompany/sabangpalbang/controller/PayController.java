@@ -166,7 +166,7 @@ public class PayController {
 	
 
 	@PostMapping("/paySuccess")
-	public String pay_success(Model model, HttpSession session, OrderMain order,
+	public String pay_success(String order_bankcode, Model model, HttpSession session, OrderMain order,
 			@RequestParam(name = "sabangid") int sabangid,
 			@RequestParam(name = "cartKey") String cartKey, 
 			@RequestParam(name = "productlist") String[] productlist,
@@ -212,9 +212,13 @@ public class PayController {
 		// 저장 부분
 		String result = payService.addOrder(order);
 
+		sabangService.updateBuyCount(sabangid,productlist);
+		
 		//넘겨주는 부분
 		Sabang sabangname = sabangService.getSabang(sabangid);
 
+		
+		
 		// 세션 삭제 
 		Map<String, Cart> mycartlist = (Map<String, Cart>) session.getAttribute("sessionCart");
 		mycartlist.remove(cartKey);
@@ -231,9 +235,9 @@ public class PayController {
 	}
 	
 	@PostMapping("/payDirectSuccess")
-	public String payDirectSuccess(OrderMain order, @RequestParam(name = "products") String[] products, Authentication auth, @RequestParam(name = "sabangid") int sabangid, Model model) {
+	public String payDirectSuccess(String order_bankcode, OrderMain order, @RequestParam(name = "products") String[] products, Authentication auth, @RequestParam(name = "sabangid") int sabangid, Model model) {
 		logger.info("pay_DDsuccess 메시지");
-		
+		logger.info(order.getOrder_bankcode());
 
 		int memberId = memberService.getIdByEmail(auth.getName());
 		order.setOrder_memberid(memberId);
@@ -265,6 +269,11 @@ public class PayController {
 	
 		// 저장 부분
 		String result = payService.addOrder(order);
+		
+		//구매량 저장
+		sabangService.updateBuyCount(sabangid,products);
+		
+		
 
 		//넘겨주는 부분
 		Sabang sabangname = sabangService.getSabang(sabangid);

@@ -71,4 +71,16 @@ public class SabangService {
 		return rslist;
 	}
 
+	public void updateBuyCount(int sabangid, String[] products) {
+		for(int i=0; i<products.length; i++) {
+			productDao.updateBuyCount(Integer.parseInt(products[i]));
+		}
+		sabangDao.updateBuyCount(sabangid);
+		
+	}
+	
+	
+		
+	
+
 }

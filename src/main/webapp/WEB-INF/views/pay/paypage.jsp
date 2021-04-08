@@ -121,6 +121,15 @@
 			console.log($("#sum_price").text());
 		}
 	};	
+	
+	
+	const handleBank = (order_bankcode) => {
+		event.preventDefault();
+		console.log(order_bankcode);
+		
+		$("#payForm").attr("action", "payDirectSuccess?order_bankcode="+order_bankcode);
+	  	 	  		
+	};
 </script>
 
 <!-- 메인 결제부분 -->
@@ -180,44 +189,45 @@
 								type="radio" name="order_payment" value="payByPhone"> 휴대폰 결제
 							</label>
 						</div>
-
+						
+						
 						<div class="pay_content_left_way_content_bank_1">
-						<input type="hidden" name="order_bankcode" value="032"/>
+						
 							<div id="card" role="group" class="btn btn-group-lg">
-								<button type="button" class=" bankbutton btn" id="img_btn">
-									<img src="resources/images/pay_bank/bank_kb.png">
+								<button type="button" class="bankbutton btn" name="order_bankcode" onclick="handleBank('004')">
+									<img src="resources/images/pay_bank/bank_kb.png">									
 								</button>
-								<button type="button" class=" bankbutton btn" id="img_btn">
+								<button type="button" class="bankbutton btn" name="order_bankcode" onclick="handleBank('002')" >
 									<img src="resources/images/pay_bank/bank_samsung.png">
 								</button>
-								<button type="button" class=" bankbutton btn" id="img_btn">
+								<button type="button" class="bankbutton btn" name="order_bankcode" onclick="handleBank('071')">
 									<img src="resources/images/pay_bank/bank_hyundai.png">
 								</button>
-								<button type="button" class=" bankbutton btn" id="img_btn">
+								<button type="button" class="bankbutton btn" name="order_bankcode" onclick="handleBank('088')">
 									<img src="resources/images/pay_bank/bank_shinhan.png">
 								</button>
-								<button type="button" class=" bankbutton btn" id="img_btn">
+								<button type="button" class="bankbutton btn" name="order_bankcode" onclick="handleBank('055')">
 									<img src="resources/images/pay_bank/bank_lotte.png">
 								</button>
-								<button type="button" class=" bankbutton btn" id="img_btn">
+								<button type="button" class="bankbutton btn" name="order_bankcode" onclick="handleBank('011')">
 									<img src="resources/images/pay_bank/bank_nh.png">
 								</button>
-								<button type="button" class=" bankbutton btn" id="img_btn">
+								<button type="button" class="bankbutton btn" name="order_bankcode" onclick="handleBank('050')">
 									<img src="resources/images/pay_bank/bank_bc.png">
 								</button>
-								<button type="button" class=" bankbutton btn" id="img_btn">
+								<button type="button" class="bankbutton btn" name="order_bankcode" onclick="handleBank('027')">
 									<img src="resources/images/pay_bank/bank_citi.png">
 								</button>
-								<button type="button" class=" bankbutton btn" id="img_btn">
+								<button type="button" class="bankbutton btn" name="order_bankcode" onclick="handleBank('090')">
 									<img src="resources/images/pay_bank/bank_kakao.png">
 								</button>
-								<button type="button" class=" bankbutton btn" id="img_btn">
+								<button type="button" class="bankbutton btn" name="order_bankcode" onclick="handleBank('023')">
 									<img src="resources/images/pay_bank/bank_sc.png">
 								</button>
-								<button type="button" class=" bankbutton btn" id="img_btn">
+								<button type="button" class="bankbutton btn" name="order_bankcode" onclick="handleBank('081')">
 									<img src="resources/images/pay_bank/bank_hana.png">
 								</button>
-								<button type="button" class=" bankbutton btn" id="img_btn">
+								<button type="button" class="bankbutton btn" name="order_bankcode" onclick="handleBank('020')">
 									<img src="resources/images/pay_bank/bank_uri.png">
 								</button>
 							</div>
@@ -228,8 +238,8 @@
 										class="form-control" id="depositer" name="depositer">
 								</div>
 								<div class="form-group mt-4" style="width: 60%">
-									<label for="bcontent">입금은행</label> <select class="ml-2 d-block"
-										id="depositBank" name="depositBank">
+									<label for="bcontent">입금은행</label>
+									 <select class="ml-2 d-block" id="depositBank" name="depositBank">
 										<option value="basicDeposit1">카카오뱅크 : 3333-13-5087920
 											조민상</option>
 										<option value="basicDeposit2">국민은행: 218301-04-295558
@@ -238,10 +248,10 @@
 								</div>
 								<div class="form-group " style="width: 60%">
 									<label class="btn rmAudio"> 현금영수증 </label> <label
-										class="btn rmAudio"> <input type="radio" name="#"
-										value="#"> 현금영수증 신청
+										class="btn rmAudio"> <input type="radio" name="order_bankcode"
+										value="999"> 현금영수증 신청
 									</label> <label class="btn rmAudio"> <input type="radio"
-										name="#" value="#" checked> 신청안함
+										name="order_bankcode" value="999" checked> 신청안함
 									</label>
 								</div>
 							</div>
@@ -249,7 +259,7 @@
 							<div id="phone22" style="display: none;">
 								<div class="form-group" style="width: 30%">
 									<label for="btitle">휴대폰 번호</label> <input type="text"
-										class="form-control" id="phone22" name="order_phone"> <small>"-"생략하고
+										class="form-control" id="phone22" name="#"> <small>"-"생략하고
 										입력하시오.</small>
 								</div>
 							</div>

@@ -143,6 +143,12 @@
 		where sabang_id=#{sabang_id}
 	</update>
 	
+	<update id="updateBuyCount"  parameterType="int">
+	update sabang set
+		sabang_buycount=sabang_buycount+1 
+		where sabang_id=#{sabang_id}
+	</update>
+	
 	<!-- 예산에 맞는 6개 추천 아이템 출력 -->
 		<select id="selectByPrice" resultType="sabang" parameterType="int">
 		select rownum, sabang_id, sabang_name, sabang_price,
