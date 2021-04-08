@@ -33,18 +33,22 @@
 			$(function initPost(){
 				console.log("초기화 함수진입 화면");	
 				var initPostWay =`
-					<div id="pop1">
-
-					<div>${member.member_name}</div>
-					<div>
-						<span>${member.roadaddress}</span><span>${member.detailaddress}</span>
+					<div style='width: 60%'>
+					<div class='form-group'>
+						<label for='btitle'>주문자</label> <input type='text' class='form-control' id='oderer' name='oderer' value='${member.member_name}'>
+						<span id="errorName" class="error"></span>
+						</div>
+					<div class='form-group'>
+						<label for='bcontent'>주소</label>
+						<div class='mb-1'><input type='text' id='zipcode' placeholder='우편번호' value='${member.zipcode}' name='order_zipcode' style='width: 69%' readonly> <input type='button' onclick='DaumPostcode()' value='우편번호 찾기' style='width: 30%'></div>
+						<div class='mb-1'><input type='text' id='roadaddress' placeholder='주소' value='${member.roadaddress}' name='order_roadaddress' style='width: 100%' readonly>
+						</div>
+						<div class='mb-1'><input type='text' id='detailaddress' placeholder='상세주소' value='${member.detailaddress}' name='order_detailaddress'><input type='text' id='extraAddress' placeholder='참고항목' readonly></div>
 					</div>
-					<div>${member.member_phone}</div>
-					<input type="hidden" name="order_zipcode" value="${member.zipcode}"/>
-					<input type="hidden" name="order_roadaddress" value="${member.roadaddress}"/>
-					<input type="hidden" name="order_detailaddress" value="${member.detailaddress}"/>
-					<input type="hidden" name="order_phone" value="${member.member_phone}"/>
-				</div>`;
+					
+					<div class='form-group'><label for='bcontent'>번호</label> <input type='text' class='form-control' id='order_phone' name='order_phone' value='${member.member_phone}'>
+					<span id="errorPhone" class="error"></span></div>
+					</div>`;
 					$('#addPostWay').html(initPostWay);
 			})			
 		}	
@@ -152,17 +156,21 @@
 
 					<div class="pay_content_left_delivery_content">
 						<div class="pay_content_left_delivery_content_select">
+						
+						
 							<div class="pay_content_left_delivery_content_select_1">
 								<input id="basicPost" type="radio" name="post_way"
 									value="default_location"
 									style="width: 30px; height: 30px; vertical-align: -5px;"
-									checked><label for="id1">기본배송지</label>
+									><label for="id1">기본배송지</label>
 
 							</div>
+							
+							
 							<div class="pay_content_left_delivery_content_select_2">
 								<input id="directPost" type="radio" name="post_way"
 									value="direct_input"
-									style="width: 30px; height: 30px; vertical-align: -5px;"><label
+									style="width: 30px; height: 30px; vertical-align: -5px;" checked><label
 									for="id2">직접입력</label>
 
 							</div>
@@ -183,7 +191,7 @@
 							class="pay_content_left_way_content_select btn-group btn-group-lg"
 							data-toggle="buttons">
 
-							<label class="zz btn rmAudio active"> <input
+							<label class="btn rmAudio active"> <input
 								type="radio" name="order_payment" value="payByCard" style="opacity: 0;" checked>
 								카드 결제
 							</label> <label class="btn rmAudio"> <input
@@ -248,8 +256,11 @@
 							</div>
 
 							<div id="deposit" style="display: none;" class="ml-5">
+							
 								<div class="form-group" style="width: 30%">
-									<label for="btitle">입금자명 : &nbsp; 조민상</label>								
+								
+									<label for="btitle">입금자명 : &nbsp; 조민상</label>		
+															
 								</div>
 								<div class="form-group mt-4" style="width: 60%">
 									<label for="bcontent">입금은행 : &nbsp; 카카오뱅크 &nbsp; 3333-13-5087920 &nbsp; (조민상) &nbsp; &nbsp; &nbsp;</label>
@@ -335,14 +346,16 @@
 		//결제 유효성검사 
 		event.preventDefault();
 		var reg_name = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
-		/* var reg_phone = /^\d{10,11}$/; */
+		var reg_phone = /^\d{10,11}$/;
 	
 		
 		var result = true;
 		$(".error").html("");
 		
 		const order_name = $("#oderer").val();
-		/* const order_tel = $("#order_phone").val(); */
+		const order_tel = $("#order_phone").val();
+		const order_zipcode = $("#zipcode").val();
+		const order_address = $("#detailaddress").val();
 		// 이름 유효성
 		if (order_name === "") {
 			result = false;
@@ -354,16 +367,23 @@
 			}
 		}
 		 // 전화 뒷번호 유효성
-		/* if (order_tel === "") {
+		 if (order_tel === "") {
 			result = false;
 			$("#errorPhone").html("필수 사항 입니다.");
 		} else{
-			if (!reg_tel_suf.test(order_tel)) {
+			if (!reg_phone.test(order_tel)) {
 				result = false;
 				$("#errorPhone").html("7자이상 8자 이하의 숫자만 적어주세요.");
 			}
-		}  */
-		
+		}  
+		if(order_zipcode === ""){
+			result = false;
+			alert("주소 정보를 입력해주세요.")
+		}
+		else if(order_address ===""){
+			result = false;
+			alert("상세 주소 정보를 입력해주세요.")
+		}
 		
 		
 		if(result){
