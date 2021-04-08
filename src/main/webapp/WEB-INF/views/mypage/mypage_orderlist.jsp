@@ -19,12 +19,6 @@
 </c:if>
 <c:if test="${fn:length(myOrderList) > 0}">
 	<!-- 마이페이지 주문 내역 - 내용이 있을 때-->
-	<div class="state_button">
-		<select name="time_button">
-			<option value="최신순" selected>최신순</option>
-			<option value="오래된순">오래된순</option>
-		</select> 
-	</div>
 	<table class="orderlist_table">
 		<colgroup>
 			<col width="1%">
