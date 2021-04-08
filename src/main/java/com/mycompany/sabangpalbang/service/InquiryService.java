@@ -44,8 +44,8 @@ public class InquiryService {
 		Inquiry Ilist = inquiryDao.selectInquiryByNickname(nickname);
 		return Ilist;
 	}
-	public int getTotalMyRows(String nickname) {
-		int row = inquiryDao.mycount(nickname);
+	public int getTotalMyRows(String inquiry_writer) {
+		int row = inquiryDao.mycount(inquiry_writer);
 		return row;
 	}
 
