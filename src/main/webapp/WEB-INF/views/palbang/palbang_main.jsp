@@ -4,6 +4,7 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <style>
 .palbang_div3_line_item2  { 
+	border-radius: 5%; 
 	overflow: hidden; 
 	}
 .palbang_div3_line_item2  img {
@@ -92,32 +93,44 @@
    		</div>
         <div class="d-flex justify-content-center">
 		<div>
-			<table style="width:100%;">
-				<tr>
+			<nav style="width: 100%;">
 					<!-- 처음 이전 12345 다음 맨끝 -->
-					<td colspan="5" class="text-center"><a
-						class="btn btn-outline-primary btn-sm" href="palbang_main?std=${stdno}&pageNo=1">처음</a>
+				<ul  class="pagination">
+					<li class="page-item">
+						<a class="page-link" href="palbang_main?std=${stdno}&pageNo=1">처음</a> 
+					</li>
 						<c:if test="${palbang_pager.groupNo>1}">
-							<a class="btn btn-outline-info btn-sm"
-								href="palbang_main?std=${stdno}&pageNo=${palbang_pager.startPageNo-1}">이전</a>
-						</c:if> <c:forEach var="i" begin="${palbang_pager.startPageNo}"
+						<li class="page-item">
+							<a class="page-link" href="palbang_main?std=${stdno}&pageNo=${palbang_pager.startPageNo-1}">이전</a>
+						</li>
+						</c:if> 
+						<c:forEach var="i" begin="${palbang_pager.startPageNo}"
 							end="${palbang_pager.endPageNo}">
-	
+
 							<c:if test="${palbang_pager.pageNo!=i}">
-								<a class="btn btn-outline-success btn-sm"
+							<li class="page-item">
+								<a class="page-link"
 									href="palbang_main?std=${stdno}&pageNo=${i}">${i}</a>
+							</li>
 							</c:if>
 							<c:if test="${palbang_pager.pageNo==i}">
-								<a class="btn btn-outline-danger btn-sm"
+							<li class="page-item active">
+								<a class="page-link"
 									href="palbang_main?std=${stdno}&pageNo=${i}">${i}</a>
+							</li>
 							</c:if>
-						</c:forEach> <c:if test="${palbang_pager.groupNo<palbang_pager.totalGroupNo}">
-							<a class="btn btn-outline-info btn-sm"
+						</c:forEach> 
+						<c:if test="${palbang_pager.groupNo<palbang_pager.totalGroupNo}">
+						<li class="page-item">
+							<a class="page-link"
 								href="palbang_main?std=${stdno}&pageNo=${palbang_pager.endPageNo+1}">다음</a>
-						</c:if> <a class="btn btn-outline-primary btn-sm"
-						href="palbang_main?std=${stdno}&pageNo=${palbang_pager.totalPageNo}">맨끝</a></td>
-				</tr>
-			</table>
+								</li>
+						</c:if>
+						<li class="page-item"> 
+						<a class="page-link" href="palbang_main?std=${stdno}&pageNo=${palbang_pager.totalPageNo}">맨끝</a>
+						</li>
+				</ul>
+			</nav>
 		</div>
 	</div>
     </div>

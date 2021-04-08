@@ -41,8 +41,8 @@
 				<td>${orderMain.order_id}</td>
 				<td><fmt:formatDate value="${orderMain.order_date}"
 						pattern="YYYY.MM.dd" /></td>
-				<td><img src="resources/images/sabang_post/${orderMain.sabang_imgoname}"
-					width="100"></td>
+				<td><a href="sabang_detail?sid=${orderMain.order_sabangid}"><img src="resources/images/sabang_post/${orderMain.sabang_imgoname}"
+					width="100"></a></td>
 				<td>${orderMain.sabang_name}<br /> ( <c:forEach var="orderDetail"
 						items="${orderMain.orderLists}" varStatus="status">
 						<c:if test="${!status.last}">
