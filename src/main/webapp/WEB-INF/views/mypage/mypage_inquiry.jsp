@@ -18,15 +18,9 @@
 <!-- 마이페이지 > 내가 쓴 문의글 -->
 <div class="d-flex justify-content-center p-2">
 	<br />
-	<c:if test="${fn:length(inquiryList) > 0}">
 		<div class="mt-1 mr-2" id="userInquiry">
-			<br />
+				<br />
 		</div>
-	</c:if>
-	<c:if test="${fn:length(inquiryList) == 0}">
-		<p style="text-align:center;font-size:20px;margin:200px;color:grey;">
-			<sec:authentication property="name"/> 님의 <span style="color:#00B0F0;"> 문의 </span> 내역이 없습니다 </p>
-	</c:if>
 </div>
 
 
