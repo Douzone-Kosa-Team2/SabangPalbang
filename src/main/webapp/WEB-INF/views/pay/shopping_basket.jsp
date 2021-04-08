@@ -4,23 +4,49 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
 <script>
-/* event.preventDefault();
-if($(':radio[name="cartKey"]:checked').length < 1){
-    alert('1개를 꼭 선택하세요.');                        
-} */
+	/* event.preventDefault();
+	 if($(':radio[name="cartKey"]:checked').length < 1){
+	 alert('1개를 꼭 선택하세요.');                        
+	 } */
 
-function validate(){
-	//유효성검사 
-	event.preventDefault();
-	console.log($(':radio[name="cartKey"]:checked').length);
-	if($(':radio[name="cartKey"]:checked').length == 1){
-		$("form").submit();
+	function validate() {
+		//유효성검사 
+		event.preventDefault();
+		console.log($(':radio[name="cartKey"]:checked').length);
+		if ($(':radio[name="cartKey"]:checked').length == 1) {
+			$("form").submit();
+		} else {
+			alert('1개 품목을 선택해주세요.');
+		}
 	}
-	else{
-		alert('1개 품목을 선택해주세요.');
-	}
-}
 </script>
+<style>
+.bascketImg_container {
+	width: 55%;
+	height: 600px;
+	background-color: yellow;
+	background: url("resources/images/basket/nomoney.jpg");
+	opacity:0.8;
+	margin: 10px 400px;
+}
+.message {
+	padding:50px;
+	font-size: 30px;
+	color: white;
+	text-align: center;
+}
+</style>
+
+<c:if test="${sessionCart == null}">
+	<div class="bascketImg_container">
+		<p class="message">
+			<sec:authentication property="name" />
+			님의 <span style="color: #00B0F0;"> 장바구니는</span> 비어있습니다.
+		</p>
+	</div>
+</c:if>
+
+<c:if test="${sessionCart != null}">
 
 <!-- 장바구니 -->
 <div class="shopping_basket_title">
@@ -37,7 +63,6 @@ function validate(){
 		<col >
 	</colgroup>
 	<tr>
-
 		<td></td>
 		<td>번호</td>
 		
@@ -82,7 +107,9 @@ function validate(){
 	<div class="shopping_basket_buy_button">
 		<button class="btn btn-lg btn-info" onclick="validate()"
 			style="width: 40%; height: 40%; color: white">결제하기</button>
-	</div>
-</form>
+		</div>
+	</form>
+</c:if>
+
 
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

@@ -143,43 +143,56 @@ public class AuthController {
 	// 아이디 찾기
 	@PostMapping("/findEmailDo")
 	public String findEmailDo(String member_name, String member_phone, Model model) {
-		Member member = memberService.findEmail(member_name, member_phone);
-
-		model.addAttribute("member_email", member.getMember_email());
-		model.addAttribute("member_nickname", member.getMember_nickname());
-		return "auth/findEmail_successForm"; // 찾으면
+		
+		try {
+			Member member = memberService.findEmail(member_name, member_phone);
+			model.addAttribute("member_email", member.getMember_email());
+			model.addAttribute("member_nickname", member.getMember_nickname());
+			return "auth/findEmail_successForm"; // 찾으면
+		} catch(Exception e){
+			logger.warn("Not find member");
+		}
+		
+		return "redirect:/findEmailForm";
 	}
 
 	// 비밀번호 재설정
 	@PostMapping("/findPwdDo")
 	public String findPwdDo(String member_email, String member_name, String member_phone, Model model) {
-		// 비밀번호 찾기 이후 필요한 값 찾기
-		Member member = memberService.findPwd(member_email, member_name, member_phone);
-
-		model.addAttribute("member_email", member.getMember_email());
-		model.addAttribute("member_nickname", member.getMember_nickname());
-
-		// 비밀번호 재설정 후 디비에 저장
-		String resetPw = memberService.resetPwd(member_email);
-		logger.info(resetPw);
 		
-		// 이메일 보내주기 
 		try {
-			MimeMessage message = mailSender.createMimeMessage();
-			MimeMessageHelper messageHelper = new MimeMessageHelper(message,
+					// 비밀번호 찾기 이후 필요한 값 찾기
+			Member member = memberService.findPwd(member_email, member_name, member_phone);
+
+			model.addAttribute("member_email", member.getMember_email());
+			model.addAttribute("member_nickname", member.getMember_nickname());
+
+			// 비밀번호 재설정 후 디비에 저장
+			String resetPw = memberService.resetPwd(member_email);
+			logger.info(resetPw);
+			
+			// 이메일 보내주기 
+			try {
+				MimeMessage message = mailSender.createMimeMessage();
+				MimeMessageHelper messageHelper = new MimeMessageHelper(message,
 					true, "UTF-8");
 
-			messageHelper.setFrom("projectforjhl@gmail.com"); // 보내는사람 생략하면 정상작동을 안함
-			messageHelper.setTo(member_email); // 받는사람 이메일
-			messageHelper.setSubject("사방 팔방 새로운 비밀번호"); // 메일제목은 생략이 가능하다
-			messageHelper.setText("새로운 비밀번호는 "+ resetPw +" 입니다."); // 메일 내용
+				messageHelper.setFrom("projectforjhl@gmail.com"); // 보내는사람 생략하면 정상작동을 안함
+				messageHelper.setTo(member_email); // 받는사람 이메일
+				messageHelper.setSubject("사방 팔방 새로운 비밀번호"); // 메일제목은 생략이 가능하다
+				messageHelper.setText("새로운 비밀번호는 "+ resetPw +" 입니다."); // 메일 내용
 
-			mailSender.send(message);
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+				mailSender.send(message);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
 		
-		return "auth/resetPw_successForm"; // 찾으면
+			return "auth/resetPw_successForm"; // 찾으면
+			
+		} catch(Exception e){
+			logger.warn("Not find member");
+		}
+		return "redirect:/resetPwForm"; // 못찾으면
 	}
 
 	// 권한 오류 페이지

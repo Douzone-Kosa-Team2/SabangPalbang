@@ -79,8 +79,6 @@ background-image: none !important;
 
 					<sec:authorize access="isAuthenticated()">
 						<!-- 로그인 인증이 되엇으면 -->
-						<span class="mr-2">User : <sec:authentication
-								property="name" /></span>
 						<form method="post" class="d-inline-block"
 							action="${pageContext.request.contextPath}/logout">
 							<input type="hidden" name="${_csrf.parameterName}"
@@ -96,6 +94,13 @@ background-image: none !important;
 
 				</div>
 			</nav>
+		</div>
+		<div class="d-flex justify-content-end">
+			<sec:authorize access="isAuthenticated()">
+						<!-- 로그인 인증이 되엇으면 -->
+						<span class="mr-2">User : <sec:authentication
+								property="name" /></span>
+			</sec:authorize>
 		</div>
 	</div>
 	<hr />
