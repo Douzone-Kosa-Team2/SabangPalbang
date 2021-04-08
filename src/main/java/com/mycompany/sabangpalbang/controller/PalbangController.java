@@ -29,13 +29,11 @@ import com.mycompany.sabangpalbang.service.PalbangService;
 
 @Controller
 public class PalbangController {
+	private static final Logger logger = LoggerFactory.getLogger(PalbangController.class);
 	@Autowired
 	private PalbangService palbangService;
-
 	@Autowired
 	private MemberService memberService;
-
-	private static final Logger logger = LoggerFactory.getLogger(PalbangController.class);
 
 	// 팔방페이지 - 좋아요 순 (디폴트)
 	@GetMapping("/palbang_main")
@@ -72,8 +70,7 @@ public class PalbangController {
 		}
 
 		model.addAttribute("list", list);
-		model.addAttribute("stdno", std);
-
+		model.addAttribute("stdno", std); // 정렬 구분 
 		return "palbang/palbang_main";
 	}
 
@@ -86,9 +83,13 @@ public class PalbangController {
 	@GetMapping("/palbang_update")
 	public String palbang_update(int pid, Model model) {
 		logger.info("palbang_update 메시지");
-		// 팔방과 팔방디테일 모두 가져옴 
+	
+		// 1. Palbang DB SELECT
 		Palbang palbang = palbangService.getPalbang(pid);
+		// 2. PalbangDetail DB SELECT
 		List<Palbang_detail> list = palbangService.getPalbangDetail(pid);
+		// 3. Palbang 객체에 PalbangDetail 리스트 저장 
+		
 		palbang.setReviews(list);
 		model.addAttribute("palbang", palbang);
 		return "palbang/palbang_update";
@@ -97,7 +98,7 @@ public class PalbangController {
 	@GetMapping("/palbang_delete")
 	public String palbang_delete(int pid) {
 		logger.info("palbang_delete 메시지");
-		palbangService.removePalbangById(pid); // cascade 팔방 테이블만 삭제해도 된다.
+		palbangService.removePalbangById(pid); // Palbang DELETE => PalbangDetail Cascasde Delete 
 		return "redirect:/palbang_main";
 	}
 
@@ -106,10 +107,10 @@ public class PalbangController {
 		logger.info("palbang_detail 메시지");
 		// 팔방 게시물 조회수 1 증가
 		palbangService.addViewCount(pid);
+		
 		Palbang palbang = palbangService.getPalbang(pid);
 		List<Palbang_detail> palbanglist = palbangService.getPalbangDetail(pid);
 		String email = memberService.getEmailByNickname(palbang.getPalbang_nickname()); // 팔방 작성자
-		logger.info("email: --" + email);
 		
 		if (auth != null && auth.getName().equals(email)) {
 			model.addAttribute("email", 1); // 로그인유저 == 팔방 작성자
@@ -118,7 +119,6 @@ public class PalbangController {
 		}
 		model.addAttribute("palbang", palbang);
 		model.addAttribute("palbanglist", palbanglist);
-
 		return "palbang/palbang_detail";
 	}
 
@@ -130,13 +130,11 @@ public class PalbangController {
 		int likeResult = 0;
 		if (auth != null) {
 			int member_id = memberService.getIdByEmail(auth.getName());
-			likeResult = palbangService.isLikeByUser(palbang_id, member_id); // 로그인유저가 좋아요 클릭 했는지 여부
+			likeResult = palbangService.isLikeByUser(palbang_id, member_id); // 현재 로그인 유저가 좋아요 클릭 했는지 여부
 		}
 
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("result", likeResult);
-		logger.info("likeResult: " + likeResult);
-
 		return jsonObject.toString();
 	}
 
@@ -144,9 +142,8 @@ public class PalbangController {
 	@ResponseBody
 	public String likeUp(int palbang_id, Authentication auth) {
 		logger.info("likeUp 메시지");
+		
 		String member_email = auth.getName();
-		logger.info("현재 로그인한 유저: " + member_email);
-
 		int member_id = memberService.getIdByEmail(member_email);
 		palbangService.insertLike(palbang_id, member_id);
 		palbangService.updateLikeCountUp(palbang_id);
@@ -162,7 +159,6 @@ public class PalbangController {
 	public String likeDown(int palbang_id, Authentication auth) {
 		logger.info("likeDown 메시지");
 		String member_email = auth.getName();
-		logger.info("현재 로그인한 유저: " + member_email);
 
 		int member_id = memberService.getIdByEmail(member_email);
 		palbangService.deleteLike(palbang_id, member_id);
@@ -204,18 +200,11 @@ public class PalbangController {
 		}
 
 		/* 팔방 디테일 리뷰 이미지 */
-		logger.info("size: " + palbang.getReviews().size());
-		// int idx = 0; // 디테일 리스트 실제 인덱스
 		List<Palbang_detail> newReviews = new ArrayList<>();
 		for (int i = 0; i < palbang.getReviews().size(); i++) {
 			if (palbang.getReviews().get(i).getPdattach() != null) {
 				newReviews.add(palbang.getReviews().get(i));
 			}
-		}
-
-		logger.info("size: " + newReviews.size());
-		for (int i = 0; i < newReviews.size(); i++) {
-			logger.info("" + newReviews.get(i).getPdattach());
 		}
 
 		for (int i = 0; i < newReviews.size(); i++) {
@@ -244,13 +233,8 @@ public class PalbangController {
 		}
 		palbang.setReviews(newReviews);
 
-		for (int i = 0; i < palbang.getReviews().size(); i++) {
-			logger.info("" + palbang.getReviews().get(i).getPdattach());
-		}
-
 		// DB insert - 팔방디테일
 		palbangService.savePalbang(palbang);
-		logger.info("palbang id: " + palbang.getPalbang_id());
 		
 		// 두 테이블에 insert가 제대로 되었다면 리다이렉트해서 작성한 디테일 페이지 보여주기
 		return "redirect:/palbang_detail?pid=" + palbang.getPalbang_id();
@@ -308,11 +292,9 @@ public class PalbangController {
 		}
 		palbang.setReviews(newReviews);
 	
-		logger.info("수정한 팔방 : " + palbang.toString());
-		logger.info("palbang id: " + palbang.getPalbang_id());
 		// DB update - 팔방디테일
 		palbangService.updatePalbang(palbang);
-
+		// 수정 완료 시 디테일 페이지 리다이렉트 
 		return "redirect:/palbang_detail?pid=" + palbang.getPalbang_id();
 	}
 }
