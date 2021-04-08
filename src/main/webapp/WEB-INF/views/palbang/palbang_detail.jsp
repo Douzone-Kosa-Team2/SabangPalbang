@@ -99,18 +99,19 @@
 	</div>
 	
 	<div class="palbang_detail_content">
-		<div class="palbang_detail_content_mainImg">
-			<img src="resources/images/palbang_post/${palbang.palbang_imgoname}">
+		<div style="width:100%;" class="palbang_detail_content_mainImg">
+			<img style="width:800px; height: 600px;" src="resources/images/palbang_post/${palbang.palbang_imgoname}">
 		</div>
 		<!-- 1번 상세 -->
 		<c:forEach var="palbangdetail" items="${palbanglist}">
 			<div class="palbang_detail_content_space">
-				<div class="palbang_detail_content_spaceImg">
-					<img src="resources/images/palbang_detail/${palbangdetail.palbang_dimgoname}">
+				<div style="width:65%;" class="palbang_detail_content_spaceImg">
+					<img style="width:100%" src="resources/images/palbang_detail/${palbangdetail.palbang_dimgoname}">
 				</div>
-				<div class="palbang_detail_content_space_txt">
-					<p>${palbangdetail.palbang_explain}</p>
+				<div style="width:35%" class="palbang_detail_content_space_txt">			
+				<p>${palbangdetail.palbang_explain}</p>	
 				</div>
+				
 			</div>
 		</c:forEach>
 	</div>

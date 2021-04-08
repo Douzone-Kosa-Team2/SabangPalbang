@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"  %>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
@@ -194,12 +195,12 @@
                      data-toggle="buttons">
 
                      <label class="btn btn-outline-info rmAudio"> <input
-                        type="radio" name="order_payment" value="payByCard" checked>
+                        type="radio" name="order_payment" value="payByCard" style="opacity: 0;" checked>
                         카드 결제
                      </label> <label class="btn btn-outline-info rmAudio"> <input
-                        type="radio" name="order_payment" value="payByDeposit"> 무통장 입금
+                        type="radio" name="order_payment" value="payByDeposit" style="opacity: 0;"> 무통장 입금
                      </label> <label class="btn btn-outline-info rmAudio"> <input
-                        type="radio" name="order_payment" value="payByPhone"> 휴대폰 결제
+                        type="radio" name="order_payment" value="payByPhone" style="opacity: 0;"> 휴대폰 결제
                      </label>
                   </div>
 
@@ -303,7 +304,8 @@
                      <c:forEach var="product" items="${selectedCart.productCarts}">
                         <div>
                         <input type="hidden" name="productlist" value="${product.product_id}"/>
-                           <text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text>${product.product_price}</div>
+                           <text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text>
+                           <fmt:formatNumber value="${product.product_price}" pattern="#,###"/></div>
                         <c:set var="sum" value="${sum + product.product_price}" />
                      </c:forEach>
                   </div>
@@ -314,7 +316,7 @@
 
                   <div class="content_4_2">
                      <text style="font-family:'Cafe24Dangdanghae';">&#8361;</text>
-                     <c:out value="${sum}" />
+                     <fmt:formatNumber value="${sum}" pattern="#,###"/>
                      <input type="hidden" name="order_price" value="${sum}"/>
                   </div>
 

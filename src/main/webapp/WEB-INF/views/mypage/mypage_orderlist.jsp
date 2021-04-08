@@ -53,7 +53,7 @@
 						</c:if>
 					</c:forEach> )
 				</td>
-				<td>${orderMain.order_price}</td>
+				<td><text style="font-family: 'Cafe24Dangdanghae';">&#8361;&nbsp;</text><fmt:formatNumber value="${orderMain.order_price}" pattern="#,###"/></td>
 				<td>${orderMain.order_state}</td>
 			</tr>
 		</c:forEach>

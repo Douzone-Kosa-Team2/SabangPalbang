@@ -78,6 +78,7 @@
 			id="changeImg_big" width="500px">
 	</div>
 
+
 	<div class="sabang_detail_1_price_list">
 		<div class="sabang_detail_1_list_title">
 			<strong>${sabang.sabang_name}</strong>
@@ -95,7 +96,7 @@
 					<div class="sabang_detail_1_list_name_price" style="width:100px;">
 						<div >
 							<span style="font-family:'Cafe24Dangdanghae';">&#8361;</span> <span
-								id="${product.product_id}">${product.product_price}</span>
+								id="${product.product_id}"><fmt:formatNumber value="${product.product_price}" pattern="#,###"/></span>
 							<c:set var="sum" value="${sum + product.product_price}" />
 						</div>
 					</div>
@@ -109,6 +110,8 @@
 					</div>
 				</div>
 			</c:forEach>
+
+
 
 
 			<div class="sabang_detail_1_total_price">
@@ -165,6 +168,7 @@
 <!-- 상품1 -->
 
 <div class="sabang_detail_2">
+
 	<c:forEach var="product" items="${productList}">
 		<div class="sabang_detail_2_content">
 			<div class="sabang_detail_2_content_img">
@@ -175,7 +179,7 @@
 				<div class="sabang_detail_2_content_txt_header"></div>
 				<h3>${product.product_name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<span style="font-family: 'Cafe24Dangdanghae';">&#8361;</span>
-					&nbsp;&nbsp;${product.product_price}
+					&nbsp;&nbsp;<fmt:formatNumber value="${product.product_price}" pattern="#,###"/>
 				</h3>
 				<div class="sabang_detail_2_content_txt_content">
 					<div class="sabang_detail_2_content_txt_content_1">
@@ -188,6 +192,7 @@
 			</div>
 		</div>
 	</c:forEach>
+
 </div>
 
 
