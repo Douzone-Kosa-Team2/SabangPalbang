@@ -195,15 +195,14 @@ public class PalbangController {
 
 		palbang.setPalbang_nickname(memberService.getByInquiryNickname(auth.getName()));
 
-		for (int i = 0; i < palbang.getReviews().size(); i++) {
-			logger.info("" + palbang.getReviews().get(i).getPdattach());
-		}
 
 		/* 팔방 디테일 리뷰 이미지 */
+		int index = 0;
 		List<Palbang_detail> newReviews = new ArrayList<>();
 		for (int i = 0; i < palbang.getReviews().size(); i++) {
 			if (palbang.getReviews().get(i).getPdattach() != null) {
-				newReviews.add(palbang.getReviews().get(i));
+				newReviews.add(index, palbang.getReviews().get(i));
+				index += 1;
 			}
 		}
 
@@ -263,10 +262,12 @@ public class PalbangController {
 		palbang.setPalbang_nickname(memberService.getByInquiryNickname(auth.getName()));
 		
 		/* 팔방 디테일 리뷰 이미지 */
+		int index = 0;
 		List<Palbang_detail> newReviews = new ArrayList<>();
 		for (int i = 0; i < palbang.getReviews().size(); i++) {
 			if (palbang.getReviews().get(i).getPdattach() != null) {
-				newReviews.add(palbang.getReviews().get(i));
+				newReviews.add(index, palbang.getReviews().get(i));
+				index += 1;
 			}
 		}
 		

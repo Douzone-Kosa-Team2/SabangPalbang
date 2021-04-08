@@ -11,6 +11,7 @@
 </script>
 <style>
 .sabang_div3_line_item2 {
+	border-radius: 5%; 
 	overflow: hidden;
 }
 
@@ -43,7 +44,7 @@
 <div class="sabang_main">
 	<div class="sabang_div1">
 		<img class="sabang_div1_img"
-			src="resources/images/sabang_post/slogan_sa.png" height="45px">
+			src="resources/images/sabang_post/sabang_slogan.jpg" width="100%">
 	</div>
 	<div class="sabang_div2">
 		<ul class="sabang_div2_sort_type">
@@ -134,33 +135,43 @@
 
 	<div class="d-flex justify-content-center">
 		<div>
-			<table style="width: 100%;">
-				<tr>
+			<nav style="width: 100%;">
 					<!-- 처음 이전 12345 다음 맨끝 -->
-					<td colspan="5" class="text-center"><a
-						class="btn btn-outline-primary btn-sm"
-						href="sabang_main?std=${stdno}&pageNo=1">처음</a> <c:if
-							test="${sabang_pager.groupNo>1}">
-							<a class="btn btn-outline-info btn-sm"
-								href="sabang_main?std=${stdno}&pageNo=${sabang_pager.startPageNo-1}">이전</a>
-						</c:if> <c:forEach var="i" begin="${sabang_pager.startPageNo}"
-							end="${sabang_pager.endPageNo}">
+				<ul  class="pagination">
+					<li class="page-item">
+						<a class="page-link" href="sabang_main?std=${stdno}&pageNo=1">처음</a> 
+					</li>
+						<c:if test="${sabang_pager.groupNo>1}">
+						<li class="page-item">
+							<a class="page-link" href="sabang_main?std=${stdno}&pageNo=${sabang_pager.startPageNo-1}">이전</a>
+						</li>
+						</c:if> 
+						<c:forEach var="i" begin="${sabang_pager.startPageNo}" end="${sabang_pager.endPageNo}">
 
 							<c:if test="${sabang_pager.pageNo!=i}">
-								<a class="btn btn-outline-success btn-sm"
+							<li class="page-item">
+								<a class="page-link"
 									href="sabang_main?std=${stdno}&pageNo=${i}">${i}</a>
+							</li>
 							</c:if>
 							<c:if test="${sabang_pager.pageNo==i}">
-								<a class="btn btn-outline-danger btn-sm"
+							<li class="page-item active">
+								<a class="page-link"
 									href="sabang_main?std=${stdno}&pageNo=${i}">${i}</a>
+							</li>
 							</c:if>
-						</c:forEach> <c:if test="${sabang_pager.groupNo<pager.totalGroupNo}">
-							<a class="btn btn-outline-info btn-sm"
+						</c:forEach> 
+						<c:if test="${sabang_pager.groupNo<pager.totalGroupNo}">
+						<li class="page-item">
+							<a class="page-link"
 								href="sabang_main?std=${stdno}&pageNo=${sabang_pager.endPageNo+1}">다음</a>
-						</c:if> <a class="btn btn-outline-primary btn-sm"
-						href="sabang_main?std=${stdno}&pageNo=${sabang_pager.totalPageNo}">맨끝</a></td>
-				</tr>
-			</table>
+								</li>
+						</c:if>
+						<li class="page-item"> 
+						<a class="page-link" href="sabang_main?std=${stdno}&pageNo=${sabang_pager.totalPageNo}">맨끝</a>
+						</li>
+				</ul>
+			</nav>
 		</div>
 	</div>
 </div>

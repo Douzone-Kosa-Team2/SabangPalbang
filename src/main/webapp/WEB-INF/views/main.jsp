@@ -99,7 +99,7 @@
 				<div class="main_sabang_content_1">
 					<a href="sabang_detail?sid=${sabang.sabang_id}">
 						<div class="main_sabang_content_1_img">
-							<img src="resources/images/sabang_post/${sabang.sabang_imgoname}" width="450px">
+							<img src="resources/images/sabang_post/${sabang.sabang_imgoname}" height="450px" width="450px" style="border-radius: 5%; overflow: hidden;">
 						</div>
 						<div class="main_sabang_content_1_detail">
 						<br>
@@ -126,7 +126,7 @@
 				<div class="main_palbang_content_1">
 					<a href="palbang_detail?pid=${palbang.palbang_id}">
 						<div class="main_palbang_content_1_img">
-							<img src="resources/images/palbang_post/${palbang.palbang_imgoname}"  width="450px">
+							<img src="resources/images/palbang_post/${palbang.palbang_imgoname}" height="450px" width="450px" style="border-radius: 5%; overflow: hidden;">
 						</div>
 						<div class="main_palbang_content_1_detail">
 						<br>
