@@ -44,7 +44,7 @@
 <div class="sabang_main">
 	<div class="sabang_div1">
 		<img class="sabang_div1_img"
-			src="resources/images/sabang_post/sabang_slogan.jpg" width="100%">
+			src="resources/images/sabang_post/sabang_slogan.jpg" width="100%" height="100px">
 	</div>
 	<div class="sabang_div2">
 		<ul class="sabang_div2_sort_type">

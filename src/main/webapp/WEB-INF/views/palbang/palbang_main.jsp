@@ -34,7 +34,7 @@
 <!-- palbang_main -->
     <div class="palbang_main">
         <div class="palbang_div1"> <!-- 슬로건 -->
-            <img class="palbang_div1_img" src="resources/images/palbang_post/palbang_slogan.jpg" width="100%">
+            <img class="palbang_div1_img" src="resources/images/palbang_post/palbang_slogan.jpg" width="95%">
         </div>
         <div class="palbang_div2"> <!-- 정렬 카테고리 -->
             <ul class="palbang_div2_sort_type">
