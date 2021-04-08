@@ -386,19 +386,13 @@
 		}
 		
 		
+
 		if(result){
-		if($(':radio[name="order_bankcode"]:checked').length == 1){
-			
-			
+
 			let payElem = $('#payForm');
 			payElem.submit();
 		}
-		else{
-			alert("최소 1개의 결제 방법을 선택해야 합니다.")
-		}
 	}
-		
-}
 	
 	function cancel() {
 		location.href = "sabang_main";

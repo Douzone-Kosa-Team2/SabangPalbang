@@ -156,7 +156,6 @@ public class PayController {
 			Member member = memberService.getPostInfo(user_email);
 
 			logger.info(member.getMember_name());
-			model.addAttribute("products", products);
 			model.addAttribute("sabang", sabang);
 			model.addAttribute("productlist", productlist);
 			model.addAttribute("member", member);
@@ -226,7 +225,6 @@ public class PayController {
 		
 		model.addAttribute("productname", productname);
 		model.addAttribute("sabangname", sabangname);
-		model.addAttribute("result", result);
 		model.addAttribute("order", order);
 
 		// 넘겨주는 부분

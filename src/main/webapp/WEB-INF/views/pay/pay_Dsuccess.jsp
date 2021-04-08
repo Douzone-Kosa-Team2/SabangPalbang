@@ -1,5 +1,6 @@
 <%@ page  contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%
@@ -19,7 +20,7 @@
     <div>${product.product_name}&nbsp</div>
     </c:forEach>
     </div>
-    <div class="pay_success_4"><span>가격 :  <text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text>${order.order_price}</span></div>
+    <div class="pay_success_4"><span>가격 :  <text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text> <fmt:formatNumber value="${order.order_price}" pattern="#,###"/></span></div>
     <div class="pay_success_5">주문 번호 : ${order.order_id} &nbsp 주문날짜 : <%= sf.format(nowTime) %></div>
     <div class="pay_success_6">
         <a href="main">
