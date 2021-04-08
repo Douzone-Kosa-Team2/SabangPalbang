@@ -75,7 +75,7 @@
 <div class="sabang_detail_1">
 	<div class="sabang_detail_1_main_image">
 		<img src="resources/images/sabang_post/${sabang.sabang_imgoname}"
-			id="changeImg_big" width="100%" height="100%">
+			id="changeImg_big" width="500px">
 	</div>
 
 	<div class="sabang_detail_1_price_list">

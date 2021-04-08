@@ -25,32 +25,38 @@
 				<h5 class="card-title">${sabang.sabang_name}</h5>
 
 				<table class="table inquiry_table" id="sabang_inquiry_table"
-					style="text-align: center;">
+					style="text-align: center; font-family:'Cafe24Dangdanghae';">
 					<thead class="thead-light">
 						<tr>
 							<th scope="col">번호</th>
 							<th scope="col">문의종류</th>
 							<th scope="col">답변상태</th>
-							<th scope="col">제목</th>
+							
 							<th scope="col">문의자</th>
 							<th scope="col">등록일</th>
 						</tr>
 					</thead>
 					<tbody>
+						
 						<tr>
 							<td scope="row">${selectedInq.inquiry_id}</td>
 							<td>${selectedInq.inquiry_type}</td>
 							<td>${selectedInq.inquiry_ansstate}</td>
-							<td>${selectedInq.inquiry_title}</td>
 							<td>${selectedInq.inquiry_writer}</td>
 							<td><fmt:formatDate value="${selectedInq.inquiry_date}"
 									pattern="YYYY.MM.dd" /></td>
 						</tr>
 						<tr>
-							<td class="table-success" colspan='6'>내 문의글</td>
+							<td scope="col" class="table-primary" colspan='5' style="color:white; font-family: 'Cafe24Dangdanghae'; font-size:1.5em;">제목</td>
 						</tr>
 						<tr>
-							<td colspan='6'>
+							<td  colspan='5'>${selectedInq.inquiry_title}</td>
+						</tr>
+						<tr>
+							<td class="table-info" colspan='5' style="color:white; font-family: 'Cafe24Dangdanghae'; font-size:1.5em;">내 문의글</td>
+						</tr>
+						<tr>
+							<td colspan='5'>
 								<div style="width: 70vw;">
 									${selectedInq.inquiry_explain}
 								</div>
@@ -58,18 +64,18 @@
 						</tr>
 						<c:if test="${empty selectedInq.inquiry_anscontent}">
 							<tr>
-								<td class="table-success" colspan='6'>답변</td>
+								<td class="table-danger" colspan='5' style="color:white; font-family: 'Cafe24Dangdanghae'; font-size:1.5em;">답변</td>
 							</tr>
 							<tr>
-								<td colspan='6'>아직 답변이 없습니다.</td>
+								<td colspan='5'>아직 답변이 없습니다.</td>
 							</tr>
 						</c:if>
 						<c:if test="${!empty selectedInq.inquiry_anscontent}">
 							<tr>
-								<td class="table-info" colspan='6'>답변</td>
+								<td class="table-success" colspan='5'>답변</td>
 							</tr>
 							<tr>
-								<td colspan='6'>
+								<td colspan='5'>
 									<div style="width: 70vw;">
 										${selectedInq.inquiry_anscontent}
 									</div>
