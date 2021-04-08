@@ -335,14 +335,14 @@
 		//결제 유효성검사 
 		event.preventDefault();
 		var reg_name = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
-		var reg_phone = /^\d{10,11}$/;
+		/* var reg_phone = /^\d{10,11}$/; */
 	
 		
 		var result = true;
 		$(".error").html("");
 		
 		const order_name = $("#oderer").val();
-		const order_tel = $("#order_phone").val();
+		/* const order_tel = $("#order_phone").val(); */
 		// 이름 유효성
 		if (order_name === "") {
 			result = false;
@@ -354,7 +354,7 @@
 			}
 		}
 		 // 전화 뒷번호 유효성
-		if (order_tel === "") {
+		/* if (order_tel === "") {
 			result = false;
 			$("#errorPhone").html("필수 사항 입니다.");
 		} else{
@@ -362,7 +362,7 @@
 				result = false;
 				$("#errorPhone").html("7자이상 8자 이하의 숫자만 적어주세요.");
 			}
-		} 
+		}  */
 		
 		
 		
