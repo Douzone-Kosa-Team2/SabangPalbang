@@ -3,7 +3,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
-	
+<script>
+function showInq2(sid,inquiry_id){
+	console.log("sabang_id : " + sid);
+	console.log("inquiry_id : " + inquiry_id);
+	window.open("pop_ask_content?inquiry_id="+inquiry_id+"&sid="+sid,"문의사항","status=no ,location=no, directoryies=no, resizable=no, scrollbars=yes, titlebar=no");
+}
+
+</script>
+<style>
+.check_inq:hover {
+	color: white;
+	background-color: #00B0F0;
+	cursor: pointer;
+}
+</style>
 <c:if test="${fn:length(inquiryList) == 0}">
 	<p style="text-align: center; font-size: 20px; margin: 200px; color: grey;">
 		<sec:authentication property="name" />님의 <span style="color: #00B0F0;"> 문의 </span> 내역이 없습니다
@@ -38,7 +52,7 @@
 
 			<tbody>
 				<c:forEach var="inquiry" items="${inquiryList}">
-					<tr>
+					<tr class="check_inq" onclick="showInq2(${inquiry.inquiry_sabangid},${inquiry.inquiry_id})">
 						<td scope="row">${inquiry.inquiry_id}</td>
 						<td>${inquiry.inquiry_type}</td>
 						<td style="color: #adb5bd;">${inquiry.inquiry_ansstate}</td>

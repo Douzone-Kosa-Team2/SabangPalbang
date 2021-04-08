@@ -14,16 +14,7 @@ function showInq(inquiry_id){
 	console.log("inquiry_id : " + inquiry_id);
 	window.open("pop_ask_content?inquiry_id="+inquiry_id+"&sid=${sid}","문의사항","status=no ,location=no, directoryies=no, resizable=no, scrollbars=yes, titlebar=no");
 }
-/* $(".check_inq").click(function(){
-	var tr = $(this);
-    var td = tr.children();
 
-	var inquiry_id = td.eq(0).text();
-	console.log("inquiry_id : " + inquiry_id);
-
-	window.open("pop_ask_content?inquiry_id=","문의사항","popup");
-	
-}); */
 </script>
 <style>
 .check_inq:hover {
