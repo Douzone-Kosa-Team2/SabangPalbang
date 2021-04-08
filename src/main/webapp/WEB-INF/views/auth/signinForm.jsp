@@ -30,6 +30,29 @@ $(function(){
 	         if(data.resultEmail == "success"){
 	        	 //console.log("사용가능한 이메일입니다.");
 	        	 dupEmail = true;
+	        	 //$("#errorEmail").html("사용가능한 이메일입니다.");
+	         } else {
+	        	 //console.log("중복된 이메일입니다.");
+	        	 dupEmail=false;
+	        	 $("#errorEmail").html("중복된 이메일입니다.");
+	         }
+	     });
+
+	});
+	$("#member_email2").on("propertychange change keyup paste input", function(){
+		
+		//console.log("member_email 키 감지");
+		var email = $("#member_email").val() + "@" + $("#member_email2").val();
+		//console.log("email : " + email);
+		$.ajax({
+			method:"post",
+			url:"checkEmail",
+			data: {email, ${_csrf.parameterName}:"${_csrf.token}"}
+		})
+		.then(data => {
+	         if(data.resultEmail == "success"){
+	        	 //console.log("사용가능한 이메일입니다.");
+	        	 dupEmail = true;
 	        	 $("#errorEmail").html("사용가능한 이메일입니다.");
 	         } else {
 	        	 //console.log("중복된 이메일입니다.");
@@ -87,6 +110,7 @@ $(function(){
 
 		// 유효성 검사 코드
 		const member_email = $("#member_email").val();
+		const member_email2 = $("#member_email2").val();
 		const member_pw = $("#member_pw").val();
 		const member_pwcheck = $("#member_pwcheck").val();
 		const member_name = $("#member_name").val();
@@ -100,9 +124,17 @@ $(function(){
 		if (member_email === "") {
 			result = false;
 			$("#errorEmail").html("필수 사항 입니다.");
+		} else if(member_email2 === "") {
+			result = false;
+			$("#errorEmail").html("필수 사항 입니다.");
+		} else if(!reg_email.test(member_email+"@"+member_email2)){
+			result = false;
+			$("#errorEmail").html("이메일 형식에 맞지않습니다.");
 		} else if(dupEmail == false){
 			result = false;
 			$("#errorEmail").html("중복된 이메일입니다.");
+		} else{
+			$("#errorNickname").html("사용가능한 이메일입니다.");
 		}
 		
 		// 비밀번호 유효성

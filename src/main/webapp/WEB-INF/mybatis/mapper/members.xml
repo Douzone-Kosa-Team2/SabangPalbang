@@ -89,11 +89,13 @@
 	<update id="updateByMember" parameterType="member">
 		<if test="zipcode==null">
 			update member set
-			member_phone=#{member_phone}
+			member_pw=#{member_pw},
+			member_phone=#{member_phone},
 			where member_id=#{member_id}
 		</if>	
 		<if test="zipcode!=null">
 			update member set
+			member_pw=#{member_pw},
 			member_phone=#{member_phone},
 			zipcode=#{zipcode},
 			roadaddress=#{roadaddress},
