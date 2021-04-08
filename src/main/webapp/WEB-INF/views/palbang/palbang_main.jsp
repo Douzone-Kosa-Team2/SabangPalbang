@@ -4,7 +4,7 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <style>
 .palbang_div3_line_item2  { 
-	border-radius: 5%; 
+	border-radius: 3%; 
 	overflow: hidden; 
 	}
 .palbang_div3_line_item2  img {
@@ -34,7 +34,7 @@
 <!-- palbang_main -->
     <div class="palbang_main">
         <div class="palbang_div1"> <!-- 슬로건 -->
-            <img class="palbang_div1_img" src="resources/images/palbang_post/palbang_slogan.jpg" width="95%">
+            <img class="palbang_div1_img" src="resources/images/main/palbang_header4.jpg" width="100%">
         </div>
         <div class="palbang_div2"> <!-- 정렬 카테고리 -->
             <ul class="palbang_div2_sort_type">
@@ -75,15 +75,27 @@
 	            <div class="d-flex flex-row flex-wrap justify-content-center">
 					<c:forEach var="palbang" items="${list}">
 						<div class="palbang_div3_line" style="width:33%;"> <!-- 게시물 첫번째 행 , 게시물 3개 포함 -->
-							<div class="palbang_div3_line_item">
+							<div class="palbang_div3_line_item" style="border-radius: 3px;border: 1px solid #dbdbdb;border: 1px solid rgba(var(--b6a,219,219,219),1);">
 								<a class="palbang_div3_move" href="palbang_detail?pid=${palbang.palbang_id}"> 
+									<div style="display: flex; flex-direction: row;">
+										<div style="display: flex; align-items: center;">
+											<img src="resources/images/main/profile.jpg" style="width: 30px; height: 30px; overflow: hidden; border: 3px solid #C42D91; border-radius: 100%;"/>
+										</div>
+										<div style="display: flex; margin-left:5px;">
+											<text style="font-family: 'Cafe24Dangdanghae'; font-size:1em">${palbang.palbang_nickname}</text>
+										</div>
+										
+									</div>
 									<div class="palbang_div3_line_item2">
-									<img src="resources/images/palbang_post/${palbang.palbang_imgoname}" width="400" height="400"></div><br/> 
-									<div><text style="font-family: 'Cafe24Dangdanghae'; font-size:1.5em">${palbang.palbang_title}</text></div>
-								    <div><text style="font-family: 'Cafe24Dangdanghae'; font-size:1em">${palbang.palbang_nickname}</text></div>
-									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16" style="color: red;">
+									<img src="resources/images/palbang_post/${palbang.palbang_imgoname}" width="400" height="400">
+									</div>
+
+									<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-heart-fill ml-1 mt-1" viewBox="0 0 16 16" style="color: red;">
 		                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-		                        	</svg> <text style="font-family: 'Cafe24Dangdanghae'; font-size:1em">${palbang.palbang_likecount}</text>
+									
+								    </svg> 
+									<text style="font-family: 'Cafe24Dangdanghae'; font-size:1em">${palbang.palbang_likecount}개</text>
+		                        	<div class="ml-1"><text style="font-family: 'Cafe24Dangdanghae'; font-size:1.5em">${palbang.palbang_title}</text></div>
 								</a>
 							</div>
 						</div>
@@ -116,7 +128,7 @@
 							<c:if test="${palbang_pager.pageNo==i}">
 							<li class="page-item active">
 								<a class="page-link"
-									href="palbang_main?std=${stdno}&pageNo=${i}">${i}</a>
+									href="palbang_main?std=${stdno}&pageNo=${i}"><text style="color:white;">${i}</a>
 							</li>
 							</c:if>
 						</c:forEach> 
@@ -133,5 +145,8 @@
 			</nav>
 		</div>
 	</div>
+	<div class="palbang_div1"> <!-- 슬로건 -->
+            <img class="palbang_div1_img" src="resources/images/main/palbang_footer.jpg" width="100%">
+        </div>
     </div>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

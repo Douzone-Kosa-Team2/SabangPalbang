@@ -44,7 +44,7 @@
 <div class="sabang_main">
 	<div class="sabang_div1">
 		<img class="sabang_div1_img"
-			src="resources/images/sabang_post/sabang_slogan.jpg" width="100%" height="100px">
+			src="resources/images/main/sabang_header2.jpg" width="100%">
 	</div>
 	<div class="sabang_div2">
 		<ul class="sabang_div2_sort_type">
@@ -106,7 +106,7 @@
 						href="sabang_detail?sid=${sabang.sabang_id}">
 						<div class="sabang_div3_line_item2">
 							<img src="resources/images/sabang_post/${sabang.sabang_imgoname}"
-								width="400" height="400" />
+								width="400" height="400"/>
 						</div>
 						<br/>
 						<text style="font-family: 'Cafe24Dangdanghae'; font-size:1.5em"> ${sabang.sabang_name} </text>
@@ -157,7 +157,7 @@
 							<c:if test="${sabang_pager.pageNo==i}">
 							<li class="page-item active">
 								<a class="page-link"
-									href="sabang_main?std=${stdno}&pageNo=${i}">${i}</a>
+									href="sabang_main?std=${stdno}&pageNo=${i}"><text style="color:white;">${i}</text></a>
 							</li>
 							</c:if>
 						</c:forEach> 
@@ -173,6 +173,12 @@
 				</ul>
 			</nav>
 		</div>
+	</div>
+	<div class="sabang_div1">
+		<br/>
+		<img class="sabang_div1_img"
+			src="resources/images/main/sabang_footer.jpg" width="100%">
+		<br/>
 	</div>
 </div>
 

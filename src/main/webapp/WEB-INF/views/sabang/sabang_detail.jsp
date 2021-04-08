@@ -111,9 +111,6 @@
 				</div>
 			</c:forEach>
 
-
-
-
 			<div class="sabang_detail_1_total_price">
 				<div class="sabang_detail_1_total_font" >총합</div>
 				<div class="sabang_detail_1_total_price_font">
