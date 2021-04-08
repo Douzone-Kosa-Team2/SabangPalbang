@@ -75,7 +75,7 @@
 <div class="sabang_detail_1">
 	<div class="sabang_detail_1_main_image">
 		<img src="resources/images/sabang_post/${sabang.sabang_imgoname}"
-			id="changeImg_big" width="500px">
+			id="changeImg_big" width="500px"height="500px">
 	</div>
 
 
@@ -145,13 +145,13 @@
 		<div>
 			<img class="sabang_detail_1_goods_div_img"
 				src="resources/images/sabang_post/${sabang.sabang_imgoname}"
-				width="100" onmouseover="changeImg(0)">
+				width="100" height="100" onmouseover="changeImg(0)">
 		</div>
 		<c:forEach var="product" items="${productList}" varStatus="status">
 			<div>
 				<img class="sabang_detail_1_goods_div_img"
 					src="resources/images/sabang_detail/${product.product_imgsname}"
-					width="100" onmouseover="changeImg(${status.count})">
+					width="100" height="100" onmouseover="changeImg(${status.count})">
 			</div>
 		</c:forEach>
 	</div>
