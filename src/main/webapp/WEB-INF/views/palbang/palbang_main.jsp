@@ -78,10 +78,10 @@
 							<div class="palbang_div3_line_item" style="border-radius: 3px;border: 1px solid #dbdbdb;border: 1px solid rgba(var(--b6a,219,219,219),1);">
 								<a class="palbang_div3_move" href="palbang_detail?pid=${palbang.palbang_id}"> 
 									<div style="display: flex; flex-direction: row;">
-										<div style="display: flex; align-items: center;">
+										<div class="m-1" style="display: flex; align-items: center;">
 											<img src="resources/images/main/profile.jpg" style="width: 30px; height: 30px; overflow: hidden; border: 3px solid #C42D91; border-radius: 100%;"/>
 										</div>
-										<div style="display: flex; margin-left:5px;">
+										<div style="display: flex; align-items: center; margin-left:5px;">
 											<text style="font-family: 'Cafe24Dangdanghae'; font-size:1em">${palbang.palbang_nickname}</text>
 										</div>
 										
