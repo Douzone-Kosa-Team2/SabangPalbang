@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"  %>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
 <script>
@@ -29,19 +29,18 @@ function validate(){
 <table class="shopping_basket_header">
 	<colgroup>
 		<col width="6%">
-		<col width="8%">
+		<col width="23%">		
+		<col width="21%">
 		<col width="16%">
-		<col width="15%">
-		<col width="14%">
-		<col width="15%">
-		<col width="15%">
-		<col width="1%">
+		<col width="17.2%">
+		<col width="18%">
+		<col >
 	</colgroup>
 	<tr>
 
 		<td></td>
 		<td>번호</td>
-		<td></td>
+		
 		<td>상품명</td>
 		<td>수량</td>
 		<td>판매가</td>
@@ -53,13 +52,13 @@ function validate(){
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	<table class="shopping_basket_list">
 		<colgroup>
-			<col width="6.5%">
+			<col width="7.6%">   
 			<col width="12%">
 			<col>
-			<col width="28%">
+			<col width="28.3%">
 			<col width="16.9%">
-			<col width="19.5%">
-			<col width="20%">
+			<col width="19%">
+			<col width="19%">
 			<col>
 		</colgroup>
 
@@ -73,11 +72,9 @@ function validate(){
 					height="80" width="70"></td>
 				<td style="text-align: center;">${cart.value.sabang_name}</td>
 				<td>${cart.value.products_totalcount}</td>
-				<td><text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text>
-					${cart.value.product_totalprice}</td>
+				<td><text style="font-family: 'Cafe24Dangdanghae';">&#8361;&nbsp;</text><fmt:formatNumber value="${cart.value.product_totalprice}" pattern="#,###"/></td>
 				<td>배송비무료</td>
-				<td><button type="button"
-						onclick="location.href='deleteCart?cid=${cart.key}'">X</button></td>
+				<td><button type="button" onclick="location.href='deleteCart?cid=${cart.key}'" style=" border: none;  background-color: white">X</button></td>
 			</tr>
 			<br />
 		</c:forEach>

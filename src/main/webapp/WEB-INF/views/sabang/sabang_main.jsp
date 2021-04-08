@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
 <script>
@@ -65,15 +65,16 @@
 							<span
 							class="price"
 							style="color: gray; font-size: 0.9em; text-decoration-line: line-through; font-family: 'Cafe24Dangdanghae';">&#8361;
-								${sabang.sabang_price}</span><br /> <span class="price">
+							<fmt:formatNumber value="${sabang.sabang_price}" pattern="#,###"/>
+								</span><br /> <span class="price">
 								
-									<text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text>${sabang.sabang_saleprice}</span>
+									<text style="font-family: 'Cafe24Dangdanghae';">&#8361;&nbsp;</text><fmt:formatNumber value="${sabang.sabang_price}" pattern="#,###"/></span>
 									<span style="color: red;" class="percent" id="${sabang.sabang_id}">
 										<script>salepercent(${sabang.sabang_id},${sabang.sabang_price}, ${sabang.sabang_saleprice});</script>
 									</span>
 						</c:if>
 						<c:if test="${sabang.sabang_price == sabang.sabang_saleprice}">
-								<text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text>${sabang.sabang_saleprice}</span>
+								<text style="font-family: 'Cafe24Dangdanghae';">&#8361;&nbsp;</text><fmt:formatNumber value="${sabang.sabang_price}" pattern="#,###"/></span>
 						</c:if>
 					</a>
 				</div>
