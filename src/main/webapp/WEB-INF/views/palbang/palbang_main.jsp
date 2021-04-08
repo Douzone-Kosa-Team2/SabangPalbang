@@ -77,7 +77,7 @@
 							<div class="palbang_div3_line_item">
 								<a class="palbang_div3_move" href="palbang_detail?pid=${palbang.palbang_id}"> 
 									<div class="palbang_div3_line_item2">
-									<img src="resources/images/palbang_post/${palbang.palbang_imgoname}" width="400"></div><br/> 
+									<img src="resources/images/palbang_post/${palbang.palbang_imgoname}" width="400" height="400"></div><br/> 
 									<div><text style="font-family: 'Cafe24Dangdanghae'; font-size:1.5em">${palbang.palbang_title}</text></div>
 								    <div><text style="font-family: 'Cafe24Dangdanghae'; font-size:1em">${palbang.palbang_nickname}</text></div>
 									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16" style="color: red;">
