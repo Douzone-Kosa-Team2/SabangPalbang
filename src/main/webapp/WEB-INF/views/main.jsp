@@ -81,16 +81,16 @@
 			</div>
 
 		</div>
-
+		<br>
 		<!-- 사방 -->
 		<div class="main_sabang">
 			<div class="main_sabang_title">
 				<div class="main_sabang_title_name">
-					<h4>사방</h4>
+					<h4 style="font-family: 'Cafe24Dangdanghae'; font-size:1.5em">사방</h4>
 					<h6>모든 스타일과 예산에 맞는 방을 구경해보세요.</h6>
 				</div>
 				<div class="main_sabang_title_more">
-					<a href="/sabangpalbang/sabang_main">더보기</a>
+					<a href="/sabangpalbang/sabang_main" style="font-family: 'Cafe24Dangdanghae';">더보기</a>
 				</div>
 			</div>
 			
@@ -103,7 +103,7 @@
 						</div>
 						<div class="main_sabang_content_1_detail">
 						<br>
-							<p>${sabang.sabang_name}</p>
+							<p style="font-size:1.5em">${sabang.sabang_name}</p>
 						</div>
 					</a>
 				</div>
@@ -114,11 +114,11 @@
 		<div class="main_palbang">
 			<div class="main_palbang_title">
 				<div class="main_palbang_title_name">
-					<h4>팔방</h4>
+					<h4 style="font-family: 'Cafe24Dangdanghae'; font-size:1.5em">팔방</h4>
 					<h6>나의 방을 공유해보고, 다른 사람들의 방을 구경해보세요.</h6>
 				</div>
 				<div class="main_palbang_title_more">
-					<a href="/sabangpalbang/palbang_main">더보기</a>
+					<a href="/sabangpalbang/palbang_main" style="font-family: 'Cafe24Dangdanghae';">더보기</a>
 				</div>
 			</div>
 			<div class="main_palbang_content">
@@ -130,7 +130,7 @@
 						</div>
 						<div class="main_palbang_content_1_detail">
 						<br>
-							<p>${palbang.palbang_title}</p>
+							<p style="font-size:1.5em">${palbang.palbang_title}</p>
 						</div>
 					</a>
 				</div>
