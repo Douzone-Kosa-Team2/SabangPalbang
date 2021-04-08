@@ -4,9 +4,9 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
 <script>
-	const salepercent = (price, saleprice) => {
+	const salepercent = (id,price, saleprice) => {
 		const percent = (price-saleprice)/price*100; 
-		$(".percent").html(Math.floor(percent)+"%");
+		$("#"+id).html(Math.floor(percent)+"%");
 	};
 </script>
 <style>
@@ -68,8 +68,8 @@
 								${sabang.sabang_price}</span><br /> <span class="price">
 								
 									<text style="font-family: 'Cafe24Dangdanghae';">&#8361;</text>${sabang.sabang_saleprice}</span>
-									<span style="color: red;" class="percent">
-										<script>salepercent(${sabang.sabang_price}, ${sabang.sabang_saleprice});</script>
+									<span style="color: red;" class="percent" id="${sabang.sabang_id}">
+										<script>salepercent(${sabang.sabang_id},${sabang.sabang_price}, ${sabang.sabang_saleprice});</script>
 									</span>
 						</c:if>
 						<c:if test="${sabang.sabang_price == sabang.sabang_saleprice}">
