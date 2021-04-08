@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"  %>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <script>
 	const salepercent = (id,price, saleprice) => {
@@ -30,17 +30,17 @@
 					 <c:if test="${sabang.sabang_price != sabang.sabang_saleprice}">
 							<span class="price"
 								style="color: gray; font-size: 1em; text-decoration-line: line-through; font-family: 'Cafe24Dangdanghae';">&#8361;
-								${sabang.sabang_price}</span>
+								<fmt:formatNumber value="${sabang.sabang_price}" pattern="#,###"/></span>
 							<br />
 							<span class="price"> 
-							<text style="font-family: 'Cafe24Dangdanghae'; font-size:1.5em">&#8361;${sabang.sabang_saleprice}</text></span>
+							<text style="font-family: 'Cafe24Dangdanghae'; font-size:1.5em">&#8361;<fmt:formatNumber value="${sabang.sabang_saleprice}" pattern="#,###"/></text></span>
 							<span style="color: red; font-size:1.5em" class="percent" id="${sabang.sabang_id}"> 
 								<text style="font-family: 'Cafe24Dangdanghae'; font-size:1.5em"><script>salepercent(${sabang.sabang_id},${sabang.sabang_price}, ${sabang.sabang_saleprice});</script></text>
 							</span>
 						</c:if> 
 						
 						<c:if test="${sabang.sabang_price == sabang.sabang_saleprice}">
-							<text style="font-family: 'Cafe24Dangdanghae'; font-size:1.5em">&#8361;${sabang.sabang_saleprice}</text></span>
+							<text style="font-family: 'Cafe24Dangdanghae'; font-size:1.5em">&#8361;<fmt:formatNumber value="${sabang.sabang_saleprice}" pattern="#,###"/></text></span>
 						</c:if>
 					</a>
 				</div>
