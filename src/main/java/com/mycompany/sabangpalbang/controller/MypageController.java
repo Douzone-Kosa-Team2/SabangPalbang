@@ -95,21 +95,17 @@ public class MypageController {
 	@GetMapping("/mypage_inquiry")
 	public String mypage_inquiry(Authentication auth, Model model, String pageNo, HttpSession session) {
 		logger.info("inquirylist 메시지");
-		String userNickName = auth.getName();
-		model.addAttribute("userNickName", userNickName);
-		logger.info(userNickName);
-		String anickname = memberService.getByInquiryNickname(auth.getName());
-		logger.info(anickname);
-		model.addAttribute("anickname", anickname);
-
+		String member_email = auth.getName();
+		String member_nickname = memberService.getByInquiryNickname(auth.getName());
+		
+		model.addAttribute("member_nickname", member_nickname);
 		return "mypage/mypage_inquiry";
 	}
 
-	
+	// AJAX 요청 - html 코드 조각을 리턴 
 	@GetMapping("/userInquiryList")
-	public String userInquiryList(String anickname, Model model, String pageNo, HttpSession session) {
+	public String userInquiryList(String member_nickname, String pageNo, Model model, HttpSession session) {
 		logger.info("userInquiryList 메시지");
-		logger.info(anickname);
 
 		int intPageNo = 1;
 		if (pageNo == null) {
@@ -121,14 +117,18 @@ public class MypageController {
 		} else {
 			intPageNo = Integer.parseInt(pageNo);
 		}
-
-		int totalRows = inquiryService.getTotalMyRows(anickname);
+		
+		int totalRows = inquiryService.getTotalMyRows(member_nickname); 
 		Pager pager = new Pager(10, 5, totalRows, intPageNo);
+		
 		// 사방 문의게시판 가져오기
-		List<Inquiry> inquiryList = inquiryService.getInquiryList(pager, anickname);
-		model.addAttribute("inquiryList", inquiryList);
+		List<Inquiry> inquiryList = inquiryService.getInquiryList(pager, member_nickname);
+		
+		model.addAttribute("inquiryList", inquiryList); 
+		model.addAttribute("member_nickname", member_nickname);
+		
 		session.setAttribute("mypage_inquiry_pager", pager);
-		return "mypage/userInquiry";
+		return "mypage/userInquiry"; 
 	}
 
 	@PostMapping("/checkMember")

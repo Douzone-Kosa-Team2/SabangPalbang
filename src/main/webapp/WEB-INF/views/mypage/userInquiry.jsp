@@ -11,7 +11,7 @@
 </c:if>
 
 <c:if test="${fn:length(inquiryList) > 0}">
-	<div class="sabang_detail_3_div_table">
+	<div>
 		<table class="table">
 			<thead class="thead-light">
 				<tr>
@@ -38,7 +38,6 @@
 
 			<tbody>
 				<c:forEach var="inquiry" items="${inquiryList}">
-
 					<tr>
 						<td scope="row">${inquiry.inquiry_id}</td>
 						<td>${inquiry.inquiry_type}</td>
@@ -48,25 +47,23 @@
 						<td><fmt:formatDate value="${inquiry.inquiry_date}"
 								pattern="YYYY.MM.dd" /></td>
 					</tr>
-
 				</c:forEach>
 				<tr style="border-bottom: hidden;">
 					<td colspan="2"></td>
 					<td scope="row" colspan="3" style="text-align: center;">
-						<!-- <a href="">1</a> <a href="">2</a> <a href="">3</a> -->
 						<div>
 							<table style="width: 100%;">
-								<tr>
+								<tr>  
 									<!-- 처음 이전 12345 다음 맨끝 -->
 									<td colspan="5" class="text-center">
 										<div class="d-flex">
 											<div class="flex-grow-1">
 												<button class="btn btn-outline-primary btn-sm"
-													onclick="getList(`${anickname}`,1)">처음</button>
-
+													onclick="getList(`${member_nickname}`,1)">처음</button>
+		
 												<c:if test="${mypage_inquiry_pager.groupNo>1}">
 													<button class="btn btn-outline-info btn-sm"
-														onclick="getList(`${anickname}`,${mypage_inquiry_pager.startPageNo-1})">이전</button>
+														onclick="getList(`${member_nickname}`,${mypage_inquiry_pager.startPageNo-1})">이전</button>
 												</c:if>
 
 												<c:forEach var="i"
@@ -75,22 +72,22 @@
 
 													<c:if test="${mypage_inquiry_pager.pageNo!=i}">
 														<button class="btn btn-outline-success btn-sm"
-															onclick="getList(`${anickname}`,${i})">${i}</button>
+															onclick="getList(`${member_nickname}`,${i})">${i}</button>
 													</c:if>
 													<c:if test="${mypage_inquiry_pager.pageNo==i}">
 														<button class="btn btn-outline-danger btn-sm"
-															onclick="getList(`${anickname}`,${i})">${i}</button>
+															onclick="getList(`${member_nickname}`,${i})">${i}</button>
 													</c:if>
 												</c:forEach>
 
 												<c:if
 													test="${mypage_inquiry_pager.groupNo<pager.totalGroupNo}">
 													<button class="btn btn-outline-info btn-sm"
-														onclick="getList(`${anickname}`,${mypage_inquiry_pager.endPageNo+1})">다음</button>
+														onclick="getList(`${member_nickname}`,${mypage_inquiry_pager.endPageNo+1})">다음</button>
 												</c:if>
 
 												<button class="btn btn-outline-primary btn-sm"
-													onclick="getList(`${anickname}`,${mypage_inquiry_pager.totalPageNo})">맨끝</button>
+													onclick="getList(`${member_nickname}`,${mypage_inquiry_pager.totalPageNo})">맨끝</button>
 											</div>
 
 
@@ -100,10 +97,8 @@
 							</table>
 						</div>
 					</td>
-
 				</tr>
 			</tbody>
-
 		</table>
 	</div>
 </c:if>
