@@ -47,7 +47,7 @@
 	</div>
 </c:if>
 
-<c:if test="${sessionCart}">
+<c:if test="${sessionCart != null}">
 	<!-- 장바구니 -->
 	<div class="shopping_basket_title">
 		<strong>장바구니</strong>

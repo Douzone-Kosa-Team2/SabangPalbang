@@ -14,7 +14,7 @@
 		const args = {
 				url:"userInquiryList",
 				method:"get",
-				data: {member_nickname:"${member_nickname}", pageNo}
+				data: {member_nickname, pageNo}
 		}
 		$.ajax(args)
 		.then(data => {
