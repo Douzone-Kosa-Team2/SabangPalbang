@@ -33,18 +33,22 @@
 			$(function initPost(){
 				console.log("초기화 함수진입 화면");	
 				var initPostWay =`
-					<div id="pop1">
-
-					<div>${member.member_name}</div>
-					<div>
-						<span>${member.roadaddress}</span><span>${member.detailaddress}</span>
+					<div style='width: 60%'>
+					<div class='form-group'>
+						<label for='btitle'>주문자</label> <input type='text' class='form-control' id='oderer' name='oderer' value='${member.member_name}'>
+						<span id="errorName" class="error"></span>
+						</div>
+					<div class='form-group'>
+						<label for='bcontent'>주소</label>
+						<div class='mb-1'><input type='text' id='zipcode' placeholder='우편번호' value='${member.zipcode}' name='order_zipcode' style='width: 69%' readonly> <input type='button' onclick='DaumPostcode()' value='우편번호 찾기' style='width: 30%'></div>
+						<div class='mb-1'><input type='text' id='roadaddress' placeholder='주소' value='${member.roadaddress}' name='order_roadaddress' style='width: 100%' readonly>
+						</div>
+						<div class='mb-1'><input type='text' id='detailaddress' placeholder='상세주소' value='${member.detailaddress}' name='order_detailaddress'><input type='text' id='extraAddress' placeholder='참고항목' readonly></div>
 					</div>
-					<div>${member.member_phone}</div>
-					<input type="hidden" name="order_zipcode" value="${member.zipcode}"/>
-					<input type="hidden" name="order_roadaddress" value="${member.roadaddress}"/>
-					<input type="hidden" name="order_detailaddress" value="${member.detailaddress}"/>
-					<input type="hidden" name="order_phone" value="${member.member_phone}"/>
-				</div>`;
+					
+					<div class='form-group'><label for='bcontent'>번호</label> <input type='text' class='form-control' id='order_phone' name='order_phone' value='${member.member_phone}'>
+					<span id="errorPhone" class="error"></span></div>
+					</div>`;
 					$('#addPostWay').html(initPostWay);
 			})			
 		}	
@@ -83,7 +87,9 @@
 						var viewPostWay2 = `
 							<div style='width: 60%'>
 						<div class='form-group'>
-							<label for='btitle'>주문자</label> <input type='text' class='form-control' id='oderer' name='oderer' value='${member.member_name}'></div>
+							<label for='btitle'>주문자</label> <input type='text' class='form-control' id='oderer' name='oderer' value='${member.member_name}'>
+							<span id="errorName" class="error"></span>
+							</div>
 						<div class='form-group'>
 							<label for='bcontent'>주소</label>
 							<div class='mb-1'><input type='text' id='zipcode' placeholder='우편번호' value='${member.zipcode}' name='order_zipcode' style='width: 69%' readonly> <input type='button' onclick='DaumPostcode()' value='우편번호 찾기' style='width: 30%'></div>
@@ -92,7 +98,8 @@
 							<div class='mb-1'><input type='text' id='detailaddress' placeholder='상세주소' value='${member.detailaddress}' name='order_detailaddress'><input type='text' id='extraAddress' placeholder='참고항목' readonly></div>
 						</div>
 						
-						<div class='form-group'><label for='bcontent'>번호</label> <input type='text' class='form-control' id='phone' name='order_phone' value='${member.member_phone}'></div>
+						<div class='form-group'><label for='bcontent'>번호</label> <input type='text' class='form-control' id='order_phone' name='order_phone' value='${member.member_phone}'>
+						<span id="errorPhone" class="error"></span></div>
 						</div>`;
 						
 						init = false;
@@ -124,15 +131,13 @@
 	};	
 	
 	
-	/* const handleBank = (order_bankcode) => {
-		event.preventDefault();
-		console.log(order_bankcode);
-		
-		$("#payForm").attr("action", "payDirectSuccess?order_bankcode="+order_bankcode);
-	  	 	  		
-	}; */
+	
+
 	
 </script>
+
+
+
 
 <!-- 메인 결제부분 -->
 
@@ -151,17 +156,21 @@
 
 					<div class="pay_content_left_delivery_content">
 						<div class="pay_content_left_delivery_content_select">
+						
+						
 							<div class="pay_content_left_delivery_content_select_1">
 								<input id="basicPost" type="radio" name="post_way"
 									value="default_location"
 									style="width: 30px; height: 30px; vertical-align: -5px;"
-									checked><label for="id1">기본배송지</label>
+									><label for="id1">기본배송지</label>
 
 							</div>
+							
+							
 							<div class="pay_content_left_delivery_content_select_2">
 								<input id="directPost" type="radio" name="post_way"
 									value="direct_input"
-									style="width: 30px; height: 30px; vertical-align: -5px;"><label
+									style="width: 30px; height: 30px; vertical-align: -5px;" checked><label
 									for="id2">직접입력</label>
 
 							</div>
@@ -182,119 +191,76 @@
 							class="pay_content_left_way_content_select btn-group btn-group-lg"
 							data-toggle="buttons">
 
-							<label class="btn btn-outline-info rmAudio"> <input
+							<label class="btn rmAudio active"> <input
 								type="radio" name="order_payment" value="payByCard" style="opacity: 0;" checked>
 								카드 결제
-							</label> <label class="btn btn-outline-info rmAudio"> <input
+							</label> <label class="btn rmAudio"> <input
 								type="radio" name="order_payment" value="payByDeposit" style="opacity: 0;"> 무통장 입금
-							</label> <label class="btn btn-outline-info rmAudio"> <input
+							</label> <label class="btn rmAudio"> <input
 								type="radio" name="order_payment" value="payByPhone" style="opacity: 0;"> 휴대폰 결제
 							</label>
 						</div>
-						
-						
-						<!-- <button type="button" class="bankbutton btn" name="order_card" onclick="handleBank('004')" >
-									<img src="resources/images/pay_bank/bank_kb.png">
-																	
-								</button>
-								<button type="button" class="bankbutton btn" name="order_card" onclick="handleBank('002')" >
-									<img src="resources/images/pay_bank/bank_samsung.png">
-								</button>
-								<button type="button" class="bankbutton btn" name="order_card" onclick="handleBank('071')">
-									<img src="resources/images/pay_bank/bank_hyundai.png">
-								</button>
-								<button type="button" class="bankbutton btn" name="order_card" onclick="handleBank('088')">
-									<img src="resources/images/pay_bank/bank_shinhan.png">
-								</button>
-								<button type="button" class="bankbutton btn" name="order_card" onclick="handleBank('055')">
-									<img src="resources/images/pay_bank/bank_lotte.png">
-								</button>
-								<button type="button" class="bankbutton btn" name="order_card" onclick="handleBank('011')">
-									<img src="resources/images/pay_bank/bank_nh.png">
-								</button>
-								<button type="button" class="bankbutton btn" name="order_card" onclick="handleBank('050')">
-									<img src="resources/images/pay_bank/bank_bc.png">
-								</button>
-								<button type="button" class="bankbutton btn" name="order_card" onclick="handleBank('027')">
-									<img src="resources/images/pay_bank/bank_citi.png">
-								</button>
-								<button type="button" class="bankbutton btn" name="order_card" onclick="handleBank('090')">
-									<img src="resources/images/pay_bank/bank_kakao.png">
-								</button>
-								<button type="button" class="bankbutton btn" name="order_card" onclick="handleBank('023')">
-									<img src="resources/images/pay_bank/bank_sc.png">
-								</button>
-								<button type="button" class="bankbutton btn" name="order_card" onclick="handleBank('081')">
-									<img src="resources/images/pay_bank/bank_hana.png">
-								</button>
-								<button type="button" class="bankbutton btn" name="order_card" onclick="handleBank('020')">
-									<img src="resources/images/pay_bank/bank_uri.png">
-								</button> -->
-						
-						
-						
-						
-						   
-						
-						
-						
+								
 						<div class="pay_content_left_way_content_bank_1">
 						
-							<div id="card" role="group" class="btn btn-group-lg">
-								<label class="btn btn-outline-info rmAudio active"><input
+							<div id="card" role="group" class="btn btn-group-lg btn-group-toggle" data-toggle="buttons">
+								<label class="btn btn-outline-light rmAudio active"><input
 									type="radio" name="order_bankcode" value="004" style="opacity: 0;" checked>
-									<img src="resources/images/pay_bank/bank_kb.png">
+									<img width="90%" src="resources/images/pay_bank/bank_kb.png">
 								</label>
-								<label class="btn btn-outline-info rmAudio"><input
+								<label class="btn btn-outline-light rmAudio"><input
 									type="radio" name="order_bankcode" value="002" style="opacity: 0;">
 									<img src="resources/images/pay_bank/bank_samsung.png">
 								</label>
-								<label class="btn btn-outline-info rmAudio"><input
+								<label class="btn btn-outline-light rmAudio"><input
 									type="radio" name="order_bankcode" value="071" style="opacity: 0;">
 									<img src="resources/images/pay_bank/bank_hyundai.png">
 								</label>
 								
-								<label class="btn btn-outline-info rmAudio"><input
+								<label class="btn btn-outline-light rmAudio"><input
 									type="radio" name="order_bankcode" value="088" style="opacity: 0;">
 									<img src="resources/images/pay_bank/bank_shinhan.png">
 								</label>
-								<label class="btn btn-outline-info rmAudio"><input
+								<label class="btn btn-outline-light rmAudio"><input
 									type="radio" name="order_bankcode" value="055" style="opacity: 0;">
 									<img src="resources/images/pay_bank/bank_lotte.png">
 								</label>
-								<label class="btn btn-outline-info rmAudio"><input
+								<label class="btn btn-outline-light rmAudio"><input
 									type="radio" name="order_bankcode" value="011" style="opacity: 0;">
 									<img src="resources/images/pay_bank/bank_nh.png">
 								</label>
-								<label class="btn btn-outline-info rmAudio"><input
+								<label class="btn btn-outline-light rmAudio"><input
 									type="radio" name="order_bankcode" value="050" style="opacity: 0;">
 									<img src="resources/images/pay_bank/bank_bc.png">
 								</label>
-								<label class="btn btn-outline-info rmAudio"><input
+								<label class="btn btn-outline-light rmAudio"><input
 									type="radio" name="order_bankcode" value="027" style="opacity: 0;">
 									<img src="resources/images/pay_bank/bank_citi.png">
 								</label>
-								<label class="btn btn-outline-info rmAudio"><input
+								<label class="btn btn-outline-light rmAudio"><input
 									type="radio" name="order_bankcode" value="090" style="opacity: 0;">
 									<img src="resources/images/pay_bank/bank_kakao.png">
 								</label>
-								<label class="btn btn-outline-info rmAudio""><input
+								<label class="btn btn-outline-light rmAudio""><input
 									type="radio" name="order_bankcode" value="090" style="opacity: 0;">
 									<img src="resources/images/pay_bank/bank_sc.png">
 								</label>
-								<label class="btn btn-outline-info rmAudio"><input
+								<label class="btn btn-outline-light rmAudio"><input
 									type="radio" name="order_bankcode" value="081" style="opacity: 0;">
 									<img src="resources/images/pay_bank/bank_hana.png">
 								</label>
-								<label class="btn btn-outline-info rmAudio"><input
+								<label class="btn btn-outline-light rmAudio"><input
 									type="radio" name="order_bankcode" value="020" style="opacity: 0;">
 									<img src="resources/images/pay_bank/bank_uri.png">
 								</label>
 							</div>
 
 							<div id="deposit" style="display: none;" class="ml-5">
+							
 								<div class="form-group" style="width: 30%">
-									<label for="btitle">입금자명 : &nbsp; 조민상</label>								
+								
+									<label for="btitle">입금자명 : &nbsp; 조민상</label>		
+															
 								</div>
 								<div class="form-group mt-4" style="width: 60%">
 									<label for="bcontent">입금은행 : &nbsp; 카카오뱅크 &nbsp; 3333-13-5087920 &nbsp; (조민상) &nbsp; &nbsp; &nbsp;</label>
@@ -379,14 +345,58 @@
 	function success() {
 		//결제 유효성검사 
 		event.preventDefault();
-				
+		var reg_name = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
+		var reg_phone = /^\d{10,11}$/;
+	
+		
+		var result = true;
+		$(".error").html("");
+		
+		const order_name = $("#oderer").val();
+		const order_tel = $("#order_phone").val();
+		const order_zipcode = $("#zipcode").val();
+		const order_address = $("#detailaddress").val();
+		// 이름 유효성
+		if (order_name === "") {
+			result = false;
+			$("#errorName").html("필수 사항 입니다.");
+		} else{
+			if (!reg_name.test(order_name)) {
+				result = false;
+				$("#errorName").html("2자이상 4자 이하의 한글 이름 혹은 띄어쓰기를한 영문 이름을 적어주세요.");
+			}
+		}
+		 // 전화 뒷번호 유효성
+		 if (order_tel === "") {
+			result = false;
+			$("#errorPhone").html("필수 사항 입니다.");
+		} else{
+			if (!reg_phone.test(order_tel)) {
+				result = false;
+				$("#errorPhone").html("7자이상 8자 이하의 숫자만 적어주세요.");
+			}
+		}  
+		if(order_zipcode === ""){
+			result = false;
+			alert("주소 정보를 입력해주세요.")
+		}
+		else if(order_address ===""){
+			result = false;
+			alert("상세 주소 정보를 입력해주세요.")
+		}
+		
+		
+		if(result){
 		if($(':radio[name="order_bankcode"]:checked').length == 1){
+			
+			
 			let payElem = $('#payForm');
 			payElem.submit();
 		}
 		else{
 			alert("최소 1개의 결제 방법을 선택해야 합니다.")
 		}
+	}
 		
 }
 	
