@@ -1,9 +1,7 @@
 package com.mycompany.sabangpalbang.controller;
 
 import java.util.List;
-
 import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import com.mycompany.sabangpalbang.dto.Inquiry;
 import com.mycompany.sabangpalbang.dto.Member;
 import com.mycompany.sabangpalbang.dto.OrderMain;
@@ -35,7 +32,6 @@ public class MypageController {
 
 		Member member = memberService.showMember(auth.getName());
 		model.addAttribute("member", member);
-
 		return "mypage/mypage_memberInfo_check";
 	}
 
@@ -46,21 +42,13 @@ public class MypageController {
 		Member member = memberService.showMember(auth.getName());
 		BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
 
-		/*
-		 * logger.info("id" + checkmember.getMember_id() + " : " +
-		 * member.getMember_id()); logger.info("email" + checkmember.getMember_email() +
-		 * " : " + member.getMember_email()); logger.info("pw" +
-		 * checkmember.getMember_pw() + " : " + member.getMember_pw());
-		 * logger.info(""+bpe.matches(checkmember.getMember_pw(),
-		 * member.getMember_pw()));
-		 */
 		if ((checkmember.getMember_id() == member.getMember_id())
 				&& (checkmember.getMember_email().equals(member.getMember_email()))
 				&& (bpe.matches(checkmember.getMember_pw(), member.getMember_pw()))) {
-
+			
 			model.addAttribute("member", member);
 			return "mypage/mypage_memberInfo";
-		}else {
+		} else {
 			return "redirect:/mypage_memberInfo_check";
 		}
 	}
@@ -86,7 +74,7 @@ public class MypageController {
 		Pager pager = new Pager(6, 5, totalRows, intPageNo);
 		session.setAttribute("mypage_order_pager", pager);
 
-		// db select
+		// DB SELECT - 설명 
 		List<OrderMain> myOrderList = memberService.getOrderListById(pager, order_memberid);
 		model.addAttribute("myOrderList", myOrderList);
 		return "mypage/mypage_orderlist";
@@ -95,14 +83,13 @@ public class MypageController {
 	@GetMapping("/mypage_inquiry")
 	public String mypage_inquiry(Authentication auth, Model model, String pageNo, HttpSession session) {
 		logger.info("inquirylist 메시지");
-		String member_email = auth.getName();
 		String member_nickname = memberService.getByInquiryNickname(auth.getName());
-		
+
 		model.addAttribute("member_nickname", member_nickname);
 		return "mypage/mypage_inquiry";
 	}
 
-	// AJAX 요청 - html 코드 조각을 리턴 
+	// AJAX 요청 - HTML 코드 조각을 리턴
 	@GetMapping("/userInquiryList")
 	public String userInquiryList(String member_nickname, String pageNo, Model model, HttpSession session) {
 		logger.info("userInquiryList 메시지");
@@ -117,24 +104,22 @@ public class MypageController {
 		} else {
 			intPageNo = Integer.parseInt(pageNo);
 		}
-		
-		int totalRows = inquiryService.getTotalMyRows(member_nickname); 
+
+		int totalRows = inquiryService.getTotalMyRows(member_nickname);
 		Pager pager = new Pager(10, 5, totalRows, intPageNo);
+		session.setAttribute("mypage_inquiry_pager", pager);
 		
 		// 사방 문의게시판 가져오기
 		List<Inquiry> inquiryList = inquiryService.getInquiryList(pager, member_nickname);
-		
-		model.addAttribute("inquiryList", inquiryList); 
+
+		model.addAttribute("inquiryList", inquiryList);
 		model.addAttribute("member_nickname", member_nickname);
-		
-		session.setAttribute("mypage_inquiry_pager", pager);
-		return "mypage/userInquiry"; 
+		return "mypage/userInquiry";
 	}
 
 	@PostMapping("/checkMember")
 	public String checkMember(Member member) {
 		logger.info("updateMember 메시지");
-		logger.info("member 비밀번호" + member.getMember_phone());
 		memberService.updateMember(member);
 
 		return "redirect:/mypage_memberInfo";
@@ -143,15 +128,9 @@ public class MypageController {
 	@PostMapping("/updateMember")
 	public String updateMember(Member member, Authentication auth) {
 		logger.info("updateMember 메시지");
-		logger.info("member 비밀번호" + member.getMember_pw());
-		logger.info("member 전화번호" + member.getMember_phone());
-		
 		Member originMember = memberService.showMember(auth.getName());
-		
-		logger.info("originMember 비밀번호" + originMember.getMember_pw());
-		logger.info("originMember 전화번호" + originMember.getMember_phone());
-		
-		if(member.getMember_pw().equals("")) {
+
+		if (member.getMember_pw().equals("")) {
 			member.setMember_pw(originMember.getMember_pw());
 			logger.info("member 비밀번호" + member.getMember_pw());
 			logger.info("member 전화번호" + member.getMember_phone());
@@ -159,7 +138,7 @@ public class MypageController {
 			BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
 			member.setMember_pw(bpe.encode(member.getMember_pw()));
 		}
-		if(member.getMember_phone().equals("")) {
+		if (member.getMember_phone().equals("")) {
 			member.setMember_phone(originMember.getMember_phone());
 			logger.info("member 비밀번호" + member.getMember_pw());
 			logger.info("member 전화번호" + member.getMember_phone());
