@@ -42,7 +42,7 @@
 			src="resources/images/sabang_post/slogan_sa.png" height="45px">
 	</div>
 	<div class="sabang_div2">
-		<ul class="sabang_div2_sort_type">
+		<ul class="sabang_div2_sort_type" style="margin-left: 8%">
 			<c:if test="${stdno==0}">
 				<li class="menu"><a class="sabang_div3_move"
 					href="sabang_main?std=0"
@@ -95,8 +95,8 @@
 	</div>
 	<div class="d-flex flex-row flex-wrap justify-content-center">
 		<c:forEach var="sabang" items="${list}">
-			<div class="sabang_div3_line ">
-				<div class="sabang_div3_line_item">
+			<div class="sabang_div3_line" style="width:33%;">
+				<div class="sabang_div3_line_item" style="width:90%">
 					<a class="sabang_div3_move"
 						href="sabang_detail?sid=${sabang.sabang_id}">
 						<div class="sabang_div3_line_item2">
