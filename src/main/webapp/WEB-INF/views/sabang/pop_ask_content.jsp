@@ -72,7 +72,7 @@
 						</c:if>
 						<c:if test="${!empty selectedInq.inquiry_anscontent}">
 							<tr>
-								<td class="table-success" colspan='5'>답변</td>
+								<td class="table-success" colspan='5' style="color:white; font-family: 'Cafe24Dangdanghae'; font-size:1.5em;" colspan='5'>답변</td>
 							</tr>
 							<tr>
 								<td colspan='5'>
