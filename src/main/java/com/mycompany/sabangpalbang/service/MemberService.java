@@ -210,4 +210,20 @@ public class MemberService {
 			}
 		}
 	}
+	//비밀번호 찾기 체크
+	public String checkPassword(String member_email, String member_name,
+			String member_phone) {
+		Member dbMember = memberDao.selectByMember(member_email);
+		if(dbMember == null) {
+			return "notFindEmail";
+		} else {
+			if(!dbMember.getMember_phone().equals(member_phone)) {
+				return "notFindPhone";
+			} else if(!dbMember.getMember_name().equals(member_name)){
+				return "notFindName";
+			} else {
+				return "success";
+			}
+		}		
+	}
 }

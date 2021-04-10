@@ -51,6 +51,36 @@
 		
 		return result;
 	}
+	function checkPw(){
+		event.preventDefault();
+		var member_email = $("#member_email").val();
+		var member_name = $("#member_name").val();
+		var member_phone = $("#member_phone").val();
+		$.ajax({
+		method:"post",
+		url:"findPwCheck",
+		data: { 
+			member_email,
+			member_name,
+			member_phone,
+			${_csrf.parameterName}:"${_csrf.token}"
+			}
+		})
+		.then(data => {
+	    	 if(data.result == "success"){
+				 $("#resetForm").submit();
+	  	  } else if(data.result == "notFindEmail"){
+	    		 console.log("없는 이메일 입니다.");
+	    		 alert("없는 이메일 입니다.");
+	 	   } else if(data.result == "notFindName"){
+	 		  	 console.log("없는 이름 입니다.");
+	 			 alert("없는 이름 입니다.");
+	 	   } else if(data.result == "notFindPhone"){
+	 		  	 console.log("다른 번호 입니다.");
+	 			 alert("다른 번호 입니다.");
+	 	   }
+		 });
+	}
 </script>
 
 <style>
@@ -69,7 +99,7 @@
 
 		</div>
 
-		<form method="post" action="findPwdDo" onsubmit="return validateFindPW()" novalidate>
+		<form id="resetForm" method="post" action="findPwdDo" onsubmit="return validateFindPW()" novalidate>
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			<div class="resetPw_input">
 				<div class="mb-3">
@@ -90,7 +120,7 @@
 				<div class="mb-3">
 					<span class="error" id="errorPhone"></span>
 				</div>
-				<button type="submit" class="btn btn-info">비밀번호 재설정</button>
+				<button onclick="checkPw()" type="submit" class="btn btn-info">비밀번호 재설정</button>
 			</div>
 
 			<div class="resetPw_otherMenu">

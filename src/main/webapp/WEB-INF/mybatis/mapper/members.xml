@@ -26,7 +26,7 @@
 		member_nickname, zipcode, roadaddress, detailaddress
 		from
 		member
-		where member_id=#{member_id}
+		where member_email=#{member_email}
 	</select>
 	
 	<!-- Inquiry 작성자와 현재 로그인한 계정 비교하기 위해 얻어오는 별명 select -->

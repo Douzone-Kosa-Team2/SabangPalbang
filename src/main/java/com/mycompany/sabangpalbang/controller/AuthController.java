@@ -227,6 +227,22 @@ public class AuthController {
 		return "redirect:/resetPwForm"; // 못찾으면
 	}
 	
+	//비밀번호 찾기 예외상황
+	@PostMapping(value = "/findPwCheck", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String findPwCheck(String member_email, String member_name, String member_phone) {
+		
+		logger.info("findPwCheck 메시지");
+		
+		JSONObject jsonObject = new JSONObject();
+		
+		String result = memberService.checkPassword(member_email,member_name,member_phone);
+
+		jsonObject.put("result", result);
+		logger.info(result);
+		return jsonObject.toString();
+	}
+	
 	//로그인 체크 
 	@PostMapping(value = "/checkId", produces = "application/json;charset=UTF-8")
 	@ResponseBody
