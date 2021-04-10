@@ -10,7 +10,7 @@ public interface MemberDao {
 	public int insertByMember(Member member);
 	public Member selectByMember(String member_email);
 	public Member selectByPayMember(String member_email);
-	public String deleteByMember(String member_email);
+	public int deleteMemberByEmail(String member_email);
 	public int updateByMember(Member member);
 	public Member findMemberByEmail(@Param("member_name") String member_name,
 									@Param("member_phone")String member_phone);
@@ -25,4 +25,5 @@ public interface MemberDao {
 	public Member selectByPostInfo(String member_email);
 	public int selectNicknameCheck(String member_nickname);
 	public int selectEmailCheck(String member_email);
+	public int selectPhoneCheck(String member_phone);
 }

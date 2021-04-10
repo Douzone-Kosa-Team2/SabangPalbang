@@ -5,6 +5,7 @@ import java.io.Writer;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -12,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -123,7 +125,21 @@ public class AuthController {
 			return jsonObject.toString();
 		}
 	}
-
+	// 휴대전화 중복 체크
+	@PostMapping(value = "/checkPhone", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String checkPhone(String checkTelephone) {
+		logger.info(checkTelephone);
+		Boolean result = memberService.isCheckedPhone(checkTelephone);
+		JSONObject jsonObject = new JSONObject();
+		if (result == true) {
+			jsonObject.put("resultPhone", "success");
+			return jsonObject.toString();
+		} else {
+			jsonObject.put("resultPhone", "fail");
+			return jsonObject.toString();
+		}
+	}
 	// 닉네임 중복 체크
 	@PostMapping(value = "/checkNickname", produces = "application/json;charset=UTF-8")
 	@ResponseBody
@@ -194,6 +210,23 @@ public class AuthController {
 		}
 		return "redirect:/resetPwForm"; // 못찾으면
 	}
+	
+	//로그인 체크 
+	@PostMapping(value = "/checkId", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String checkId(String member_email,String member_pw) {
+		
+		logger.info("checkId 메시지");
+		
+		JSONObject jsonObject = new JSONObject();
+		
+		String result = memberService.checkLogin(member_email,member_pw);
+
+		jsonObject.put("result", result);
+		logger.info(result);
+		return jsonObject.toString();
+	}
+	
 
 	// 권한 오류 페이지
 	@GetMapping("/auth/error403")

@@ -2,6 +2,8 @@ package com.mycompany.sabangpalbang.controller;
 
 import java.util.List;
 import javax.servlet.http.HttpSession;
+
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.mycompany.sabangpalbang.dto.Inquiry;
 import com.mycompany.sabangpalbang.dto.Member;
 import com.mycompany.sabangpalbang.dto.OrderMain;
@@ -124,7 +128,8 @@ public class MypageController {
 
 		return "redirect:/mypage_memberInfo";
 	}
-
+	
+	//회원 정보 수정
 	@PostMapping("/updateMember")
 	public String updateMember(Member member, Authentication auth) {
 		logger.info("updateMember 메시지");
@@ -146,6 +151,20 @@ public class MypageController {
 		memberService.updateMember(member);
 
 		return "redirect:/main";
+	}
+	
+	//회원 탈퇴
+	@PostMapping(value = "/deleteMember", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String deleteMember(Authentication auth, HttpSession session) {
+		
+		logger.info("deleteMember 메시지");
+		
+		memberService.deleteMember(auth.getName());
+		
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("result", "success");
+		return jsonObject.toString();
 	}
 
 }

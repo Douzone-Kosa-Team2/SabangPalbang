@@ -62,6 +62,109 @@
 }
 </style>
 <script>
+var dupEmail=false;
+var dupPhone=false;
+var dupNickname=false;
+//아이디 중복검사
+console.log("회원가입로딩");	
+$(function(){ 
+	$("#member_email").on("propertychange change keyup paste input", function(){
+		
+		//console.log("member_email 키 감지");
+		var email = $("#member_email").val() + "@" + $("#member_email2").val();
+		//console.log("email : " + email);
+		$.ajax({
+			method:"post",
+			url:"checkEmail",
+			data: {email, ${_csrf.parameterName}:"${_csrf.token}"}
+		})
+		.then(data => {
+	         if(data.resultEmail == "success"){
+	        	 //console.log("사용가능한 이메일입니다.");
+	        	 dupEmail = true;
+	        	 //$("#errorEmail").html("사용가능한 이메일입니다.");
+	         } else {
+	        	 //console.log("중복된 이메일입니다.");
+	        	 dupEmail = false;
+	        	 $("#errorEmail").html("중복된 이메일입니다.");
+	         }
+	     });
+
+	});
+	$("#member_email2").on("propertychange change keyup paste input", function(){
+		
+		//console.log("member_email 키 감지");
+		var email = $("#member_email").val() + "@" + $("#member_email2").val();
+		//console.log("email : " + email);
+		$.ajax({
+			method:"post",
+			url:"checkEmail",
+			data: {email, ${_csrf.parameterName}:"${_csrf.token}"}
+		})
+		.then(data => {
+	         if(data.resultEmail == "success"){
+	        	 //console.log("사용가능한 이메일입니다.");
+	        	 dupEmail = true;
+	        	 $("#errorEmail").html("사용가능한 이메일입니다.");
+	         } else {
+	        	 //console.log("중복된 이메일입니다.");
+	        	 dupEmail = false;
+	        	 $("#errorEmail").html("중복된 이메일입니다.");
+	         }
+	     });
+
+	});
+	$("#member_phone").on("propertychange change keyup paste input", function(){
+		
+		//console.log("tel_suf 키 감지");
+		//console.log("tel1 : " + $("#tel_pre").val());
+		var checkTelephone = $("#member_phone").val();
+
+		$.ajax({
+			method:"post",
+			url:"checkPhone",
+			data: {checkTelephone, ${_csrf.parameterName}:"${_csrf.token}"}
+		})
+		.then(data => {
+	         if(data.resultPhone == "success"){
+	        	 //console.log("사용가능한 이메일입니다.");
+	        	 dupPhone = true;
+	        	 //$("#errorPhone").html("사용가능한 휴대폰번호입니다.");
+	         } else {
+	        	 //console.log("중복된 이메일입니다.");
+	        	 dupPhone = false;
+	        	 $("#errorPhone").html("중복된 휴대폰번호입니다.");
+	         }
+	     });
+
+	});
+	$("#member_nickname").on("propertychange change keyup paste input", function(){
+
+		//console.log("member_nickname 키 감지");
+		var nickname = $("#member_nickname").val();
+		//console.log("nickname : " + nickname);
+		
+		
+		$.ajax({
+		method:"post",
+		url:"checkNickname",
+		data: {nickname, ${_csrf.parameterName}:"${_csrf.token}"}
+		})
+		.then(data => {
+        	 if(data.resultNickname == "success"){
+        		 //console.log("사용가능한 별명입니다.");
+        		 dupNickname = true;
+        		 $("#errorNickname").html("사용가능한 별명입니다.");
+      	  } else {
+        		 //console.log("중복된 볍명입니다.");
+        		 dupNickname = false;
+        		 $("#errorNickname").html("중복된 볍명입니다.");
+     	   }
+    	 });
+	});
+	
+});
+
 	//유효성 검사
 	function validateUpdateMember() {
 		
@@ -103,7 +206,7 @@
 		}
 
 		// 비밀번호 확인 유효성
-		if(member_pwcheck === ""){
+		if((member_pw !== "")&&(member_pwcheck === "")){
 			result = false;
 			$("#errorPwCheck").html("비밀번호를 확인해주세요.");
 		} else if(member_pwcheck != member_pw){
@@ -115,6 +218,9 @@
 			if(reg_phone.test(member_phone)){
 				result = false;
 				$("#errorPhone").html("10자이상 11자 이하의 숫자만 적어주세요.");
+			} else if(dupPhone){
+				result = false;
+				$("#errorPhone").html("중복된 번호입니다.");
 			}
 		} else {
 			$("#errorPhone").html("기존 휴대번호 사용.");
@@ -122,12 +228,27 @@
 		console.log(result);
 		
 		return result;
-		//전송 
-/* 		if (result) {
-			$("#updateForm").submit(); 
-		} */
 	}
-
+	function deleteMember(){
+		event.preventDefault();
+		$.ajax({
+		method:"post",
+		url:"deleteMember",
+		data: {${_csrf.parameterName}:"${_csrf.token}"}
+		})
+		.then(data => {
+        	 if(data.result == "success"){
+				 $("#deleteForm").submit();
+      	  } else {
+        		 console.log("탈퇴 실패");
+     	   }
+    	 });
+	}
+	
+	
+	$('#exampleModal').on('shown.bs.modal', function () {
+		  $('#exampleModal').trigger('focus')
+	})
 </script>
 
 
@@ -213,13 +334,44 @@
 				<input type="text" class="form-control" id="member_nickname"
 					value="${member.member_nickname}" name="member_nickname" readonly>
 			</div>
-			<span id="errorNickname" class="error"></span>
-			<div style="text-align: center;">
+			<span id="errorNickname" class="error"></span> <br>
+
+			<div class="mb-3" style="text-align: center;">
 				<button type="submit" class="btn btn-primary btn-lg">회원 정보
 					수정</button>
 			</div>
+			<div class="mb-3" style="text-align: center;">
+				<button type="button" data-toggle="modal"
+					data-target="#exampleModal" class="btn btn-danger btn-lg">회원
+					탈퇴</button>
+			</div>
 		</div>
 	</form>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
 
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">정말로 회원을 탈퇴 하시겠습니까?</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+				<form id="deleteForm" method="post" class="d-inline-block"
+					action="${pageContext.request.contextPath}/logout">
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+					<button type="button" class="btn btn-danger"
+						onclick="deleteMember()">회원 탈퇴</button>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

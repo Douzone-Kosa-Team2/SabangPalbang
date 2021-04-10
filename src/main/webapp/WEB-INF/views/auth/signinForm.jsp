@@ -12,6 +12,7 @@
 
 // 중복 이메일, 별명 체크
 var dupEmail=false;
+var dupPhone=false;
 var dupNickname=false;
 //아이디 중복검사
 console.log("회원가입로딩");	
@@ -33,7 +34,7 @@ $(function(){
 	        	 //$("#errorEmail").html("사용가능한 이메일입니다.");
 	         } else {
 	        	 //console.log("중복된 이메일입니다.");
-	        	 dupEmail=false;
+	        	 dupEmail = false;
 	        	 $("#errorEmail").html("중복된 이메일입니다.");
 	         }
 	     });
@@ -56,8 +57,32 @@ $(function(){
 	        	 $("#errorEmail").html("사용가능한 이메일입니다.");
 	         } else {
 	        	 //console.log("중복된 이메일입니다.");
-	        	 dupEmail=false;
+	        	 dupEmail = false;
 	        	 $("#errorEmail").html("중복된 이메일입니다.");
+	         }
+	     });
+
+	});
+	$("#tel_suf").on("propertychange change keyup paste input", function(){
+		
+		//console.log("tel_suf 키 감지");
+		//console.log("tel1 : " + $("#tel_pre").val());
+		var checkTelephone = ""+$("#tel_pre").val() + $("#tel_suf").val();
+		//console.log("tel2 : " + checkTelephone);
+		$.ajax({
+			method:"post",
+			url:"checkPhone",
+			data: {checkTelephone, ${_csrf.parameterName}:"${_csrf.token}"}
+		})
+		.then(data => {
+	         if(data.resultPhone == "success"){
+	        	 //console.log("사용가능한 이메일입니다.");
+	        	 dupPhone = true;
+	        	 //$("#errorPhone").html("사용가능한 휴대폰번호입니다.");
+	         } else {
+	        	 //console.log("중복된 이메일입니다.");
+	        	 dupPhone = false;
+	        	 $("#errorPhone").html("중복된 휴대폰번호입니다.");
 	         }
 	     });
 
@@ -81,7 +106,7 @@ $(function(){
         		 $("#errorNickname").html("사용가능한 별명입니다.");
       	  } else {
         		 //console.log("중복된 볍명입니다.");
-        		 dupNickname=false;
+        		 dupNickname = false;
         		 $("#errorNickname").html("중복된 볍명입니다.");
      	   }
     	 });
@@ -190,6 +215,9 @@ $(function(){
 				result = false;
 				$("#errorPhone").html("7자이상 8자 이하의 숫자만 적어주세요.");
 			}
+			else if(dupPhone == false){
+				$("#errorPhone").html("중복된 휴대폰번호입니다.");
+			}
 		}
 		
 		// 별명 유효성
@@ -280,7 +308,7 @@ $(function(){
 
 			<div>휴대번호</div>
 			<div class="signin_input_form">
-				<select name="tel_pre">
+				<select id="tel_pre" name="tel_pre">
 					<option selected="" value="" disabled="">선택해주세요</option>
 					<option value="010">010</option>
 					<option value="011">011</option>

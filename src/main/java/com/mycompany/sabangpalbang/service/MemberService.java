@@ -73,7 +73,7 @@ public class MemberService {
 
 	public static String generate(String DATA, int length) {
 		if (length < 1)
-			throw new IllegalArgumentException("length must be a positive number.");
+			throw new IllegalArgumentException("자연수를 넣어주세요");
 		StringBuilder sb = new StringBuilder(length);
 		for (int i = 0; i < length; i++) {
 			sb.append(DATA.charAt(random.nextInt(DATA.length())));
@@ -155,4 +155,40 @@ public class MemberService {
 		return rows;
 	}
 
+	public Boolean isCheckedPhone(String member_phone) {
+		int dupPhone = memberDao.selectPhoneCheck(member_phone);
+		// 겹치는게 없을때
+		if (dupPhone == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public void deleteMember(String member_email) {
+		int row = memberDao.deleteMemberByEmail(member_email);
+		logger.info("row: " + row);
+	}
+
+	public String checkLogin(String member_email, String member_pw) {
+		
+		Member dbMember = memberDao.selectMemberByEmail(member_email);
+		
+		//email이 존재 하지않을때
+		if(dbMember == null) {
+			return "notFindEmail";
+		}		
+		else {
+			BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
+			boolean result = bpe.matches(member_pw,dbMember.getMember_pw());
+			//email이 존재하지만 비밀번호가 틀릴때
+			if(result) {
+				return "success";
+			}
+			//email이 존재하고 비밀번호가 맞을때 (성공)
+			else {
+				return "notFindPw";
+			}
+		} 	
+	}
 }

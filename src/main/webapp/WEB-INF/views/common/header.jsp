@@ -91,7 +91,7 @@ background-image: none !important;
 						<form method="post" class="d-inline-block"
 							action="${pageContext.request.contextPath}/logout">
 							<input type="hidden" name="${_csrf.parameterName}"
-								value="${_csrf.token}" />
+								value="${_csrf.token}"/>
 							<button
 								style="border: none; outline: none; background-color: white;"
 								class="header_logIn_item">로그아웃</button>

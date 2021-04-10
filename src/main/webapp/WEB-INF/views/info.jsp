@@ -6,9 +6,9 @@
 
 <script>
 		var infoIndex = 0;
-		console.log("무야호");
+
 		window.onload = function () {
-			console.log("무야호2");
+
 			var sec = 3000;
 			var infos = document.querySelectorAll(".info_content_1");
 			var infoBtn = document.querySelectorAll(".info_content_movePage");
