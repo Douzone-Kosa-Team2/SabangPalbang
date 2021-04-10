@@ -41,7 +41,33 @@
 		return result;
 	}
 </script>
-
+<script>
+function findEmailCheck(){
+	event.preventDefault();
+	var member_name = $("#member_name").val();
+	var member_phone = $("#member_phone").val();
+	$.ajax({
+	method:"post",
+	url:"findEmailCheck",
+	data: { 
+		member_name,
+		member_phone,
+		${_csrf.parameterName}:"${_csrf.token}"
+		}
+	})
+	.then(data => {
+    	 if(data.result == "success"){
+			 $("#findForm").submit();
+  	  } else if(data.result == "notFindName"){
+    		 console.log("없는 이름 입니다.");
+    		 alert("없는 이름 입니다.");
+ 	   } else if(data.result == "notFindPhone"){
+ 		  	 console.log("없는 번호 입니다.");
+ 			 alert("없는 번호 입니다.");
+ 	   }
+	 });
+}
+</script>
 <style>
 .error {
 	color: red;
@@ -72,7 +98,7 @@
 			<div class="mb-3">
 				<span class="error" id="errorPhone"></span>
 			</div>
-			<button type="submit" class="btn btn-info">이메일 찾기</button>
+			<button onclick="findEmailCheck()" class="btn btn-info">이메일 찾기</button>
 		</div>
 	</form>
 	<div class="findEmail_otherMenu">

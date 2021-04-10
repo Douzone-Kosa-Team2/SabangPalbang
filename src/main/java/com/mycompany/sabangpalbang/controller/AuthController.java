@@ -156,7 +156,7 @@ public class AuthController {
 		}
 	}
 
-	// 아이디 찾기
+	// 이메일 찾기
 	@PostMapping("/findEmailDo")
 	public String findEmailDo(String member_name, String member_phone, Model model) {
 		
@@ -164,12 +164,28 @@ public class AuthController {
 			Member member = memberService.findEmail(member_name, member_phone);
 			model.addAttribute("member_email", member.getMember_email());
 			model.addAttribute("member_nickname", member.getMember_nickname());
+			
 			return "auth/findEmail_successForm"; // 찾으면
 		} catch(Exception e){
 			logger.warn("Not find member");
 		}
 		
 		return "redirect:/findEmailForm";
+	}
+	// 이메일 찾기 예외상황
+	@PostMapping(value = "/findEmailCheck", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String findEmailCheck(String member_name,String member_phone) {
+		
+		logger.info("findEmailCheck 메시지");
+		
+		JSONObject jsonObject = new JSONObject();
+		
+		String result = memberService.checkEmail(member_name,member_phone);
+
+		jsonObject.put("result", result);
+		logger.info(result);
+		return jsonObject.toString();
 	}
 
 	// 비밀번호 재설정

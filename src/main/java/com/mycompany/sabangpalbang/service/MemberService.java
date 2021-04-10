@@ -135,6 +135,18 @@ public class MemberService {
 
 	}
 
+	//중복 번호 체크
+	public Boolean isCheckedPhone(String member_phone) {
+		int dupPhone = memberDao.selectPhoneCheck(member_phone);
+		// 겹치는게 없을때
+		if (dupPhone == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	
 	// 마이페이지 - 주문 내역 얻어오기 
 	public List<OrderMain> getOrderListById(Pager pager, int order_memberid) {
 		HashMap<String, Object> map = new HashMap<>();
@@ -155,21 +167,12 @@ public class MemberService {
 		return rows;
 	}
 
-	public Boolean isCheckedPhone(String member_phone) {
-		int dupPhone = memberDao.selectPhoneCheck(member_phone);
-		// 겹치는게 없을때
-		if (dupPhone == 0) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
 	public void deleteMember(String member_email) {
 		int row = memberDao.deleteMemberByEmail(member_email);
 		logger.info("row: " + row);
 	}
 
+	//로그인확인 체크
 	public String checkLogin(String member_email, String member_pw) {
 		
 		Member dbMember = memberDao.selectMemberByEmail(member_email);
@@ -190,5 +193,21 @@ public class MemberService {
 				return "notFindPw";
 			}
 		} 	
+	}
+	//이메일찾기 체크
+	public String checkEmail(String member_name, String member_phone) {
+		int nameCount = memberDao.selectMemberByName(member_name);
+		
+		if (nameCount == 0) {
+			return "notFindName";
+		} else {
+			int dupPhone = memberDao.selectPhoneCheck(member_phone);
+			// 겹치는게 없을때
+			if (dupPhone == 0) {
+				return "notFindPhone";
+			} else {
+				return "success";
+			}
+		}
 	}
 }

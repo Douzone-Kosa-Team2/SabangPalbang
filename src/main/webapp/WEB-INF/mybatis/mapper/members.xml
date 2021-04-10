@@ -134,6 +134,10 @@
 		from member
 		where member_name=#{member_name} and member_phone=#{member_phone}
 	</select>
+	<select id="selectMemberByName" resultType="int">
+      select count(*) from member
+      where member_name=#{member_name}
+    </select>
 	
 	<!-- 비밀번호 찾기 -->
 	<select id="findMemberByPwd" parameterType="String" resultType="member">
